@@ -155,6 +155,7 @@
         "noanim, class:^(flameshot)$,title:^(flameshot)$,fullscreen:1"
         "tile, class:^(neovide)$"
         "tile, class:^(wpsoffice)$"
+        "tile, class:^(Vivaldi-stable)$"
         "opacity 0.8 override 0.8 override, class:^(obsidian)$"
         "opacity 0.8 override 0.8 override, class:^(discord)$"
         "opacity 0.8 override 0.8 override, class:^(Code)$"

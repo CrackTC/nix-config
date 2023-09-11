@@ -9,5 +9,6 @@ nur: {
     ./mpv.nix
     ./nvim
     ./ripgrep.nix
+    ./vivaldi
   ];
 }

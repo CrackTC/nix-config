@@ -1,0 +1,51 @@
+#titlebar {
+    display: none;
+}
+
+.topmenu {
+    display: none;
+}
+
+.linux.normal #tabs-tabbar-container.top {
+    padding-top: 3px;
+}
+
+.button-toolbar.workspace-popup.tabbar-workspace-button button {
+    border-radius: 10px 10px 0 0;
+}
+
+.tabs-top .tabbar-workspace-button,
+.tabs-bottom .tabbar-workspace-button {
+    padding-left: 2px;
+}
+
+.tabs-top .tab-position .tab:not(.tab-in-accordion):not(.tab-accordion) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* removed shadow from tab icons in dark themes */
+.theme-dark .favicon:not(.svg) {
+    filter: none !important;
+}
+
+.tab-position .tab .favicon {
+    padding-top: 3.5px;
+    padding-left: 3px;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.tab-position .tab .favicon img,
+.tab-position .tab .favicon svg {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+.tab-position .tab .title {
+    padding-left: 2px;
+}
+
+.tab div span.title {
+    font-family: "sans-serif";
+}
