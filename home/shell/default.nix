@@ -7,5 +7,6 @@
     d = "disown";
     s = "neofetch";
     la = "ls -al";
+    lg = "lazygit";
   };
 }
