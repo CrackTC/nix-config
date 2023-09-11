@@ -14,6 +14,5 @@
 
     helix
     neofetch
-    neovim
   ];
 }

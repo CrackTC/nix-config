@@ -7,6 +7,7 @@ nur: {
     ./lazygit.nix
     ./misc.nix
     ./mpv.nix
+    ./nvim
     ./ripgrep.nix
   ];
 }
