@@ -13,6 +13,7 @@ in
     (import ./hypr { inherit useNvidia; inherit extMonitor; })
     ./dev
     ./fcitx5
+    ./mime
     ./rofi
     ./shell
     ./theme
