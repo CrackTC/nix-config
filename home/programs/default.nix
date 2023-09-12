@@ -1,6 +1,7 @@
 nur: {
   imports = [
     (import ./firefox nur)
+    ./dunst
     ./flameshot.nix
     ./git.nix
     ./imwheel
