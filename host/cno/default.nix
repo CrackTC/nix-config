@@ -41,7 +41,19 @@
 
   networking = {
     hostName = "cno";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      dispatcherScripts = [
+        {
+          source = pkgs.writeShellScript "jlu-drcom" ''
+            if [ "$2" = "up" ]; then
+                pkill jlu-drcom
+                /home/chen/repos/dr-jlu-linux/bin/jlu-drcom&
+            fi
+          '';
+        }
+      ];
+    };
     proxy = {
       default = "http://127.0.0.1:7890";
       noProxy = "127.0.0.1,localhost,internal.domain";
