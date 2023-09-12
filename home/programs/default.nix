@@ -3,6 +3,7 @@ nur: {
     (import ./firefox nur)
     ./flameshot.nix
     ./git.nix
+    ./imwheel
     ./kitty.nix
     ./lazygit.nix
     ./misc.nix

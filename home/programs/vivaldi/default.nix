@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.file.".local/share/vivaldi/custom" = {
+  xdg.dataFile."vivaldi/custom" = {
     source = ./custom;
     recursive = true;
   };

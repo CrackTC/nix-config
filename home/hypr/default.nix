@@ -36,17 +36,18 @@
       ];
 
       exec-once = [
-        "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
-        "fcitx5 -d"
-        "waybar"
-        "killall clash-meta"
         "clash-verge"
+        "copyq"
+        "fcitx5 -d"
+        "flameshot"
+        "go env -w GOPROXY=https://goproxy.cn,direct"
+        "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
+        "imwheel"
+        "killall clash-meta"
         "nm-applet"
         "swww init"
+        "waybar"
         "ydotoold -p /tmp/.ydotool_socket"
-        "go env -w GOPROXY=https://goproxy.cn,direct"
-        "flameshot"
-        "copyq"
       ];
 
       input = {
