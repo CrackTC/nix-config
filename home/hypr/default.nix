@@ -37,7 +37,6 @@
 
       exec-once = [
         "clash-verge"
-        "copyq"
         "fcitx5 -d"
         "flameshot"
         "go env -w GOPROXY=https://goproxy.cn,direct"
@@ -47,6 +46,7 @@
         "nm-applet"
         "swww init"
         "waybar"
+        "wl-clip-persist --clipboard both"
         "ydotoold"
       ];
 

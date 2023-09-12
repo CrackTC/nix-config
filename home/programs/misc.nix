@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  services.copyq.enable = true;
   home.packages = with pkgs; [
     clash-verge
     discord
@@ -15,5 +14,7 @@
 
     helix
     neofetch
+
+    wl-clip-persist
   ];
 }
