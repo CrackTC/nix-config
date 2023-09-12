@@ -5,34 +5,55 @@
     ./hardware-configuration.nix
   ];
 
-  nix.settings.trusted-users = [ "chen" ];
+  nix = {
+    settings = {
+      trusted-users = [ "chen" ];
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.consoleMode = "max";
-  boot.loader.systemd-boot.extraEntries = {
-    "arch.conf" = ''
-      title Arch Linux
-      efi /efi/ARCH/grubx64.efi
-    '';
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1w";
+    };
   };
-  boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-  boot.kernelParams = [ /* "module_blacklist=i915" */ "ibt=off" ];
+  boot = {
+    initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    kernelParams = [ /* "module_blacklist=i915" */ "ibt=off" ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+        consoleMode = "max";
+        extraEntries = {
+          "arch.conf" = ''
+            title Arch Linux
+            efi /efi/ARCH/grubx64.efi
+          '';
+        };
+      };
+    };
+  };
 
-  networking.hostName = "cno";
-  networking.networkmanager.enable = true;
-  networking.proxy.default = "http://127.0.0.1:7890/";
-  networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking = {
+    hostName = "cno";
+    networkmanager.enable = true;
+    proxy = {
+      default = "http://127.0.0.1:7890";
+      noProxy = "127.0.0.1,localhost,internal.domain";
+    };
+  };
 
   time.timeZone = "Asia/Shanghai";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
+  };
 
   fonts = {
     fontDir.enable = true;
@@ -79,16 +100,20 @@
 
   environment.systemPackages = with pkgs; [ vim git libva-utils nvtop ];
 
-  programs.fish.enable = true;
-  programs.gnupg = {
-    agent = {
-      enable = true;
-      pinentryFlavor = "gtk2";
+  programs = {
+    fish.enable = true;
+    gnupg = {
+      agent = {
+        enable = true;
+        pinentryFlavor = "gtk2";
+      };
     };
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.udisks2.enable = true;
+  services = {
+    udisks2.enable = true;
+    xserver.videoDrivers = [ "nvidia" ];
+  };
 
   hardware = {
     opengl = {
