@@ -1,0 +1,14 @@
+use_trash = false
+xdg_open = false
+xdg_open_fork = true
+
+[display]
+collapse_preview = false
+show_borders = false
+show_icons = true
+
+[preview]
+max_preview_size = 1048576000
+# preview_script = "~/.config/joshuto/preview.sh"
+preview_shown_hook_script = "~/.config/joshuto/icat_show"
+preview_removed_hook_script = "~/.config/joshuto/icat_remove"

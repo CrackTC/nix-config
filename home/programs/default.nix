@@ -5,6 +5,7 @@ nur: {
     ./flameshot.nix
     ./git.nix
     ./imwheel
+    ./joshuto
     ./kitty.nix
     ./lazygit.nix
     ./misc.nix
