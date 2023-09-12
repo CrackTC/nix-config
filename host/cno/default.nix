@@ -140,6 +140,7 @@
       };
       nvidiaSettings = true;
     };
+    uinput.enable = true;
   };
 
   security.sudo.extraRules = [

@@ -47,7 +47,7 @@
         "nm-applet"
         "swww init"
         "waybar"
-        "ydotoold -p /tmp/.ydotool_socket"
+        "ydotoold"
       ];
 
       input = {
