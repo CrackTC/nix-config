@@ -8,5 +8,6 @@
     s = "neofetch";
     la = "ls -al";
     lg = "lazygit";
+    ra = "joshuto";
   };
 }
