@@ -1,4 +1,4 @@
-{ useNvidia, extMonitor }: { pkgs, lib, ... }: {
+{ useNvidia, extMonitor }: { pkgs, lib, extraRepos, ... }: {
   imports =
     (if useNvidia then [ ./nvidia.nix ] else [ ./intel.nix ]) ++
     (if !extMonitor then [ ./noExtMonitor.nix ] else [ ]) ++ [
@@ -38,7 +38,6 @@
       exec-once = [
         "clash-verge"
         "fcitx5 -d"
-        "flameshot"
         "go env -w GOPROXY=https://goproxy.cn,direct"
         "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
         "imwheel"
@@ -153,7 +152,6 @@
         "size 677 841, class:^(winecfg\\.exe)$"
 
         "float, class:^(pavucontrol-qt)$"
-        "noanim, class:^(flameshot)$,title:^(flameshot)$,fullscreen:1"
         "tile, class:^(neovide)$"
         "tile, class:^(wpsoffice)$"
         "tile, class:^(Vivaldi-stable)$"
@@ -171,10 +169,10 @@
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with extraRepos; [
     networkmanagerapplet
-    sway-contrib.grimshot
     swww
     wl-clipboard
+    hyprland-contrib.packages.${pkgs.system}.grimblast
   ];
 }

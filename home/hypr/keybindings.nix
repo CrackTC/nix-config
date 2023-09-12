@@ -9,7 +9,7 @@
       "$mainMod, Semicolon, exec, rofi -show run"
       "$mainMod, P, exec, rofi-rbw"
       "$mainMod, N, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
-      "$mainMod SHIFT, S, exec, flameshot gui"
+      "$mainMod SHIFT, S, exec, grimblast copy area"
 
       "$mainMod SHIFT, Q, killactive, "
       "$mainMod SHIFT, Space, togglefloating, "

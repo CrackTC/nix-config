@@ -1,15 +1,10 @@
-{ pkgs, inputs, ... }:
 let
-  nur = import inputs.nur {
-    nurpkgs = pkgs;
-    pkgs = pkgs;
-  };
   useNvidia = false;
   extMonitor = true;
 in
 {
   imports = [
-    (import ./programs nur)
+    ./programs
     (import ./hypr { inherit useNvidia; inherit extMonitor; })
     ./dev
     ./fcitx5

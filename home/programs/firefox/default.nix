@@ -1,4 +1,4 @@
-nur:
+{ extraRepos, ... }:
 let
   profileName = "sorac";
 in
@@ -16,7 +16,7 @@ in
     enable = true;
     profiles = {
       ${profileName} = {
-        extensions = with nur.repos.rycee.firefox-addons; [
+        extensions = with extraRepos.nur.repos.rycee.firefox-addons; [
           bitwarden
           vimium
           kristofferhagen-nord-theme
