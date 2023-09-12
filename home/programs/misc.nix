@@ -7,6 +7,7 @@
     spotify
     obsidian
     qq
+    burpsuite
 
     logisim
     krita
