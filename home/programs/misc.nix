@@ -1,5 +1,14 @@
 { pkgs, ... }: {
   services.copyq.enable = true;
+  programs = {
+    pandoc.enable = true;
+    bat = {
+      enable = true;
+      config = {
+        theme = "Nord";
+      };
+    };
+  };
   home.packages = with pkgs; [
     clash-verge
     discord
@@ -15,5 +24,6 @@
 
     helix
     neofetch
+    file
   ];
 }
