@@ -18,6 +18,10 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    myRepo = {
+      url = "github:CrackTC/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,9 +43,13 @@
         nurpkgs = pkgs;
         pkgs = pkgs;
       };
+      myRepo = import inputs.myRepo {
+        pkgs = pkgs;
+      };
       extraRepos = {
         inherit pkgs-stable;
         inherit nur;
+        inherit myRepo;
         inherit (inputs) hyprland-contrib;
       };
     in

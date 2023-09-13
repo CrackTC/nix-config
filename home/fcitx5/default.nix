@@ -11,4 +11,9 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    libsForQt5.fcitx5-qt
+    libsForQt5.qt5.qtwayland
+  ];
 }

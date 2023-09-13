@@ -8,6 +8,7 @@ in
     (import ./hypr { inherit useNvidia; inherit extMonitor; })
     ./dev
     ./fcitx5
+    ./game
     ./mime
     ./rofi
     ./shell

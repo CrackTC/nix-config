@@ -7,6 +7,7 @@
       key = "32EC77DBD23E9EB1";
       signByDefault = true;
     };
+    lfs.enable = true;
   };
 
   home.packages = with pkgs; [ gnupg ];
