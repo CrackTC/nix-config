@@ -22,6 +22,7 @@
   boot = {
     initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    supportedFilesystems = [ "ntfs" ];
     kernelParams = [ /* "module_blacklist=i915" */ "ibt=off" ];
     loader = {
       efi.canTouchEfiVariables = true;
@@ -75,12 +76,13 @@
       source-han-serif
       maple-mono
       maple-mono-SC-NF
+      twitter-color-emoji
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
 
     fontconfig = {
       defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
+        emoji = [ "Twitter Color Emoji" ];
         monospace = [
           "Maple Mono"
           "Noto Sans Mono CJK SC"
