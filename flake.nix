@@ -56,10 +56,7 @@
     {
       nixosConfigurations = {
         cno = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit pkgs;
-            inherit extraRepos;
-          };
+          specialArgs = { inherit pkgs extraRepos; };
           modules = [
             ./host/cno
             inputs.home-manager.nixosModules.home-manager
@@ -68,10 +65,7 @@
               home-manager.useUserPackages = true;
 
               home-manager.users.chen = import ./home;
-              home-manager.extraSpecialArgs = {
-                inherit pkgs;
-                inherit extraRepos;
-              };
+              home-manager.extraSpecialArgs = { inherit pkgs extraRepos; };
             }
           ];
         };
