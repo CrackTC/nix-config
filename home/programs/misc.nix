@@ -19,5 +19,7 @@
 
     wineWowPackages.waylandFull
     winetricks
+
+    wpsoffice
   ];
 }
