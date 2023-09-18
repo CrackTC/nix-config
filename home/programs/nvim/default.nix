@@ -1,7 +1,10 @@
 { config, ... }: {
   xdg.configFile = {
     "nvim/init.lua".source = ./config/init.lua;
-    "nvim/lua".source = ./config/lua;
+    "nvim/lua" = {
+      source = ./config/lua;
+      recursive = true;
+    };
   };
 
   programs.neovim = {
