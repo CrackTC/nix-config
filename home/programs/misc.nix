@@ -16,5 +16,8 @@
     neofetch
 
     wl-clip-persist
+
+    wineWowPackages.waylandFull
+    winetricks
   ];
 }

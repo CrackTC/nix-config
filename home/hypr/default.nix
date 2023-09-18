@@ -147,9 +147,9 @@
       ];
 
       windowrulev2 = [
-        "nomaxsize, class:^(winecfg\\.exe)$"
-        "float, class:^(winecfg\\.exe)$"
-        "size 677 841, class:^(winecfg\\.exe)$"
+        # "nomaxsize, class:^(winecfg\\.exe)$"
+        # "float, class:^(winecfg\\.exe)$"
+        # "size 677 841, class:^(winecfg\\.exe)$"
 
         "float, class:^(pavucontrol-qt)$"
         "tile, class:^(neovide)$"
