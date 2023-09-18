@@ -30,7 +30,7 @@ local function setup_highlights()
 
     -- pum highlighting
     vim.cmd([[hi! CocFloating          ctermbg=8       guibg=None                           ]])
-    vim.cmd([[hi! CocSearch            cterm=undercurl gui=undercurl                        ]])
+    vim.cmd([[hi! CocSearch            cterm=undercurl gui=undercurl ctermfg=2 guifg=#A3BE8C]])
     vim.cmd([[hi! CocMenuSel           ctermbg=14      guibg=#8fbcbb ctermfg=8 guifg=#2E3440]])
     vim.cmd([[hi! CocFloatThumb        ctermbg=7       guibg=#d8dee9 ctermfg=8 guifg=#2E3440]])
     vim.cmd([[hi! CocFloatSbar         ctermfg=8       guifg=#2E3440 ctermbg=8 guibg=#2E3440]])
@@ -62,6 +62,16 @@ local function setup_mappings()
     local function on_enter() return "<C-g>u<CR><C-r>=coc#on_enter()<CR>" end
     local function on_ctrl_space() return vim.fn["coc#refresh"]() end
 
+    local function float_scroll(forward, fallback)
+        return function()
+            if vim.fn["coc#float#has_scroll"]() == 1 then
+                return vim.fn["coc#float#scroll"](forward)
+            else
+                return fallback
+            end
+        end
+    end
+
     local utils = require('utils')
 
     local opts = { silent = true, expr = true }
@@ -82,6 +92,10 @@ local function setup_mappings()
     utils.nnoremap("<leader>a", "<Plug>(coc-codeaction-cursor)", opts)
     utils.nnoremap("<leader>cl", "<Plug>(coc-codelens-action)", opts)
 
+    utils.inoremap("<C-j>", float_scroll(1, "<C-j>"), opts)
+    utils.inoremap("<C-k>", float_scroll(0, "<C-k>"), opts)
+    utils.nnoremap("<C-j>", float_scroll(1, "<C-j>"), opts)
+    utils.nnoremap("<C-k>", float_scroll(0, "<C-k>"), opts)
 
     utils.nnoremap("dc", show_docs, opts)
 
