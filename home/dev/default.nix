@@ -5,5 +5,6 @@
     ./js.nix
     ./lua.nix
     ./nix.nix
+    ./python.nix
   ];
 }
