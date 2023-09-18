@@ -7,7 +7,6 @@ in
     ./programs
     (import ./hypr { inherit useNvidia; inherit extMonitor; })
     ./dev
-    ./fcitx5
     ./game
     ./mime
     ./rofi
