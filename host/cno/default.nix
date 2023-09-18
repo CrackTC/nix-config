@@ -112,7 +112,7 @@
     extraGroups = [ "wheel" "uinput" ];
   };
 
-  environment.systemPackages = with pkgs; [ vim git libva-utils nvtop ];
+  environment.systemPackages = with pkgs; [ vim git libva-utils nvtop vulkan-tools ];
 
   programs = {
     fish.enable = true;
