@@ -116,7 +116,7 @@
     isNormalUser = true;
     description = "chen";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "uinput" ];
+    extraGroups = [ "wheel" "uinput" "docker" ];
   };
 
   environment.systemPackages = with pkgs; [ vim git libva-utils nvtop vulkan-tools ];
@@ -163,6 +163,8 @@
     };
     uinput.enable = true;
   };
+
+  virtualisation.docker.enable = true;
 
   security.sudo.extraRules = [
     {
