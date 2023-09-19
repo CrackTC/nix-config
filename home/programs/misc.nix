@@ -11,6 +11,7 @@
     logisim
     krita
     calibre
+    thunderbird
 
     helix
     neofetch
