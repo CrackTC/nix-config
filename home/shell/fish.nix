@@ -16,6 +16,7 @@
       fish_greeting = "";
       enbase = "echo -n $argv | base64";
       debase = "echo -n $argv | base64 -d";
+      miniconda = "conda-shell -c 'fish -C \"conda shell.fish hook $argv | source\"'";
     };
   };
 }
