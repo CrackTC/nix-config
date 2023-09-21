@@ -118,7 +118,7 @@
         vrr = false;
         no_direct_scanout = true;
         animate_manual_resizes = false;
-        focus_on_activate = true;
+        focus_on_activate = false;
       };
 
       master = {
