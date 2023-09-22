@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, info, ... }:
 
 {
   imports = [
@@ -7,7 +7,7 @@
 
   nix = {
     settings = {
-      trusted-users = [ "chen" ];
+      trusted-users = [ "${info.username}" ];
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
@@ -42,19 +42,6 @@
 
   networking = {
     hostName = "cno";
-    networkmanager = {
-      enable = true;
-      dispatcherScripts = [
-        {
-          source = pkgs.writeShellScript "jlu-drcom" ''
-            if [ "$2" = "up" ]; then
-                pkill jlu-drcom
-                /home/chen/repos/dr-jlu-linux/bin/jlu-drcom&
-            fi
-          '';
-        }
-      ];
-    };
     proxy = {
       default = "http://127.0.0.1:7890";
       noProxy = "127.0.0.1,localhost,internal.domain";
@@ -75,61 +62,17 @@
     };
   };
 
-  fonts = {
-    fontDir.enable = true;
-    packages = with pkgs; [
-      noto-fonts
-      source-han-sans
-      source-han-serif
-      maple-mono
-      maple-mono-SC-NF
-      twitter-color-emoji
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-        emoji = [ "Twitter Color Emoji" ];
-        monospace = [
-          "Maple Mono"
-          "Noto Sans Mono CJK SC"
-          "DejaVu Sans Mono"
-        ];
-        sansSerif = [
-          "Noto Sans CJK SC"
-          "Source Han Sans SC"
-          "DejaVu Sans"
-        ];
-        serif = [
-          "Noto Serif CJK SC"
-          "Source Han Serif SC"
-          "DejaVu Serif"
-        ];
-      };
-    };
-  };
-
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  users.users.chen = {
+  users.users.${info.username} = {
     isNormalUser = true;
-    description = "chen";
+    description = "${info.username}";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "uinput" "docker" ];
+    extraGroups = [ "wheel" ];
   };
 
   environment.systemPackages = with pkgs; [ vim git libva-utils nvtop vulkan-tools ];
-
-  programs = {
-    fish.enable = true;
-    gnupg = {
-      agent = {
-        enable = true;
-        pinentryFlavor = "gtk2";
-      };
-    };
-  };
 
   services = {
     udisks2.enable = true;
@@ -161,14 +104,11 @@
       };
       nvidiaSettings = true;
     };
-    uinput.enable = true;
   };
-
-  virtualisation.docker.enable = true;
 
   security.sudo.extraRules = [
     {
-      users = [ "chen" ];
+      users = [ "${info.username}" ];
       commands = [{ command = "ALL"; options = [ "NOPASSWD" ]; }];
     }
   ];

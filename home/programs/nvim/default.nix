@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, info, ... }: {
   xdg.configFile = {
     "nvim/init.lua".source = ./config/init.lua;
     "nvim/lua" = {
@@ -129,7 +129,7 @@
         ];
         "Lua.hint.enable" = true;
         "Lua.codeLens.enable" = false;
-        "csharp-ls.path" = "/home/chen/.dotnet/tools/csharp-ls";
+        "csharp-ls.path" = "/home/${info.username}/.dotnet/tools/csharp-ls";
         "snippets.ultisnips.pythonPrompt" = false;
         "nil.formatting.command" = [ "nixpkgs-fmt" ];
       };

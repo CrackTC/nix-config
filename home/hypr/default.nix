@@ -1,4 +1,4 @@
-{ useNvidia, extMonitor }: { pkgs, lib, extraRepos, ... }: {
+{ useNvidia, extMonitor }: { pkgs, lib, extraRepos, info, ... }: {
   imports =
     (if useNvidia then [ ./nvidia.nix ] else [ ./intel.nix ]) ++
     (if !extMonitor then [ ./noExtMonitor.nix ] else [ ]) ++ [
@@ -25,11 +25,11 @@
 
         "GDK_BACKEND,wayland,x11"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XDG_CONFIG_HOME,/home/chen/.config"
-        "XDG_CONFIG_DIR,/home/chen/.config"
+        "XDG_CONFIG_HOME,/home/${info.username}/.config"
+        "XDG_CONFIG_DIR,/home/${info.username}/.config"
 
         # paths
-        "NODE_PATH,/home/chen/.local/lib/nodejs/node_modules"
+        "NODE_PATH,/home/${info.username}/.local/lib/nodejs/node_modules"
 
         # java font anti-alias
         "_JAVA_OPTIONS,'-Dawt.useSystemAAFontSettings=lcd'"

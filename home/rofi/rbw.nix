@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, info, ... }: {
   programs.rbw = {
     enable = true;
     settings = {
       base_url = "http://192.168.1.100:5252";
-      email = "chenrke369@gmail.com";
+      inherit (info) email;
       lock_timeout = 3600;
     };
   };

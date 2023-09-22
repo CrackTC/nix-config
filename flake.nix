@@ -52,20 +52,29 @@
         inherit myRepo;
         inherit (inputs) hyprland-contrib;
       };
+
+      info = {
+        username = "chen";
+        nickname = "CrackTC";
+        email = "chenrke369@gmail.com";
+      };
     in
     {
       nixosConfigurations = {
         cno = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit pkgs extraRepos; };
+          specialArgs = {
+            inherit pkgs extraRepos info;
+          };
           modules = [
+            ./modules
             ./host/cno
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.chen = import ./home;
-              home-manager.extraSpecialArgs = { inherit pkgs extraRepos; };
+              home-manager.users.${info.username} = import ./home;
+              home-manager.extraSpecialArgs = { inherit pkgs extraRepos info; };
             }
           ];
         };
