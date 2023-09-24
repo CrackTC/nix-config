@@ -1,6 +1,7 @@
 {
   imports = [
     ./fish.nix
+    ./pwsh.nix
   ];
   home.shellAliases = {
     c = "clear";
