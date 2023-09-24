@@ -92,8 +92,8 @@ local function setup_mappings()
     utils.nnoremap("<leader>a", "<Plug>(coc-codeaction-cursor)", opts)
     utils.nnoremap("<leader>cl", "<Plug>(coc-codelens-action)", opts)
 
-    utils.inoremap("<C-j>", float_scroll(1, "<C-j>"), opts)
-    utils.inoremap("<C-k>", float_scroll(0, "<C-k>"), opts)
+    utils.inoremap("<C-n>", float_scroll(1, "<C-n>"), opts)
+    utils.inoremap("<C-p>", float_scroll(0, "<C-p>"), opts)
     utils.nnoremap("<C-j>", float_scroll(1, "<C-j>"), opts)
     utils.nnoremap("<C-k>", float_scroll(0, "<C-k>"), opts)
 
