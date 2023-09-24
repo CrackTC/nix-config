@@ -1,7 +1,7 @@
 nur: {
   imports = [
-    ./firefox
     ./dunst
+    ./firefox
     ./git.nix
     ./imwheel
     ./joshuto
@@ -12,5 +12,6 @@ nur: {
     ./nvim
     ./ripgrep.nix
     ./vivaldi
+    ./vscode
   ];
 }
