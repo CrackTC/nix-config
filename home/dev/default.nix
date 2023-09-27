@@ -8,5 +8,6 @@
     ./misc.nix
     ./nix.nix
     ./python.nix
+    ./verilog.nix
   ];
 }
