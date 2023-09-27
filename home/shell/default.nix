@@ -6,7 +6,7 @@
   home.shellAliases = {
     c = "clear";
     d = "disown";
-    s = "neofetch";
+    s = "fastfetch";
     la = "ls -al";
     lg = "lazygit";
     ra = "joshuto";

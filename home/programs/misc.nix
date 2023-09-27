@@ -14,7 +14,7 @@
     thunderbird
 
     helix
-    neofetch
+    fastfetch
 
     wl-clip-persist
 
