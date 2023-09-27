@@ -4,19 +4,19 @@ local function setup_mappings(_)
     local gitsigns = package.loaded.gitsigns
     local utils = require("utils")
 
-    utils.buffered_nnoremap('gp', function()
+    utils.buffered_nnoremap('d;', function()
         if vim.wo.diff then return '[c' end
         vim.schedule(function() gitsigns.prev_hunk() end)
         return '<Ignore>'
     end, { expr = true })
 
-    utils.buffered_nnoremap('gn', function()
+    utils.buffered_nnoremap('dk', function()
         if vim.wo.diff then return ']c' end
         vim.schedule(function() gitsigns.next_hunk() end)
         return '<Ignore>'
     end, { expr = true })
 
-    utils.buffered_nnoremap('<leader>g', gitsigns.preview_hunk)
+    utils.buffered_nnoremap('<leader>d', gitsigns.preview_hunk)
 end
 
 local function setup_highlights()

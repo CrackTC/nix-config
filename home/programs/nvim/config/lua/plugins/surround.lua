@@ -7,13 +7,13 @@ local map_surrounds = function(from, to)
     utils.xmap("s" .. from, "S" .. to)
 
     -- select surrounds
-    utils.xnoremap("i" .. from, "i" .. to)
+    utils.xnoremap("u" .. from, "i" .. to)
     utils.xnoremap("a" .. from, "a" .. to)
-    utils.omap("i" .. from, "i" .. to)
+    utils.omap("u" .. from, "i" .. to)
     utils.omap("a" .. from, "a" .. to)
 
     -- remove surrounds
-    utils.nmap("ds" .. from, "ds" .. to)
+    utils.nmap("sr" .. from, "sr" .. to)
 end
 
 local function setup_mappings()
@@ -26,6 +26,7 @@ local function setup_mappings()
         ["t"] = "t",
     }
 
+    utils.nnoremap("sr", "<Plug>Dsurround")
     for from, to in pairs(maps) do map_surrounds(from, to) end
 end
 

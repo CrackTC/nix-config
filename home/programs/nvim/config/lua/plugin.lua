@@ -74,7 +74,7 @@ require("lazy").setup({
         {
             "mg979/vim-visual-multi",
             branch = "master",
-            keys = { { "<C-n>", nil } },
+            keys = { { "<C-k>", nil } },
             config = require("plugins.visual-multi").config
         },
         {
@@ -87,7 +87,7 @@ require("lazy").setup({
         },
         {
             "theniceboy/joshuto.nvim",
-            keys = { { "<leader>ra", function() require("joshuto").joshuto() end } }
+            keys = { { "<leader>pa", function() require("joshuto").joshuto() end } }
         },
         {
             "godlygeek/tabular",

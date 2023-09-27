@@ -5,11 +5,41 @@ vim.g.mapleader = " "
 
 -- [basic mappings] --
 
-utils.nnoremap(";", ":")
-utils.vnoremap(";", ":")
+utils.noremap("", ";", "p")
+utils.noremap("", "d", "g")
+utils.noremap("", "f", "e")
+utils.noremap("", "g", "t")
+utils.noremap("", "j", "y")
+utils.noremap("", "l", "u")
+utils.noremap("", "o", ":")
+utils.noremap("", "p", "r")
+utils.noremap("", "r", "s")
+utils.noremap("", "t", "f")
+utils.noremap("", "u", "i")
 
-utils.nnoremap("S", ":w<CR>")
-utils.nmap("Q", function()
+utils.noremap("n", "N", "J")
+utils.noremap("n", "E", "K")
+utils.noremap("n", "I", "L")
+utils.noremap("", ":", "P")
+utils.noremap("", "D", "G")
+utils.noremap("", "F", "E")
+utils.noremap("", "G", "T")
+utils.noremap("", "J", "Y")
+utils.noremap("", "L", "U")
+utils.noremap("", "O", ":")
+utils.noremap("", "P", "R")
+utils.noremap("", "R", "S")
+utils.noremap("", "S", "D")
+utils.noremap("", "T", "F")
+utils.noremap("", "U", "I")
+utils.noremap("", "Y", "O", { nowait = true })
+
+
+utils.nnoremap("o", ":")
+utils.vnoremap("o", ":")
+
+utils.nnoremap("R", ":w<CR>")
+utils.nnoremap("Q", function()
     local windows = vim.api.nvim_list_wins()
 
     local window_count = 0
@@ -33,17 +63,17 @@ utils.nmap("Q", function()
     return ":q<CR>"
 end, { expr = true, silent = true })
 
-utils.nnoremap("<A-n>", "5<C-e>")
-utils.nnoremap("<A-p>", "5<C-y>")
-utils.xnoremap("<A-n>", "5<C-e>")
-utils.xnoremap("<A-p>", "5<C-y>")
-utils.inoremap("<A-h>", "<Left>")
-utils.inoremap("<A-l>", "<Right>")
+utils.nnoremap("<A-k>", "5<C-e>")
+utils.nnoremap("<A-;>", "5<C-y>")
+utils.xnoremap("<A-k>", "5<C-e>")
+utils.xnoremap("<A-;>", "5<C-y>")
+utils.inoremap("<A-k>", "<Left>")
+utils.inoremap("<A-;>", "<Right>")
 
 -- [searching] --
 
-utils.nnoremap("N", "Nzz")
-utils.nnoremap("n", "nzz")
+utils.nnoremap("K", "Nzz")
+utils.nnoremap("k", "nzz")
 utils.nnoremap("<leader><CR>", ":nohlsearch<CR>", { silent = true })
 utils.cnoremap("<CR>", function()
     local cmdtype = vim.fn.getcmdtype()
@@ -56,16 +86,16 @@ end, { expr = true })
 
 -- [window management] --
 
-utils.nnoremap("s", "<nop>")
-utils.nnoremap("sl", ":set splitright<CR>:vsplit<CR>")
-utils.nnoremap("sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>")
-utils.nnoremap("sj", ":set splitbelow<CR>:split<CR>")
-utils.nnoremap("sk", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>")
+utils.nnoremap("r", "<nop>")
+utils.nnoremap("ri", ":set splitright<CR>:vsplit<CR>")
+utils.nnoremap("rh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>")
+utils.nnoremap("rn", ":set splitbelow<CR>:split<CR>")
+utils.nnoremap("re", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>")
 
-utils.nnoremap("gj", "<C-w>j")
-utils.nnoremap("gk", "<C-w>k")
-utils.nnoremap("gh", "<C-w>h")
-utils.nnoremap("gl", "<C-w>l")
+utils.nnoremap("dn", "<C-w>j")
+utils.nnoremap("de", "<C-w>k")
+utils.nnoremap("dh", "<C-w>h")
+utils.nnoremap("di", "<C-w>l")
 
 utils.nnoremap("<UP>", ":resize +5<CR>")
 utils.nnoremap("<DOWN>", ":resize -5<CR>")
@@ -73,7 +103,7 @@ utils.nnoremap("<LEFT>", ":vertical resize-5<CR>")
 utils.nnoremap("<RIGHT>", ":vertical resize+5<CR>")
 
 utils.nnoremap("<leader>h", ":bp<CR>")
-utils.nnoremap("<leader>l", ":bn<CR>")
+utils.nnoremap("<leader>i", ":bn<CR>")
 
 -- [terminal behavior] --
 
@@ -83,29 +113,29 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 utils.tnoremap("<C-q>", [[<C-\><C-n>]])
-utils.tnoremap("<C-o>", [[<C-\><C-n><C-o>]])
+utils.tnoremap("<C-y>", [[<C-\><C-n><C-o>]])
 utils.tnoremap("<C-h>", [[<C-\><C-n><C-w>h]])
-utils.tnoremap("<C-j>", [[<C-\><C-n><C-w>j]])
-utils.tnoremap("<C-k>", [[<C-\><C-n><C-w>k]])
-utils.tnoremap("<C-l>", [[<C-\><C-n><C-w>l]])
+utils.tnoremap("<C-n>", [[<C-\><C-n><C-w>j]])
+utils.tnoremap("<C-e>", [[<C-\><C-n><C-w>k]])
+utils.tnoremap("<C-i>", [[<C-\><C-n><C-w>l]])
 
 -- open kitty in cwd
 
-utils.nnoremap("<leader>tt", function()
+utils.nnoremap("<leader>gg", function()
     os.execute("kitty&")
 end)
 
 -- [command mode cursor movement] --
 
 utils.cnoremap("<C-a>", "<Home>")
-utils.cnoremap("<C-e>", "<End>")
-utils.cnoremap("<C-p>", "<Left>")
-utils.cnoremap("<C-n>", "<Right>")
+utils.cnoremap("<C-f>", "<End>")
+utils.cnoremap("<C-;>", "<Left>")
+utils.cnoremap("<C-k>", "<Right>")
 
 -- [other useful mappings] --
 
 -- open fold
-utils.nnoremap("<leader>o", "za", { silent = true })
+utils.nnoremap("<leader>y", "za", { silent = true })
 
 -- select a line (no eol)
 utils.nnoremap("vv", "0v$h")
@@ -114,34 +144,34 @@ utils.nnoremap("vv", "0v$h")
 utils.nnoremap("<leader><leader>", "<ESC>/<++><CR>:nohl<CR>ca>", { silent = true })
 
 -- toggle spellcheck
-utils.nnoremap("<leader>sc", ":setlocal spell!<CR>", { silent = true })
+utils.nnoremap("<leader>rc", ":setlocal spell!<CR>", { silent = true })
 
 -- toggle wrap
-utils.nnoremap("<leader>wp", ":setlocal wrap!<CR>", { silent = true })
+utils.nnoremap("<leader>w;", ":setlocal wrap!<CR>", { silent = true })
 
 -- change case
-utils.nnoremap("`", "~")
+-- utils.nnoremap("`", "~")
 
 -- generate ascii figlet
-utils.nnoremap("<leader>f", ":r !figlet ")
+utils.nnoremap("<leader>t", ":r !figlet ")
 
 -- show cwd
-utils.nnoremap("<leader>cd", ":echo getcwd()<CR>")
+utils.nnoremap("<leader>cs", ":echo getcwd()<CR>")
 
 -- Move Lines
-utils.nnoremap("<A-j>", "<cmd>m .+1<cr>==")
-utils.nnoremap("<A-k>", "<cmd>m .-2<cr>==")
-utils.inoremap("<A-j>", "<esc><cmd>m .+1<cr>==gi")
-utils.inoremap("<A-k>", "<esc><cmd>m .-2<cr>==gi")
-utils.vnoremap("<A-j>", ":m '>+1<cr>gv=gv")
-utils.vnoremap("<A-k>", ":m '<-2<cr>gv=gv")
+utils.nnoremap("<A-n>", "<cmd>m .+1<cr>==")
+utils.nnoremap("<A-e>", "<cmd>m .-2<cr>==")
+utils.inoremap("<A-n>", "<esc><cmd>m .+1<cr>==gi")
+utils.inoremap("<A-e>", "<esc><cmd>m .-2<cr>==gi")
+utils.vnoremap("<A-n>", ":m '>+1<cr>gv=gv")
+utils.vnoremap("<A-e>", ":m '<-2<cr>gv=gv")
 
 -- compile and run
-utils.nnoremap("R", utils.compile_run)
+utils.nnoremap("P", utils.compile_run)
 
 -- open init.lua
-utils.nnoremap("<leader>rc", ":e $MYVIMRC<CR>", { silent = true })
+utils.nnoremap("<leader>pc", ":e $MYVIMRC<CR>", { silent = true })
 
 -- quick uppercase
-utils.inoremap("<C-u>", "<ESC>mzgUiw`za")
-utils.nnoremap("<C-u>", "mzgUiw`z")
+utils.inoremap("<C-l>", "<ESC>mzgUiw`za")
+utils.nnoremap("<C-l>", "mzgUiw`z")

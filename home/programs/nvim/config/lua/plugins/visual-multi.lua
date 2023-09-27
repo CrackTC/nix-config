@@ -2,8 +2,8 @@ local M = {}
 
 local function setup_mappings()
     local maps = {
-        ["Find Under"] = "<C-n>",
-        ["Find Subword Under"] = "<C-n>"
+        ["Find Under"] = "<C-k>",
+        ["Find Subword Under"] = "<C-k>"
     }
     vim.g.VM_maps = maps
 end

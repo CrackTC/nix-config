@@ -51,6 +51,7 @@
 
       input = {
         kb_layout = "us";
+        kb_variant = "colemak";
         kb_options = "caps:swapescape";
 
         accel_profile = "adaptive";

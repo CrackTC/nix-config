@@ -2,7 +2,7 @@ local M = {}
 
 local function setup_mappings()
     local utils = require("utils")
-    utils.nnoremap("<leader>j", ":UndotreeToggle<CR>")
+    utils.nnoremap("<leader>n", ":UndotreeToggle<CR>")
 end
 
 local function setup_variables()
