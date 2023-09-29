@@ -6,5 +6,6 @@
     ./jlu.nix
     ./program.nix
     ./uinput.nix
+    ./wacom.nix
   ];
 }
