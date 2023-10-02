@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, extraRepos, ... }: {
   home.packages = with pkgs; [
     clash-verge
     discord
@@ -22,5 +22,7 @@
     winetricks
 
     wpsoffice
+
+    extraRepos.myRepo.freedownloadmanager
   ];
 }
