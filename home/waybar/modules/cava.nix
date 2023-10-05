@@ -46,9 +46,9 @@
           echo $cmd | sed "$dict"
       done < $pipe
     '';
-    on-scroll-up = "playerctl -p spotify,edge previous";
-    on-scroll-down = "playerctl -p spotify,edge next";
-    on-click = "playerctl -p spotify,edge play-pause";
+    on-scroll-up = "playerctl -p spotify,edge,yesplaymusic previous";
+    on-scroll-down = "playerctl -p spotify,edge,yesplaymusic next";
+    on-click = "playerctl -p spotify,edge,yesplaymusic play-pause";
   };
 
   home.packages = with pkgs; [
