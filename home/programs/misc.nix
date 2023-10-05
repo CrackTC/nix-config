@@ -4,6 +4,7 @@
     discord
     telegram-desktop
     spotify
+    yesplaymusic
     obsidian
     qq
     burpsuite
