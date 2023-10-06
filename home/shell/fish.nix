@@ -14,6 +14,10 @@
     ];
     functions = {
       fish_greeting = "";
+      fish_user_key_bindings = ''
+        fish_default_key_bindings -M insert
+        fish_vi_key_bindings --no-erase insert
+      '';
       enbase = "echo -n $argv | base64";
       debase = "echo -n $argv | base64 -d";
       miniconda = "conda-shell -c 'fish -C \"conda shell.fish hook $argv | source\"'";
