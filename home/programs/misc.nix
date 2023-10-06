@@ -16,6 +16,7 @@
 
     helix
     fastfetch
+    tealdeer
 
     wl-clip-persist
 
