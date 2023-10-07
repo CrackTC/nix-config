@@ -62,9 +62,6 @@
     };
   };
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   users.users.${info.username} = {
     isNormalUser = true;
     description = "${info.username}";
