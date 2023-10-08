@@ -1,7 +1,7 @@
 { info, ... }:
 let
   useNvidia = false;
-  extMonitor = true;
+  extMonitor = false;
 in
 {
   imports = [
