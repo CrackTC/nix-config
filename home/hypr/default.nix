@@ -175,5 +175,6 @@
     swww
     wl-clipboard
     hyprland-contrib.packages.${pkgs.system}.grimblast
+    pamixer
   ];
 }
