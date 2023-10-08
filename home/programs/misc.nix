@@ -27,6 +27,4 @@
 
     extraRepos.myRepo.freedownloadmanager
   ];
-
-  programs.obs-studio.enable = true;
 }

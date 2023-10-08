@@ -10,6 +10,7 @@ nur: {
     ./misc.nix
     ./mpv.nix
     ./nvim
+    ./obs-studio.nix
     ./ripgrep.nix
     ./tealdeer.nix
     ./vivaldi
