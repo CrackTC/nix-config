@@ -4,6 +4,7 @@ nur: {
     ./firefox
     ./fzf.nix
     ./git.nix
+    ./imv.nix
     ./imwheel
     ./joshuto
     ./kitty.nix
