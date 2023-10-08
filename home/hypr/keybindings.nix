@@ -58,9 +58,9 @@
     ];
 
     binde = [
-      ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
-      ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
-      ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+      ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+      ", XF86AudioLowerVolume, exec, pamixer -d 5"
+      ", XF86AudioMute, exec, pamixer -t"
       ", XF86MonBrightnessUp, exec, backlight_control +5"
       ", XF86MonBrightnessDown, exec, backlight_control -5"
     ];
