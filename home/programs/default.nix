@@ -11,6 +11,7 @@ nur: {
     ./mpv.nix
     ./nvim
     ./ripgrep.nix
+    ./tealdeer.nix
     ./vivaldi
     ./vscode
   ];
