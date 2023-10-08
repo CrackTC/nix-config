@@ -16,7 +16,6 @@
 
     helix
     fastfetch
-    fzf
 
     wl-clip-persist
 
