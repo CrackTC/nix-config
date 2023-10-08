@@ -2,6 +2,7 @@ nur: {
   imports = [
     ./dunst
     ./firefox
+    ./fzf.nix
     ./git.nix
     ./imwheel
     ./joshuto
