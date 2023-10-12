@@ -132,6 +132,7 @@
         "csharp-ls.path" = "/home/${info.username}/.dotnet/tools/csharp-ls";
         "snippets.ultisnips.pythonPrompt" = false;
         "nil.formatting.command" = [ "nixpkgs-fmt" ];
+        "go.goplsPath" = "gopls";
       };
     };
   };
