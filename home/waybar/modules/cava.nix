@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.waybar.settings.mainBar."custom/cava" = {
     exec = pkgs.writeShellScript "cava.sh" ''
+      sleep 10
       trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
       bar=" ▁▂▃▄▅▆▇█"
