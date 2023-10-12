@@ -23,6 +23,7 @@
     winetricks
 
     wpsoffice
+    libsForQt5.okular
 
     extraRepos.myRepo.freedownloadmanager
 
