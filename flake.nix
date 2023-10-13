@@ -32,6 +32,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, ... } @inputs:
@@ -77,6 +81,7 @@
           modules = [
             ./modules
             ./host/cno
+            inputs.sops-nix.nixosModules.sops
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
