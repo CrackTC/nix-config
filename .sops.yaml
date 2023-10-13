@@ -1,0 +1,9 @@
+keys:
+  - &admin_chen age1wvlat8kkrmr20ptqexfwktwjjhtu259y20lq3ssmrw8qjekfeftqxzwy0f
+  - &server_cno age1kulv82fs9vaehevafqx53v2aryrqutmn3cgv9fzncw2p94fspgxsg98zlx
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin_chen
+        - *server_cno

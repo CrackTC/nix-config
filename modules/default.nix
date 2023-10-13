@@ -7,6 +7,8 @@
     ./pipewire.nix
     ./portal.nix
     ./program.nix
+    ./smb.nix
+    ./sops.nix
     ./ssh.nix
     ./uinput.nix
     ./wacom.nix
