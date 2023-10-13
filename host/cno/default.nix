@@ -22,6 +22,7 @@
   boot = {
     initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    extraModprobeConfig = "options snd-hda-intel enable_msi=1";
     supportedFilesystems = [ "ntfs" ];
     kernelParams = [ /* "module_blacklist=i915" */ "ibt=off" ];
     loader = {
