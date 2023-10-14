@@ -7,6 +7,7 @@
     ./misc.nix
     ./nix.nix
     ./python.nix
+    ./scheme.nix
     ./verilog.nix
   ];
 }
