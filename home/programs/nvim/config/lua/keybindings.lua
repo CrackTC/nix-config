@@ -113,6 +113,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 utils.tnoremap("<C-q>", [[<C-\><C-n>]])
+utils.noremap({"n", "t"}, "<C-o>", utils.open_term)
 
 -- open kitty in cwd
 
