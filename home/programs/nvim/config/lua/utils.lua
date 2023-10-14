@@ -155,4 +155,51 @@ function M.ensure_dir_exists(dir)
     end
 end
 
+local bufname = "SingleTerminal"
+-- Define term position and size
+local splitconfig = "bot 20 split "
+local jobid = -1
+local bufid = -1
+local terminal_opened_win_id = -1
+
+local function show_term(wind_id)
+    terminal_opened_win_id = wind_id
+    vim.cmd(splitconfig .. "| buffer " .. bufname)
+    vim.cmd("startinsert")
+end
+
+local function new_term(wind_id)
+    terminal_opened_win_id = wind_id
+    vim.cmd(splitconfig .. "| term")
+    vim.cmd("file " .. bufname)
+    vim.wo.relativenumber = false
+    vim.o.number = false
+    vim.bo.buflisted = false
+    vim.wo.foldcolumn = '0'
+    bufid = vim.api.nvim_buf_get_number(0)
+    jobid = vim.b.terminal_job_id
+    vim.cmd("startinsert")
+end
+
+--- Open or create terminal
+function M.open_term()
+    local buf_exist = vim.api.nvim_buf_is_valid(bufid)
+    local current_wind_id = vim.api.nvim_get_current_win()
+    if buf_exist then
+        local bufinfo = vim.fn.getbufinfo(bufid)[1]
+        if bufinfo.hidden == 1 then
+            show_term(current_wind_id)
+        else
+            vim.fn.win_gotoid(bufinfo.windows[1])
+            vim.cmd(":hide")
+            if current_wind_id ~= terminal_opened_win_id and current_wind_id ~= bufinfo.windows[1] then
+                vim.fn.win_gotoid(current_wind_id)
+                show_term(current_wind_id)
+            end
+        end
+    else
+        new_term(current_wind_id)
+    end
+end
+
 return M
