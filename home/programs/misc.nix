@@ -24,6 +24,7 @@
 
     wpsoffice
     libsForQt5.okular
+    kuro
 
     extraRepos.myRepo.freedownloadmanager
 
