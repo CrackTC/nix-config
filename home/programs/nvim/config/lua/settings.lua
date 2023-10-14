@@ -16,7 +16,7 @@ vim.opt.fileencodings = {
 
 vim.opt.number = true         -- show line numbers
 vim.opt.relativenumber = true -- show relative line numbers
-vim.opt.signcolumn = "yes:1"    -- always show sign column
+vim.opt.signcolumn = "yes:1"  -- always show sign column
 vim.opt.cursorline = true     -- highlight current line
 vim.opt.hlsearch = false      -- highlight search results
 vim.opt.ruler = true          -- show cursor position
@@ -90,12 +90,20 @@ vim.opt.updatetime = 90 -- time to wait for a mapped sequence to complete (in mi
 -- [recover cursor position] --
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-    pattern = "*",
+    pattern = '*',
     callback = function()
-        local prevline = vim.fn.line([['"]])
-        local lastline = vim.fn.line("$")
-        if prevline > 1 and prevline <= lastline then
-            vim.cmd.normal([[g`"]])
+        local ft = vim.opt_local.filetype:get()
+        -- don't apply to git messages
+        if (ft:match('commit') or ft:match('rebase')) then
+            return
+        end
+        -- get position of last saved edit
+        local markpos = vim.api.nvim_buf_get_mark(0, '"')
+        local line = markpos[1]
+        local col = markpos[2]
+        -- if in range, go there
+        if (line > 1) and (line <= vim.api.nvim_buf_line_count(0)) then
+            vim.api.nvim_win_set_cursor(0, { line, col })
         end
     end
 })
