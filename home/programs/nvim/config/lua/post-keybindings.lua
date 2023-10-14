@@ -14,4 +14,5 @@ utils.vnoremap("s", "d", { nowait = true })
 utils.nnoremap("ds", "<Plug>(coc-definition)", { silent = true })
 
 utils.nnoremap("<C-p>", "<C-r>")
+
 utils.nnoremap("p", "<Plug>(SubversiveSubstitute)", { silent = true });

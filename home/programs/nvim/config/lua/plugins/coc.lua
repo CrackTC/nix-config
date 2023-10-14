@@ -72,12 +72,29 @@ local function setup_mappings()
         end
     end
 
+    local function pum_select(next, fallback)
+        return function()
+            if vim.fn["coc#pum#visible"]() == 1 then
+                if next == 1 then
+                    return vim.fn["coc#pum#next"](0)
+                else
+                    return vim.fn["coc#pum#prev"](0)
+                end
+            else
+                return fallback
+            end
+        end
+    end
+
     local utils = require('utils')
 
     local opts = { silent = true, expr = true, nowait = true }
     utils.inoremap("<Tab>", on_tab, opts)
     utils.inoremap("<CR>", on_enter, opts)
     utils.inoremap("<C-Space>", on_ctrl_space, opts)
+
+    utils.inoremap("<C-k>", pum_select(1, "<C-k>"), opts)
+    utils.inoremap("<C-;>", pum_select(0, "<C-;>"), opts)
 
     opts = { silent = true }
     -- utils.nnoremap("ds", "<Plug>(coc-definition)", opts)
@@ -92,8 +109,8 @@ local function setup_mappings()
     utils.nnoremap("<leader>a", "<Plug>(coc-codeaction-cursor)", opts)
     utils.nnoremap("<leader>ci", "<Plug>(coc-codelens-action)", opts)
 
-    utils.inoremap("<C-k>", float_scroll(1, "<C-k>"), opts)
-    utils.inoremap("<C-;>", float_scroll(0, "<C-;>"), opts)
+    utils.inoremap("<C-n>", float_scroll(1, "<C-n>"), opts)
+    utils.inoremap("<C-e>", float_scroll(0, "<C-e>"), opts)
     utils.nnoremap("<C-n>", float_scroll(1, "<C-n>"), opts)
     utils.nnoremap("<C-e>", float_scroll(0, "<C-e>"), opts)
 
