@@ -2,7 +2,7 @@
   programs.waybar.settings.mainBar."wlr/workspaces" = {
     disable-scroll = true;
     on-click = "activate";
-    all-outputs = true;
+    all-outputs = false;
     format = "{icon}";
     format-icons = {
       "1" = "<span size='1000'> </span><span size='small'></span>";
@@ -19,5 +19,6 @@
       focused = "";
       default = "";
     };
+    sort-by-number = true;
   };
 }
