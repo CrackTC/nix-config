@@ -65,7 +65,7 @@ require("lazy").setup({
             config = require("plugins.surround").config
         },
         {
-            "tpope/vim-repeat"
+            "cracktc/vim-repeat-colemak"
         },
         {
             "numToStr/Comment.nvim",
