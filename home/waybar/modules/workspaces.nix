@@ -5,7 +5,7 @@
     all-outputs = true;
     format = "{icon}";
     format-icons = {
-      "1" = "<span size='1000'> </span><span size='small'></span>";
+      "1" = "<span size='1000'> </span><span size='small'></span>";
       "2" = "<span rise='-18500'>󰈹</span>";
       "3" = "<span size='13000'></span>";
       "4" = "<span size='14000' rise='-17000'>󰞇</span>";
