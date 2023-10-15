@@ -7,7 +7,7 @@ end
 
 local function setup_mappings()
     local utils = require("utils")
-    utils.imap("<C-i>", 'copilot#Accept("")', {
+    utils.imap("<A-i>", 'copilot#Accept("")', {
         expr = true,
         silent = true,
         replace_keycodes = false
