@@ -9,6 +9,8 @@ utils.noremap("", "i", "l", { nowait = true })
 utils.noremap("", "s", "d")
 utils.noremap("", "y", "o", { nowait = true })
 utils.noremap("", "dd", "gg")
+utils.noremap("", "dt", "gf")
+utils.noremap("", "dx", "gx")
 
 utils.vnoremap("s", "d", { nowait = true })
 utils.nnoremap("ds", "<Plug>(coc-definition)", { silent = true })
