@@ -76,9 +76,9 @@ local function setup_mappings()
         return function()
             if vim.fn["coc#pum#visible"]() == 1 then
                 if next == 1 then
-                    return vim.fn["coc#pum#next"](0)
+                    return vim.fn["coc#pum#next"](1)
                 else
-                    return vim.fn["coc#pum#prev"](0)
+                    return vim.fn["coc#pum#prev"](1)
                 end
             else
                 return fallback
