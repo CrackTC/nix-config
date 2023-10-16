@@ -102,6 +102,10 @@
       };
       nvidiaSettings = true;
     };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 
   powerManagement.enable = true;
@@ -118,6 +122,9 @@
         turbo = "auto";
       };
     };
+  };
+  services.blueman = {
+    enable = true;
   };
 
   security.sudo.extraRules = [
