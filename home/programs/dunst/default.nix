@@ -1,7 +1,7 @@
 { pkgs, ... }: {
-  xdg.configFile."dunst" = {
-    source = ./config;
-    recursive = true;
+  services.dunst = {
+    enable = true;
+    configFile = ./dunstrc;
   };
-  home.packages = with pkgs; [ dunst ];
+  home.packages = with pkgs; [ libnotify ];
 }
