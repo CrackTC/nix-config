@@ -1,5 +1,5 @@
 {
-  programs.waybar.settings.mainBar."wlr/workspaces" = {
+  programs.waybar.settings.mainBar."hyprland/workspaces" = {
     disable-scroll = true;
     on-click = "activate";
     all-outputs = false;

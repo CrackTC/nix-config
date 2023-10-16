@@ -14,7 +14,7 @@
   ];
 
   programs.waybar.settings.mainBar = {
-    modules-left = [ "wlr/workspaces" "network" "cpu" "temperature" "memory" "battery" ];
+    modules-left = [ "hyprland/workspaces" "network" "cpu" "temperature" "memory" "battery" ];
     modules-center = [ "custom/cava" ];
     modules-right = [ "backlight" "pulseaudio" "clock" "tray" ];
   };

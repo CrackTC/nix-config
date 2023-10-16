@@ -45,7 +45,7 @@
         inherit system;
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
-          "openssl-1.1.1v"
+          "openssl-1.1.1w"
         ];
       };
       pkgs-stable = import inputs.nixpkgs-stable {
