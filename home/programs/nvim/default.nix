@@ -133,6 +133,13 @@
         "snippets.ultisnips.pythonPrompt" = false;
         "nil.formatting.command" = [ "nixpkgs-fmt" ];
         "go.goplsPath" = "gopls";
+        "languageserver" = {
+          "csharp-ls" = {
+            "command" = "csharp-ls";
+            "filetypes" = [ "cs" ];
+            "rootPatterns" = [ "*.csproj" ".vim/" ".git/" ];
+          };
+        };
       };
     };
   };
