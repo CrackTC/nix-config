@@ -3,7 +3,6 @@ local M = {}
 local extensions = {
     "coc-clangd",
     "coc-css",
-    "coc-csharp-ls",
     "coc-gitignore",
     "coc-go",
     "coc-highlight",

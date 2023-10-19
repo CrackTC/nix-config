@@ -1,6 +1,7 @@
 {
   imports = [
     ./c.nix
+    ./dotnet.nix
     ./go.nix
     ./js.nix
     ./lua.nix
