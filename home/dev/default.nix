@@ -2,6 +2,7 @@
   imports = [
     ./c.nix
     ./dotnet.nix
+    ./fhs.nix
     ./go.nix
     ./js.nix
     ./lua.nix
