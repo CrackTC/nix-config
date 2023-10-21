@@ -3,5 +3,6 @@
     clang
     clang-tools
     gdb
+    bear
   ];
 }
