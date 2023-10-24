@@ -9,7 +9,7 @@
     qq
     burpsuite
 
-    logisim
+    logisim-evolution
     krita
     calibre
     thunderbird
