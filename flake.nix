@@ -46,6 +46,7 @@
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
           "openssl-1.1.1w"
+          "electron-22.3.27"
         ];
       };
       pkgs-stable = import inputs.nixpkgs-stable {
