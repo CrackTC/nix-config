@@ -43,10 +43,10 @@
 
   networking = {
     hostName = "cno";
-    # proxy = {
-    #   default = "http://127.0.0.1:7890";
-    #   noProxy = "127.0.0.1,localhost,internal.domain";
-    # };
+    proxy = {
+      default = "http://127.0.0.1:7890";
+      noProxy = "127.0.0.1,localhost,internal.domain";
+    };
   };
 
   time.timeZone = "Asia/Shanghai";
