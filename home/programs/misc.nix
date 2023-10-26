@@ -16,6 +16,7 @@
 
     helix
     fastfetch
+    bc
 
     wl-clip-persist
 
