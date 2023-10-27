@@ -14,6 +14,7 @@ nur: {
     ./nvim
     ./obs-studio.nix
     ./ripgrep.nix
+    ./ssh
     ./tealdeer.nix
     ./vivaldi
     ./vscode
