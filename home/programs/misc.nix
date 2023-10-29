@@ -27,6 +27,10 @@
     libsForQt5.okular
     kuro
 
+    unzipNLS
+    p7zip
+    unrar-wrapper
+
     extraRepos.myRepo.freedownloadmanager
   ];
 }
