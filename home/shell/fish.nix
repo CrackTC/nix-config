@@ -44,5 +44,9 @@
         fhs -C 'eval "$(micromamba shell hook --shell=fish)"'
       '';
     };
+    shellInit = ''
+      export DOTNET_ROOT=${(with pkgs.dotnetCorePackages; combinePackages [ sdk_7_0 sdk_6_0 ]) }
+      fish_add_path $HOME/.dotnet/tools
+    '';
   };
 }
