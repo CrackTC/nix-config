@@ -11,6 +11,7 @@
         libGL
 
         # for dotnet static linking
+        glib
         glibc.static
         zlib.static
         libffi
