@@ -68,6 +68,9 @@ require("lazy").setup({
             "tpope/vim-repeat"
         },
         {
+            "vim-scripts/MSIL-Assembly"
+        },
+        {
             "numToStr/Comment.nvim",
             config = require("plugins.comment").config
         },
