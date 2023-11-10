@@ -6,6 +6,7 @@ local extensions = {
     "coc-gitignore",
     "coc-go",
     "coc-highlight",
+    "coc-hls",
     "coc-html",
     "coc-json",
     "coc-lua",
