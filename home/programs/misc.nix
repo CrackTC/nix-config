@@ -32,5 +32,6 @@
     unrar-wrapper
 
     extraRepos.myRepo.freedownloadmanager
+    extraRepos.nur.repos.linyinfeng.wemeet
   ];
 }
