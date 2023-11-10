@@ -23,7 +23,7 @@
     wineWowPackages.waylandFull
     winetricks
 
-    wpsoffice
+    onlyoffice-bin
     libsForQt5.okular
     kuro
 
