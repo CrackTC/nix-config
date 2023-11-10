@@ -4,6 +4,7 @@
     ./dotnet.nix
     ./fhs.nix
     ./go.nix
+    ./haskell.nix
     ./js.nix
     ./lua.nix
     ./misc.nix
