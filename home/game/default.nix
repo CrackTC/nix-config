@@ -17,5 +17,7 @@
     gst_all_1.gst-vaapi
 
     bottles
+
+    gamescope
   ];
 }
