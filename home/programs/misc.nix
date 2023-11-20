@@ -30,6 +30,7 @@
     unzipNLS
     p7zip
     unrar-wrapper
+    asciinema
 
     extraRepos.myRepo.freedownloadmanager
     extraRepos.nur.repos.linyinfeng.wemeet
