@@ -9,6 +9,7 @@ local extensions = {
     "fish",
     "gitignore",
     "go",
+    "haskell",
     "html",
     "latex",
     "lua",
