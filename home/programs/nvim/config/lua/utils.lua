@@ -145,6 +145,8 @@ function M.compile_run()
         split_run('php %')
     elseif vim.bo.filetype == 'scheme' then
         split_run('mit-scheme < "%"')
+    elseif vim.bo.filetype == 'haskell' then
+        split_run('ghc --make -o %< % && ./%<')
     end
 end
 
