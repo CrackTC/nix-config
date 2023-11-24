@@ -181,6 +181,8 @@
         "opacity 0.8 override 0.8 override, class:^(kitty)$"
         "fullscreen, class:^(mpv)$"
         "float, class:^(SVPManager)$"
+        "stayfocused, title:^()$,class:^(steam)$"
+        "minsize 1 1, title:^()$,class:^(steam)$"
       ];
     };
   };
