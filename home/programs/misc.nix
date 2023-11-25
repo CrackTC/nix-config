@@ -1,6 +1,6 @@
 { pkgs, extraRepos, ... }: {
   home.packages = with pkgs; [
-    clash-verge
+    clash-meta
     discord
     telegram-desktop
     spotify
