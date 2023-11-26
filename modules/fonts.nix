@@ -3,6 +3,9 @@
     fontDir.enable = true;
     packages = with pkgs; [
       noto-fonts
+      vistafonts
+      vistafonts-chs
+      corefonts
       source-han-sans
       source-han-serif
       maple-mono
