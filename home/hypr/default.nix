@@ -171,6 +171,7 @@
         "tile, class:^(wpsoffice)$"
         "tile, class:^(Vivaldi-stable)$"
         "tile, title:^(.*Logisim-evolution v3.8.0)$"
+        "tile, class:^(DesktopEditors)$"
         "opacity 0.8 override 0.8 override, class:^(obsidian)$"
         "opacity 0.8 override 0.8 override, class:^(discord)$"
         "opacity 0.8 override 0.8 override, class:^(Code)$"
