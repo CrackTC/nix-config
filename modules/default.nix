@@ -12,6 +12,7 @@
     ./sops.nix
     ./ssh.nix
     ./uinput.nix
+    ./virt.nix
     ./wacom.nix
   ];
 }
