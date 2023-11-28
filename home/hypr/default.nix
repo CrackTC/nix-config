@@ -57,7 +57,7 @@
         "imwheel"
         "killall clash-meta"
         "nm-applet"
-        "swww init"
+        "swww init && swww img ~/Desktop/wallpaper"
         "waybar"
         "wl-clip-persist --clipboard both"
         "ydotoold"
