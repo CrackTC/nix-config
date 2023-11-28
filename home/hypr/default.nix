@@ -61,6 +61,7 @@
         "waybar"
         "wl-clip-persist --clipboard both"
         "ydotoold"
+        "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       ];
 
       input = {
