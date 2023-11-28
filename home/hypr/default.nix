@@ -168,6 +168,7 @@
         # "size 677 841, class:^(winecfg\\.exe)$"
 
         "float, class:^(pavucontrol-qt)$"
+        "float, class:^(org.kde.polkit-kde-authentication-agent-1)$"
         "tile, class:^(neovide)$"
         "tile, class:^(wpsoffice)$"
         "tile, class:^(Vivaldi-stable)$"
