@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
     "x-scheme-handler/http" = "vivaldi-stable.desktop";
