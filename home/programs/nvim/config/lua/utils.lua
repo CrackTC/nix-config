@@ -146,7 +146,7 @@ function M.compile_run()
     elseif vim.bo.filetype == 'scheme' then
         split_run('mit-scheme < "%"')
     elseif vim.bo.filetype == 'haskell' then
-        split_run('ghc --make -o %< % && ./%<')
+        split_run('ghc --make -no-keep-hi-files -no-keep-o-files -o %< % && ./%<')
     end
 end
 
