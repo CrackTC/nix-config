@@ -16,6 +16,7 @@ nur: {
     ./ripgrep.nix
     ./ssh
     ./tealdeer.nix
+    ./tex
     ./vivaldi
     ./vscode
   ];
