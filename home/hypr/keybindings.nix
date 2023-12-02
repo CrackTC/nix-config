@@ -4,7 +4,8 @@
     bind = [
       "$mainMod, Return, exec, kitty"
       "$mainMod, O, exec, obsidian"
-      "$mainMod, I, exec, vivaldi --force-dark-mode"
+      # "$mainMod, I, exec, vivaldi --force-dark-mode"
+      "$mainMod, I, exec, firefox"
       "$mainMod, Q, exec, rofi -show drun"
       "$mainMod, Semicolon, exec, rofi -show run"
       "$mainMod, P, exec, rofi-rbw"
