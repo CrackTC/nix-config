@@ -8,6 +8,7 @@
       corefonts
       source-han-sans
       source-han-serif
+      sarasa-gothic
       maple-mono
       maple-mono-SC-NF
       twitter-color-emoji
