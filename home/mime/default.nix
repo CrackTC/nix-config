@@ -4,6 +4,7 @@
   xdg.mimeApps.defaultApplications = {
     "x-scheme-handler/http" = "vivaldi-stable.desktop";
     "x-scheme-handler/https" = "vivaldi-stable.desktop";
+    "application/pdf" = "okularApplication_pdf.desktop";
     "text/plain" = "nvim.desktop";
   };
 
