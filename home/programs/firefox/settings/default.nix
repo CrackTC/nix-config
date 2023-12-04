@@ -1,4 +1,4 @@
-profileName: {
+profileName: { info, ... }: {
   imports = map (module: module profileName) (map import [
     ./scroll.nix
     ./theme.nix
@@ -9,5 +9,6 @@ profileName: {
     "layout.css.devPixelsPerPx" = 1.5;
     "signon.rememberSignons" = false;
     "browser.tabs.tabmanager.enabled" = false;
+    "browser.download.dir" = "/home/${info.username}/Downloads";
   };
 }
