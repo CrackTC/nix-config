@@ -4,7 +4,11 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications =
-      lib.genAttrs [
+      {
+        "inode/directory" = "nemo.desktop";
+      }
+
+      // lib.genAttrs [
         "text/html"
         "x-scheme-handler/http"
         "x-scheme-handler/https"
@@ -13,7 +17,9 @@
       ]
         (mime: "firefox.desktop")
 
-      // lib.genAttrs [ "application/pdf" ]
+      // lib.genAttrs [
+        "application/pdf"
+      ]
         (mime: "okularApplication_pdf.desktop");
   };
 
