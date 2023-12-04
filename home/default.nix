@@ -5,10 +5,10 @@ let
 in
 {
   imports = [
-    ./programs
     (import ./hypr { inherit useNvidia; inherit extMonitor; })
     ./dev
     ./game
+    ./programs
     ./rofi
     ./shell
     ./theme
