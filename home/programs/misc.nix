@@ -15,6 +15,8 @@
     }))
     burpsuite
 
+    cinnamon.nemo
+
     logisim-evolution
     krita
     calibre
