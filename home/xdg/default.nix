@@ -23,5 +23,17 @@
         (mime: "okularApplication_pdf.desktop");
   };
 
+  xdg.userDirs = {
+    enable = true;
+    desktop = "Desktop";
+    documents = "Documents";
+    download = "Downloads";
+    music = "Music";
+    pictures = "Pictures";
+    publicShare = "Public";
+    templates = "Templates";
+    videos = "Videos";
+  };
+
   home.packages = with pkgs; [ xdg-utils ];
 }
