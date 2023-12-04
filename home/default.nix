@@ -9,11 +9,11 @@ in
     (import ./hypr { inherit useNvidia; inherit extMonitor; })
     ./dev
     ./game
-    ./mime
     ./rofi
     ./shell
     ./theme
     ./waybar
+    ./xdg
   ];
 
   home.username = "${info.username}";
