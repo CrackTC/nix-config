@@ -6,7 +6,13 @@
     spotify
     yesplaymusic
     obsidian
-    qq
+    (qq.overrideAttrs (attrs: {
+      buildInputs = attrs.buildInputs ++ [ pkgs.libnotify ];
+      postInstall = ''
+        wrapProgram $out/bin/qq \
+          --prefix LD_LIBRARY_PATH : "${pkgs.libnotify}/lib"
+      '';
+    }))
     burpsuite
 
     logisim-evolution
