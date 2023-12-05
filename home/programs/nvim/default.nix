@@ -139,6 +139,12 @@
             "filetypes" = [ "cs" ];
             "rootPatterns" = [ "*.csproj" ".vim/" ".git/" ];
           };
+          "haskell-language-server" = {
+            "command" = "haskell-language-server-wrapper";
+            "args" = [ "--lsp" ];
+            "rootPatterns" = [ "*.cabal" "stack.yaml" "cabal.project" "package.yaml" "hie.yaml" ];
+            "filetypes" = [ "haskell" "lhaskell" ];
+          };
         };
       };
     };
