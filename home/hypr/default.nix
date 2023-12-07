@@ -59,7 +59,7 @@
         "nm-applet"
         "swww init; sleep 1 && swww img ~/Desktop/wallpaper"
         "waybar"
-        "wl-clip-persist --clipboard both"
+        "wl-clip-persist --clipboard regular"
         "ydotoold"
         "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       ];
