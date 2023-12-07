@@ -10,7 +10,7 @@ nur: {
     ./kitty.nix
     ./lazygit.nix
     ./misc.nix
-    ./mpv.nix
+    ./mpv
     ./nvim
     ./obs-studio.nix
     ./ripgrep.nix
