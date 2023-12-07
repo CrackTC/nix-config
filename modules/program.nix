@@ -7,5 +7,6 @@
         pinentryFlavor = "gtk2";
       };
     };
+    nix-ld.enable = true;
   };
 }
