@@ -29,6 +29,13 @@
     };
   };
 
+  programs.dircolors = {
+    enable = true;
+    settings = {
+      OTHER_WRITABLE = "01;36";
+    };
+  };
+
   home.packages = with pkgs; [
     libsForQt5.qtstyleplugins
     qt6Packages.qt6gtk2
