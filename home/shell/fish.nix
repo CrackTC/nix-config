@@ -46,7 +46,7 @@
       o = "xdg-open $argv >/dev/null 2>&1 & disown";
     };
     shellInit = ''
-      export DOTNET_ROOT=${(with pkgs.dotnetCorePackages; combinePackages [ sdk_7_0 sdk_6_0 ]) }
+      export DOTNET_ROOT=${(with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_7_0 sdk_6_0 ]) }
       fish_add_path $HOME/.dotnet/tools
     '';
   };
