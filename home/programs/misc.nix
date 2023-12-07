@@ -9,8 +9,8 @@
     (qq.overrideAttrs (attrs: {
       buildInputs = attrs.buildInputs ++ [ pkgs.libnotify ];
       postInstall = ''
-        wrapProgram $out/bin/qq \
-          --prefix LD_LIBRARY_PATH : "${pkgs.libnotify}/lib"
+        ln -s ${pkgs.libnotify}/lib/libnotify.so \
+          $out/opt/QQ/libnotify.so
       '';
     }))
     burpsuite
