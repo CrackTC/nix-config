@@ -16,6 +16,7 @@
     burpsuite
 
     cinnamon.nemo
+    libsForQt5.ark
 
     logisim-evolution
     krita
