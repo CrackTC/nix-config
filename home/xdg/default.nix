@@ -5,7 +5,7 @@
     enable = true;
     defaultApplications =
       {
-        "inode/directory" = "nemo.desktop";
+        "inode/directory" = "org.gnome.Nautilus.desktop";
       }
 
       // lib.genAttrs [

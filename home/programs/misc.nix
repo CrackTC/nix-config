@@ -15,7 +15,7 @@
     }))
     burpsuite
 
-    cinnamon.nemo
+    gnome.nautilus
     libsForQt5.ark
 
     logisim-evolution
