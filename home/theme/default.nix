@@ -1,17 +1,25 @@
 { pkgs, ... }: {
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.capitaine-cursors-themed;
+    name = "Capitaine Cursors (Nord)";
+    size = 24;
+  };
+
   gtk = {
     enable = true;
-    cursorTheme = {
-      package = pkgs.capitaine-cursors-themed;
-      name = "Capitaine Cursors (Nord)";
+    theme = {
+      package = pkgs.nordic;
+      name = "Nordic";
     };
     iconTheme = {
       package = pkgs.papirus-nord;
       name = "Papirus-Dark";
     };
-    theme = {
-      package = pkgs.nordic;
-      name = "Nordic";
+    font = {
+      name = "sans-serif";
+      size = 11;
     };
   };
 
