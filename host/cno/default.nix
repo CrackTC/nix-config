@@ -1,8 +1,9 @@
-{ config, pkgs, info, ... }:
+{ config, pkgs, info, extraRepos, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    extraRepos.myRepo.modules.hpfan
   ];
 
   nix = {
@@ -123,6 +124,12 @@
       };
     };
   };
+
+  services.hpfan = {
+    enable = true;
+    wall = 60000;
+  };
+
   services.blueman = {
     enable = true;
   };
