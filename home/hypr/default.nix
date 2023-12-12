@@ -81,6 +81,12 @@
         sensitivity = 0;
       };
 
+      "device:ydotoold-virtual-device" = {
+        kb_layout = "us";
+        kb_variant = "";
+        kb_options = "";
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
