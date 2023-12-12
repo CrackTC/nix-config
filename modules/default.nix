@@ -4,6 +4,7 @@
     ./fonts.nix
     ./game.nix
     ./jlu.nix
+    ./man.nix
     ./mount.nix
     ./pipewire.nix
     ./polkit.nix
