@@ -42,7 +42,6 @@
     asciinema
 
     extraRepos.myRepo.freedownloadmanager
-    extraRepos.myRepo.hpfan
     extraRepos.nur.repos.linyinfeng.wemeet
   ];
 }
