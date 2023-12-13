@@ -17,31 +17,28 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nur.url = "github:nix-community/NUR";
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    myRepo = {
-      url = "github:CrackTC/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; flake = false; };
+    nixpkgs-stable = { url = "github:nixos/nixpkgs/nixos-23.11"; flake = false; };
+    nur = { url = "github:nix-community/NUR"; flake = false; };
+    hyprland-contrib = { url = "github:hyprwm/contrib"; inputs.nixpkgs.follows = "nixpkgs"; };
+    myRepo = { url = "github:CrackTC/nur-packages"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
+    sops-nix = { url = "github:Mic92/sops-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
-  outputs = { nixpkgs, ... } @inputs:
+  outputs =
+    { nixpkgs
+    , nixpkgs-stable
+    , nur
+    , hyprland-contrib
+    , myRepo
+    , home-manager
+    , sops-nix
+    , ...
+    } @ inputs:
     let
       system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
+      pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
@@ -50,22 +47,15 @@
           "electron-25.9.0"
         ];
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      nur = import inputs.nur {
-        nurpkgs = pkgs;
-        pkgs = pkgs;
-      };
-      myRepo = import inputs.myRepo {
-        pkgs = pkgs;
-      };
+
       extraRepos = {
-        inherit pkgs-stable;
-        inherit nur;
-        inherit myRepo;
-        inherit (inputs) hyprland-contrib;
+        pkgs-stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        nur = import nur { inherit pkgs; nurpkgs = pkgs; };
+        myRepo = myRepo.legacyPackages.${system};
+        hyprland-contrib = hyprland-contrib.packages.${system};
       };
 
       info = {
@@ -76,21 +66,20 @@
     in
     {
       nixosConfigurations = {
-        cno = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit pkgs extraRepos info;
-          };
+        cno = nixpkgs.lib.nixosSystem rec {
+          specialArgs = { inherit pkgs extraRepos info; };
           modules = [
             ./modules
             ./host/cno
-            inputs.sops-nix.nixosModules.sops
-            inputs.home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.users.${info.username} = import ./home;
-              home-manager.extraSpecialArgs = { inherit pkgs extraRepos info; };
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${info.username} = import ./home/${info.username};
+                extraSpecialArgs = specialArgs;
+              };
             }
           ];
         };

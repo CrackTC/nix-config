@@ -28,6 +28,7 @@
 
       env = [
         "LANG,zh_CN.UTF-8"
+        "LANGUAGE,zh_CN:en_US"
 
         "QT_QPA_PLATFORM,wayland"
         "CLUTTER_BACKEND,wayland"
@@ -50,12 +51,10 @@
       ];
 
       exec-once = [
-        "clash-verge"
         "fcitx5 -d"
         "go env -w GOPROXY=https://goproxy.cn,direct"
         "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
         "imwheel"
-        "killall clash-meta"
         "nm-applet"
         "swww init; sleep 1 && swww img ~/Desktop/wallpaper"
         "waybar"
@@ -200,7 +199,7 @@
     networkmanagerapplet
     swww
     wl-clipboard
-    hyprland-contrib.packages.${pkgs.system}.grimblast
+    hyprland-contrib.grimblast
     pamixer
   ];
 }
