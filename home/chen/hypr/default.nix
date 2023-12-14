@@ -55,7 +55,6 @@
         "go env -w GOPROXY=https://goproxy.cn,direct"
         "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
         "imwheel"
-        "nm-applet"
         "swww init; sleep 1 && swww img ~/Desktop/wallpaper"
         "waybar"
         "wl-clip-persist --clipboard regular"
@@ -196,7 +195,6 @@
   };
 
   home.packages = with pkgs; with extraRepos; [
-    networkmanagerapplet
     swww
     wl-clipboard
     hyprland-contrib.grimblast
