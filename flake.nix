@@ -17,7 +17,7 @@
   };
 
   inputs = {
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; flake = false; };
+    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
     nixpkgs-stable = { url = "github:nixos/nixpkgs/nixos-23.11"; flake = false; };
     nur = { url = "github:nix-community/NUR"; flake = false; };
     hyprland-contrib = { url = "github:hyprwm/contrib"; inputs.nixpkgs.follows = "nixpkgs"; };
