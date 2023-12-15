@@ -35,7 +35,7 @@
 
     wl-clip-persist
 
-    wineWowPackages.waylandFull
+    wineWowPackages.unstableFull
     winetricks
 
     onlyoffice-bin
