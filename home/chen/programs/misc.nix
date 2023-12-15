@@ -50,5 +50,7 @@
     extraRepos.myRepo.freedownloadmanager
     extraRepos.nur.repos.linyinfeng.wemeet
   ];
+
+  services.blueman-applet.enable = true;
   services.network-manager-applet.enable = true;
 }
