@@ -35,7 +35,7 @@
     , home-manager
     , sops-nix
     , ...
-    } @ inputs:
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
