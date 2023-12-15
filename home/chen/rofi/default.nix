@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, extraRepos, ... }:
 let
   display = ">";
   font = "sans-serif bold 20";
@@ -24,6 +24,6 @@ in
       display-combi = display;
     };
     inherit font;
-    plugins = [ pkgs.rofi-calc ];
+    plugins = [ pkgs.rofi-calc extraRepos.myRepo.rofi-ts ];
   };
 }
