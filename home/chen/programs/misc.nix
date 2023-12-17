@@ -3,13 +3,7 @@
     clash-meta
     discord
     telegram-desktop
-    (spotify.overrideAttrs (attrs: {
-      nativeBuildInputs = attrs.nativeBuildInputs ++ [ makeWrapper ];
-      postInstall = ''
-        wrapProgram $out/share/spotify/spotify \
-          --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL ]}
-      '';
-    }))
+    spotify
     yesplaymusic
     obsidian
     (qq.overrideAttrs (attrs: {
