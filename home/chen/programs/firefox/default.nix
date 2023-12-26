@@ -18,8 +18,11 @@ in
       ${profileName} = {
         extensions = with extraRepos.nur.repos.rycee.firefox-addons; [
           bitwarden
-          vimium
+          gloc
           kristofferhagen-nord-theme
+          tabliss
+          tampermonkey
+          vimium
         ];
       };
     };
