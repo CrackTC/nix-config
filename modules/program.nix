@@ -4,7 +4,7 @@
     gnupg = {
       agent = {
         enable = true;
-        pinentryFlavor = "gtk2";
+        pinentryFlavor = "qt";
       };
     };
     nix-ld.enable = true;
