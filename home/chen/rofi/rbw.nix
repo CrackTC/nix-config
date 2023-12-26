@@ -5,6 +5,7 @@
       base_url = "http://cracktc.tpddns.cn:5252";
       inherit (info) email;
       lock_timeout = 3600;
+      pinentry = "qt";
     };
   };
 
