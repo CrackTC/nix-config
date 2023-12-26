@@ -8,22 +8,22 @@
     enable = true;
     settings = {
       monitor = lib.mkDefault [
-        "DP-2,2560x1440@170,0x0,1"
-        "eDP-1,2560x1440@240,2560x0,1"
+        "DP-2,2560x1440@170,2560x0,1"
+        "eDP-1,2560x1440@240,0x0,1"
         "monitor=HDMI-A-1,disabled"
       ];
 
       workspace = lib.mkDefault [
-        "1, monitor:eDP-1"
-        "2, monitor:eDP-1"
-        "3, monitor:eDP-1"
-        "4, monitor:eDP-1"
-        "5, monitor:eDP-1"
-        "6, monitor:eDP-1"
-        "7, monitor:eDP-1"
-        "8, monitor:eDP-1"
-        "9, monitor:DP-2"
-        "10, monitor:DP-2, default:true"
+        "1, monitor:DP-2"
+        "2, monitor:DP-2"
+        "3, monitor:DP-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-2"
+        "6, monitor:DP-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-2"
+        "9, monitor:eDP-1"
+        "10, monitor:eDP-1, default:true"
       ];
 
       env = [
