@@ -15,6 +15,10 @@
     }))
     burpsuite
 
+    ((llama-cpp.override { cudaSupport = true; stdenv = gcc11Stdenv; }).overrideAttrs (attrs: {
+      cmakeFlags = [ "-DLLAMA_CUBLAS=ON" ];
+    }))
+
     gnome.nautilus
     libsForQt5.ark
 

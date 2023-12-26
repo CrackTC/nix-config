@@ -41,6 +41,8 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        config.cudaSupport = true;
+        config.cudnnSupport = true;
         config.permittedInsecurePackages = [
           "openssl-1.1.1w"
           "electron-22.3.27"
