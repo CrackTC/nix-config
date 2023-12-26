@@ -1,6 +1,7 @@
 {
   imports = [
     ./podman.nix
+    ./firewall.nix
     ./fonts.nix
     ./game.nix
     ./jlu.nix
