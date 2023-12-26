@@ -1,6 +1,6 @@
 {
   imports = [
-    ./docker.nix
+    ./podman.nix
     ./fonts.nix
     ./game.nix
     ./jlu.nix
