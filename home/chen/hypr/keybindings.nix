@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     bind = [
@@ -12,7 +12,7 @@
       "$mainMod, P, exec, rofi-rbw --target password --selector-args '-kb-row-up Alt+k -kb-row-down Alt+j'"
       "$mainMod, N, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\" -kb-row-up Alt+k -kb-row-down Alt+j"
       "$mainMod, Space, exec, rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" -kb-row-up Alt+k -kb-row-down Alt+j"
-      "$mainMod SHIFT, S, exec, grimblast copy area"
+      "$mainMod SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copy area"
 
       "$mainMod SHIFT, Q, killactive, "
       "$mainMod SHIFT, Space, togglefloating, "

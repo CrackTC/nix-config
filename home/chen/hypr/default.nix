@@ -190,7 +190,6 @@
   home.packages = with pkgs; with extraRepos; [
     swww
     wl-clipboard
-    hyprland-contrib.grimblast
     pamixer
   ];
 }

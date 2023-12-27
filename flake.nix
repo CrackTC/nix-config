@@ -17,10 +17,9 @@
   };
 
   inputs = {
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable = { url = "github:nixos/nixpkgs/nixos-23.11"; flake = false; };
     nur = { url = "github:nix-community/NUR"; flake = false; };
-    hyprland-contrib = { url = "github:hyprwm/contrib"; inputs.nixpkgs.follows = "nixpkgs"; };
     myRepo = { url = "github:CrackTC/nur-packages"; inputs.nixpkgs.follows = "nixpkgs"; };
     home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     sops-nix = { url = "github:Mic92/sops-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
@@ -30,7 +29,6 @@
     { nixpkgs
     , nixpkgs-stable
     , nur
-    , hyprland-contrib
     , myRepo
     , home-manager
     , sops-nix
@@ -57,7 +55,6 @@
         };
         nur = import nur { inherit pkgs; nurpkgs = pkgs; };
         myRepo = myRepo.legacyPackages.${system};
-        hyprland-contrib = hyprland-contrib.packages.${system};
       };
 
       info = {
