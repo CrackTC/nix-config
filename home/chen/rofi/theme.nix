@@ -32,8 +32,9 @@
         anchor = mkLiteral "center";
         transparency = "screenshot";
         padding = mkLiteral "0px";
-        border = mkLiteral "0px";
-        border-radius = mkLiteral "20px 20px 0 0";
+        border = mkLiteral "3px";
+        border-color = mkLiteral "@nord7";
+        border-radius = mkLiteral "20px";
 
         background-color = mkLiteral "@transparent";
         spacing = 0;
