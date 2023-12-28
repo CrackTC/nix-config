@@ -25,6 +25,7 @@
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
     extraModprobeConfig = "options snd-hda-intel enable_msi=1";
     supportedFilesystems = [ "ntfs" ];
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ /* "module_blacklist=i915" */ "ibt=off" ];
     loader = {
       efi.canTouchEfiVariables = true;
