@@ -138,7 +138,9 @@
         vrr = false;
         no_direct_scanout = true;
         animate_manual_resizes = false;
-        focus_on_activate = false;
+        animate_mouse_windowdragging = true;
+        disable_autoreload = true;
+        focus_on_activate = true;
       };
 
       master = {
@@ -171,6 +173,9 @@
         # "float, class:^(winecfg\\.exe)$"
         # "size 677 841, class:^(winecfg\\.exe)$"
 
+        "float, class:^(showmethekey-gtk)$, title:^(Floating Window - Show Me The Key)$"
+        "opacity 0.5 override 0.5 override, class:^(showmethekey-gtk)$, title:^(Floating Window - Show Me The Key)$"
+        "pin, class:^(showmethekey-gtk)$, title:^(Floating Window - Show Me The Key)$"
         "float, class:^(pavucontrol-qt)$"
         "float, class:^(org.kde.polkit-kde-authentication-agent-1)$"
         "tile, class:^(neovide)$"
@@ -197,6 +202,7 @@
   home.packages = with pkgs; with extraRepos; [
     swww
     wl-clipboard
+    wl-clip-persist
     pamixer
   ];
 }
