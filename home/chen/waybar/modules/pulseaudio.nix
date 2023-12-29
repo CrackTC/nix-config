@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.waybar.settings.mainBar."pulseaudio" = {
     scroll-step = 1;
-    format = "<span rise='1100'>{icon} </span>{volume}";
+    format = "<span font-weight='normal'>{icon} </span>{volume}";
     format-bluetooth = "{icon} {volume}";
     format-bluetooth-muted = " muted";
     format-muted = " muted";

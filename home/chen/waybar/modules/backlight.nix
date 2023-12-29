@@ -1,6 +1,6 @@
 {
   programs.waybar.settings.mainBar."backlight" = {
-    format = "{icon} {percent}";
+    format = "<span font-weight='normal'>{icon} </span>{percent}";
     format-icons = [ "" "" "" "" "" "" "" "" "" ];
   };
 }

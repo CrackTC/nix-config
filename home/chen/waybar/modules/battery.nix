@@ -4,11 +4,11 @@
       warning = 30;
       critical = 15;
     };
-    format = "<span rise=\"800\">{icon} </span>{capacity}";
-    format-charging = "󰂄 {capacity}%";
-    format-plugged = "󰚥 {capacity}%";
-    format-alt = "{time} {icon}";
-    format-full = "<span rise='-18000'></span>";
+    format = "<span font-weight='normal'>{icon} </span>{capacity}";
+    format-charging = "<span font-weight='normal'>󰂄 </span>{capacity}%";
+    format-plugged = "<span font-weight='normal'>󰚥 </span>{capacity}%";
+    format-alt = "{time} <span font-weight='normal'>{icon}</span>";
+    format-full = "<span font-weight='normal'></span>";
     format-icons = [ "󰁺" "󰁼" "󰁾" "󰂀" "󰁹" ];
   };
 }
