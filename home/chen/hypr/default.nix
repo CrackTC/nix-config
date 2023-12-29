@@ -9,7 +9,7 @@
     settings = {
       monitor = lib.mkDefault [
         "DP-2,2560x1440@170,2560x0,1"
-        "eDP-1,2560x1440@240,0x0,1"
+        "eDP-1,2560x1440@240,0x0,1.5"
         "monitor=HDMI-A-1,disabled"
       ];
 
@@ -196,6 +196,10 @@
         "stayfocused, title:^()$,class:^(steam)$"
         "minsize 1 1, title:^()$,class:^(steam)$"
       ];
+
+      xwayland = {
+        use_nearest_neighbor = false;
+      };
     };
   };
 

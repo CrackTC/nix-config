@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   programs.waybar.settings.mainBar."custom/cava" = {
     exec = pkgs.writeShellScript "cava.sh" ''
-      sleep 10
       trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
       bar=" ▁▂▃▄▅▆▇█"
@@ -26,10 +25,11 @@
       config_file="/tmp/waybar_cava_config"
       echo "
       [general]
-      bars = 60
+      bars = 50
+      framerate = 60
 
       [input]
-      method = pulse
+      method = pipewire
       source = auto
 
       [output]
@@ -37,6 +37,9 @@
       raw_target = $pipe
       data_format = ascii
       ascii_max_range = 8
+
+      [smoothing]
+      noise_reduction = 10
       " > $config_file
 
       # run cava in the background

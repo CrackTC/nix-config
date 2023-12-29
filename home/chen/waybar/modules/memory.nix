@@ -1,5 +1,5 @@
 {
   programs.waybar.settings.mainBar."memory" = {
-    format = "<span rise=\"400\">󰏖 </span>{}";
+    format = "<span font-weight='normal'>󰏖 </span>{}";
   };
 }
