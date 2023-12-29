@@ -9,7 +9,7 @@
       "$mainMod, Q, exec, rofi -kb-row-up Alt+k -kb-row-down Alt+j -show drun"
       "$mainMod, Semicolon, exec, rofi -kb-row-up Alt+k -kb-row-down Alt+j -show run"
       "$mainMod, Backslash, exec, rofi -kb-row-up Alt+k -kb-row-down Alt+j -show ssh"
-      "$mainMod, P, exec, rofi-rbw --target password --selector-args '-kb-row-up Alt+k -kb-row-down Alt+j'"
+      "$mainMod, P, exec, ${pkgs.rofi-rbw-wayland}/bin/rofi-rbw --target password --selector-args '-kb-row-up Alt+k -kb-row-down Alt+j'"
       "$mainMod, N, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\" -kb-row-up Alt+k -kb-row-down Alt+j"
       "$mainMod, Space, exec, rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" -kb-row-up Alt+k -kb-row-down Alt+j"
       "$mainMod SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copy area"
