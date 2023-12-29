@@ -14,6 +14,7 @@ nur: {
     ./nvim
     ./obs-studio.nix
     ./ripgrep.nix
+    ./spotifyd.nix
     ./ssh
     ./tealdeer.nix
     ./tex
