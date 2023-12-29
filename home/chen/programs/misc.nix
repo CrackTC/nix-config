@@ -22,7 +22,6 @@
       '';
     }))
     showmethekey
-    spotify
     telegram-desktop
     thunderbird
     yesplaymusic

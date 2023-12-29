@@ -50,9 +50,12 @@
           echo $cmd | sed "$dict"
       done < $pipe
     '';
-    on-scroll-up = "playerctl -p spotify,edge,yesplaymusic previous";
-    on-scroll-down = "playerctl -p spotify,edge,yesplaymusic next";
-    on-click = "playerctl -p spotify,edge,yesplaymusic play-pause";
+    # on-scroll-up = "playerctl -p spotify,edge,yesplaymusic previous";
+    # on-scroll-down = "playerctl -p spotify,edge,yesplaymusic next";
+    # on-click = "playerctl -p spotify,edge,yesplaymusic play-pause";
+    on-click = "dbus-send --print-reply --dest=\"org.mpris.MediaPlayer2.spotifyd.instance$(pgrep spotifyd)\" /org/mpris/MediaPlayer2 \"org.mpris.MediaPlayer2.Player.PlayPause\"";
+    on-scroll-up = "dbus-send --print-reply --dest=\"org.mpris.MediaPlayer2.spotifyd.instance$(pgrep spotifyd)\" /org/mpris/MediaPlayer2 \"org.mpris.MediaPlayer2.Player.Previous\"";
+    on-scroll-down = "dbus-send --print-reply --dest=\"org.mpris.MediaPlayer2.spotifyd.instance$(pgrep spotifyd)\" /org/mpris/MediaPlayer2 \"org.mpris.MediaPlayer2.Player.Next\"";
   };
 
   home.packages = with pkgs; [
