@@ -30,7 +30,10 @@
     bc
     fastfetch
     helix
-    ((llama-cpp.override { cudaSupport = true; stdenv = gcc11Stdenv; }).overrideAttrs (attrs: {
+    ((extraRepos.pkgs-native.llama-cpp.override {
+      cudaSupport = true;
+      stdenv = gcc11Stdenv;
+    }).overrideAttrs (attrs: {
       cmakeFlags = [ "-DLLAMA_CUBLAS=ON" ];
     }))
     p7zip
