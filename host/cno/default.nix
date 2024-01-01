@@ -10,6 +10,7 @@
     settings = {
       trusted-users = [ "${info.username}" ];
       experimental-features = [ "nix-command" "flakes" ];
+      system-features = [ "gccarch-alderlake" "big-parallel" ];
       auto-optimise-store = true;
     };
 
