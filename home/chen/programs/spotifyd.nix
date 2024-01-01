@@ -4,7 +4,7 @@
     settings = {
       global = {
         username = info.email;
-        password_cmd = "rbw get Spotify";
+        password_cmd = "cat /run/secrets/spotify";
         use_mpris = true;
         backend = "alsa";
         device_name = "spotifyd";
