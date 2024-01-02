@@ -19,6 +19,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
     nixpkgs-stable = { url = "github:nixos/nixpkgs/nixos-23.11"; flake = false; };
     nur = { url = "github:nix-community/NUR"; flake = false; };
     myRepo = { url = "github:CrackTC/nur-packages"; inputs.nixpkgs.follows = "nixpkgs"; };
@@ -28,6 +29,7 @@
 
   outputs =
     { nixpkgs
+    , nixpkgs-master
     , nixpkgs-stable
     , nur
     , myRepo
@@ -44,8 +46,6 @@
 
       opt = system: native: {
         config.allowUnfree = true;
-        config.cudaSupport = true;
-        config.cudnnSupport = true;
         config.permittedInsecurePackages = [
           "openssl-1.1.1w"
           "electron-22.3.27"
@@ -104,7 +104,8 @@
             system = "x86_64-linux";
             pkgs = import nixpkgs (opt system false);
             extraRepos = {
-              pkgs-native = import nixpkgs (opt system true);
+              # pkgs-native = import nixpkgs (opt system true);
+              pkgs-master = import nixpkgs-master (opt system false);
               pkgs-stable = import nixpkgs-stable (opt system false);
               nur = import nur { inherit pkgs; nurpkgs = pkgs; };
               myRepo = myRepo.legacyPackages.${system};

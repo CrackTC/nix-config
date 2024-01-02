@@ -56,6 +56,23 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704158917,
+        "narHash": "sha256-UEnXhwupM+tAH1MvWetjUOn0Q4mXoB2ta+hW52mwots=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fa360eec2053fd6c612e5b8151d5af336db42eef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "flake": false,
       "locked": {
@@ -110,6 +127,7 @@
         "home-manager": "home-manager",
         "myRepo": "myRepo",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
         "sops-nix": "sops-nix"
