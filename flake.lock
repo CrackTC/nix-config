@@ -59,11 +59,11 @@
     "nixpkgs-master": {
       "flake": false,
       "locked": {
-        "lastModified": 1704158917,
-        "narHash": "sha256-UEnXhwupM+tAH1MvWetjUOn0Q4mXoB2ta+hW52mwots=",
+        "lastModified": 1704187481,
+        "narHash": "sha256-TAK+5nSm0fX7gfz+SFAzH0MyKTjERflCV37/+h+rmcY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fa360eec2053fd6c612e5b8151d5af336db42eef",
+        "rev": "f1b28a69e1fe9552dd238a78586f76b3a89463a2",
         "type": "github"
       },
       "original": {
@@ -78,30 +78,14 @@
       "locked": {
         "lastModified": 1703992652,
         "narHash": "sha256-C0o8AUyu8xYgJ36kOxJfXIroy9if/G6aJbNOpA5W0+M=",
-        "owner": "nixos",
+        "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "32f63574c85fbc80e4ba1fbb932cde9619bad25e",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "NixOS",
         "ref": "nixos-23.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable_2": {
-      "locked": {
-        "lastModified": 1703950681,
-        "narHash": "sha256-veU5bE4eLOmi7aOzhE7LfZXcSOONRMay0BKv01WHojo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0aad9113182747452dbfc68b93c86e168811fa6c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "release-23.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -109,11 +93,11 @@
     "nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1704146221,
-        "narHash": "sha256-ef2A2VFevlMbRC/+ib/yunON6v4BmxatTQeYRlQpvN4=",
+        "lastModified": 1704185044,
+        "narHash": "sha256-syUxb2/j1DJuVFMXK14Vr4yQ7dR91uPlAF9Dvk/e7rE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "c56ab874a3d53b630e946536612e748a7cd9f2f4",
+        "rev": "83b31a89dd9cdb757f9afbab8671f8b8394ad937",
         "type": "github"
       },
       "original": {
@@ -138,7 +122,9 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": "nixpkgs-stable_2"
+        "nixpkgs-stable": [
+          "nixpkgs-stable"
+        ]
       },
       "locked": {
         "lastModified": 1703991717,
