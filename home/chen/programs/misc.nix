@@ -30,11 +30,15 @@
     bc
     fastfetch
     helix
-    ((extraRepos.pkgs-native.llama-cpp.override {
+    ((extraRepos.pkgs-master.llama-cpp.override {
       cudaSupport = true;
-      stdenv = gcc11Stdenv;
     }).overrideAttrs (attrs: {
-      cmakeFlags = [ "-DLLAMA_CUBLAS=ON" ];
+      preConfigure = ''
+        cmakeFlagsArray=(
+          $cmakeFlagsArray
+          "-DCMAKE_CXX_FLAGS=-march=alderlake -mtune=alderlake"
+        )
+      '';
     }))
     p7zip
     unrar-wrapper
