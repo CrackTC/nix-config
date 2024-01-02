@@ -1,25 +1,10 @@
-menupopup,
-context-navigation {
-    -moz-appearance: none !important;
-    background-color: #2E3440C0 !important;
-    color: var(--nords-2) !important;
-    border-radius: 10px !important;
-    border-color: var(--nordp-2) !important;
-}
-
-context-navigation {
-    background-color: #8ad !important;
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-}
-
 menupopup>menuseparator {
     display: none !important
 }
 
 menupopup {
     appearance: none !important;
-    background-color: var(--arrowpanel-background) !important;
+    background-color: transparent !important;
     color: var(--arrowpanel-color) !important;
     -moz-context-properties: fill, fill-opacity !important;
     fill: currentColor !important;
@@ -29,6 +14,7 @@ menuitem,
 menu>menu,
 menupopup>menu {
     appearance: none !important;
+    border-radius: 6px !important;
 }
 
 menuitem[disabled=true],
@@ -53,7 +39,7 @@ menuitem[type=radio] .menu-iconic-icon {
 
 menupopup::part(content),
 .menupopup-arrowscrollbox {
-    box-shadow: unset !important;
-    margin: 0 !important;
+    margin: 0px !important;
+    background-color: #2e3440dd !important;
     border-width: 0px !important;
 }
