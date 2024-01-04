@@ -54,14 +54,12 @@
         email = "chenrke369@gmail.com";
       };
 
-      opt = system: native: {
+      opt = system: cpu: native: {
         config.allowUnfree = true;
-        config.permittedInsecurePackages = [
-          "electron-25.9.0"
-        ];
-      } // (if native then {
-        localSystem = { inherit system; gcc.arch = "alderlake"; gcc.tune = "alderlake"; };
-
+        config.permittedInsecurePackages = [ "electron-25.9.0" ];
+      } //
+      (if !native then { inherit system; } else {
+        localSystem = { inherit system; gcc.arch = cpu; gcc.tune = cpu; };
         overlays = [
           (self: super: {
             opencolorio = super.opencolorio.overrideAttrs { doCheck = false; };
@@ -72,19 +70,15 @@
                 crypton-x509-validation = super.haskell.lib.dontCheck hsuper.crypton-x509-validation;
                 tls_1_9_0 = super.haskell.lib.dontCheck hsuper.tls_1_9_0;
                 tls = super.haskell.lib.dontCheck hsuper.tls;
-                cryptonite = super.haskell.lib.overrideCabal hsuper.cryptonite (oa: {
-                  doCheck = false;
-                });
-                x509-validation = super.haskell.lib.overrideCabal hsuper.x509-validation (oa: {
-                  doCheck = false;
-                });
+                cryptonite = super.haskell.lib.overrideCabal hsuper.cryptonite (oa: { doCheck = false; });
+                x509-validation = super.haskell.lib.overrideCabal hsuper.x509-validation (oa: { doCheck = false; });
               };
             };
 
             pythonPackagesExtensions =
               let
-                dontCheckPy = (names: pysuper: super.lib.foldr
-                  (name: ps: ps // {
+                dontCheckPy = (names: _: pysuper: super.lib.foldr
+                  (name: rhs: rhs // {
                     "${name}" = pysuper.${name}.overridePythonAttrs (oldAttrs: {
                       doCheck = false;
                       doInstallCheck = false;
@@ -95,35 +89,33 @@
                   names
                 );
               in
-              super.pythonPackagesExtensions ++ [
-                (pyself: dontCheckPy [
-                  "numpy"
-                  "pandas"
-                ])
-              ];
+              super.pythonPackagesExtensions ++ [ (dontCheckPy [ "numpy" "pandas" ]) ];
           })
         ];
-      } else { inherit system; });
+      });
     in
     {
       nixosConfigurations = {
         cno = nixpkgs.lib.nixosSystem (
           let
-            system = "x86_64-linux";
-            pkgs = import nixpkgs (opt system false);
+            host = { name = "cno"; system = "x86_64-linux"; cpu = "alderlake"; };
+            option = opt host.system host.cpu false;
+
+            pkgs = import nixpkgs option;
             extraRepos = {
               # pkgs-native = import nixpkgs (opt system true);
-              pkgs-master = import nixpkgs-master (opt system false);
-              pkgs-stable = import nixpkgs-stable (opt system false);
+              pkgs-master = import nixpkgs-master option;
+              pkgs-stable = import nixpkgs-stable option;
+
               nur = import nur { inherit pkgs; nurpkgs = pkgs; };
-              myRepo = myRepo.legacyPackages.${system};
+              myRepo = myRepo.legacyPackages.${host.system};
             };
           in
           rec {
-            specialArgs = { inherit pkgs extraRepos info; };
+            specialArgs = { inherit pkgs extraRepos info host; };
             modules = [
               ./modules
-              ./host/cno
+              ./host/${host.name}
               sops-nix.nixosModules.sops
               home-manager.nixosModules.home-manager
               {
