@@ -54,7 +54,7 @@
         "go env -w GOPROXY=https://goproxy.cn,direct"
         "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
         "imwheel"
-        "swww init; sleep 1 && swww img ~/Desktop/wallpaper"
+        "swww init && swww img ~/Desktop/wallpaper"
         "waybar"
         "wl-clip-persist --clipboard regular"
         "ydotoold"
@@ -140,6 +140,7 @@
         animate_mouse_windowdragging = true;
         disable_autoreload = true;
         focus_on_activate = true;
+        disable_hyprland_logo = true;
       };
 
       master = {
@@ -204,7 +205,19 @@
   };
 
   home.packages = with pkgs; with extraRepos; [
-    swww
+    (swww.overrideAttrs (old: rec {
+      src = fetchFromGitHub {
+        owner = "Horus645";
+        repo = "swww";
+        rev = "0908f36050d545a0eb97ca0cbfc40c47fc50d6ba";
+        hash = "sha256-NRmlctWwiUVlbB457y3e2BpWNyJ7CHpEnAYazwYQZpk=";
+      };
+      RUSTFLAGS = "-C target-cpu=alderlake";
+      cargoDeps = old.cargoDeps.overrideAttrs (_: {
+        inherit src;
+        outputHash = "sha256-z/4g2B17UvaWvVwwvHGldhTMBYapokPHs/ykHCweZ+M=";
+      });
+    }))
     wl-clipboard
     wl-clip-persist
     pamixer
