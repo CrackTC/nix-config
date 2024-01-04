@@ -40,12 +40,6 @@
         enable = true;
         configurationLimit = 10;
         consoleMode = "max";
-        extraEntries = {
-          "arch.conf" = ''
-            title Arch Linux
-            efi /efi/ARCH/grubx64.efi
-          '';
-        };
       };
     };
   };
