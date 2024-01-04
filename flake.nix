@@ -57,8 +57,6 @@
       opt = system: native: {
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
-          "openssl-1.1.1w"
-          "electron-22.3.27"
           "electron-25.9.0"
         ];
       } // (if native then {
