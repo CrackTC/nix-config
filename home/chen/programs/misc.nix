@@ -30,6 +30,7 @@
     bc
     fastfetch
     helix
+    jq
     ((extraRepos.pkgs-master.llama-cpp.override {
       cudaSupport = true;
     }).overrideAttrs (attrs: {
