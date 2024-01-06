@@ -44,7 +44,7 @@
     p7zip
     unrar-wrapper
     unzipNLS
-    wineWowPackages.unstableFull
+    wineWowPackages.waylandFull
     winetricks
   ];
 
