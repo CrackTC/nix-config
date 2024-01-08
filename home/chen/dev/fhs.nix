@@ -14,6 +14,7 @@
         ghc
         gcc
         ocaml
+        openssl
       ];
     })
   ];
