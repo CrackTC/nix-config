@@ -31,9 +31,7 @@
     fastfetch
     helix
     jq
-    ((extraRepos.pkgs-master.llama-cpp.override {
-      cudaSupport = true;
-    }).overrideAttrs (attrs: {
+    ((llama-cpp.override { cudaSupport = true; }).overrideAttrs (attrs: {
       preConfigure = ''
         cmakeFlagsArray=(
           $cmakeFlagsArray
