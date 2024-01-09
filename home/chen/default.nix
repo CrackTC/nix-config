@@ -12,6 +12,7 @@ in
     ./rofi
     ./shell
     ./theme
+    ./wallpaper.nix
     ./waybar
     ./xdg
   ];
