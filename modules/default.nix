@@ -1,6 +1,6 @@
 {
   imports = [
-    ./podman.nix
+    ./clash.nix
     ./firewall.nix
     ./fonts.nix
     ./game.nix
@@ -8,6 +8,7 @@
     ./man.nix
     ./mount.nix
     ./pipewire.nix
+    ./podman.nix
     ./polkit.nix
     ./portal.nix
     ./program.nix
