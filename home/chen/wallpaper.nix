@@ -33,7 +33,6 @@ in
     wall = {
       Unit = {
         Description = "wallpaper daemon";
-        After = [ "hyprland-session.target" ];
       };
 
       Service = {
@@ -42,7 +41,7 @@ in
       };
 
       Install = {
-        WantedBy = [ "multi-user.target" ];
+        WantedBy = [ "hyprland-session.target" ];
       };
     };
   };
