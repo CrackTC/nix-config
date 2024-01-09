@@ -18,7 +18,7 @@ let
 
   wall = pkgs.writeScript "wall" ''
     #!${pkgs.fish}/bin/fish
-    ${swww}/bin/swww init
+    ${swww}/bin/swww-daemon &
     while true
       set pos (random 1 2000),(random 1 2000)
       set imgs (ls ${wallDir}/)
