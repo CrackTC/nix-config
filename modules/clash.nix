@@ -10,15 +10,19 @@
         if not test -e $config
           set sub (cat /run/secrets/sub)
           set -e (env | grep proxy | cut -d= -f1)
-          ${pkgs.curl}/bin/curl -o $config $sub
-          cat $config |
-            grep -v '^port' |
-            grep -v '^socks-port' |
-            grep -v '^mixed-port' |
-            grep -v '^mode' > $config.tmp
-          echo 'mixed-port: 7890' >> $config.tmp
-          echo 'mode: direct' >> $config.tmp
-          mv $config.tmp $config
+          if ${pkgs.curl}/bin/curl -o $config $sub
+            cat $config |
+              grep -v '^port' |
+              grep -v '^socks-port' |
+              grep -v '^mixed-port' |
+              grep -v '^mode' > $config.tmp
+            echo 'mixed-port: 7890' >> $config.tmp
+            echo 'mode: direct' >> $config.tmp
+            mv $config.tmp $config
+          else
+            echo "failed to fetch sub, using default config"
+            cat /run/secrets/sub_backup | base64 -d > $config
+          end
         end
         ${pkgs.clash-meta}/bin/clash-meta -f $config
       '';

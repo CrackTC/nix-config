@@ -14,4 +14,9 @@
     owner = config.users.users.${info.username}.name;
     group = config.users.users.${info.username}.group;
   };
+  sops.secrets.sub_backup = {
+    mode = "0400";
+    owner = config.users.users.${info.username}.name;
+    group = config.users.users.${info.username}.group;
+  };
 }
