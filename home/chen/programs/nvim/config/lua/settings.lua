@@ -57,7 +57,7 @@ vim.opt.completeopt = {
 }                             -- build-in completion config
 vim.opt.lazyredraw = true     -- don't redraw while executing macros
 vim.opt.virtualedit = "block" -- allow cursor to move anywhere in visual block mode
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 
 -- [backup] --
 
