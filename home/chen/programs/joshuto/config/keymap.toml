@@ -118,7 +118,6 @@ keymap = [
 
   { keys = ["m", "r"], command = "linemode size" },
   { keys = ["m", "m"], command = "linemode mtime" },
-  { keys = ["m", "M"], command = "linemode sizemtime" },
 
   { keys = ["d", "p"], command = "cd /" },
   { keys = ["d", "c"], command = "cd ~/.config" },
