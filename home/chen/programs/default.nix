@@ -8,7 +8,7 @@ nur: {
     ./imwheel
     ./joshuto
     ./kitty.nix
-    ./lazygit.nix
+    ./lazygit
     ./misc.nix
     ./mpv
     ./nvim
