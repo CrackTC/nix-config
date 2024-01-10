@@ -10,6 +10,7 @@
         zlib.static
         libffi
         libtool
+        icu.dev
         musl
         ghc
         gcc
