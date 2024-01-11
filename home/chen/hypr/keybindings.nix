@@ -64,8 +64,8 @@
       ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
       ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
       ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-      ", XF86MonBrightnessUp, exec, backlight_control +5"
-      ", XF86MonBrightnessDown, exec, backlight_control -5"
+      ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
+      ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
     ];
   };
 }
