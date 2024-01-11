@@ -1,6 +1,3 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    ghc
-    haskell-language-server
-  ];
+  home.packages = with pkgs; [ ghc ];
 }

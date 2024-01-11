@@ -1,4 +1,4 @@
-{ config, info, ... }: {
+{ config, info, pkgs, ... }: {
   xdg.configFile = {
     "nvim/init.lua".source = ./config/init.lua;
     "nvim/lua" = {
@@ -134,13 +134,17 @@
         "nil.formatting.command" = [ "nixpkgs-fmt" ];
         "go.goplsPath" = "gopls";
         "languageserver" = {
-          "csharp-ls" = {
-            "command" = "csharp-ls";
+          "csharp" = {
+            "command" = "${pkgs.csharp-ls}/bin/csharp-ls";
             "filetypes" = [ "cs" ];
             "rootPatterns" = [ "*.csproj" ".vim/" ".git/" ];
           };
+          "nil" = {
+            "command" = "${pkgs.nil}/bin/nil";
+            "filetypes" = [ "nix" ];
+          };
           "haskell-language-server" = {
-            "command" = "haskell-language-server-wrapper";
+            "command" = "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
             "args" = [ "--lsp" ];
             "rootPatterns" = [ "*.cabal" "stack.yaml" "cabal.project" "package.yaml" "hie.yaml" ];
             "filetypes" = [ "haskell" "lhaskell" ];
