@@ -23,7 +23,7 @@ let
       set pos (random 1 2000),(random 1 2000)
       set imgs (ls ${wallDir}/)
       set img (random choice ${wallDir}/$imgs)
-      ${swww}/bin/swww img --transition-type grow --transition-fps 240 --filter Nearest --transition-pos $pos $img
+      ${swww}/bin/swww img --transition-type grow --transition-fps 120 --filter Nearest --transition-pos $pos $img
       sleep 30
     end
   '';
