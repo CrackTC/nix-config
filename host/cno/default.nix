@@ -130,7 +130,7 @@
 
   services.hpfan = {
     enable = true;
-    wall = 60000;
+    wall = 70000;
   };
 
   services.blueman = {
