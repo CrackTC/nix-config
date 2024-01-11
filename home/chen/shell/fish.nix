@@ -48,6 +48,7 @@
     shellInit = ''
       export DOTNET_ROOT=${(with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_7_0 sdk_6_0 ]) }
       fish_add_path $HOME/.dotnet/tools
+      fish_add_path $HOME/proj/go/bin
     '';
   };
 }
