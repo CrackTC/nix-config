@@ -3,6 +3,8 @@
     man-pages
     man-pages-posix
     gnumake
+ 
+    protobuf
 
     mars-mips
   ];
