@@ -54,7 +54,7 @@
         nextBlock = "<right>";
         prevBlock-alt = "E";
         nextBlock-alt = "N";
-        jumpToBlock = "[1,2,3,4,5]";
+        jumpToBlock = [ 1 2 3 4 5 ];
         nextMatch = "k";
         prevMatch = "K";
         optionMenu-alt1 = "?";
