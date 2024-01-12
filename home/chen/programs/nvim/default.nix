@@ -139,9 +139,15 @@
             "filetypes" = [ "cs" ];
             "rootPatterns" = [ "*.csproj" ".vim/" ".git/" ];
           };
-          "nil" = {
+          "nix" = {
             "command" = "${pkgs.nil}/bin/nil";
             "filetypes" = [ "nix" ];
+            "rootPatterns" = [ "flake.nix" ];
+            "settings" = {
+              "nil" = {
+                "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
+              };
+            };
           };
           "haskell-language-server" = {
             "command" = "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
