@@ -24,7 +24,7 @@ let
       set imgs (ls ${wallDir}/)
       set img (random choice ${wallDir}/$imgs)
       ${swww}/bin/swww img --transition-type grow --transition-fps 120 --filter Nearest --transition-pos $pos $img
-      sleep 30
+      sleep 600
     end
   '';
 in
