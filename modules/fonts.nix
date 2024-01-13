@@ -11,6 +11,7 @@
       sarasa-gothic
       maple-mono
       maple-mono-SC-NF
+      ubuntu_font_family
       twitter-color-emoji
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
