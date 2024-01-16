@@ -1,14 +1,5 @@
 local M = {}
 
-local function get_theme()
-    local colors = require("nord.colors")
-    local nord = require("lualine.themes.nord")
-    nord.normal.c = { fg = colors.nord2_gui, bg = colors.nord0_gui }
-
-    return nord
-end
-
-
 local function get_left_most_circle_component()
     local function left_most_circle() return '' end
     return {
@@ -107,7 +98,7 @@ end
 local function setup_plugin()
     require('lualine').setup({
         options = {
-            theme = get_theme(),
+            theme = "nord",
             globalstatus = true,
             section_separators = { left = '', right = '' },
             component_separators = { left = '·', right = '·' },

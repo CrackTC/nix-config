@@ -16,7 +16,8 @@ print(lazypath)
 
 require("lazy").setup({
         {
-            "shaunsingh/nord.nvim",
+            "gbprod/nord.nvim",
+            lazy = false,
             priority = 1000,
             config = require("plugins.nord").config
         },
