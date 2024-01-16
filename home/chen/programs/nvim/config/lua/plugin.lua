@@ -32,15 +32,17 @@ require("lazy").setup({
             config = require("plugins.headlines").config
         },
         {
-            "nvim-lualine/lualine.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons", "neoclide/coc.nvim", "shaunsingh/nord.nvim" },
-            config = require("plugins.lualine").config
+            "akinsho/bufferline.nvim",
+            version = "*",
+            dependencies = "nvim-tree/nvim-web-devicons",
+            config = function()
+                require("bufferline").setup {}
+            end
         },
         {
-            "romgrk/barbar.nvim",
-            dependencies = { "lewis6991/gitsigns.nvim", "nvim-tree/nvim-web-devicons", },
-            init = function() vim.g.barbar_auto_setup = false end,
-            config = require("plugins.barbar").config
+            "nvim-lualine/lualine.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons", "neoclide/coc.nvim" },
+            config = require("plugins.lualine").config
         },
         {
             "lewis6991/gitsigns.nvim",
