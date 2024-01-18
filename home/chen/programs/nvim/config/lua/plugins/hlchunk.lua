@@ -4,6 +4,7 @@ local function setup_plugins()
     require("hlchunk").setup({
         chunk = {
             enable = true,
+            notify = true,
             use_treesitter = true,
             chars = {
                 horizontal_line = "─",

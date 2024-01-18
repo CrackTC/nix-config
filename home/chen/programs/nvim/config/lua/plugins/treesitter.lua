@@ -49,7 +49,7 @@ local function setup_plugin()
                 scope_incremental = false,
             },
         },
-        indent = { enable = false },
+        indent = { enable = true },
         matchup = { enable = true },
     })
 
