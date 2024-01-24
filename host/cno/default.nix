@@ -29,7 +29,7 @@
       options ec_sys write_support=1
     '';
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       /* "module_blacklist=i915" */
       "ibt=off"
