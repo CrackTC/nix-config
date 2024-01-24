@@ -12,7 +12,7 @@ let
     RUSTFLAGS = "-C target-cpu=alderlake";
     cargoDeps = old.cargoDeps.overrideAttrs (_: {
       inherit src;
-      outputHash = "sha256-z/4g2B17UvaWvVwwvHGldhTMBYapokPHs/ykHCweZ+M=";
+      outputHash = "sha256-By1oaP8Uh9wEdxdW3+2c9qNKPSOxFBC1mECutlWknUs=";
     });
   }));
 
