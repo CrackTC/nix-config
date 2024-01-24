@@ -24,6 +24,7 @@ local extensions = {
     "verilog",
     "vim",
     "vimdoc",
+    "yaml"
 }
 
 local function setup_plugin()
