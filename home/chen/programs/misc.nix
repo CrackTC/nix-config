@@ -14,13 +14,7 @@
     logisim-evolution
     obsidian
     onlyoffice-bin
-    (qq.overrideAttrs (attrs: {
-      buildInputs = attrs.buildInputs ++ [ pkgs.libnotify ];
-      postInstall = ''
-        ln -s ${pkgs.libnotify}/lib/libnotify.so \
-        $out/opt/QQ/libnotify.so
-      '';
-    }))
+    qq
     showmethekey
     telegram-desktop
     thunderbird
