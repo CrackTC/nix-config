@@ -31,7 +31,7 @@
     # };
 
     "/home/chen/net/nas" = {
-      device = "cracktc.tpddns.cn:/volume1/nas";
+      device = "192.168.1.100:/volume1/nas";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
