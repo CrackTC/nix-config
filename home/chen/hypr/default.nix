@@ -102,8 +102,8 @@
           passes = 5;
           new_optimizations = true;
           ignore_opacity = true;
-          xray = true;
           popups = true;
+          popups_ignorealpha = 0.8;
         };
 
         drop_shadow = false;
