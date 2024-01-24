@@ -1,4 +1,12 @@
-let font = "Maple Mono SC NF";
+{ pkgs, ... }:
+let
+  font = "Maple Mono SC NF";
+  shaders = pkgs.fetchzip
+    {
+      url = "https://github.com/Tama47/Anime4K/releases/latest/download/GLSL_Mac_Linux_High-end.zip";
+      hash = "sha256-Ah9fnVCDsliUzbCkKFcnWjLqG0y5DYlXJkZAz/H/oLQ=";
+      stripRoot = false;
+    } + "/shaders";
 in
 {
   programs.mpv = {
@@ -48,7 +56,7 @@ in
   };
 
   xdg.configFile."mpv/shaders" = {
-    source = ./shaders;
+    source = shaders;
     recursive = true;
   };
 }
