@@ -22,11 +22,9 @@
   };
 
   boot = {
-    kernelModules = [ "ec_sys" ];
     extraModprobeConfig = ''
       options snd-hda-intel enable_msi=1
       options i915 enable_guc=2 enable_fbc=1
-      options ec_sys write_support=1
     '';
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_zen;
