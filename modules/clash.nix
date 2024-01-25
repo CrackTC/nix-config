@@ -3,6 +3,7 @@
   systemd.services.clash = {
     description = "fetch sub and run clash on startup";
     after = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
     serviceConfig = {
       ExecStart = pkgs.writeScript "clash.fish" ''
         #!${pkgs.fish}/bin/fish
