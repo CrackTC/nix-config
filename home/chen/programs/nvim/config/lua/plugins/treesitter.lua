@@ -1,5 +1,3 @@
-local M = {}
-
 local extensions = {
     "bash",
     "c",
@@ -24,6 +22,7 @@ local extensions = {
     "verilog",
     "vim",
     "vimdoc",
+    "xml",
     "yaml"
 }
 
@@ -33,7 +32,7 @@ local function setup_plugin()
 
         highlight = {
             enable = true,
-            disable = function(lang, buf)
+            disable = function(_, buf)
                 local max_filesize = 512 * 1024;
                 local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
                 if ok and stats and stats.size > max_filesize then
@@ -53,9 +52,6 @@ local function setup_plugin()
         indent = { enable = true },
         matchup = { enable = true },
     })
-
-    -- map xml to html parser
-    vim.treesitter.language.register("html", "xml")
 end
 
 local function setup_variables()
@@ -73,10 +69,12 @@ local function setup_highlights()
     vim.api.nvim_set_hl(0, "@text.uri", { underline = true, fg = "#a3be8c" })
 end
 
-function M.config()
-    setup_variables()
-    setup_plugin()
-    setup_highlights()
-end
-
-return M
+return {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+        setup_variables()
+        setup_plugin()
+        setup_highlights()
+    end
+}

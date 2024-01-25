@@ -1,4 +1,4 @@
-{ config, info, pkgs, ... }: {
+{ config, pkgs, ... }: {
   xdg.configFile = {
     "nvim/init.lua".source = ./config/init.lua;
     "nvim/lua" = {
@@ -25,7 +25,6 @@
         "codeLens.enable" = true;
         "inlayHint.display" = true;
         "inlayHint.enableParameter" = true;
-        "inlayHint.parameterSeparator" = "󰶻 ";
         "inlayHint.refreshOnInsertMode" = true;
         "suggest.autoTrigger" = "always";
         "suggest.detailField" = "preview";
@@ -129,9 +128,7 @@
         ];
         "Lua.hint.enable" = true;
         "Lua.codeLens.enable" = false;
-        "csharp-ls.path" = "/home/${info.username}/.dotnet/tools/csharp-ls";
         "snippets.ultisnips.pythonPrompt" = false;
-        "nil.formatting.command" = [ "nixpkgs-fmt" ];
         "go.goplsPath" = "gopls";
         "languageserver" = {
           "csharp" = {

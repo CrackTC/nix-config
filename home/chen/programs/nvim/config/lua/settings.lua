@@ -2,7 +2,8 @@
 
 local utils = require("utils")
 
-vim.opt.mouse = "a"                     -- disable mouse
+vim.g.mapleader = " "
+vim.opt.mouse = ""                      -- disable mouse
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 vim.opt.fileencodings = {
     "ucs-bom",

@@ -1,7 +1,6 @@
 -- [[key bindings]] --
 
 local utils = require("utils")
-vim.g.mapleader = " "
 
 -- [basic mappings] --
 
@@ -14,7 +13,6 @@ utils.noremap("", "l", "u")
 utils.noremap("", "o", ":")
 utils.noremap("", "p", "r")
 utils.noremap("", "r", "s")
-utils.noremap("", "t", "f")
 utils.noremap("", "u", "i")
 
 utils.noremap("n", "N", "J")
@@ -24,7 +22,7 @@ utils.noremap("", ":", "P")
 utils.noremap("", "D", "G")
 utils.noremap("", "F", "E")
 utils.noremap("", "G", "T")
-utils.noremap("", "J", "Y")
+utils.noremap("", "J", "y$")
 utils.noremap("", "L", "U")
 utils.noremap("", "O", ":")
 utils.noremap("", "P", "R")
@@ -145,9 +143,6 @@ utils.nnoremap("<leader>rc", ":setlocal spell!<CR>", { silent = true })
 -- toggle wrap
 utils.nnoremap("<leader>w;", ":setlocal wrap!<CR>", { silent = true })
 
--- change case
--- utils.nnoremap("`", "~")
-
 -- generate ascii figlet
 utils.nnoremap("<leader>t", ":r !figlet ")
 
@@ -171,3 +166,22 @@ utils.nnoremap("<leader>pc", ":e $MYVIMRC<CR>", { silent = true })
 -- quick uppercase
 utils.inoremap("<C-l>", "<ESC>mzgUiw`za")
 utils.nnoremap("<C-l>", "mzgUiw`z")
+
+-- hjkl movement
+utils.noremap("", "h", "h")
+utils.noremap("", "n", "j")
+utils.noremap("", "e", "k")
+utils.noremap("", "i", "l", { nowait = true })
+
+utils.noremap("", "s", "d")
+utils.noremap("", "y", "o", { nowait = true })
+utils.noremap("", "dd", "gg")
+utils.noremap("", "dt", "gf")
+utils.noremap("", "dx", "gx")
+
+utils.vnoremap("s", "d", { nowait = true })
+utils.nnoremap("ds", "<Plug>(coc-definition)", { silent = true })
+
+utils.nnoremap("<C-p>", "<C-r>")
+
+utils.nnoremap("p", "<Plug>(SubversiveSubstitute)", { silent = true });

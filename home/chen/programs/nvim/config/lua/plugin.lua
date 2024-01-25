@@ -12,39 +12,14 @@ if not vim.fn.isdirectory(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
-print(lazypath)
 
-require("lazy").setup({
-        {
-            "gbprod/nord.nvim",
-            lazy = false,
-            priority = 1000,
-            config = require("plugins.nord").config
-        },
-        {
-            "nvim-treesitter/nvim-treesitter",
-            build = ":TSUpdate",
-            config = require("plugins.treesitter").config
-        },
-        {
-            "lukas-reineke/headlines.nvim",
-            dependencies = { "nvim-treesitter/nvim-treesitter" },
-            ft = { "markdown" },
-            config = require("plugins.headlines").config
-        },
-        {
-            "akinsho/bufferline.nvim",
-            version = "*",
-            dependencies = "nvim-tree/nvim-web-devicons",
-            config = function()
-                require("bufferline").setup {}
-            end
-        },
-        {
-            "nvim-lualine/lualine.nvim",
-            dependencies = { "nvim-tree/nvim-web-devicons", "neoclide/coc.nvim" },
-            config = require("plugins.lualine").config
-        },
+require("lazy").setup(
+    {
+        require("plugins.nord"),
+        require("plugins.treesitter"),
+        require("plugins.headlines"),
+        require("plugins.bufferline"),
+        require("plugins.lualine"),
         {
             "lewis6991/gitsigns.nvim",
             config = require("plugins.gitsigns").config
@@ -71,17 +46,13 @@ require("lazy").setup({
             "cracktc/vim-repeat-colemak"
         },
         {
-            "vim-scripts/MSIL-Assembly"
-        },
-        {
             "numToStr/Comment.nvim",
             config = require("plugins.comment").config
         },
         {
             "mg979/vim-visual-multi",
             branch = "master",
-            keys = { { "<C-k>", nil } },
-            config = require("plugins.visual-multi").config
+            init = require("plugins.visual-multi").config
         },
         {
             "andymass/vim-matchup",
@@ -134,7 +105,7 @@ require("lazy").setup({
             "img-paste-devs/img-paste.vim",
             ft = { "markdown" },
             config = require("plugins.img-paste").config
-        }
+        },
     },
     { ui = { border = "rounded" } }
 )

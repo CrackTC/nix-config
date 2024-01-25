@@ -1,5 +1,3 @@
-local M = {}
-
 local function get_left_most_circle_component()
     local function left_most_circle() return '' end
     return {
@@ -95,42 +93,40 @@ local function get_right_most_circle_component()
     }
 end
 
-local function setup_plugin()
-    require('lualine').setup({
-        options = {
-            theme = "nord",
-            globalstatus = true,
-            section_separators = { left = '', right = '' },
-            component_separators = { left = '·', right = '·' },
-        },
-        sections = {
-            lualine_a = {
-                get_left_most_circle_component(),
-                get_filename_component()
+return {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons", "neoclide/coc.nvim" },
+    config = function()
+        require('lualine').setup({
+            options = {
+                theme = "nord",
+                globalstatus = true,
+                section_separators = { left = '', right = '' },
+                component_separators = { left = '·', right = '·' },
             },
-            lualine_b = {
-                get_git_branch_component()
-            },
-            lualine_c = {
-                get_file_format_component(),
-                get_file_encoding_component(),
-                get_diagnostics_component(),
-                get_file_type_component(),
-            },
-            lualine_x = {
-                get_git_diff_component()
-            },
-            lualine_y = {},
-            lualine_z = {
-                get_location_component(),
-                get_right_most_circle_component()
+            sections = {
+                lualine_a = {
+                    get_left_most_circle_component(),
+                    get_filename_component()
+                },
+                lualine_b = {
+                    get_git_branch_component()
+                },
+                lualine_c = {
+                    get_file_format_component(),
+                    get_file_encoding_component(),
+                    get_diagnostics_component(),
+                    get_file_type_component(),
+                },
+                lualine_x = {
+                    get_git_diff_component()
+                },
+                lualine_y = {},
+                lualine_z = {
+                    get_location_component(),
+                    get_right_most_circle_component()
+                }
             }
-        }
-    })
-end
-
-function M.config()
-    setup_plugin()
-end
-
-return M
+        })
+    end
+}

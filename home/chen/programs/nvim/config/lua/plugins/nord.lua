@@ -1,27 +1,28 @@
-local M = {}
+return {
+    "gbprod/nord.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require("nord").setup({
+            transparent = true,
+            terminal_colors = true,
+            diff = { mode = "bg" },
+            borders = true,
+            errors = { mode = "bg" },
+            search = { theme = "vim" },
 
-function M.config()
-    require("nord").setup({
-        transparent = true,
-        terminal_colors = true,
-        diff = { mode = "bg" },
-        borders = true,
-        errors = { mode = "bg" },
-        search = { theme = "vim" },
+            styles = {
+                comments = { italic = true },
+                keywords = { bold = true },
+                functions = { bold = true },
+                variables = {},
 
-        style = {
-            comments = { italic = true },
-            keywords = {},
-            functions = {},
-            variables = {},
-
-            bufferline = {
-                current = {},
-                modified = { italic = true },
+                bufferline = {
+                    current = {},
+                    modified = { italic = true },
+                }
             }
-        }
-    })
-    vim.cmd.colorscheme("nord")
-end
-
-return M
+        })
+        vim.cmd.colorscheme("nord")
+    end
+}
