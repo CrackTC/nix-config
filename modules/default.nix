@@ -5,6 +5,7 @@
     ./fonts.nix
     ./game.nix
     ./jlu.nix
+    ./joycond.nix
     ./man.nix
     ./mount.nix
     ./pipewire.nix
