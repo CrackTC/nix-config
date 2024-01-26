@@ -1,5 +1,3 @@
-local M = {}
-
 local function setup_mappings()
     local utils = require("utils")
     local opts = { buffer = true, silent = true }
@@ -11,9 +9,11 @@ local function setup_autocmds()
     utils.on_filetype("markdown", setup_mappings)
 end
 
-function M.config()
-    setup_autocmds()
-    setup_mappings()
-end
-
-return M
+return {
+    "img-paste-devs/img-paste.vim",
+    ft = { "markdown" },
+    config = function()
+        setup_autocmds()
+        setup_mappings()
+    end
+}

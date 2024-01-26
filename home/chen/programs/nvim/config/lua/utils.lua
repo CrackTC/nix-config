@@ -65,6 +65,16 @@ function M.onoremap(lhs, rhs, opts)
     M.noremap('o', lhs, rhs, opts)
 end
 
+function M.buffered_remap(mode, lhs, rhs, opts)
+    opts = opts or {}
+    opts.buffer = true
+    M.remap(mode, lhs, rhs, opts)
+end
+
+function M.buffered_nmap(lhs, rhs, opts)
+    M.buffered_remap('n', lhs, rhs, opts)
+end
+
 function M.buffered_noremap(mode, lhs, rhs, opts)
     opts = opts or {}
     opts.buffer = true
@@ -86,14 +96,6 @@ function M.on_filetype(filetype, fn)
         pattern = filetype,
         callback = fn
     })
-end
-
--- [higroup] --
-function M.print_higroup()
-    local synID = vim.fn.synID(vim.fn.line('.'), vim.fn.col('.'), 1)
-    local name = vim.fn.synIDattr(synID, 'name')
-    local transName = vim.fn.synIDattr(vim.fn.synIDtrans(synID), 'name')
-    print(name .. " -> " .. transName)
 end
 
 -- [compile and run] --
@@ -160,7 +162,6 @@ end
 local bufname = "SingleTerminal"
 -- Define term position and size
 local splitconfig = "bot 20 split "
-local jobid = -1
 local bufid = -1
 local terminal_opened_win_id = -1
 
@@ -179,7 +180,6 @@ local function new_term(wind_id)
     vim.bo.buflisted = false
     vim.wo.foldcolumn = '0'
     bufid = vim.api.nvim_buf_get_number(0)
-    jobid = vim.b.terminal_job_id
     vim.cmd("startinsert")
 end
 

@@ -1,8 +1,7 @@
-local M = {}
-
-local function setup_plugin()
-    require('Comment').setup(
-        {
+return {
+    "numToStr/Comment.nvim",
+    config = function()
+        require('Comment').setup({
             toggler = {
                 line = "dcc",
                 block = "dbc"
@@ -15,12 +14,6 @@ local function setup_plugin()
                 basic = true,
                 extra = false
             }
-        }
-    )
-end
-
-function M.config()
-    setup_plugin()
-end
-
-return M
+        })
+    end
+}

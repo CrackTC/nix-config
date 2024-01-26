@@ -1,5 +1,3 @@
-local M = {}
-
 local function setup_plugin()
     require('illuminate').configure({
         providers = { 'lsp', 'treesitter' },
@@ -13,9 +11,10 @@ local function setup_highlights()
     vim.cmd([[hi! IlluminatedWordWrite cterm=underdouble gui=underdouble]])
 end
 
-function M.config()
-    setup_plugin()
-    setup_highlights()
-end
-
-return M
+return {
+    "RRethy/vim-illuminate",
+    config = function ()
+        setup_plugin()
+        setup_highlights()
+    end
+}

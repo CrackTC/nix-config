@@ -1,5 +1,3 @@
-local M = {}
-
 local function setup_variables()
     vim.g.copilot_filetypes = { markdown = true }
     vim.g.copilot_no_tab_map = true
@@ -14,9 +12,13 @@ local function setup_mappings()
     })
 end
 
-function M.config()
-    setup_variables()
-    setup_mappings()
-end
-
-return M
+return {
+    "github/copilot.vim",
+    build = function()
+        vim.cmd([[Copilot setup]])
+    end,
+    init = function()
+        setup_variables()
+        setup_mappings()
+    end
+}

@@ -1,5 +1,3 @@
-local M = {}
-
 local extensions = {
     "coc-clangd",
     "coc-css",
@@ -115,10 +113,10 @@ local function setup_mappings()
 
     utils.nnoremap("sc", show_docs, opts)
 
-    utils.xnoremap("ut", "<Plug>(coc-funcobj-i)")
-    utils.xnoremap("at", "<Plug>(coc-funcobj-a)")
-    utils.onoremap("ut", "<Plug>(coc-funcobj-i)")
-    utils.onoremap("at", "<Plug>(coc-funcobj-a)")
+    utils.xnoremap("uf", "<Plug>(coc-funcobj-i)")
+    utils.xnoremap("af", "<Plug>(coc-funcobj-a)")
+    utils.onoremap("uf", "<Plug>(coc-funcobj-i)")
+    utils.onoremap("af", "<Plug>(coc-funcobj-a)")
     utils.xnoremap("uc", "<Plug>(coc-classobj-i)")
     utils.onoremap("uc", "<Plug>(coc-classobj-i)")
     utils.xnoremap("ac", "<Plug>(coc-classobj-a)")
@@ -138,12 +136,13 @@ local function setup_autocmds()
     })
 end
 
-
-function M.config()
-    setup_variables()
-    setup_highlights()
-    setup_mappings()
-    setup_autocmds()
-end
-
-return M
+return {
+    "neoclide/coc.nvim",
+    branch = "release",
+    config = function()
+        setup_variables()
+        setup_highlights()
+        setup_mappings()
+        setup_autocmds()
+    end
+}

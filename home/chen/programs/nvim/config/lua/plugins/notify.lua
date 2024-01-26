@@ -1,5 +1,3 @@
-local M = {}
-
 local function setup_plugin()
     require("notify").setup({
         stages = "fade",
@@ -51,17 +49,16 @@ end
 
 
 local function show_welcome()
-    require("notify").notify("今日もいい天気だよ～", "info", {
-        timeout = 500
-    })
+    require("notify").notify("今日もいい天気だよ～", "info", { timeout = 500 })
 end
 
-function M.config()
-    setup_plugin()
-    setup_variables()
-    setup_coc_status_notification()
+return {
+    "rcarriga/nvim-notify",
+    config = function()
+        setup_plugin()
+        setup_variables()
+        setup_coc_status_notification()
 
-    show_welcome()
-end
-
-return M
+        show_welcome()
+    end
+}

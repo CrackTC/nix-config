@@ -1,11 +1,6 @@
-local M = {}
-
-local function setup_variables()
-    vim.g.matchup_matchparen_offscreen = { method = "popup" }
-end
-
-function M.config()
-    setup_variables()
-end
-
-return M
+return {
+    "andymass/vim-matchup",
+    init = function()
+        vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+}

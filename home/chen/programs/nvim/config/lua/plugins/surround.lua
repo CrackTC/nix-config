@@ -1,5 +1,3 @@
-local M = {}
-
 local utils = require("utils")
 
 local map_surrounds = function(from, to)
@@ -10,28 +8,26 @@ local map_surrounds = function(from, to)
     utils.xnoremap("u" .. from, "i" .. to)
     utils.xnoremap("a" .. from, "a" .. to)
     utils.omap("u" .. from, "i" .. to)
-    utils.omap("a" .. from, "a" .. to)
 
-    -- remove surrounds
-    utils.nmap("sr" .. from, "sr" .. to)
+    if from ~= to then
+        utils.omap("a" .. from, "a" .. to)
+
+        -- remove surrounds
+        utils.nmap("sr" .. from, "sr" .. to)
+    end
 end
 
-local function setup_mappings()
-    local maps = {
-        ["H"] = '"',
-        ["h"] = "'",
-        ["l"] = ")",
-        ["{"] = "}",
-        ["["] = "]",
-        ["t"] = "t",
-    }
+return {
+    "tpope/vim-surround",
+    config = function()
+        utils.nnoremap("sr", "<Plug>Dsurround")
 
-    utils.nnoremap("sr", "<Plug>Dsurround")
-    for from, to in pairs(maps) do map_surrounds(from, to) end
-end
+        local maps = {
+            ["{"] = "}",
+            ["["] = "]",
+            ["t"] = "t",
+        }
 
-function M.config()
-    setup_mappings()
-end
-
-return M
+        for from, to in pairs(maps) do map_surrounds(from, to) end
+    end
+}
