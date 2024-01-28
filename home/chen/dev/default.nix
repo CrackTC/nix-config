@@ -1,5 +1,6 @@
 {
   imports = [
+    ./asm.nix
     ./c.nix
     ./dotnet.nix
     ./fhs.nix
