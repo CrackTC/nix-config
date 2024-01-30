@@ -75,6 +75,14 @@ function M.buffered_nmap(lhs, rhs, opts)
     M.buffered_remap('n', lhs, rhs, opts)
 end
 
+function M.buffered_imap(lhs, rhs, opts)
+    M.buffered_remap('i', lhs, rhs, opts)
+end
+
+function M.buffered_vmap(lhs, rhs, opts)
+    M.buffered_remap('v', lhs, rhs, opts)
+end
+
 function M.buffered_noremap(mode, lhs, rhs, opts)
     opts = opts or {}
     opts.buffer = true
