@@ -17,6 +17,16 @@
     # Support the Video Audio (Hardware) Acceleration API
     gst_all_1.gst-vaapi
 
+    (cataclysm-dda-git.overrideAttrs (oldAttrs: {
+      src = pkgs.fetchFromGitHub {
+        owner = "CleverRaven";
+        repo = "Cataclysm-DDA";
+        rev = "9ffcd2bb42b84ee4a8d13d5eb549a95cfeb19b0d";
+        hash = "sha256-zpYf1NVxCBZyf5BvUocaEfEUlsKp8dGGWwobTjKv1UM=";
+      };
+      patches = [ ];
+    }))
+
     bottles
 
     gamescope
