@@ -34,7 +34,7 @@ utils.noremap("", "Y", "O", { nowait = true })
 
 
 utils.nnoremap("o", ":")
-utils.vnoremap("o", ":")
+utils.xnoremap("o", ":")
 
 utils.nnoremap("R", ":w<CR>")
 utils.nnoremap("Q", function()
@@ -111,20 +111,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 utils.tnoremap("<C-q>", [[<C-\><C-n>]])
-utils.noremap({"n", "t"}, "<A-o>", utils.open_term)
+utils.noremap({ "n", "t" }, "<A-o>", utils.open_term)
 
 -- open kitty in cwd
 
 utils.nnoremap("<leader>gg", function()
     os.execute("kitty&")
 end)
-
--- [command mode cursor movement] --
-
-utils.cnoremap("<C-a>", "<Home>")
-utils.cnoremap("<C-f>", "<End>")
-utils.cnoremap("<C-;>", "<Left>")
-utils.cnoremap("<C-k>", "<Right>")
 
 -- [other useful mappings] --
 
@@ -154,8 +147,8 @@ utils.nnoremap("<A-n>", "<cmd>m .+1<cr>==")
 utils.nnoremap("<A-e>", "<cmd>m .-2<cr>==")
 utils.inoremap("<A-n>", "<esc><cmd>m .+1<cr>==gi")
 utils.inoremap("<A-e>", "<esc><cmd>m .-2<cr>==gi")
-utils.vnoremap("<A-n>", ":m '>+1<cr>gv=gv")
-utils.vnoremap("<A-e>", ":m '<-2<cr>gv=gv")
+utils.xnoremap("<A-n>", ":m '>+1<cr>gv=gv")
+utils.xnoremap("<A-e>", ":m '<-2<cr>gv=gv")
 
 -- compile and run
 utils.nnoremap("P", utils.compile_run)
@@ -179,8 +172,22 @@ utils.noremap("", "dd", "gg")
 utils.noremap("", "dt", "gf")
 utils.noremap("", "dx", "gx")
 
-utils.vnoremap("s", "d", { nowait = true })
-utils.nnoremap("ds", "<Plug>(coc-definition)", { silent = true })
+utils.xnoremap("s", "d", { nowait = true })
+
+-- lsp
+utils.nnoremap("sc", vim.lsp.buf.hover)
+utils.nnoremap("sm", function()
+    vim.lsp.buf.format()
+    vim.diagnostic.enable(vim.api.nvim_get_current_buf())
+end)
+utils.nnoremap("ds", vim.lsp.buf.definition)
+utils.nnoremap("dp", vim.lsp.buf.references)
+utils.nnoremap("du", vim.lsp.buf.implementation)
+utils.nnoremap("<leader>a", vim.lsp.buf.code_action)
+utils.nnoremap("pk", vim.lsp.buf.rename)
+utils.nnoremap("sh", vim.diagnostic.goto_prev)
+utils.nnoremap("si", vim.diagnostic.goto_next)
+
 
 utils.nnoremap("<C-p>", "<C-r>")
 

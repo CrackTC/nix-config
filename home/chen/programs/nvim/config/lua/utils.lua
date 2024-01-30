@@ -18,6 +18,9 @@ end
 function M.noremap(mode, lhs, rhs, opts)
     opts = opts or {}
     opts.noremap = true
+    if mode == "" then
+        mode = { "n", "x", "o" }
+    end
     map(mode, lhs, rhs, opts)
 end
 
@@ -31,6 +34,10 @@ end
 
 function M.vnoremap(lhs, rhs, opts)
     M.noremap('v', lhs, rhs, opts)
+end
+
+function M.snoremap(lhs, rhs, opts)
+    M.noremap('s', lhs, rhs, opts)
 end
 
 function M.cnoremap(lhs, rhs, opts)

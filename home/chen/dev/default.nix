@@ -7,7 +7,7 @@
     ./go.nix
     ./haskell.nix
     ./js.nix
-    ./lua.nix
+    ./lsp.nix
     ./misc.nix
     ./nix.nix
     ./python.nix

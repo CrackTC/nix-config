@@ -4,8 +4,4 @@
     package = pkgs.go_1_21;
     goPath = "proj/go";
   };
-
-  home.packages = with pkgs; [
-    gopls
-  ];
 }

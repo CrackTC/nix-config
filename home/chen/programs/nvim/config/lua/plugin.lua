@@ -34,11 +34,11 @@ require("lazy").setup(
         require("plugins.tabular"),
         require("plugins.subversive"),
         require("plugins.copilot"),
-        require("plugins.coc"),
         require("plugins.hlchunk"),
         require("plugins.notify"),
         require("plugins.flit"),
         require("plugins.img-paste"),
+        require("plugins.cmp"),
     },
     { ui = { border = "rounded" } }
 )

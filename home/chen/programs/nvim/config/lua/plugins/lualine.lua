@@ -52,7 +52,7 @@ local function get_diagnostics_component()
             info  = { fg = '#8fbcbb' },
             hint  = { fg = '#a3be8c' },
         },
-        sources = { "nvim_diagnostic", "coc" },
+        sources = { "nvim_diagnostic" },
         symbols = { error = '󰝥 ', warn = '󰝥 ', info = '󰝥 ', hint = '󰝥 ', },
     }
 end
@@ -95,7 +95,7 @@ end
 
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "neoclide/coc.nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require('lualine').setup({
             options = {
