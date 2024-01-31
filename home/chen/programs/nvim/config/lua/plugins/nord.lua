@@ -24,5 +24,7 @@ return {
             }
         })
         vim.cmd.colorscheme("nord")
+        vim.api.nvim_set_hl(0, "luaParenError", { link = "Normal" })
+        vim.api.nvim_set_hl(0, "luaError", { link = "Normal" })
     end
 }
