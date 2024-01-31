@@ -2,7 +2,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 local servers = {
-    "csharp_ls",
     "cssls",
     "eslint",
     "gopls",
@@ -29,7 +28,16 @@ lspconfig.clangd.setup {
     }
 }
 
+lspconfig.csharp_ls.setup {
+    capabilities = capabilities,
+    handlers = {
+        ["textDocument/definition"] = require("csharpls_extended").handler,
+        ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
+    }
+}
+
 lspconfig.lua_ls.setup {
+    capabilities = capabilities,
     on_init = function(client)
         local path = client.workspace_folders[1].name
         if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -67,26 +75,26 @@ vim.diagnostic.config {
     },
 }
 
-local ns = vim.api.nvim_create_namespace('CurlineDiag')
-vim.api.nvim_create_autocmd('LspAttach', {
+local ns = vim.api.nvim_create_namespace("CurlineDiag")
+vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
-        vim.api.nvim_create_autocmd('CursorHold', {
+        vim.api.nvim_create_autocmd("CursorHold", {
             buffer = args.buf,
             callback = function()
                 pcall(vim.api.nvim_buf_clear_namespace, args.buf, ns, 0, -1)
-                local hi = { 'Error', 'Warn', 'Info', 'Hint' }
+                local hi = { "Error", "Warn", "Info", "Hint" }
                 local curline = vim.api.nvim_win_get_cursor(0)[1]
                 local diagnostics = vim.diagnostic.get(args.buf, { lnum = curline - 1 })
                 local virt_texts = {}
                 for _, diag in ipairs(diagnostics) do
                     virt_texts[#virt_texts + 1] = {
                         string.format(" <- %s", diag.message),
-                        'DiagnosticVirtualText' .. hi[diag.severity]
+                        "DiagnosticVirtualText" .. hi[diag.severity]
                     }
                 end
                 vim.api.nvim_buf_set_extmark(args.buf, ns, curline - 1, 0, {
                     virt_text = virt_texts,
-                    hl_mode = 'combine'
+                    hl_mode = "combine"
                 })
             end
         })
@@ -111,5 +119,18 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
             scope = "cursor",
             focusable = false
         })
+    end
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client.server_capabilities.codeLensProvider then
+            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+                callback = vim.lsp.codelens.refresh,
+                buffer = bufnr
+            })
+        end
     end
 })

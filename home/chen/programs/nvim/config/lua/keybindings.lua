@@ -186,6 +186,7 @@ utils.nnoremap("du", vim.lsp.buf.implementation)
 utils.nnoremap("pk", vim.lsp.buf.rename)
 utils.nnoremap("sh", vim.diagnostic.goto_prev)
 utils.nnoremap("si", vim.diagnostic.goto_next)
+utils.nnoremap("<leader>cl", vim.lsp.codelens.run)
 
 
 utils.nnoremap("<C-p>", "<C-r>")
