@@ -131,9 +131,9 @@
     wall = 70000;
   };
 
-  services.blueman = {
-    enable = true;
-  };
+  services.blueman.enable = true;
+
+  services.fstrim.enable = true;
 
   security.sudo.extraRules = [
     {
