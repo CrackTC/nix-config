@@ -3,6 +3,7 @@ local lspconfig = require("lspconfig")
 
 local servers = {
     "cssls",
+    "denols",
     "eslint",
     "gopls",
     "hls",
@@ -34,6 +35,10 @@ lspconfig.csharp_ls.setup {
         ["textDocument/definition"] = require("csharpls_extended").handler,
         ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
     }
+}
+
+vim.g.markdown_fenced_languages = {
+    "ts=typescript",
 }
 
 lspconfig.lua_ls.setup {
