@@ -28,7 +28,6 @@ utils.noremap("", "O", ":")
 utils.noremap("", "P", "R")
 utils.noremap("", "R", "S")
 utils.noremap("", "S", "D")
-utils.noremap("", "T", "F")
 utils.noremap("", "U", "I")
 utils.noremap("", "Y", "O", { nowait = true })
 
