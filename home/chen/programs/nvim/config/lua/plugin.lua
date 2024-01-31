@@ -44,6 +44,7 @@ require("lazy").setup(
         require("plugins.treesitter"),
         require("plugins.undotree"),
         require("plugins.visual-multi"),
+        require("plugins.wildfire"),
     },
     { ui = { border = "rounded" } }
 )

@@ -40,15 +40,6 @@ local function setup_plugin()
                 end
             end
         },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "<CR>",
-                node_incremental = "<CR>",
-                node_decremental = "<BS>",
-                scope_incremental = false,
-            },
-        },
         indent = { enable = true },
         matchup = { enable = true },
     })
