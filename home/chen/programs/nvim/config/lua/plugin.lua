@@ -26,7 +26,6 @@ require("lazy").setup(
         require("plugins.flit"),
         require("plugins.gitsigns"),
         require("plugins.headlines"),
-        require("plugins.hlchunk"),
         require("plugins.illuminate"),
         require("plugins.img-paste"),
         require("plugins.joshuto"),
