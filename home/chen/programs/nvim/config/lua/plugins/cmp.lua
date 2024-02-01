@@ -83,7 +83,7 @@ return {
             snippet = { expand = function(args) vim.fn["vsnip#anonymous"](args.body) end },
             sources = cmp.config.sources(
                 { { name = "nvim_lsp" }, { name = "vsnip" } },
-                { { name = "buffer" } }
+                { { name = "buffer" }, { name = "path" } }
             ),
             window = {
                 completion = {
