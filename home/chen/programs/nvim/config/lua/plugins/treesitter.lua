@@ -40,7 +40,7 @@ local function setup_plugin()
                 end
             end
         },
-        indent = { enable = true },
+        indent = { enable = false },
         matchup = { enable = true },
     })
 end
