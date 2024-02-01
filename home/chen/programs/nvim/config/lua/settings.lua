@@ -22,7 +22,7 @@ vim.opt.cursorline = true     -- highlight current line
 vim.opt.hlsearch = false      -- highlight search results
 vim.opt.ruler = true          -- show cursor position
 vim.opt.expandtab = true      -- use spaces instead of tabs
-vim.opt.tabstop = 4           -- tab size, number of spaces
+vim.opt.tabstop = 8           -- tab size, number of spaces
 vim.opt.shiftwidth = 4        -- indent size, number of spaces, used for >>, <<, ==, etc.
 vim.opt.autoindent = true     -- copy indent from current line when starting a new line
 vim.opt.list = true           -- show whitespace characters
