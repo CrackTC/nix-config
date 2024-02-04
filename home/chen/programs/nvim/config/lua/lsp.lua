@@ -11,6 +11,7 @@ local servers = {
     "jsonls",
     "nil_ls",
     "phpactor",
+    "pyright",
     "vimls",
     "yamlls",
 }

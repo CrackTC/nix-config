@@ -7,6 +7,7 @@
     lua-language-server
     nil
     phpactor
+    pyright
     vim-language-server
     vscode-langservers-extracted
     yaml-language-server
