@@ -140,7 +140,7 @@
         animate_manual_resizes = false;
         animate_mouse_windowdragging = true;
         disable_autoreload = true;
-        focus_on_activate = true;
+        focus_on_activate = false;
         disable_hyprland_logo = true;
       };
 
