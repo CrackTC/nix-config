@@ -35,6 +35,7 @@ require("lazy").setup(
         require("plugins.matchup"),
         require("plugins.nord"),
         require("plugins.notify"),
+        require("plugins.null-ls"),
         require("plugins.repeat"),
         require("plugins.subversive"),
         require("plugins.surround"),
