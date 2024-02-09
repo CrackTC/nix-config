@@ -106,10 +106,9 @@
           popups_ignorealpha = 0.8;
         };
 
-        drop_shadow = false;
-        shadow_range = 5;
-        shadow_render_power = 5;
-        "col.shadow" = "rgba(000000ff)";
+        drop_shadow = true;
+        shadow_range = 20;
+        "col.shadow_inactive" = "rgba(00000000)";
       };
 
       animations = {
