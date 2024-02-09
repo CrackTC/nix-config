@@ -1,4 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  fontDir = pkgs.stdenv.mkDerivation {
+    name = "fontDir";
+    buildCommand = ''
+      mkdir -p $out/share
+      ln -s /run/current-system/sw/share/X11/fonts $out/share/fonts
+    '';
+  };
+in {
   home.packages = with pkgs; [
     (pkgs.buildFHSUserEnv {
       name = "fhs";
@@ -16,6 +25,7 @@
         gcc
         ocaml
         openssl
+        fontDir
       ];
     })
   ];
