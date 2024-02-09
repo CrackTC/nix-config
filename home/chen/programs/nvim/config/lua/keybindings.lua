@@ -169,7 +169,9 @@ utils.noremap("", "s", "d")
 utils.noremap("", "y", "o", { nowait = true })
 utils.noremap("", "dd", "gg")
 utils.noremap("", "dt", "gf")
-utils.noremap("", "dx", "gx")
+
+utils.nmap("dx", "<Plug>NetrwBrowseX")
+utils.xmap("dx", "<Plug>NetrwBrowseXVis")
 
 utils.xnoremap("s", "d", { nowait = true })
 
