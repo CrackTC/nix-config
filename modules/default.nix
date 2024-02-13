@@ -4,6 +4,7 @@
     ./firewall.nix
     ./fonts.nix
     ./game.nix
+    ./gvfs.nix
     ./jlu.nix
     ./joycond.nix
     ./man.nix
