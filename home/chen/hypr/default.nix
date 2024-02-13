@@ -55,7 +55,6 @@
         "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
         "imwheel"
         "waybar"
-        "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
         "ydotoold"
         "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       ];
