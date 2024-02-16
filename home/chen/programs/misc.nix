@@ -8,7 +8,6 @@
     extraRepos.nur.repos.linyinfeng.wemeet
     gnome.nautilus
     krita
-    # kuro
     libsForQt5.ark
     libsForQt5.okular
     logisim-evolution
