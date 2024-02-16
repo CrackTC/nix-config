@@ -12,7 +12,6 @@
       text = ''
       context.properties = {
         default.clock.rate = 44100;
-        default.clock.min-quantum = 512;
         default.clock.allowed-rates = [ 44100 48000 ]
       };
       '';
