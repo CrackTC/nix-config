@@ -10,5 +10,6 @@
         auto_update = true;
       };
     };
+    updateOnActivation = false;
   };
 }
