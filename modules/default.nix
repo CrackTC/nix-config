@@ -1,6 +1,7 @@
 {
   imports = [
     ./clash.nix
+    ./coredump.nix
     ./firewall.nix
     ./fonts.nix
     ./game.nix
