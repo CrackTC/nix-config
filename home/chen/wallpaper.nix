@@ -2,19 +2,19 @@
 let
   wallDir = "~/Desktop/wallpapers";
 
-  swww = (pkgs.swww.overrideAttrs (old: rec {
+  swww = pkgs.swww.overrideAttrs (old: rec {
     src = pkgs.fetchFromGitHub {
       owner = "Horus645";
       repo = "swww";
-      rev = "0908f36050d545a0eb97ca0cbfc40c47fc50d6ba";
-      hash = "sha256-NRmlctWwiUVlbB457y3e2BpWNyJ7CHpEnAYazwYQZpk=";
+      rev = "a3dc064fab7db2ae5ed282b4e4ee7c68f2d2854a";
+      hash = "sha256-JoXnwKjmtv+1PUSrriNAEoTONrNeJ5cR9KJ6qPy4Go4=";
     };
     RUSTFLAGS = "-C target-cpu=alderlake";
     cargoDeps = old.cargoDeps.overrideAttrs (_: {
       inherit src;
-      outputHash = "sha256-By1oaP8Uh9wEdxdW3+2c9qNKPSOxFBC1mECutlWknUs=";
+      outputHash = "sha256-IIrMgdjbGviQdwlU2E6ujjb8ULpVXsMvntcQvdv7UOo=";
     });
-  }));
+  });
 
   wall = pkgs.writeScript "wall" ''
     #!${pkgs.fish}/bin/fish
