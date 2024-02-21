@@ -10,6 +10,7 @@
     ./lsp.nix
     ./misc.nix
     ./nix.nix
+    ./podman.nix
     ./python.nix
     ./scheme.nix
     ./verilog.nix
