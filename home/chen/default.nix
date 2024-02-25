@@ -17,9 +17,11 @@ in
     ./xdg
   ];
 
-  home.username = "${info.username}";
-  home.homeDirectory = "/home/${info.username}";
+  home = {
+    username = "${info.username}";
+    homeDirectory = "/home/${info.username}";
+    stateVersion = "23.05";
+  };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "23.05";
 }
