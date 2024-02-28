@@ -6,6 +6,7 @@
     ./fhs.nix
     ./go.nix
     ./haskell.nix
+    ./java.nix
     ./js.nix
     ./lsp.nix
     ./misc.nix
