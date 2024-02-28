@@ -20,5 +20,7 @@
     bottles
 
     gamescope
+
+    (sunshine.override { cudaSupport = true; })
   ];
 }

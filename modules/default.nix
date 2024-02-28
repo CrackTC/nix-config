@@ -1,5 +1,6 @@
 {
   imports = [
+    ./avahi.nix
     ./clash.nix
     ./coredump.nix
     ./firewall.nix
