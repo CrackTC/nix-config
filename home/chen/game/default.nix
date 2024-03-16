@@ -1,7 +1,7 @@
 { extraRepos, pkgs, ... }: {
   home.packages = with extraRepos; with pkgs; [
     myRepo.beatoraja
-    yuzu-mainline
+    # yuzu-mainline
     osu-lazer-bin
 
     # Video/Audio data composition framework tools like "gst-inspect", "gst-launch" ...
