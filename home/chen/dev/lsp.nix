@@ -6,6 +6,7 @@
     csharp-ls
     gopls
     haskell-language-server
+    jdt-language-server
     lua-language-server
     nil
     phpactor

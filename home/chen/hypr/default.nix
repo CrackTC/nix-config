@@ -195,6 +195,7 @@
         "float, class:^(SVPManager)$"
         "stayfocused, title:^()$,class:^(steam)$"
         "minsize 1 1, title:^()$,class:^(steam)$"
+        "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\\d+$"
       ];
 
       xwayland = {

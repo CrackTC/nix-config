@@ -9,6 +9,7 @@ local servers = {
     "gopls",
     "hls",
     "html",
+    "jdtls",
     "jsonls",
     "nil_ls",
     "phpactor",
