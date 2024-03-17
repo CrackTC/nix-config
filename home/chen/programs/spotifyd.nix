@@ -1,6 +1,7 @@
-{info, ...}: {
+{ extraRepos, info, ...}: {
   services.spotifyd = {
     enable = true;
+    package = extraRepos.pkgs-master.spotifyd;
     settings = {
       global = {
         username = info.email;
