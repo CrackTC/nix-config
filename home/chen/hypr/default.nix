@@ -76,7 +76,8 @@
         sensitivity = 0;
       };
 
-      "device:ydotoold-virtual-device" = {
+      device = {
+        name = "ydotoold-virtual-device";
         kb_layout = "us";
         kb_variant = "";
         kb_options = "";

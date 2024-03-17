@@ -1,10 +1,10 @@
-{
+{pkgs, ...}: {
   programs = {
     fish.enable = true;
     gnupg = {
       agent = {
         enable = true;
-        pinentryFlavor = "qt";
+        pinentryPackage = pkgs.pinentry-qt;
       };
     };
     nix-ld.enable = true;

@@ -6,13 +6,13 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "Horus645";
       repo = "swww";
-      rev = "a3dc064fab7db2ae5ed282b4e4ee7c68f2d2854a";
-      hash = "sha256-JoXnwKjmtv+1PUSrriNAEoTONrNeJ5cR9KJ6qPy4Go4=";
+      rev = "0516ea09e5d7e8194d53760a71bc5bb3cd5de30b";
+      hash = "sha256-HfGHkSCal2fd+/y9sk0+9sv5WAKssL2OJk/UeB5qNPw=";
     };
     RUSTFLAGS = "-C target-cpu=alderlake";
     cargoDeps = old.cargoDeps.overrideAttrs (_: {
       inherit src;
-      outputHash = "sha256-IIrMgdjbGviQdwlU2E6ujjb8ULpVXsMvntcQvdv7UOo=";
+      outputHash = "sha256-YkgvlRlhl+++lsboEMWJXMBgoAM3CW00xkKgALhFDfo=";
     });
   });
 
