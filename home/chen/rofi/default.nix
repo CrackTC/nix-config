@@ -24,6 +24,9 @@ in
       display-combi = display;
     };
     inherit font;
-    plugins = [ pkgs.rofi-calc extraRepos.myRepo.rofi-ts ];
+    plugins = map (p: p.override { rofi-unwrapped = pkgs.rofi-wayland-unwrapped; }) [
+      pkgs.rofi-calc
+      extraRepos.myRepo.rofi-ts
+    ];
   };
 }
