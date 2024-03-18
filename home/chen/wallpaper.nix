@@ -18,6 +18,7 @@ let
 
   wall = pkgs.writeScript "wall" ''
     #!${pkgs.fish}/bin/fish
+    sleep 5
     ${swww}/bin/swww-daemon &
     while true
       set pos (random 1 2000),(random 1 2000)
