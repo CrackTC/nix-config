@@ -192,6 +192,7 @@
         "opacity 0.8 override 0.8 override, class:^(code-url-handler)$"
         "opacity 0.8 override 0.8 override, class:^(kitty)$"
         "opacity 0.8 override 0.8 override, class:^(firefox)$"
+        "opacity 0.8 override 0.8 override, class:^(jetbrains-[a-z]*)$"
         "fullscreen, class:^(mpv)$"
         "float, class:^(SVPManager)$"
         "stayfocused, title:^()$,class:^(steam)$"

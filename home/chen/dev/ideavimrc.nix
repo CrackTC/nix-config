@@ -20,6 +20,8 @@
     noremap Q :q<CR>
     noremap dd gg
     noremap d g
+    noremap ; p
+    noremap D G
 
     nnoremap ds :action GotoDeclaration<CR>
     nnoremap dS :action GotoTypeDeclaration<CR>
