@@ -11,6 +11,7 @@
     ./js.nix
     ./lsp.nix
     ./misc.nix
+    ./net.nix
     ./nix.nix
     ./podman.nix
     ./python.nix

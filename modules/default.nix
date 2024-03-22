@@ -3,6 +3,7 @@
     ./avahi.nix
     ./clash.nix
     ./coredump.nix
+    ./dev.nix
     ./firewall.nix
     ./fonts.nix
     ./game.nix
