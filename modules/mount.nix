@@ -2,7 +2,7 @@
   environment.systemPackages = [ pkgs.cifs-utils ];
   fileSystems = {
     "/mnt/windows" = {
-      device = "/dev/disk/by-uuid/C642192442191B2F";
+      device = "/dev/disk/by-uuid/D66C452C6C450927";
       fsType = "ntfs";
     };
 
