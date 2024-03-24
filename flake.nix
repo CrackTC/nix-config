@@ -77,7 +77,7 @@
 
             pythonPackagesExtensions =
               let
-                dontCheckPy = (names: _: pysuper: super.lib.foldr
+                dontCheckPy = names: _: pysuper: super.lib.foldr
                   (name: rhs: rhs // {
                     "${name}" = pysuper.${name}.overridePythonAttrs (oldAttrs: {
                       doCheck = false;
@@ -86,8 +86,7 @@
                     });
                   })
                   { }
-                  names
-                );
+                  names;
               in
               super.pythonPackagesExtensions ++ [ (dontCheckPy [ "numpy" "pandas" ]) ];
           })
