@@ -1,6 +1,7 @@
 {
   imports = [
     ./avahi.nix
+    ./board.nix
     ./clash.nix
     ./coredump.nix
     ./dev.nix

@@ -7,5 +7,7 @@
     protobuf
 
     mars-mips
+
+    minicom
   ];
 }
