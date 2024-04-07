@@ -71,7 +71,7 @@
     extraGroups = [ "wheel" ];
   };
 
-  environment.systemPackages = with pkgs; [ vim git libva-utils nvtop vulkan-tools ];
+  environment.systemPackages = with pkgs; [ vim git libva-utils nvtopPackages.full vulkan-tools ];
 
   services = {
     udisks2.enable = true;
