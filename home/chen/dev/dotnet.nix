@@ -7,5 +7,6 @@
     ])
 
     csharprepl
+    jetbrains.rider
   ];
 }
