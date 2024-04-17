@@ -9,5 +9,8 @@
     mars-mips
 
     minicom
+
+    frida-tools
+    ghidra
   ];
 }
