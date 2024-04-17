@@ -41,7 +41,7 @@
       enbase = "echo -n $argv | base64";
       debase = "echo -n $argv | base64 -d";
       conda = ''
-        fhs -C 'eval "$(micromamba shell hook --shell=fish)"'
+        eval "$(micromamba shell hook --shell=fish)"
       '';
       rebuild = "sudo nixos-rebuild switch $argv && ${pkgs.dunst}/bin/dunstify -a 'Rebuild' 'Rebuild finished 🎉' || ${pkgs.dunst}/bin/dunstify -a 'Rebuild' 'Rebuild failed 😢'";
       o = "xdg-open $argv >/dev/null 2>&1 & disown";
