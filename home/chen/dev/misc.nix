@@ -15,5 +15,7 @@
     netcat-gnu
     frida-tools
     ghidra
+
+    godot_4
   ];
 }
