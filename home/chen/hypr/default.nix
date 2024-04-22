@@ -8,7 +8,7 @@
     settings = {
       monitor = lib.mkDefault [
         "DP-1,2560x1440@170,auto,1"
-        "eDP-1,2560x1440@240,0x0,1"
+        "eDP-1,2560x1440@240,0x0,1.33"
         # "HDMI-A-1,disabled"
       ];
 
