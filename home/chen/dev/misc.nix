@@ -10,6 +10,9 @@
 
     minicom
 
+    metasploit
+    nmap
+    netcat-gnu
     frida-tools
     ghidra
   ];
