@@ -30,7 +30,7 @@ profileName: { pkgs, info, ... }: {
     };
     profiles.${profileName}.settings = {
       "trailhead.firstrun.didSeeAboutWelcome" = true;
-      "intl.locale.requested" = "zh-CN,en-US";
+      "intl.locale.requested" = "en-US";
       "layout.css.devPixelsPerPx" = -1;
       "signon.rememberSignons" = false;
       "browser.tabs.tabmanager.enabled" = false;
