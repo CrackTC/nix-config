@@ -197,6 +197,7 @@
         "fullscreen, class:^(mpv)$"
         "float, class:^(SVPManager)$"
         "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\\d+$"
+        "nofocus,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
       ];
 
       xwayland = {
