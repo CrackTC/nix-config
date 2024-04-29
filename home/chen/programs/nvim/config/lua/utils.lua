@@ -125,7 +125,14 @@ end
 function M.compile_run()
     vim.cmd('write')
 
-    if vim.fn.filereadable('Makefile') == 1 then
+    local root = vim.fs.dirname(vim.fs.find({ 'CMakeLists.txt' }, { upward = true })[1])
+
+    if root then
+        split_run('cmake -S ' ..
+            root ..
+            ' -B ' ..
+            root .. '/build && cmake --build ' .. root .. '/build && ' .. root .. '/build/' .. vim.fs.basename(root))
+    elseif vim.fn.filereadable('Makefile') == 1 then
         split_run('make clean build run')
     elseif vim.fn.filereadable(vim.fn.expand('%:p:h') .. '/Makefile') == 1 then
         split_run('make clean build run -C ' .. vim.fn.expand('%:p:h'))
