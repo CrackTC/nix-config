@@ -122,16 +122,43 @@ local function split_run(command)
     vim.cmd('terminal ' .. command)
 end
 
-function M.compile_run()
-    vim.cmd('write')
+local function join_path(paths)
+    table.remove(paths)
+    table.sort(paths, function(a, b) return #a < #b end)
+    for i, path in ipairs(paths) do
+        paths[i] = vim.fn.fnamemodify(path, ':p:h:t')
+    end
+    print(vim.inspect(paths))
+    return table.concat(paths, '/')
+end
 
-    local root = vim.fs.dirname(vim.fs.find({ 'CMakeLists.txt' }, { upward = true })[1])
+local function cmake_run()
+    local cmake_find_result = vim.fs.find({ 'CMakeLists.txt' },
+        { upward = true, limit = math.huge, path = vim.fn.expand('%:p:h') });
+    local root = vim.fs.dirname(cmake_find_result[#cmake_find_result])
+    local cmake_project_path = join_path(cmake_find_result)
 
     if root then
         split_run('cmake -S ' ..
             root ..
             ' -B ' ..
-            root .. '/build && cmake --build ' .. root .. '/build && ' .. root .. '/build/' .. vim.fs.basename(root))
+            root ..
+            '/build && cmake --build ' ..
+            root ..
+            '/build && ' ..
+            root .. '/build/' .. cmake_project_path .. '/' .. vim.fn.fnamemodify(cmake_project_path, ':t'))
+        return true
+    end
+
+    return false
+end
+
+
+function M.compile_run()
+    vim.cmd('write')
+
+    if cmake_run() then
+        return
     elseif vim.fn.filereadable('Makefile') == 1 then
         split_run('make clean build run')
     elseif vim.fn.filereadable(vim.fn.expand('%:p:h') .. '/Makefile') == 1 then
