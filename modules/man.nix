@@ -5,4 +5,5 @@
   ];
 
   documentation.dev.enable = true;
+  documentation.man.generateCaches = false;
 }
