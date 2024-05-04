@@ -81,6 +81,11 @@
         undo = "l";
         redo = "<c-r>";
       };
+
+      files = {
+        stashAllChanges = "r";
+        viewStashOptions = "R";
+      };
     };
   };
 }
