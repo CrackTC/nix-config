@@ -110,7 +110,7 @@
 
     @keyframes blink {
         to {
-            background-color: transparent;
+            background-color: black;
             color: #d8dde9;
         }
     }
@@ -120,7 +120,7 @@
         color: #d8dde9;
         animation-name: blink;
         animation-duration: 0.5s;
-        animation-timing-function: linear;
+        animation-timing-function: ease;
         animation-iteration-count: infinite;
         animation-direction: alternate;
     }
@@ -172,7 +172,7 @@
         margin-top: 0;
         padding: 0 15px;
         letter-spacing: 2px;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: #4c566a;
     }
 
     #temperature {

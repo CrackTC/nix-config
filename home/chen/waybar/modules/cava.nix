@@ -28,10 +28,6 @@
       bars = 50
       framerate = 60
 
-      [input]
-      method = pipewire
-      source = auto
-
       [output]
       method = raw
       raw_target = $pipe

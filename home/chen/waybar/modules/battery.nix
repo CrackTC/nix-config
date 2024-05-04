@@ -4,7 +4,7 @@
       warning = 30;
       critical = 15;
     };
-    format = "<span font-weight='normal'>{icon} </span>{capacity}";
+    format = "<span font-weight='normal' rise='1000'>{icon} </span>{capacity}";
     format-charging = "<span font-weight='normal'>󰂄 </span>{capacity}%";
     format-plugged = "<span font-weight='normal'>󰚥 </span>{capacity}%";
     format-alt = "{time} <span font-weight='normal'>{icon}</span>";
