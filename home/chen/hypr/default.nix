@@ -160,9 +160,10 @@
       layerrule = [
         "blur, rofi"
         "ignorezero, rofi"
+        "dimaround, rofi"
 
         "noanim, waybar"
-        "ignorezero, waybar"
+        "ignorealpha 0.1, waybar"
         "blur, waybar"
 
         "blur, notifications"
