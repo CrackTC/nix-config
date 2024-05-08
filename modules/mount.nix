@@ -3,7 +3,7 @@
   fileSystems = {
     "/mnt/windows" = {
       device = "/dev/disk/by-uuid/D66C452C6C450927";
-      fsType = "ntfs";
+      fsType = "ntfs3";
     };
 
     "/mnt/lib" = {
