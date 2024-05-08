@@ -14,10 +14,10 @@
       car = "";
       default = [ "" "" "" ];
     };
-    on-click = "pavucontrol-qt";
+    on-click = "pavucontrol";
   };
 
   home.packages = with pkgs; [
-    lxqt.pavucontrol-qt
+    pavucontrol
   ];
 }
