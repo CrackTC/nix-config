@@ -4,5 +4,6 @@
     clang
     gdb
     bear
+    valgrind # for memory profiling
   ];
 }
