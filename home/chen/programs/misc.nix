@@ -13,7 +13,7 @@
     logisim-evolution
     obsidian
     onlyoffice-bin
-    qq
+    (qq.override { commandLineArgs = "--ozone-platform-hint=auto --enable-wayland-ime --gtk-version=4"; })
     showmethekey
     telegram-desktop
     thunderbird
