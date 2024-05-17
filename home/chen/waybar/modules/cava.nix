@@ -26,7 +26,7 @@
       echo "
       [general]
       bars = 50
-      framerate = 60
+      framerate = 30
 
       [output]
       method = raw
