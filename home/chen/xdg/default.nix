@@ -16,7 +16,7 @@
           "x-scheme-handler/about"
           "x-scheme-handler/unknown"
         ]
-          (mime: "firefox.desktop")
+          (mime: "vivaldi-stable.desktop")
 
         // lib.genAttrs [
           "application/pdf"
