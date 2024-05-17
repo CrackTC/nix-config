@@ -11,7 +11,6 @@ local servers = {
     "html",
     "jdtls",
     "jsonls",
-    "nil_ls",
     "phpactor",
     "pyright",
     "vimls",
@@ -37,6 +36,25 @@ lspconfig.csharp_ls.setup {
     handlers = {
         ["textDocument/definition"] = require("csharpls_extended").handler,
         ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
+    }
+}
+
+lspconfig.nil_ls.setup {
+    capabilities = capabilities,
+    settings = {
+        ['nil'] = {
+            formatting = {
+                command = { "nixpkgs_fmt" }
+            },
+            nix = {
+                maxMemoryMB = 16384,
+                flake = {
+                    autoArchive = true,
+                    autoEvalInputs = true,
+                    nixpkgsInputName = "nixpkgs"
+                }
+            }
+        }
     }
 }
 
@@ -135,10 +153,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local bufnr = args.buf
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client.server_capabilities.codeLensProvider then
-            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+            vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
                 callback = vim.lsp.codelens.refresh,
                 buffer = bufnr
             })
         end
     end
 })
+
+vim.lsp.set_log_level(vim.log.levels.OFF)
