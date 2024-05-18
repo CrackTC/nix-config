@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs = {
     fish.enable = true;
+    htop.enable = true;
     gnupg = {
       agent = {
         enable = true;
