@@ -1,6 +1,5 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; with nodePackages; with python311Packages; [
-    autopep8
+{ pkgs, extraRepos, ... }: {
+  home.packages = with pkgs; with nodePackages; with extraRepos; [
     clang-tools
     cmake-language-server
     csharp-ls
@@ -10,6 +9,7 @@
     lua-language-server
     nil
     phpactor
+    myRepo.pyink
     pyright
     statix
     vim-language-server
