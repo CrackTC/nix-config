@@ -1,3 +1,4 @@
+{ extraRepos, ... }:
 {
   imports = [
     ./modules
@@ -6,6 +7,7 @@
 
   programs.waybar = {
     enable = true;
+    package = extraRepos.pkgs-master.waybar;
     settings = {
       mainBar = {
         spacing = 2;

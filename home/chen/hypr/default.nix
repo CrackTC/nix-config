@@ -5,6 +5,7 @@
     ++ (lib.singleton ./keybindings.nix);
   wayland.windowManager.hyprland = {
     enable = true;
+    package = extraRepos.pkgs-master.hyprland;
     settings = {
       monitor = lib.mkDefault [
         "DP-1,2560x1440@170,auto,1"
