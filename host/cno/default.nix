@@ -150,6 +150,7 @@
   services.hpfan = {
     enable = true;
     wall = 70000;
+    pwmFile = "/sys/class/hwmon/hwmon6/pwm1_enable";
   };
 
   services.blueman.enable = true;
