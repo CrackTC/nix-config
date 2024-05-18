@@ -44,7 +44,7 @@ lspconfig.nil_ls.setup {
     settings = {
         ['nil'] = {
             formatting = {
-                command = { "nixpkgs_fmt" }
+                command = { "nixpkgs-fmt" }
             },
             nix = {
                 maxMemoryMB = 16384,
