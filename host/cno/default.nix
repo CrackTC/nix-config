@@ -95,7 +95,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
       powerManagement.finegrained = true;
-      open = false;
+      open = true;
       prime = {
         offload = {
           enable = true;
@@ -150,7 +150,7 @@
   services.hpfan = {
     enable = true;
     wall = 70000;
-    pwmFile = "/sys/class/hwmon/hwmon6/pwm1_enable";
+    pwmFile = "/sys/class/hwmon/hwmon5/pwm1_enable";
   };
 
   services.blueman.enable = true;
