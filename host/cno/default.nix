@@ -32,6 +32,7 @@
       /* "module_blacklist=i915" */
       "ibt=off"
     ];
+    kernelModules = [ "nvidia_uvm" ];
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
