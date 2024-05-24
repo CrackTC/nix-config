@@ -2,6 +2,7 @@
   imports = [
     ./asm.nix
     ./c.nix
+    ./ctf.nix
     ./dotnet.nix
     ./fhs.nix
     ./go.nix
