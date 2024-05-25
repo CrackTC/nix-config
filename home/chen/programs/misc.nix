@@ -18,6 +18,7 @@
     telegram-desktop
     thunderbird
     yesplaymusic
+    spotify
 
     asciinema
     bc
