@@ -12,7 +12,7 @@
     libsForQt5.okular
     logisim-evolution
     obsidian
-    onlyoffice-bin
+    libreoffice-qt
     (qq.override { commandLineArgs = "--ozone-platform-hint=auto --enable-wayland-ime --gtk-version=4"; })
     showmethekey
     telegram-desktop
