@@ -47,7 +47,7 @@
         // lib.genAttrs [
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         ]
-          (mime: "onlyoffice-desktopeditors.desktop");
+          (mime: "writer.desktop");
     };
 
     userDirs = {
