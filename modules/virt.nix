@@ -56,6 +56,8 @@
   virtualisation.libvirtd = {
     enable = true;
     qemu.package = pkgs.qemu_kvm;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
   };
   users.groups.libvirtd.members = [ "root" info.username ];
   environment.systemPackages = with pkgs; [ virtiofsd spice-gtk looking-glass-client ];
