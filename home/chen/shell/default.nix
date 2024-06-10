@@ -3,7 +3,6 @@
     ./fish.nix
     ./pwsh.nix
   ];
-  programs.atuin.enable = true;
   home.shellAliases = {
     c = "clear";
     d = "disown";
