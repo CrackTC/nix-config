@@ -20,7 +20,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
-    nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-23.11"; flake = false; };
+    nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.05"; flake = false; };
     nur = { url = "github:nix-community/NUR"; flake = false; };
     myRepo = {
       url = "github:CrackTC/nur-packages";
@@ -48,86 +48,50 @@
     , ...
     }:
     let
-      info = {
-        username = "chen";
-        nickname = "CrackTC";
-        email = "chenrke369@gmail.com";
-      };
-
-      opt = system: cpu: native: {
-        config.allowUnfree = true;
-        config.permittedInsecurePackages = [ "electron-25.9.0" ];
-      } //
-      (if !native then { inherit system; } else {
-        localSystem = { inherit system; gcc.arch = cpu; gcc.tune = cpu; };
-        overlays = [
-          (self: super: {
-            opencolorio = super.opencolorio.overrideAttrs { doCheck = false; };
-
-            haskellPackages = super.haskellPackages.override {
-              overrides = hself: hsuper: {
-                crypton = super.haskell.lib.dontCheck hsuper.crypton;
-                crypton-x509-validation = super.haskell.lib.dontCheck hsuper.crypton-x509-validation;
-                tls_1_9_0 = super.haskell.lib.dontCheck hsuper.tls_1_9_0;
-                tls = super.haskell.lib.dontCheck hsuper.tls;
-                cryptonite = super.haskell.lib.overrideCabal hsuper.cryptonite (oa: { doCheck = false; });
-                x509-validation = super.haskell.lib.overrideCabal hsuper.x509-validation (oa: { doCheck = false; });
-              };
-            };
-
-            pythonPackagesExtensions =
-              let
-                dontCheckPy = names: _: pysuper: super.lib.foldr
-                  (name: rhs: rhs // {
-                    "${name}" = pysuper.${name}.overridePythonAttrs (oldAttrs: {
-                      doCheck = false;
-                      doInstallCheck = false;
-                      dontCheck = true;
-                    });
-                  })
-                  { }
-                  names;
-              in
-              super.pythonPackagesExtensions ++ [ (dontCheckPy [ "numpy" "pandas" ]) ];
-          })
-        ];
-      });
+      hosts = [ "cno" ];
     in
     {
-      nixosConfigurations = {
-        cno = nixpkgs.lib.nixosSystem (
-          let
-            host = { name = "cno"; system = "x86_64-linux"; cpu = "alderlake"; };
-            option = opt host.system host.cpu false;
+      nixosConfigurations = builtins.listToAttrs (map
+        (host-name: {
+          name = host-name;
+          value = nixpkgs.lib.nixosSystem
+            (
+              let
+                utilities = import ./utils;
+                host-info = import ./config/hosts/${host-name}/flake-info.nix;
+                option = utilities.nixpkgsOptions host-info.system host-info.cpu false;
 
-            pkgs = import nixpkgs option;
-            extraRepos = {
-              # pkgs-native = import nixpkgs (opt system true);
-              pkgs-master = import nixpkgs-master option;
-              pkgs-stable = import nixpkgs-stable option;
+                pkgs = import nixpkgs option;
+                extraRepos = {
+                  # pkgs-native = import nixpkgs (lib.utils.nixpkgsOptions host-info.system host-info.cpu true);
+                  pkgs-master = import nixpkgs-master option;
+                  pkgs-stable = import nixpkgs-stable option;
 
-              nur = import nur { inherit pkgs; nurpkgs = pkgs; };
-              myRepo = myRepo.legacyPackages.${host.system};
-            };
-          in
-          rec {
-            specialArgs = { inherit pkgs extraRepos info host; };
-            modules = [
-              ./modules
-              ./host/${host.name}
-              sops-nix.nixosModules.sops
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.${info.username} = import ./home/${info.username};
-                  extraSpecialArgs = specialArgs;
+                  nur = import nur { inherit pkgs; nurpkgs = pkgs; };
+                  myRepo = myRepo.legacyPackages.${host-info.system};
                 };
+                specialArgs = { inherit pkgs extraRepos; inherit utilities; };
+              in
+              {
+                inherit specialArgs;
+                modules = [
+                  sops-nix.nixosModules.sops
+                  home-manager.nixosModules.home-manager
+
+                  {
+                    sorac = {
+                      host = host-info // { name = host-name; };
+                      homes = import ./config/homes;
+                    };
+                  }
+
+                  ./config/hosts/${host-name}
+                  ./modules/host
+                  ./modules/home
+                ];
               }
-            ];
-          }
-        );
-      };
+            );
+        })
+        hosts);
     };
 }
