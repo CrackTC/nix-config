@@ -7,10 +7,11 @@ let cfg = config.theme; in {
   config.hmConfig = lib.mkIf cfg.enable {
     home.pointerCursor = {
       gtk.enable = true;
-      # x11.enable = true;
       package = pkgs.capitaine-cursors-themed;
       name = "Capitaine Cursors (Nord)";
       size = 24;
+      x11.enable = true;
+      x11.defaultCursor = "Capitaine Cursors (Nord)";
     };
 
     gtk = {

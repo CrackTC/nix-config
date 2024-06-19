@@ -30,13 +30,21 @@ in
               "LANG,zh_CN.UTF-8"
               "LANGUAGE,zh_CN:en_US"
 
-              "QT_QPA_PLATFORM,wayland"
-              "CLUTTER_BACKEND,wayland"
+              # Toolkit Backend Variables
+              "GDK_BACKEND,wayland,x11,*"
+              "QT_QPA_PLATFORM,wayland;xcb"
               "SDL_VIDEODRIVER,wayland"
-              "XDG_CURRENT_DESKTOP,Hyprland"
+              "CLUTTER_BACKEND,wayland"
 
-              "GDK_BACKEND,wayland,x11"
+              # XDG Specifications
+              "XDG_CURRENT_DESKTOP,Hyprland"
+              "XDG_SESSION_TYPE,wayland"
               "XDG_SESSION_DESKTOP,Hyprland"
+
+              # QT Variables
+              "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+              "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+
               "XDG_CONFIG_HOME,/home/${username}/.config"
               "XDG_CONFIG_DIR,/home/${username}/.config"
             ]
