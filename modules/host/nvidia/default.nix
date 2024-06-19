@@ -32,7 +32,7 @@ let cfg = config.sorac.host.nvidia; in {
         enable = true;
         driSupport = true;
         driSupport32Bit = true;
-        extraPackages = [ pkgs.libvdpau-va-gl ];
+        extraPackages = [ pkgs.libvdpau-va-gl pkgs.vaapiVdpau ];
       };
 
       nvidia = {
