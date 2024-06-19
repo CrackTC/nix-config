@@ -46,6 +46,8 @@ let cfg = config.sorac.host; in {
           STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
         };
       };
+
+      upower.enable = true;
     };
   };
 }
