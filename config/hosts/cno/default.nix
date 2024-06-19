@@ -42,8 +42,8 @@
         name = "DP-1";
         weight = 2560;
         height = 1440;
-        refresh = 170;
-        left = 2560;
+        refresh = 120;
+        left = 2048; # 2560 / 1.25
         top = 0;
         scale = 1.25;
       }
