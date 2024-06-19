@@ -6,6 +6,10 @@
 
   dev.enable = true;
   fcitx5.enable = true;
+  firefox = {
+    enable = true;
+    profileName = "sorac";
+  };
   game.enable = true;
   git.key = "32EC77DBD23E9EB1";
   gui.enable = true;
