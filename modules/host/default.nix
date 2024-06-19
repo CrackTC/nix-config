@@ -3,6 +3,7 @@ let cfg = config.sorac.host; in {
   imports = [
     ./bluetooth
     ./coredump.nix
+    ./dbus.nix
     ./dev
     ./firewall.nix
     ./fonts.nix
