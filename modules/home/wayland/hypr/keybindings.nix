@@ -11,7 +11,7 @@ let cfg = config.hypr; in {
         (lib.mkIf config.terminals.kitty.enable [ "$mainMod, Return, exec, kitty" ])
         (lib.mkIf config.obsidian.enable [ "$mainMod, ${if colemak then "Y" else "O"}, exec, obsidian" ])
         (lib.mkIf (config.vivaldi.enable || config.firefox.enable) [
-          "$mainMod, ${if colemak then "U" else "I"}, exec, ${if config.vivaldi.enable then "vivaldi" else "firefox"}"
+          "$mainMod, ${if colemak then "U" else "I"}, exec, ${if config.firefox.enable then "firefox" else "vivaldi"}"
         ])
         (lib.mkIf config.rofi.enable [
           "$mainMod, Q, exec, rofi ${rofi-kb} -show drun"

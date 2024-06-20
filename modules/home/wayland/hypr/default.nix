@@ -1,4 +1,4 @@
-{ config, pkgs, lib, extraRepos, ... }:
+{ config, pkgs, lib, extraRepos, hostConfig, ... }:
 let
   cfg = config.hypr;
   username = config._module.args.name;
@@ -22,7 +22,14 @@ in
     hmConfig = {
       wayland.windowManager.hyprland = {
         enable = true;
-        package = extraRepos.pkgs-master.hyprland;
+        package = extraRepos.pkgs-master.hyprland.overrideAttrs (attrs: {
+          preConfigure = ''
+            cmakeFlagsArray=(
+              $cmakeFlagsArray
+              "-DCMAKE_CXX_FLAGS=-march=${hostConfig.cpu} -mtune=${hostConfig.cpu}"
+            )
+          '';
+        });
         settings = {
 
           env = lib.mkMerge [
@@ -108,7 +115,7 @@ in
 
             blur = {
               enabled = true;
-              size = 2;
+              size = 5;
               passes = 4;
               xray = true;
               new_optimizations = true;
@@ -117,9 +124,9 @@ in
               popups_ignorealpha = 0.8;
             };
 
-            drop_shadow = true;
-            shadow_range = 20;
-            "col.shadow_inactive" = "rgba(00000000)";
+            # drop_shadow = false;
+            # shadow_range = 20;
+            # "col.shadow_inactive" = "rgba(00000000)";
           };
 
           animations = {

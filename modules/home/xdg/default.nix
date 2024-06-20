@@ -22,7 +22,7 @@ let cfg = config.xdg; in {
             "x-scheme-handler/about"
             "x-scheme-handler/unknown"
           ]
-            (mime: if config.vivaldi.enable then "vivaldi-stable.desktop" else "firefox.desktop")
+            (mime: if config.firefox.enable then "firefox.desktop" else "vivaldi-stable.desktop")
 
           // lib.genAttrs [
             "application/pdf"
