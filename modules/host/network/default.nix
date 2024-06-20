@@ -21,7 +21,7 @@ let cfg = config.sorac.host.network; in {
           fi
 
           if [ "$ACTION" = "up" ]; then
-              pkill jlu-drcom
+              ${pkgs.procps}/bin/pkill jlu-drcom
               /home/chen/repos/dr-jlu-linux/bin/jlu-drcom&
           fi
         '';
