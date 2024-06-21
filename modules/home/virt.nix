@@ -23,6 +23,10 @@ let cfg = config.virt; in {
         nv-pci-pass-through.configuration = {
           system.nixos.tags = [ "nv-pci-pass-through" ];
           boot = {
+            kernel.sysctl = {
+              "vm.nr_hugepages" = 16384;
+              "vm.hugetlb_shm_group" = osConfig.users.groups.libvirtd.gid;
+            };
             kernelParams = [ "intel_iommu=on" "iommu=pt" ];
             kernelModules = [
               "vfio"
@@ -43,6 +47,7 @@ let cfg = config.virt; in {
             extraModprobeConfig = ''
               options vfio-pci ids=${builtins.concatStringsSep "," hostConfig.virt.pciPassIds}
               options kvmfr static_size_mb=${toString hostConfig.virt.kvmfrSizeMb}
+              options kvm ignore_msrs=1
             '';
           };
 

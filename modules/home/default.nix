@@ -121,6 +121,7 @@ in
       # osConfig <- infinite recursion
       # this works but ugly
       {
+        boot = mergeOSAttr "boot";
         environment = mergeOSAttr "environment";
         hardware = mergeOSAttr "hardware";
         networking = mergeOSAttr "networking";
