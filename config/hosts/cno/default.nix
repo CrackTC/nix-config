@@ -62,7 +62,7 @@
 
   services.hpfan = {
     enable = true;
-    wall = 70000;
+    wall = 80000;
     pwmFile = "/sys/class/hwmon/hwmon5/pwm1_enable";
   };
 
