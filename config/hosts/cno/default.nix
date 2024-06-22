@@ -12,11 +12,21 @@
     network.inJLU = true;
     newIntel = {
       enable = true;
-      pciBusId = "PCI:0:2:0";
+      pciBusId = {
+        domain = "0000";
+        bus = "00";
+        slot = "02";
+        function = "0";
+      };
     };
     nvidia = {
       enable = true;
-      pciBusId = "PCI:1:0:0";
+      pciBusId = {
+        domain = "0000";
+        bus = "01";
+        slot = "00";
+        function = "0";
+      };
     };
     powerManagement.enable = true;
     ssd.enable = true;

@@ -6,10 +6,27 @@ let cfg = config.sorac.host.nvidia; in {
       default = false;
       description = "Host has Nvidia GPU";
     };
-    pciBusId = lib.mkOption {
-      type = lib.types.str;
-      default = "PCI:1:0:0";
-      description = "PCI Bus ID of the Nvidia GPU";
+    pciBusId = {
+      domain = lib.mkOption {
+        type = lib.types.str;
+        default = "0000";
+        description = "PCI domain of the Nvidia GPU";
+      };
+      bus = lib.mkOption {
+        type = lib.types.str;
+        default = "01";
+        description = "PCI bus of the Nvidia GPU";
+      };
+      slot = lib.mkOption {
+        type = lib.types.str;
+        default = "00";
+        description = "PCI slot of the Nvidia GPU";
+      };
+      function = lib.mkOption {
+        type = lib.types.str;
+        default = "0";
+        description = "PCI function of the Nvidia GPU";
+      };
     };
   };
 
@@ -39,7 +56,7 @@ let cfg = config.sorac.host.nvidia; in {
         package = config.boot.kernelPackages.nvidiaPackages.stable;
         modesetting.enable = true;
         open = true;
-        prime.nvidiaBusId = cfg.pciBusId;
+        prime.nvidiaBusId = "PCI:${cfg.pciBusId.bus}:${cfg.pciBusId.slot}:${cfg.pciBusId.function}";
         nvidiaSettings = false;
       };
     };

@@ -6,10 +6,27 @@ let cfg = config.sorac.host.newIntel; in {
       default = false;
       description = "Host has new Intel GPU";
     };
-    pciBusId = lib.mkOption {
-      type = lib.types.str;
-      default = "PCI:0:2:0";
-      description = "PCI Bus ID of the Intel GPU";
+    pciBusId = {
+      domain = lib.mkOption {
+        type = lib.types.str;
+        default = "0000";
+        description = "PCI domain of the Intel GPU";
+      };
+      bus = lib.mkOption {
+        type = lib.types.str;
+        default = "00";
+        description = "PCI bus of the Intel GPU";
+      };
+      slot = lib.mkOption {
+        type = lib.types.str;
+        default = "02";
+        description = "PCI slot of the Intel GPU";
+      };
+      function = lib.mkOption {
+        type = lib.types.str;
+        default = "0";
+        description = "PCI function of the Intel GPU";
+      };
     };
   };
 
@@ -30,7 +47,7 @@ let cfg = config.sorac.host.newIntel; in {
           pkgs.vpl-gpu-rt # for qsv support in obs-studio
         ];
       };
-      nvidia.prime.intelBusId = cfg.pciBusId;
+      nvidia.prime.intelBusId = "PCI:${cfg.pciBusId.bus}:${cfg.pciBusId.slot}:${cfg.pciBusId.function}";
     };
   };
 }
