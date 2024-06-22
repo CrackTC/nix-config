@@ -33,7 +33,7 @@ let cfg = config.sorac.host.nvidia; in {
   config = lib.mkIf cfg.enable {
     boot = {
       extraModprobeConfig = "options nvidia NVreg_EnableMSI=1";
-      kernelModules = [ "nvidia_uvm" ];
+      kernelModules = [ "nvidia-uvm" ];
     };
 
     environment.systemPackages = [
