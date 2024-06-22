@@ -129,6 +129,7 @@ in
         security = mergeOSAttr "security";
         services = mergeOSAttr "services";
         specialisation = mergeOSAttr "specialisation";
+        system = mergeOSAttr "system";
         systemd = mergeOSAttr "systemd";
         users = mergeOSAttr "users";
         virtualisation = mergeOSAttr "virtualisation";
