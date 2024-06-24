@@ -55,15 +55,19 @@ let cfg = config.virt; in {
             SUBSYSTEM=="kvmfr", OWNER="root", GROUP="kvm", MODE="0660"
           '';
 
-          environment.etc."looking-glass-client.ini".text = ''
-            [app]
-            shmFile=/dev/kvmfr0
+          environment.etc = {
+            "looking-glass-client.ini".text = ''
+              [app]
+              shmFile=/dev/kvmfr0
 
-            [input]
-            grabKeyboardOnFocus=yes
-            escapeKey=KEY_RIGHTCTRL
-            rawMouse=yes
-          '';
+              [input]
+              grabKeyboardOnFocus=yes
+              escapeKey=KEY_RIGHTCTRL
+              rawMouse=yes
+            '';
+
+            "SSDT1.dat".source = ./SSDT1.dat;
+          };
 
           virtualisation.libvirtd.qemu.verbatimConfig = ''
             nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]

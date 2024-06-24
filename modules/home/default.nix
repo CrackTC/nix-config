@@ -60,7 +60,7 @@ let
       ./theme
       ./tui
       ./user.nix
-      ./virt.nix
+      ./virt
       ./wayland
       ./xdg
     ];
