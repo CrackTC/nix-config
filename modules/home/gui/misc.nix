@@ -15,7 +15,8 @@ let cfg = config.gui.misc; in {
       yesplaymusic
       spotify
 
-      (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.staging)
+      # (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.staging)
+      wineWowPackages.unstableFull
       winetricks
     ];
     services.blueman-applet.enable = true;
