@@ -38,10 +38,9 @@ let cfg = config.sorac.host.newIntel; in {
     environment.systemPackages = [ pkgs.libva-utils pkgs.vulkan-tools ];
 
     hardware = {
-      opengl = {
+      graphics = {
         enable = true;
-        driSupport = true;
-        driSupport32Bit = true;
+        enable32Bit = true;
         extraPackages = [
           pkgs.intel-media-driver
           pkgs.vpl-gpu-rt # for qsv support in obs-studio

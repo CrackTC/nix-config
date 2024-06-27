@@ -45,10 +45,9 @@ let cfg = config.sorac.host.nvidia; in {
     services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware = {
-      opengl = {
+      graphics = {
         enable = true;
-        driSupport = true;
-        driSupport32Bit = true;
+        enable32Bit = true;
         extraPackages = [ pkgs.libvdpau-va-gl pkgs.vaapiVdpau ];
       };
 
