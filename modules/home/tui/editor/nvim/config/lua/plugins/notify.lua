@@ -49,7 +49,7 @@ end
 
 
 local function show_welcome()
-    require("notify").notify("今日もいい天気だよ～", "info", { timeout = 500 })
+    -- require("notify").notify("今日もいい天気だよ～", "info", { timeout = 500 })
 end
 
 return {
