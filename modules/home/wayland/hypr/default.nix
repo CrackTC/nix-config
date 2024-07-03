@@ -161,10 +161,6 @@ in
             disable_hyprland_logo = true;
           };
 
-          master = {
-            new_is_master = true;
-          };
-
           gestures = {
             workspace_swipe = true;
             workspace_swipe_fingers = 4;
