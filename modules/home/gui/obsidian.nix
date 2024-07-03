@@ -7,10 +7,10 @@ let cfg = config.obsidian; in {
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       (obsidian.override {
-        # commandLineArgs =
-        #   if config.wayland
-        #   then "--ozone-platform-hint=auto --enable-wayland-ime --gtk-version=4"
-        #   else "";
+        commandLineArgs =
+          if config.wayland.enable
+          then "--ozone-platform-hint=auto --enable-wayland-ime --gtk-version=4"
+          else "";
       })
     ];
   };
