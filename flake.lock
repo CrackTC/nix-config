@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1718783739,
-        "narHash": "sha256-x4NC/G+UstAMLzOmmOAT2Xv1HgLssF/IeE/KsPtJwTo=",
+        "lastModified": 1720044475,
+        "narHash": "sha256-1PIATAERTN4pIEyriEdnwd3vGkcH8NI/uU5zECGLb/c=",
         "owner": "CrackTC",
         "repo": "nur-packages",
-        "rev": "50ec1a7414a76fe90dd72281c1334e40158a21d6",
+        "rev": "1ad9fdcfd3142707f2d7f4c440a09f78abe86ca8",
         "type": "github"
       },
       "original": {

@@ -72,8 +72,9 @@
 
   services.hpfan = {
     enable = true;
-    wall = 80000;
-    pwmFile = "/sys/class/hwmon/hwmon5/pwm1_enable";
+    wallLow = 70000;
+    wallHigh = 90000;
+    pwmFile = "/sys/class/hwmon/hwmon*/pwm1_enable";
   };
 
   environment.systemPackages = [ pkgs.cifs-utils ];
