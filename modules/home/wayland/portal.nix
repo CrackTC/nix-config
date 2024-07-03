@@ -7,7 +7,7 @@ let cfg = config.portal; in {
     xdg.portal = {
       enable = true;
       config.common.default = "*";
-      xdgOpenUsePortal = true;
+      xdgOpenUsePortal = false;
       extraPortals = lib.mkMerge [
         (lib.mkIf config.hypr.enable [ pkgs.xdg-desktop-portal-hyprland ])
         [ pkgs.xdg-desktop-portal-gtk ]
