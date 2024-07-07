@@ -6,9 +6,6 @@ let cfg = config.sorac.host.gnupg; in {
 
   config.programs.gnupg.agent = lib.mkIf cfg.enable {
     enable = true;
-    pinentryPackage = lib.mkMerge [
-      (lib.mkIf config.sorac.host.gui.enable pkgs.pinentry-qt)
-      (lib.mkIf (!config.sorac.host.gui.enable) pkgs.pinentry-tty)
-    ];
+    pinentryPackage = lib.mkMerge [ pkgs.pinentry-tty ];
   };
 }
