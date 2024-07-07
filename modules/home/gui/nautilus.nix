@@ -5,7 +5,7 @@ let cfg = config.nautilus; in {
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.gnome.nautilus ];
+    home.packages = [ pkgs.nautilus ];
     xdg.mimeApps.defaultApplications."inode/directory" = "org.gnome.Nautilus.desktop";
   };
 }
