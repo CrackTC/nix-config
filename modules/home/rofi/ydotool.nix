@@ -1,9 +1,5 @@
-{ config, pkgs, lib, ... }:
-let
-  cfg = config.ydotool;
-  username = config._module.args.name;
-in
-{
+{ config, pkgs, lib, name, ... }:
+let cfg = config.ydotool; in {
   options.ydotool = {
     enable = lib.mkEnableOption "ydotool";
   };
@@ -13,7 +9,7 @@ in
 
     osConfig = {
       hardware.uinput.enable = true;
-      users.users.${username}.extraGroups = [ "uinput" ];
+      users.users.${name}.extraGroups = [ "uinput" ];
     };
   };
 }

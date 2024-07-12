@@ -1,8 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, name, ... }:
 let
   cfg = config.firefox;
   inherit (cfg) profileName;
-  username = config._module.args.name;
 in
 {
   imports = [ ./scroll.nix ./theme.nix ];
@@ -41,7 +40,7 @@ in
         "browser.tabs.tabmanager.enabled" = false;
       };
       policies = {
-        DefaultDownloadDirectory = "/home/${username}/Downloads";
+        DefaultDownloadDirectory = "/home/${name}/Downloads";
         DisableFeedbackCommands = true;
         DisableFirefoxAccounts = true;
         DisablePocket = true;

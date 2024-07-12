@@ -1,9 +1,5 @@
-{ config, lib, extraRepos, ... }:
-let
-  cfg = config.spotifyd;
-  username = config._module.args.name;
-in
-{
+{ config, lib, extraRepos, name, ... }:
+let cfg = config.spotifyd; in {
   options.spotifyd = {
     enable = lib.mkEnableOption "spotifyd";
   };
@@ -20,7 +16,7 @@ in
           backend = "alsa";
           device_name = "spotifyd";
           bitrate = 320;
-          cache_path = "/home/${username}/.cache/spotifyd";
+          cache_path = "/home/${name}/.cache/spotifyd";
           no_audio_cache = false;
           volume_normalization = true;
           normalization_pregain = -10;

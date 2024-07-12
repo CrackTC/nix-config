@@ -1,9 +1,5 @@
-{ config, pkgs, lib, extraRepos, hostConfig, ... }:
-let
-  cfg = config.hypr;
-  username = config._module.args.name;
-in
-{
+{ config, pkgs, lib, extraRepos, hostConfig, name, ... }:
+let cfg = config.hypr; in {
   imports = [
     ./nvidia.nix
     ./intel.nix
@@ -52,14 +48,14 @@ in
               "QT_AUTO_SCREEN_SCALE_FACTOR,1"
               "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
-              "XDG_CONFIG_HOME,/home/${username}/.config"
-              "XDG_CONFIG_DIR,/home/${username}/.config"
+              "XDG_CONFIG_HOME,/home/${name}/.config"
+              "XDG_CONFIG_DIR,/home/${name}/.config"
             ]
             (lib.mkIf config.firefox.enable [
               "MOZ_ENABLE_WAYLAND,1"
               "MOZ_WEBRENDER,1"
             ])
-            (lib.mkIf config.node.enable [ "NODE_PATH,/home/${username}/.local/lib/nodejs/node_modules" ])
+            (lib.mkIf config.node.enable [ "NODE_PATH,/home/${name}/.local/lib/nodejs/node_modules" ])
             (lib.mkIf config.java.enable [ "_JAVA_OPTIONS,'-Dawt.useSystemAAFontSettings=lcd'" ])
           ];
 
@@ -67,7 +63,7 @@ in
             [
               "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
               "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
-              "${pkgs.swaybg}/bin/swaybg -i /home/${username}/Desktop/wallpaper"
+              "${pkgs.swaybg}/bin/swaybg -i /home/${name}/Desktop/wallpaper"
             ]
             (lib.mkIf config.fcitx5.enable [ "fcitx5 -d" ])
             (lib.mkIf config.go.enable [ "go env -w GOPROXY=https://goproxy.cn,direct" ])
