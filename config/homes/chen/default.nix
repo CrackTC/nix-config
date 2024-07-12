@@ -27,6 +27,11 @@
       spotify.enable = true;
       yesplaymusic.enable = true;
     };
+    im = {
+      qq.enable = true;
+      telegram.enable = true;
+      discord.enable = true;
+    };
   };
   terminal.preferred = "kitty";
   tex.enable = true;

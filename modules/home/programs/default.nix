@@ -1,5 +1,6 @@
 {
   imports = [
+    ./im
     ./media
     ./shells
   ];

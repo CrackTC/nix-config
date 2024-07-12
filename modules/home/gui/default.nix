@@ -1,6 +1,5 @@
 { config, lib, hostConfig, ... }: {
   imports = [
-    ./discord.nix
     ./dunst
     ./firefox
     ./imv.nix
@@ -15,9 +14,7 @@
     ./okular.nix
     ./onlyoffice.nix
     ./pavucontrol.nix
-    ./qq.nix
     ./showmethekey.nix
-    ./telegram.nix
     ./terminal
     ./thunderbird.nix
     ./vivaldi
@@ -30,7 +27,6 @@
   };
 
   config = lib.mkIf (hostConfig.gui.enable && config.gui.enable) {
-    discord.enable = true;
     dunst.enable = true;
     firefox.enable = true;
     gui.misc.enable = true;
@@ -42,9 +38,7 @@
     obs-studio.enable = true;
     obsidian.enable = true;
     okular.enable = true;
-    qq.enable = true;
     showmethekey.enable = true;
-    telegram.enable = true;
     terminal.enable = true;
     thunderbird.enable = true;
     vivaldi.enable = true;

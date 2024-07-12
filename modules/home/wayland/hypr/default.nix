@@ -203,14 +203,14 @@ let cfg = config.hypr; in {
             (lib.mkIf config.logisim.enable [ "tile, title:^(.*Logisim-evolution v3.8.0)$" ])
             (lib.mkIf config.onlyoffice.enable [ "tile, class:^(DesktopEditors)$" ])
             (lib.mkIf config.obsidian.enable [ "opacity 0.8 override 0.8 override, class:^(obsidian)$" ])
-            (lib.mkIf config.discord.enable [ "opacity 0.8 override 0.8 override, class:^(discord)$" ])
+            (lib.mkIf config.programs.im.discord.enable [ "opacity 0.8 override 0.8 override, class:^(discord)$" ])
             (lib.mkIf config.vscode.enable [
               "opacity 0.8 override 0.8 override, class:^(Code)$"
               "opacity 0.8 override 0.8 override, class:^(code-url-handler)$"
             ])
             (lib.mkIf config.thunderbird.enable [ "opacity 0.8 override 0.8 override, class:^(thunderbird)$" ])
-            (lib.mkIf config.telegram.enable [ "opacity 0.8 override 0.8 override, class:^(org.telegram.desktop)$" ])
-            (lib.mkIf config.qq.enable [ "opacity 0.8 override 0.8 override, class:^(QQ)$" ])
+            (lib.mkIf config.programs.im.telegram.enable [ "opacity 0.8 override 0.8 override, class:^(org.telegram.desktop)$" ])
+            (lib.mkIf config.programs.im.qq.enable [ "opacity 0.8 override 0.8 override, class:^(QQ)$" ])
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
             (lib.mkIf config.firefox.enable [ "opacity 0.8 override 0.8 override, class:^(firefox)$" ])
