@@ -55,7 +55,7 @@ let
       ./misc
       ./mpv
       ./rofi
-      ./shell
+      ./programs
       ./tex
       ./theme
       ./tui

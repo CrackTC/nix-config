@@ -21,7 +21,7 @@
     enable = true;
     base_url = "http://cracktc.tpddns.cn:5252";
   };
-  shell.preferred = "fish";
+  programs.preferredShell = "fish";
   terminal.preferred = "kitty";
   tex.enable = true;
   theme.enable = true;

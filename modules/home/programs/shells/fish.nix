@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.shells.fish; in {
-  options.shells.fish = {
+let cfg = config.programs.shells.fish; in {
+  options.programs.shells.fish = {
     enable = lib.mkEnableOption "fish";
   };
 

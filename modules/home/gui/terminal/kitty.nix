@@ -27,7 +27,11 @@ let cfg = config.terminals.kitty; in {
         window_padding_width = "5 10";
         close_on_child_death = true;
       };
-      shellIntegration.enableFishIntegration = config.shells.fish.enable;
+      shellIntegration = {
+        enableBashIntegration = config.programs.shells.bash.enable;
+        enableFishIntegration = config.programs.shells.fish.enable;
+        enableZshIntegration = config.programs.shells.zsh.enable;
+      };
       theme = "Nord";
     };
   };

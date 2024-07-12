@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.shells.pwsh; in {
-  options.shells.pwsh = {
+let cfg = config.programs.shells.pwsh; in {
+  options.programs.shells.pwsh = {
     enable = lib.mkEnableOption "pwsh";
   };
 

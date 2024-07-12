@@ -18,7 +18,7 @@ in
     home.packages = with pkgs; [
       (pkgs.buildFHSUserEnv {
         name = "fhs";
-        runScript = config.shell.preferred;
+        runScript = config.programs.preferredShell;
         targetPkgs = pkgs: with pkgs;
           # dotnet static linking
           [ fontDir ]
