@@ -17,7 +17,6 @@
     ./pavucontrol.nix
     ./qq.nix
     ./showmethekey.nix
-    ./svp.nix
     ./telegram.nix
     ./terminal
     ./thunderbird.nix

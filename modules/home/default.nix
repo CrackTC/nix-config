@@ -53,7 +53,6 @@ let
       ./gui
       ./lazygit
       ./misc
-      ./mpv
       ./rofi
       ./programs
       ./tex

@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.svp; in {
-  options.svp = {
+let cfg = config.programs.media.svp; in {
+  options.programs.media.svp = {
     enable = lib.mkEnableOption "svp";
   };
 

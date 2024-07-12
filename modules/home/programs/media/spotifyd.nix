@@ -1,6 +1,6 @@
 { config, lib, extraRepos, name, ... }:
-let cfg = config.spotifyd; in {
-  options.spotifyd = {
+let cfg = config.programs.media.spotifyd; in {
+  options.programs.media.spotifyd = {
     enable = lib.mkEnableOption "spotifyd";
   };
 

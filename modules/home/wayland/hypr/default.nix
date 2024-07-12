@@ -218,8 +218,8 @@ let cfg = config.hypr; in {
               "opacity 0.8 override 0.8 override, class:^(jetbrains-[a-z]*)$"
               "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\\d+$"
             ])
-            (lib.mkIf config.mpv.enable [ "fullscreen, class:^(mpv)$" ])
-            (lib.mkIf config.svp.enable [ "float, class:^(SVPManager)$" ])
+            (lib.mkIf config.programs.media.mpv.enable [ "fullscreen, class:^(mpv)$" ])
+            (lib.mkIf config.programs.media.svp.enable [ "float, class:^(SVPManager)$" ])
             (lib.mkIf config.ghidra.enable [ "nofocus,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0" ])
             [ "float, class:^(org.kde.polkit-kde-authentication-agent-1)$" ]
           ];

@@ -1,10 +1,10 @@
 { config, pkgs, lib, hostConfig, ... }:
 let
-  cfg = config.mpv;
+  cfg = config.programs.media.mpv;
   font = "Maple Mono SC NF";
 in
 {
-  options.mpv = {
+  options.programs.media.mpv = {
     enable = lib.mkEnableOption "mpv";
   };
 

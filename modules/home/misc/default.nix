@@ -7,7 +7,6 @@ let cfg = config.misc; in {
     ./fastfetch.nix
     ./jq.nix
     ./llama.nix
-    ./spotifyd.nix
     ./zip.nix
   ];
 

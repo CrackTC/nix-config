@@ -12,8 +12,6 @@ let cfg = config.gui.misc; in {
       extraRepos.nur.repos.linyinfeng.wemeet
       krita
       libsForQt5.ark
-      yesplaymusic
-      spotify
 
       # (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.staging)
       wineWowPackages.unstableFull

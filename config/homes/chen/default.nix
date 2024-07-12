@@ -15,13 +15,19 @@
   gui.enable = true;
   lazygit.enable = true;
   misc.enable = true;
-  mpv.enable = true;
   rofi.enable = true;
   rbw = {
     enable = true;
     base_url = "http://cracktc.tpddns.cn:5252";
   };
-  programs.preferredShell = "fish";
+  programs = {
+    preferredShell = "fish";
+    media = {
+      mpv.enable = true;
+      spotify.enable = true;
+      yesplaymusic.enable = true;
+    };
+  };
   terminal.preferred = "kitty";
   tex.enable = true;
   theme.enable = true;
