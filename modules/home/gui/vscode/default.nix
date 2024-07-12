@@ -4,7 +4,7 @@ let cfg = config.vscode; in {
     enable = lib.mkEnableOption "vscode";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     programs.vscode = {
       enable = true;
       package = (pkgs.vscode.override {

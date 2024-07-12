@@ -4,7 +4,7 @@ let cfg = config.okular; in {
     enable = lib.mkEnableOption "okular";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = [ pkgs.libsForQt5.okular ];
     xdg.mimeApps.defaultApplications."application/pdf" = "okularApplication_pdf.desktop";
   };

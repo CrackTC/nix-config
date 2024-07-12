@@ -4,7 +4,7 @@ let cfg = config.imv; in {
     enable = lib.mkEnableOption "imv";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     programs.imv.enable = true;
     xdg.mimeApps.defaultApplications = lib.genAttrs [
       "image/bmp"

@@ -4,7 +4,7 @@ let cfg = config.gui.misc; in {
     enable = lib.mkEnableOption "misc gui softwares";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = with pkgs; [
       burpsuite
       calibre

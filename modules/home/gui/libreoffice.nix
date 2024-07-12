@@ -4,7 +4,7 @@ let cfg = config.libreoffice; in {
     enable = lib.mkEnableOption "libreoffice";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = [ pkgs.libreoffice-qt ];
     xdg.mimeApps.defaultApplications."application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
   };

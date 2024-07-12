@@ -4,7 +4,7 @@ let cfg = config.showmethekey; in {
     enable = lib.mkEnableOption "showmethekey";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = with pkgs; [ showmethekey ];
   };
 }

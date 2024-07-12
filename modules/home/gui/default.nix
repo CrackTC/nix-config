@@ -24,9 +24,15 @@
 
   options.gui = {
     enable = lib.mkEnableOption "GUI applications";
+    available = lib.mkOption {
+      type = lib.types.bool;
+      description = "Whether GUI actually available.";
+      default = false;
+    };
   };
 
   config = lib.mkIf (hostConfig.gui.enable && config.gui.enable) {
+    gui.available = true;
     dunst.enable = true;
     firefox.enable = true;
     gui.misc.enable = true;

@@ -4,7 +4,7 @@ let cfg = config.onlyoffice; in {
     enable = lib.mkEnableOption "onlyoffice";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = [ pkgs.onlyoffice-bin ];
   };
 }

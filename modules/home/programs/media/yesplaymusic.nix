@@ -4,13 +4,7 @@ let cfg = config.programs.media.yesplaymusic; in {
     enable = lib.mkEnableOption "yesplaymusic";
   };
 
-  config = lib.mkIf cfg.enable {
-    osConfig.assertions = [
-      {
-        assertion = config.gui.enable;
-        message = "yesplaymusic requires gui.";
-      }
-    ];
+  config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = with pkgs; [ yesplaymusic ];
     };

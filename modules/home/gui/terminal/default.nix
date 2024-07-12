@@ -10,7 +10,7 @@ let cfg = config.terminal; in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (config.gui.available && cfg.enable) {
     terminals.${cfg.preferred}.enable = true;
   };
 }

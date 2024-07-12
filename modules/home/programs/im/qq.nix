@@ -4,13 +4,7 @@ let cfg = config.programs.im.qq; in {
     enable = lib.mkEnableOption "qq";
   };
 
-  config = lib.mkIf cfg.enable {
-    osConfig.assertions = [
-      {
-        assertion = config.gui.enable;
-        message = "qq requires gui.";
-      }
-    ];
+  config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = [
         (pkgs.qq.override {

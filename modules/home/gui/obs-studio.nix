@@ -4,5 +4,5 @@ let cfg = config.obs-studio; in {
     enable = lib.mkEnableOption "obs-studio";
   };
 
-  config.hmConfig.programs.obs-studio.enable = cfg.enable;
+  config.hmConfig.programs.obs-studio.enable = lib.mkIf (config.gui.available && cfg.enable) true;
 }

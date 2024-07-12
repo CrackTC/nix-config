@@ -4,7 +4,7 @@ let cfg = config.thunderbird; in {
     enable = lib.mkEnableOption "thunderbird";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = [ pkgs.thunderbird ];
   };
 }

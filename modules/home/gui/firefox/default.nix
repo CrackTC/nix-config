@@ -15,7 +15,7 @@ in
     };
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.file.".mozilla/firefox/${profileName}/chrome" = {
       source = ./chrome;
       recursive = true;

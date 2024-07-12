@@ -4,7 +4,7 @@ let cfg = config.obsidian; in {
     enable = lib.mkEnableOption "obsidian";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = with pkgs; [
       (obsidian.override {
         commandLineArgs =

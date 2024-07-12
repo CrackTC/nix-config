@@ -4,7 +4,7 @@ let cfg = config.vivaldi; in {
     enable = lib.mkEnableOption "vivaldi";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     xdg.dataFile."vivaldi/custom" = {
       source = ./custom;
       recursive = true;

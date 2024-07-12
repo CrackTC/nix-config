@@ -4,7 +4,7 @@ let cfg = config.pavucontrol; in {
     enable = lib.mkEnableOption "pavucontrol";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = with pkgs; [ pavucontrol ];
   };
 }

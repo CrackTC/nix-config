@@ -4,13 +4,7 @@ let cfg = config.programs.im.discord; in {
     enable = lib.mkEnableOption "discord";
   };
 
-  config = lib.mkIf cfg.enable {
-    osConfig.assertions = [
-      {
-        assertion = config.gui.enable;
-        message = "discord requires gui.";
-      }
-    ];
+  config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = [ pkgs.discord ];
     };

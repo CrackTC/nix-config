@@ -4,7 +4,7 @@ let cfg = config.logisim; in {
     enable = lib.mkEnableOption "logisim";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = with pkgs; [ logisim-evolution ];
   };
 }

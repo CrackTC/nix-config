@@ -4,13 +4,7 @@ let cfg = config.programs.im.telegram; in {
     enable = lib.mkEnableOption "telegram";
   };
 
-  config = lib.mkIf cfg.enable {
-    osConfig.assertions = [
-      {
-        assertion = config.gui.enable;
-        message = "telegram requires gui.";
-      }
-    ];
+  config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = [ pkgs.telegram-desktop ];
     };

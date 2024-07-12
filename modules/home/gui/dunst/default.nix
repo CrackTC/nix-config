@@ -4,7 +4,7 @@ let cfg = config.dunst; in {
     enable = lib.mkEnableOption "dunst";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     services.dunst = {
       enable = true;
       configFile = ./dunstrc;

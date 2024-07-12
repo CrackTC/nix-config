@@ -4,13 +4,7 @@ let cfg = config.programs.media.spotify; in {
     enable = lib.mkEnableOption "spotify";
   };
 
-  config = lib.mkIf cfg.enable {
-    osConfig.assertions = [
-      {
-        assertion = config.gui.enable;
-        message = "spotify requires gui.";
-      }
-    ];
+  config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = with pkgs; [ spotify ];
     };

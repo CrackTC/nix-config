@@ -4,7 +4,7 @@ let cfg = config.neovide; in {
     enable = lib.mkEnableOption "neovide";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
+  config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = [ pkgs.neovide ];
   };
 }
