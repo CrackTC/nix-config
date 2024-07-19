@@ -6,14 +6,7 @@ let cfg = config.llama; in {
 
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = [
-      ((pkgs.llama-cpp.override { cudaSupport = hostConfig.nvidia.enable; }).overrideAttrs (attrs: {
-        preConfigure = ''
-          cmakeFlagsArray=(
-            $cmakeFlagsArray
-            "-DCMAKE_CXX_FLAGS=-march=${hostConfig.cpu} -mtune=${hostConfig.cpu}"
-          )
-        '';
-      }))
+      (pkgs.llama-cpp.override { cudaSupport = hostConfig.nvidia.enable; })
     ];
   };
 }
