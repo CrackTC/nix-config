@@ -1,6 +1,6 @@
 { config, lib, ... }: {
   imports = [
-    ./asm.nix
+    ./asm
     ./board.nix
     ./c.nix
     ./ctf
