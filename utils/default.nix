@@ -3,10 +3,7 @@
     (if !native then { inherit system; } else {
       localSystem = {
         inherit system;
-        gcc = {
-          arch = cpu;
-          tune = cpu;
-        };
+        gcc = { arch = cpu; tune = cpu; };
       };
 
       # Workarounds might be outdated, test if they are still needed
@@ -44,8 +41,4 @@
     });
 
   foreachAttr = set: f: builtins.mapAttrs f set;
-
-  anyAttr = set: pred: builtins.any (name: pred name set.${name}) (builtins.attrNames set);
-
-  powerfulUsers = homes: builtins.filter (username: homes.${username}.powerful) (builtins.attrNames homes);
 }
