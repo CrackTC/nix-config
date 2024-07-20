@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 let cfg = config.ctf; in {
-  imports = [ ./ghidra.nix ];
+  imports = [
+    ./ghidra.nix
+    ./metasploit.nix
+  ];
 
   options.ctf = {
     enable = lib.mkEnableOption "ctf tools";
@@ -8,11 +11,11 @@ let cfg = config.ctf; in {
 
   config = lib.mkIf cfg.enable {
     ghidra.enable = true;
+    metasploit.enable = true;
     hmConfig = {
       home.packages = with pkgs; [
         nmap
         frida-tools
-        metasploit
         netcat-gnu
         jd-gui
         php
