@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.bc; in {
-  options.bc = {
+let cfg = config.programs.utility.bc; in {
+  options.programs.utility.bc = {
     enable = lib.mkEnableOption "bc";
   };
 

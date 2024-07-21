@@ -3,5 +3,6 @@
     ./im
     ./media
     ./shells
+    ./utility
   ];
 }

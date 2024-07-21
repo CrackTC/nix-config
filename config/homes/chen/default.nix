@@ -13,8 +13,6 @@
   game.enable = true;
   git.key = "32EC77DBD23E9EB1";
   gui.enable = true;
-  lazygit.enable = true;
-  misc.enable = true;
   rofi.enable = true;
   rbw = {
     enable = true;
@@ -32,9 +30,19 @@
       telegram.enable = true;
       discord.enable = true;
     };
+    utility = {
+      asciinema.enable = true;
+      bc.enable = true;
+      clash.enable = true;
+      fastfetch.enable = true;
+      jq.enable = true;
+      lazygit.enable = true;
+      llama.enable = true;
+      tex.enable = true;
+      zip.enable = true;
+    };
   };
   terminal.preferred = "kitty";
-  tex.enable = true;
   theme.enable = true;
   tui.enable = true;
   wayland.enable = true;

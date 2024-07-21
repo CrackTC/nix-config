@@ -22,8 +22,8 @@
         c = "clear";
         d = "disown";
         la = "ls -al";
-        s = lib.mkIf config.fastfetch.enable "fastfetch";
-        lg = lib.mkIf config.lazygit.enable "lazygit";
+        s = lib.mkIf config.programs.utility.fastfetch.enable "fastfetch";
+        lg = lib.mkIf config.programs.utility.lazygit.enable "lazygit";
         ra = lib.mkIf config.joshuto.enable "joshuto";
       };
 

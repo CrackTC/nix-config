@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.clash; in {
-  options.clash = {
+let cfg = config.programs.utility.clash; in {
+  options.programs.utility.clash = {
     enable = lib.mkEnableOption "clash";
   };
 

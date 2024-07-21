@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.fastfetch; in {
-  options.fastfetch = {
+let cfg = config.programs.utility.fastfetch; in {
+  options.programs.utility.fastfetch = {
     enable = lib.mkEnableOption "fastfetch";
   };
 

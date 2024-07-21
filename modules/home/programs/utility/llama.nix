@@ -1,6 +1,6 @@
 { config, pkgs, lib, hostConfig, ... }:
-let cfg = config.llama; in {
-  options.llama = {
+let cfg = config.programs.utility.llama; in {
+  options.programs.utility.llama = {
     enable = lib.mkEnableOption "llama-cpp";
   };
 

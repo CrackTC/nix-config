@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  cfg = config.lazygit;
+  cfg = config.programs.utility.lazygit;
   terminal = config.terminal.preferred;
 in
 {
-  options.lazygit = {
+  options.programs.utility.lazygit = {
     enable = lib.mkEnableOption "lazygit";
   };
 

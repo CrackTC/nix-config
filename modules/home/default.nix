@@ -51,11 +51,8 @@ let
       ./fcitx5
       ./game
       ./gui
-      ./lazygit
-      ./misc
       ./rofi
       ./programs
-      ./tex
       ./theme
       ./tui
       ./user.nix

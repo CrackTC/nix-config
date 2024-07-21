@@ -48,7 +48,7 @@ in
         DisableSetDesktopBackground = true;
         DisableTelemetry = true;
         DisplayBookmarksToolbar = "newtab";
-        Proxy = lib.mkIf config.clash.enable {
+        Proxy = lib.mkIf config.programs.utility.clash.enable {
           Mode = "manual";
           Locked = false;
           SOCKSProxy = "localhost:7890";

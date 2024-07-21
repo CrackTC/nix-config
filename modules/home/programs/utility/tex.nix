@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.tex; in {
-  options.tex = {
+let cfg = config.programs.utility.tex; in {
+  options.programs.utility.tex = {
     enable = lib.mkEnableOption "tex";
   };
 
