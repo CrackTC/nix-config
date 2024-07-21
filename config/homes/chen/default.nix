@@ -39,6 +39,7 @@
       jq.enable = true;
       lazygit.enable = true;
       llama.enable = true;
+      proxychains.enable = true;
       tex.enable = true;
       zip.enable = true;
     };

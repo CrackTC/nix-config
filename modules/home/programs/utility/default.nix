@@ -8,6 +8,7 @@
     ./jq.nix
     ./lazygit.nix
     ./llama.nix
+    ./proxychains.nix
     ./tex.nix
     ./zip.nix
   ];
