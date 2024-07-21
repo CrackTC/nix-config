@@ -32,6 +32,7 @@
     };
     utility = {
       asciinema.enable = true;
+      baidunetdisk.enable = true;
       bc.enable = true;
       clash.enable = true;
       fastfetch.enable = true;

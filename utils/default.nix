@@ -2,6 +2,9 @@
   nixpkgsOptions = system: cpu: native: {
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-11.5.0"
+      ];
     };
   } //
   (if !native then { inherit system; } else {
