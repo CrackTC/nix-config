@@ -9,6 +9,7 @@
     ./lazygit.nix
     ./llama.nix
     ./proxychains.nix
+    ./qbittorrent.nix
     ./tex.nix
     ./zip.nix
   ];

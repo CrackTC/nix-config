@@ -40,6 +40,7 @@
       lazygit.enable = true;
       llama.enable = true;
       proxychains.enable = true;
+      qbittorrent.enable = true;
       tex.enable = true;
       zip.enable = true;
     };
