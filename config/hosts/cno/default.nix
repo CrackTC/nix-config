@@ -7,7 +7,6 @@
 
   sorac.host = {
     bluetooth.enable = true;
-    dev.enable = true;
     laptop.enable = true;
     network.inJLU = true;
     newIntel = {

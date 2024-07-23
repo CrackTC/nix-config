@@ -51,7 +51,7 @@ let
       ./fcitx5
       ./game
       ./gui
-      ./rofi
+      ./pinentry.nix
       ./programs
       ./theme
       ./tui

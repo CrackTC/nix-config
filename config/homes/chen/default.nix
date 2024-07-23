@@ -13,11 +13,7 @@
   game.enable = true;
   git.key = "32EC77DBD23E9EB1";
   gui.enable = true;
-  rofi.enable = true;
-  rbw = {
-    enable = true;
-    base_url = "http://cracktc.tpddns.cn:5252";
-  };
+  pinentry = "pinentry-rofi";
   programs = {
     preferredShell = "fish";
     media = {
@@ -41,6 +37,11 @@
       llama.enable = true;
       proxychains.enable = true;
       qbittorrent.enable = true;
+      rbw = {
+        enable = true;
+        base_url = "http://cracktc.tpddns.cn:5252";
+      };
+      rofi.enable = true;
       tex.enable = true;
       zip.enable = true;
     };

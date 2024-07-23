@@ -4,7 +4,6 @@ let cfg = config.sorac.host; in {
     ./bluetooth
     ./coredump.nix
     ./dbus.nix
-    ./dev
     ./firewall.nix
     ./fonts.nix
     ./gvfs.nix

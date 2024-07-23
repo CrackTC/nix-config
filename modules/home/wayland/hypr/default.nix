@@ -69,7 +69,7 @@ let cfg = config.hypr; in {
             (lib.mkIf config.go.enable [ "go env -w GOPROXY=https://goproxy.cn,direct" ])
             (lib.mkIf config.imwheel.enable [ "imwheel" ])
             (lib.mkIf config.waybar.enable [ "waybar" ])
-            (lib.mkIf config.ydotool.enable [ "ydotoold" ])
+            (lib.mkIf config.programs.utility.ydotool.enable [ "ydotoold" ])
           ];
 
           input = {
@@ -89,7 +89,7 @@ let cfg = config.hypr; in {
             sensitivity = 0;
           };
 
-          device = lib.mkIf config.ydotool.enable {
+          device = lib.mkIf config.programs.utility.ydotool.enable {
             name = "ydotoold-virtual-device";
             kb_layout = "us";
             kb_variant = "";
@@ -167,7 +167,7 @@ let cfg = config.hypr; in {
           };
 
           layerrule = lib.mkMerge [
-            (lib.mkIf config.rofi.enable [
+            (lib.mkIf config.programs.utility.rofi.enable [
               "blur, rofi"
               "ignorezero, rofi"
               "dimaround, rofi"

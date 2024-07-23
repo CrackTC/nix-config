@@ -1,6 +1,6 @@
 { config, pkgs, lib, extraRepos, ... }:
 let
-  cfg = config.rofi;
+  cfg = config.programs.utility.rofi;
   display = ">";
   font = "sans-serif bold 20";
 in
@@ -10,7 +10,7 @@ in
     ./rbw.nix
   ];
 
-  options.rofi = {
+  options.programs.utility.rofi = {
     enable = lib.mkEnableOption "rofi";
   };
 

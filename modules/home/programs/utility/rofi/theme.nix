@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  cfg = config.rofi;
+  cfg = config.programs.utility.rofi;
   # hacky alternative copied from https://github.com/nix-community/home-manager/blob/8d5e27b4807d25308dfe369d5a923d87e7dbfda3/modules/programs/rofi.nix#L260
   # since we can't get home-manager's config argument outside of home-manager
   mkLiteral = value: {

@@ -13,14 +13,14 @@ let cfg = config.hypr; in {
         (lib.mkIf (config.vivaldi.enable || config.firefox.enable) [
           "$mainMod, ${if colemak then "U" else "I"}, exec, ${if config.firefox.enable then "firefox" else "vivaldi"}"
         ])
-        (lib.mkIf config.rofi.enable [
+        (lib.mkIf config.programs.utility.rofi.enable [
           "$mainMod, Q, exec, rofi ${rofi-kb} -show drun"
           "$mainMod, ${if colemak then "O" else "Semicolon"}, exec, rofi ${rofi-kb} -show run"
           "$mainMod, Backslash, exec, rofi ${rofi-kb} -show ssh"
           "$mainMod, ${if colemak then "K" else "N"}, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}"
           "$mainMod, Space, exec, rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}"
         ])
-        (lib.mkIf config.rbw.enable [
+        (lib.mkIf config.programs.utility.rbw.enable [
           "$mainMod, ${if colemak then "Semicolon" else "P"}, exec, ${pkgs.rofi-rbw-wayland}/bin/rofi-rbw --target password --selector-args '${rofi-kb}'"
         ])
         [

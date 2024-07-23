@@ -1,8 +1,8 @@
-{ config, lib, ... }:
-let cfg = config.rbw; in {
+{ pkgs, config, lib, ... }:
+let cfg = config.programs.utility.rbw; in {
   imports = [ ./ydotool.nix ];
 
-  options.rbw = {
+  options.programs.utility.rbw = {
     enable = lib.mkEnableOption "rbw";
     base_url = lib.mkOption {
       type = lib.types.str;
@@ -12,7 +12,7 @@ let cfg = config.rbw; in {
   };
 
   config = lib.mkIf cfg.enable {
-    ydotool.enable = true;
+    programs.utility.ydotool.enable = true;
     hmConfig = {
       programs.rbw = {
         enable = true;
@@ -20,7 +20,7 @@ let cfg = config.rbw; in {
           inherit (cfg) base_url;
           inherit (config) email;
           lock_timeout = 9999999999;
-          # pinentry = config.hostConfig.programs.gnupg.agent.pinentryPackage;
+          pinentry = pkgs.${config.pinentry};
         };
       };
     };

@@ -10,6 +10,7 @@
     ./llama.nix
     ./proxychains.nix
     ./qbittorrent.nix
+    ./rofi
     ./tex.nix
     ./zip.nix
   ];
