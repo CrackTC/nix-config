@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, extraRepos, ... }:
 let cfg = config.portal; in {
   options.portal = {
     enable = lib.mkEnableOption "portal";
@@ -9,7 +9,7 @@ let cfg = config.portal; in {
       config.common.default = "*";
       xdgOpenUsePortal = false;
       extraPortals = lib.mkMerge [
-        (lib.mkIf config.hypr.enable [ pkgs.xdg-desktop-portal-hyprland ])
+        (lib.mkIf config.hypr.enable [ extraRepos.pkgs-master.xdg-desktop-portal-hyprland ])
         [ pkgs.xdg-desktop-portal-gtk ]
       ];
     };
