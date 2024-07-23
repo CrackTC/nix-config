@@ -21,10 +21,10 @@ let cfg = config.hypr; in {
           "$mainMod, Space, exec, rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}"
         ])
         (lib.mkIf config.programs.utility.rbw.enable [
-          "$mainMod, ${if colemak then "Semicolon" else "P"}, exec, ${pkgs.rofi-rbw-wayland}/bin/rofi-rbw --target password --selector-args '${rofi-kb}'"
+          "$mainMod, ${if colemak then "Semicolon" else "P"}, exec, ${lib.getExe pkgs.rofi-rbw-wayland} --target password --selector-args '${rofi-kb}'"
         ])
         [
-          "$mainMod SHIFT, ${if colemak then "R" else "S"}, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copy area"
+          "$mainMod SHIFT, ${if colemak then "R" else "S"}, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copy area"
           "$mainMod SHIFT, Q, killactive, "
           "$mainMod SHIFT, Space, togglefloating, "
           "$mainMod, ${if colemak then "T" else "F"}, fullscreen, 0"
@@ -73,11 +73,11 @@ let cfg = config.hypr; in {
     ];
 
     binde = [
-      ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
-      ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
-      ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-      ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
-      ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
+      ", XF86AudioRaiseVolume, exec, ${lib.getExe pkgs.pamixer} -i 5"
+      ", XF86AudioLowerVolume, exec, ${lib.getExe pkgs.pamixer} -d 5"
+      ", XF86AudioMute, exec, ${lib.getExe pkgs.pamixer} -t"
+      ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
+      ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
     ];
   };
 }

@@ -63,7 +63,7 @@ let cfg = config.hypr; in {
             [
               "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
               "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
-              "${pkgs.swaybg}/bin/swaybg -i /home/${name}/Desktop/wallpaper"
+              "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"
             ]
             (lib.mkIf config.fcitx5.enable [ "fcitx5 -d" ])
             (lib.mkIf config.go.enable [ "go env -w GOPROXY=https://goproxy.cn,direct" ])

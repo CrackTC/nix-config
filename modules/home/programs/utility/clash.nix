@@ -12,12 +12,12 @@ let cfg = config.programs.utility.clash; in {
         requires = [ "network-online.target" ];
         serviceConfig = {
           ExecStart = pkgs.writeScript "clash.fish" ''
-            #!${pkgs.fish}/bin/fish
+            #!${lib.getExe pkgs.fish}
             set config ~/.config/clash/config.yaml
             if not test -e $config
               set sub (cat /run/secrets/sub)
               set -e (env | grep proxy | cut -d= -f1)
-              if ${pkgs.curl}/bin/curl -o $config $sub
+              if ${lib.getExe pkgs.curl} -o $config $sub
                 cat $config |
                   grep -v '^port' |
                   grep -v '^socks-port' |
@@ -31,7 +31,7 @@ let cfg = config.programs.utility.clash; in {
                 cat /run/secrets/sub_backup | base64 -d > $config
               end
             end
-            ${pkgs.clash-meta}/bin/clash-meta -f $config
+            ${lib.getExe pkgs.clash-meta} -f $config
           '';
         };
         wantedBy = [ "multi-user.target" ];

@@ -14,7 +14,7 @@ let cfg = config.sorac.host.network; in {
           INTERFACE=$1
           ACTION=$2
 
-          SSID=`${pkgs.wirelesstools}/bin/iwconfig $INTERFACE | grep ESSID | ${pkgs.gawk}/bin/awk '{print $4}' | sed 's/ESSID:"\(.*\)"/\1/'`
+          SSID=`${pkgs.wirelesstools}/bin/iwconfig $INTERFACE | grep ESSID | ${lib.getExe pkgs.gawk} '{print $4}' | sed 's/ESSID:"\(.*\)"/\1/'`
 
           if [[ `echo -e "$SSID"` != JLU* ]]; then
               exit 0
