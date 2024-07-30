@@ -1,50 +1,6 @@
 { pkgs, config, lib, extraRepos, utilities, ... }:
 let
-  anythingMerged = with lib; with types; mkOptionType {
-    name = "anythingMerged";
-    description = "anything but with lists merged";
-    descriptionClass = "noun";
-    check = value: true;
-    merge = loc: defs:
-      let
-        getType = value:
-          if isAttrs value && isStringLike value
-          then "stringCoercibleSet"
-          else builtins.typeOf value;
-
-        # Returns the common type of all definitions, throws an error if they
-        # don't have the same type
-        commonType = foldl'
-          (type: def:
-            if getType def.value == type
-            then type
-            else throw "The option `${showOption loc}' has conflicting option types in ${showFiles (getFiles defs)}"
-          )
-          (getType (head defs).value)
-          defs;
-
-        mergeFunction = {
-          # Recursively merge attribute sets
-          set = (attrsOf anythingMerged).merge;
-          # Merge lists
-          list = (listOf anythingMerged).merge;
-          # This is the type of packages, only accept a single definition
-          stringCoercibleSet = mergeOneOption;
-          string = lines.merge;
-          lambda = loc: defs: arg: anythingMerged.merge
-            (loc ++ [ "<function body>" ])
-            (map
-              (def: {
-                inherit (def) file;
-                value = def.value arg;
-              })
-              defs);
-          # Otherwise fall back to only allowing all equal definitions
-        }.${commonType} or mergeEqualOption;
-      in
-      mergeFunction loc defs;
-  };
-
+  anythingMerged = utilities.mkAnythingMerged lib;
   homeConfiguration = lib.types.submodule {
     imports = [
       ./dev
@@ -116,21 +72,15 @@ in
     lib.mkMerge [
       # osConfig <- infinite recursion
       # this works but ugly
-      {
-        boot = mergeOSAttr "boot";
-        environment = mergeOSAttr "environment";
-        hardware = mergeOSAttr "hardware";
-        networking = mergeOSAttr "networking";
-        programs = mergeOSAttr "programs";
-        security = mergeOSAttr "security";
-        services = mergeOSAttr "services";
-        specialisation = mergeOSAttr "specialisation";
-        system = mergeOSAttr "system";
-        systemd = mergeOSAttr "systemd";
-        users = mergeOSAttr "users";
-        virtualisation = mergeOSAttr "virtualisation";
-        xdg = mergeOSAttr "xdg";
-      }
+      (builtins.listToAttrs
+        (builtins.map
+          (attr: {
+            name = attr;
+            value = mergeOSAttr attr;
+          })
+          utilities.osConfigAttrs
+        )
+      )
       {
         home-manager = {
           useGlobalPkgs = true;

@@ -48,4 +48,100 @@
   });
 
   foreachAttr = set: f: builtins.mapAttrs f set;
+
+  mkAnythingMerged = lib:
+    let
+      anythingMerged = with lib; with types; mkOptionType {
+        name = "anythingMerged";
+        description = "anything but with lists merged";
+        descriptionClass = "noun";
+        check = value: true;
+        merge = loc: defs:
+          let
+            getType = value:
+              if isAttrs value && isStringLike value
+              then "stringCoercibleSet"
+              else builtins.typeOf value;
+
+            # Returns the common type of all definitions, throws an error if they
+            # don't have the same type
+            commonType = foldl'
+              (type: def:
+                if getType def.value == type
+                then type
+                else throw "The option `${showOption loc}' has conflicting option types in ${showFiles (getFiles defs)}"
+              )
+              (getType (head defs).value)
+              defs;
+
+            mergeFunction = {
+              # Recursively merge attribute sets
+              set = (attrsOf anythingMerged).merge;
+              # Merge lists
+              list = (listOf anythingMerged).merge;
+              # This is the type of packages, only accept a single definition
+              stringCoercibleSet = mergeOneOption;
+              string = lines.merge;
+              lambda = loc: defs: arg: anythingMerged.merge
+                (loc ++ [ "<function body>" ])
+                (map
+                  (def: {
+                    inherit (def) file;
+                    value = def.value arg;
+                  })
+                  defs);
+              # Otherwise fall back to only allowing all equal definitions
+            }.${commonType} or mergeEqualOption;
+          in
+          mergeFunction loc defs;
+      };
+    in
+    anythingMerged;
+
+  osConfigAttrs = [
+    "appstream"
+    "boot"
+    "console"
+    "containers"
+    "documentation"
+    "dysnomia"
+    "ec2"
+    "environment"
+    "fileSystems"
+    "fonts"
+    "gtk"
+    "hardware"
+    "home-manager"
+    "i18n"
+    "ids"
+    "krb5"
+    "lib"
+    "location"
+    "meta"
+    "nesting"
+    "networking"
+    "nix"
+    "nixops"
+    "nixpkgs"
+    "oci"
+    "openstack"
+    "passthru"
+    "power"
+    "powerManagement"
+    "programs"
+    "qt"
+    "qt5"
+    "security"
+    "services"
+    "sops"
+    "specialisation"
+    "stubby"
+    "system"
+    "systemd"
+    "time"
+    "users"
+    "virtualisation"
+    "xdg"
+    "zramSwap"
+  ];
 }
