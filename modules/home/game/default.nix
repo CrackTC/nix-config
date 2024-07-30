@@ -3,7 +3,6 @@
     ./beatoraja.nix
     ./bottles.nix
     ./gamescope.nix
-    ./gst.nix
     ./osu.nix
     ./steam.nix
     ./sunshine.nix
@@ -21,7 +20,6 @@
     beatoraja.enable = true;
     bottles.enable = true;
     gamescope.enable = true;
-    gst.enable = true;
     osu.enable = true;
     steam.enable = true;
     sunshine.enable = true;
