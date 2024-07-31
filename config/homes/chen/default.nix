@@ -30,6 +30,7 @@
       asciinema.enable = true;
       baidunetdisk.enable = true;
       bc.enable = true;
+      bsdiff.enable = true;
       clash.enable = true;
       fastfetch.enable = true;
       jq.enable = true;

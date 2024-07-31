@@ -3,6 +3,7 @@
     ./asciinema.nix
     ./baidunetdisk.nix
     ./bc.nix
+    ./bsdiff.nix
     ./clash.nix
     ./fastfetch.nix
     ./jq.nix
