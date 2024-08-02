@@ -113,7 +113,6 @@ let cfg = config.hypr; in {
               enabled = true;
               size = 5;
               passes = 4;
-              xray = true;
               new_optimizations = true;
               ignore_opacity = true;
               popups = true;
