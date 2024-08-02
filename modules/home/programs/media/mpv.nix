@@ -20,6 +20,9 @@ in
 
           UP = "add volume 2";
           DOWN = "add volume -2";
+
+          LEFT = "seek -1";
+          RIGHT = "seek 1";
         };
 
         config = {
