@@ -78,14 +78,7 @@
 
   environment.systemPackages = [ pkgs.cifs-utils ];
 
-  # boot.supportedFilesystems = [ "ntfs" ];
-
   fileSystems = {
-    # "/mnt/windows" = {
-    #   device = "/dev/disk/by-uuid/D66C452C6C450927";
-    #   fsType = "ntfs3";
-    # };
-
     "/mnt/lib" = {
       device = "/dev/disk/by-uuid/f542c9db-e4ae-406b-a7e0-bd0bc9cc7a61";
     };
