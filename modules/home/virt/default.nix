@@ -20,7 +20,7 @@ let cfg = config.virt; in {
       ];
 
       specialisation = lib.mkIf hostConfig.nvidia.enable {
-        nv-pci-pass-through.configuration = {
+        NvPCIPassthrough.configuration = {
           system.nixos.tags = [ "nv-pci-pass-through" ];
           boot = {
             kernel.sysctl = {
