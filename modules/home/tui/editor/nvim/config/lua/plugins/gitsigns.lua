@@ -64,7 +64,6 @@ return {
                 row = 1,
                 col = 1,
             },
-            yadm = { enable = false },
             on_attach = setup_mappings
         })
 
