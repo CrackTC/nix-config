@@ -47,7 +47,7 @@ lspconfig.nil_ls.setup {
                 command = { "nixpkgs-fmt" }
             },
             nix = {
-                maxMemoryMB = 16384,
+                maxMemoryMB = 65536,
                 flake = {
                     autoArchive = true,
                     autoEvalInputs = true,
