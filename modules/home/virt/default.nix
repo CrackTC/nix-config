@@ -16,7 +16,20 @@ let cfg = config.virt; in {
       users.users.${name}.extraGroups = [ "libvirtd" "kvm" ];
       environment.systemPackages = lib.mkMerge [
         [ pkgs.virtiofsd ]
-        (lib.mkIf (hostConfig.gui.enable && config.gui.enable) [ pkgs.spice-gtk pkgs.looking-glass-client ])
+        (lib.mkIf (hostConfig.gui.enable && config.gui.enable) [
+          pkgs.spice-gtk
+
+          # https://github.com/NixOS/nixpkgs/issues/328643
+          (pkgs.looking-glass-client.overrideAttrs {
+            patches = [
+              (pkgs.fetchpatch {
+                url = "https://github.com/gnif/LookingGlass/commit/20972cfd9b940fddf9e7f3d2887a271d16398979.patch";
+                hash = "sha256-CqB8AmOZ4YxnEsQkyu/ZEaun6ywpSh4B7PM+MFJF0qU=";
+                stripLen = 1;
+              })
+            ];
+          })
+        ])
       ];
 
       specialisation = lib.mkIf hostConfig.nvidia.enable {
@@ -43,7 +56,18 @@ let cfg = config.virt; in {
               "nvidia-drm"
               "nvidia-modeset"
             ];
-            extraModulePackages = with osConfig.boot.kernelPackages; [ kvmfr ];
+            extraModulePackages = with osConfig.boot.kernelPackages; [
+              # https://github.com/NixOS/nixpkgs/issues/328643
+              (kvmfr.overrideAttrs {
+                patches = [
+                  (pkgs.fetchpatch {
+                    url = "https://github.com/gnif/LookingGlass/commit/7305ce36af211220419eeab302ff28793d515df2.patch";
+                    hash = "sha256-97nZsIH+jKCvSIPf1XPf3i8Wbr24almFZzMOhjhLOYk=";
+                    stripLen = 1;
+                  })
+                ];
+              })
+            ];
             extraModprobeConfig = ''
               options vfio-pci ids=${builtins.concatStringsSep "," hostConfig.virt.pciPassIds}
               options kvmfr static_size_mb=${toString hostConfig.virt.kvmfrSizeMb}
