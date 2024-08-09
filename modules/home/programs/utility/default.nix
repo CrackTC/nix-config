@@ -13,6 +13,7 @@
     ./qbittorrent.nix
     ./rofi
     ./tex.nix
+    ./video2gif.nix
     ./zip.nix
   ];
 }
