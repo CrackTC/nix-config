@@ -26,11 +26,18 @@ in
         };
 
         config = {
-          # full screen on startup
-          fs = true;
 
-          vo = "gpu";
+          # https://vcb-s.com/archives/7594
+          profile = "high-quality";
+          cscale = "catmull_rom";
+          deband = true;
+          blend-subtitles = "video";
+          fullscreen = true;
+
+          vo = "gpu-next";
           gpu-api = "vulkan";
+
+          hwdec = "auto";
           hwdec-codecs = "all";
 
           # font of on screen display
@@ -64,7 +71,7 @@ in
           "CTRL+0" = "no-osd change-list glsl-shaders clr \"\"; show-text \"GLSL shaders cleared\"";
         };
 
-        config.glsl-shaders = "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_VL.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_VL.glsl:~~/shaders/Anime4K_AutoDownscalePre_x2.glsl:~~/shaders/Anime4K_AutoDownscalePre_x4.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_M.glsl";
+        # config.glsl-shaders = "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_VL.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_VL.glsl:~~/shaders/Anime4K_AutoDownscalePre_x2.glsl:~~/shaders/Anime4K_AutoDownscalePre_x4.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_M.glsl";
       };
     })
   ]);
