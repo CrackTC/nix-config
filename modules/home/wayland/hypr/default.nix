@@ -209,7 +209,10 @@ let cfg = config.hypr; in {
             ])
             (lib.mkIf config.thunderbird.enable [ "opacity 0.8 override 0.8 override, class:^(thunderbird)$" ])
             (lib.mkIf config.programs.im.telegram.enable [ "opacity 0.8 override 0.8 override, class:^(org.telegram.desktop)$" ])
-            (lib.mkIf config.programs.im.qq.enable [ "opacity 0.8 override 0.8 override, class:^(QQ)$" ])
+            (lib.mkIf config.programs.im.qq.enable [
+              "opacity 0.8 override 0.8 override, class:^(QQ)$"
+              "float, class:^(QQ)$, title:^(图片查看器)$"
+            ])
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
             (lib.mkIf config.firefox.enable [ "opacity 0.8 override 0.8 override, class:^(firefox)$" ])
