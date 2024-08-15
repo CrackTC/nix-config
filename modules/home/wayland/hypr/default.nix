@@ -212,6 +212,7 @@ let cfg = config.hypr; in {
             (lib.mkIf config.programs.im.qq.enable [
               "opacity 0.8 override 0.8 override, class:^(QQ)$"
               "float, class:^(QQ)$, title:^(图片查看器)$"
+              "minsize 1080 0, class:^(QQ)$, title:^(QQ频道)$"
             ])
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
@@ -222,7 +223,12 @@ let cfg = config.hypr; in {
             ])
             (lib.mkIf config.programs.media.mpv.enable [ "fullscreen, class:^(mpv)$" ])
             (lib.mkIf config.programs.media.svp.enable [ "float, class:^(SVPManager)$" ])
-            (lib.mkIf config.ghidra.enable [ "nofocus,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0" ])
+            (lib.mkIf config.ghidra.enable [
+              "nofocus,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
+              "noanim,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
+              "noborder,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
+              "rounding 0,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
+            ])
             [ "float, class:^(org.kde.polkit-kde-authentication-agent-1)$" ]
           ];
 
