@@ -148,12 +148,15 @@ let cfg = config.hypr; in {
           misc = {
             vfr = true;
             vrr = false;
-            no_direct_scanout = true;
             animate_manual_resizes = false;
             animate_mouse_windowdragging = false;
             disable_autoreload = true;
             focus_on_activate = false;
             disable_hyprland_logo = true;
+          };
+
+          render = {
+            direct_scanout = true;
           };
 
           gestures = {
