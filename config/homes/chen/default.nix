@@ -29,13 +29,16 @@
     utility = {
       asciinema.enable = true;
       baidunetdisk.enable = true;
+      bat.enable = true;
       bc.enable = true;
       bsdiff.enable = true;
       clash.enable = true;
       fastfetch.enable = true;
+      joshuto.enable = false;
       jq.enable = true;
       lazygit.enable = true;
       llama.enable = true;
+      pandoc.enable = true;
       proxychains.enable = true;
       qbittorrent.enable = true;
       rbw = {
@@ -45,6 +48,7 @@
       rofi.enable = true;
       tex.enable = true;
       video2gif.enable = true;
+      yazi.enable = true;
       zip.enable = true;
     };
   };

@@ -24,7 +24,10 @@
         la = "ls -al";
         s = lib.mkIf config.programs.utility.fastfetch.enable "fastfetch";
         lg = lib.mkIf config.programs.utility.lazygit.enable "lazygit";
-        ra = lib.mkIf config.joshuto.enable "joshuto";
+        ra = lib.mkMerge [
+          (lib.mkIf config.programs.utility.joshuto.enable "joshuto")
+          (lib.mkIf config.programs.utility.yazi.enable "yy")
+        ];
       };
 
       osConfig.users.users.${name}.shell = "/run/current-system/sw/bin/${preferred}";

@@ -2,7 +2,6 @@
   imports = [
     ./editor
     ./git.nix
-    ./joshuto
     ./ripgrep.nix
     ./ssh
   ];
@@ -17,7 +16,6 @@
 
   config = lib.mkIf config.tui.enable {
     git.enable = true;
-    joshuto.enable = true;
     editor.enable = true;
     ripgrep.enable = true;
     ssh.enable = true;

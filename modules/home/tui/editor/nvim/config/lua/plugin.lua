@@ -28,7 +28,6 @@ require("lazy").setup(
         require("plugins.headlines"),
         require("plugins.illuminate"),
         require("plugins.img-paste"),
-        require("plugins.joshuto"),
         require("plugins.lsp-signature"),
         require("plugins.lualine"),
         require("plugins.mardown-preview"),
@@ -46,6 +45,7 @@ require("lazy").setup(
         require("plugins.vim-sleuth"),
         require("plugins.visual-multi"),
         require("plugins.wildfire"),
+        require("plugins.yazi"),
     },
     { ui = { border = "rounded" } }
 )

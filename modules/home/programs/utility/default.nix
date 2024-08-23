@@ -2,18 +2,22 @@
   imports = [
     ./asciinema.nix
     ./baidunetdisk.nix
+    ./bat.nix
     ./bc.nix
     ./bsdiff.nix
     ./clash.nix
     ./fastfetch.nix
+    ./joshuto
     ./jq.nix
     ./lazygit.nix
     ./llama.nix
+    ./pandoc.nix
     ./proxychains.nix
     ./qbittorrent.nix
     ./rofi
     ./tex.nix
     ./video2gif.nix
+    ./yazi
     ./zip.nix
   ];
 }
