@@ -66,20 +66,20 @@ lspconfig.lua_ls.setup {
     capabilities = capabilities,
     on_init = function(client)
         local path = client.workspace_folders[1].name
-        if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-            client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-                Lua = {
-                    runtime = { version = 'LuaJIT' },
-                    workspace = {
-                        checkThirdParty = false,
-                        library = { vim.env.VIMRUNTIME }
-                    }
-                }
-            })
-
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+        if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+            return
         end
-        return true
+
+        local library = vim.api.nvim_get_runtime_file("", true)
+        table.insert(library, "${3rd}/luv/library")
+
+        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua or {}, {
+            runtime = { version = 'LuaJIT' },
+            workspace = {
+                checkThirdParty = false,
+                library = library
+            }
+        })
     end
 }
 
@@ -96,7 +96,6 @@ vim.diagnostic.config {
     update_in_insert = true,
     float = {
         border = "rounded",
-        header = false,
         title = "Oops"
     },
 }
@@ -141,7 +140,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
                 return
             end
         end
-        vim.diagnostic.open_float(0, {
+        vim.diagnostic.open_float(nil, {
             scope = "cursor",
             focusable = false
         })
@@ -152,6 +151,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local bufnr = args.buf
         local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+        if client == nil then return end
         if client.server_capabilities.codeLensProvider then
             vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
                 callback = vim.lsp.codelens.refresh,
