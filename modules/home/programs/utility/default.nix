@@ -14,6 +14,7 @@
     ./pandoc.nix
     ./proxychains.nix
     ./qbittorrent.nix
+    ./ripdrag.nix
     ./rofi
     ./tex.nix
     ./video2gif.nix
