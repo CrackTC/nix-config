@@ -38,6 +38,7 @@ let cfg = config.programs.utility.yazi; in {
           { on = [ ";" ]; run = "paste"; }
           { on = [ "p" ]; run = "open --interactive"; }
           { on = [ "z" "h" ]; run = "hidden toggle"; }
+          { on = [ "A" ]; run = "rename --cursor=end"; }
 
           # find
           { on = [ "k" ]; run = "find_arrow"; }
@@ -46,7 +47,7 @@ let cfg = config.programs.utility.yazi; in {
           { on = [ "?" ]; run = "find --previous --smart"; }
 
           # selection
-          { on = "<Space>"; run = [ "select --state=none" "arrow 1"]; }
+          { on = "<Space>"; run = [ "select --state=none" "arrow 1" ]; }
           { on = "v"; run = "visual_mode"; }
           { on = "V"; run = "visual_mode --unset"; }
           { on = "<C-a>"; run = "select_all --state=none"; }
