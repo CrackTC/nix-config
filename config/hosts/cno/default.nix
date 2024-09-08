@@ -84,7 +84,7 @@
     };
 
     "/mnt/smb/nas" = {
-      device = "//cracktc.tpddns.cn/nas";
+      device = "//nas.sora.zip/nas";
       fsType = "cifs";
       options =
         let
