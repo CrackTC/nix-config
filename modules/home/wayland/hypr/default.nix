@@ -233,6 +233,8 @@ let cfg = config.hypr; in {
               "rounding 0,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
             ])
             [ "float, class:^(org.kde.polkit-kde-authentication-agent-1)$" ]
+            [ "float, class:^(xdg-desktop-portal-gtk)$" ]
+            [ "tile, class:^(pds.exe)$"]
           ];
 
           xwayland = {
