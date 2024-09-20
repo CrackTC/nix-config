@@ -43,7 +43,7 @@
       qbittorrent.enable = true;
       rbw = {
         enable = true;
-        base_url = "http://cracktc.tpddns.cn:5252";
+        base_url = "https://bw.sora.zip";
       };
       rofi.enable = true;
       tex.enable = true;
