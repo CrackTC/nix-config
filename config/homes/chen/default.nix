@@ -18,6 +18,7 @@
     preferredShell = "fish";
     media = {
       mpv.enable = true;
+      jellyfin-mpv-shim.enable = true;
       spotify.enable = true;
       yesplaymusic.enable = true;
     };
