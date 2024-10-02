@@ -8,7 +8,6 @@ let cfg = config.gui.misc; in {
     home.packages = with pkgs; [
       burpsuite
       calibre
-      extraRepos.myRepo.freedownloadmanager
       extraRepos.nur.repos.linyinfeng.wemeet
       krita
       libsForQt5.ark
