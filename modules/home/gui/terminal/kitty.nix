@@ -32,7 +32,7 @@ let cfg = config.terminals.kitty; in {
         enableFishIntegration = config.programs.shells.fish.enable;
         enableZshIntegration = config.programs.shells.zsh.enable;
       };
-      theme = "Nord";
+      themeFile = "Nord";
     };
   };
 }
