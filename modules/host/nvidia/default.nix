@@ -34,6 +34,10 @@ let cfg = config.sorac.host.nvidia; in {
     boot = {
       extraModprobeConfig = "options nvidia NVreg_EnableMSI=1";
       kernelModules = [ "nvidia-uvm" ];
+      kernelParams = [
+        # https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting
+        "nvidia_drm.fbdev=1"
+      ];
     };
 
     environment.systemPackages = [

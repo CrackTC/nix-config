@@ -65,10 +65,6 @@ let cfg = config.sorac.host; in {
 
     boot = {
       kernelPackages = pkgs.linuxPackages_zen;
-      kernelParams = [
-        # "module_blacklist=i915"
-        # "ibt=off"
-      ];
       loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot = {
