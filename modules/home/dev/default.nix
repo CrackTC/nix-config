@@ -1,5 +1,6 @@
 { config, lib, ... }: {
   imports = [
+    ./android.nix
     ./asm
     ./board.nix
     ./c.nix
@@ -37,6 +38,7 @@
   };
 
   config = lib.mkIf config.dev.enable {
+    android.enable = true;
     asm.enable = true;
     board.enable = true;
     c.enable = true;

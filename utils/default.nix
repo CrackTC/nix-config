@@ -5,6 +5,7 @@
       permittedInsecurePackages = [
         "electron-11.5.0"
       ];
+      android_sdk.accept_license = true;
     };
   } //
   (if !native then { inherit system; } else {
