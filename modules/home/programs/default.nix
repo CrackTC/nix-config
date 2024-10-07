@@ -1,5 +1,6 @@
 {
   imports = [
+    ./editor
     ./im
     ./media
     ./shells

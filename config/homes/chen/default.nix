@@ -16,6 +16,9 @@
   pinentry = "pinentry-rofi";
   programs = {
     preferredShell = "fish";
+    editor = {
+      zed.enable = true;
+    };
     media = {
       mpv.enable = true;
       jellyfin-mpv-shim.enable = true;
