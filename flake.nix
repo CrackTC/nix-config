@@ -21,6 +21,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
     nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.05"; flake = false; };
+    nixpkgs-mine = { url = "github:CrackTC/nixpkgs"; flake = false; };
     nur = { url = "github:nix-community/NUR"; flake = false; };
     myRepo = {
       url = "github:CrackTC/nur-packages";
@@ -41,6 +42,7 @@
     { nixpkgs
     , nixpkgs-master
     , nixpkgs-stable
+    , nixpkgs-mine
     , nur
     , myRepo
     , home-manager
@@ -66,6 +68,7 @@
                   # pkgs-native = import nixpkgs (lib.utils.nixpkgsOptions host-info.system host-info.cpu true);
                   pkgs-master = import nixpkgs-master option;
                   pkgs-stable = import nixpkgs-stable option;
+                  pkgs-mine = import nixpkgs-mine option;
 
                   nur = import nur { inherit pkgs; nurpkgs = pkgs; };
                   myRepo = myRepo.legacyPackages.${host-info.system};
