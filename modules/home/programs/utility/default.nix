@@ -9,7 +9,7 @@
     ./fastfetch.nix
     ./joshuto
     ./jq.nix
-    ./lazygit.nix
+    ./lazygit
     ./llama.nix
     ./pandoc.nix
     ./proxychains.nix
