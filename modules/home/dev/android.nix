@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, name, ... }:
 let cfg = config.android; in {
   options.android = {
     enable = lib.mkEnableOption "android devkits";
@@ -7,7 +7,15 @@ let cfg = config.android; in {
   config = lib.mkIf cfg.enable {
     jetbrains.enable = true;
     hmConfig.home.packages = with pkgs; [
-      android-studio-full
+      android-studio
     ];
+
+    osConfig = {
+      programs.adb.enable = true;
+      users.users.${name}.extraGroups = [ "adbusers" ];
+      services.udev.packages = [
+        pkgs.android-udev-rules
+      ];
+    };
   };
 }
