@@ -36,7 +36,7 @@ let cfg = config.sorac.host.nvidia; in {
       kernelModules = [ "nvidia-uvm" ];
       kernelParams = [
         # https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting
-        "nvidia_drm.fbdev=1"
+        # "nvidia_drm.fbdev=1"
       ];
     };
 
