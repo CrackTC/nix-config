@@ -7,7 +7,7 @@ let cfg = config.android; in {
   config = lib.mkIf cfg.enable {
     jetbrains.enable = true;
     hmConfig.home.packages = [
-      extraRepos.pkgs-mine.android-studio
+      (extraRepos.pkgs-master.android-studio.override { forceWayland = true; })
     ];
 
     osConfig = {
