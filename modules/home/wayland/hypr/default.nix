@@ -1,4 +1,4 @@
-{ config, pkgs, lib, extraRepos, hostConfig, name, ... }:
+{ config, pkgs, lib, extraRepos, name, ... }:
 let cfg = config.hypr; in {
   imports = [
     ./nvidia.nix
@@ -18,14 +18,7 @@ let cfg = config.hypr; in {
     hmConfig = {
       wayland.windowManager.hyprland = {
         enable = true;
-        package = extraRepos.pkgs-master.hyprland.overrideAttrs (attrs: {
-          preConfigure = ''
-            cmakeFlagsArray=(
-              $cmakeFlagsArray
-              "-DCMAKE_CXX_FLAGS=-march=${hostConfig.cpu} -mtune=${hostConfig.cpu}"
-            )
-          '';
-        });
+        package = extraRepos.pkgs-master.hyprland;
         settings = {
 
           env = lib.mkMerge [
@@ -62,7 +55,7 @@ let cfg = config.hypr; in {
           exec-once = lib.mkMerge [
             [
               "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
-              "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
+              # "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
               "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"
             ]
             (lib.mkIf config.fcitx5.enable [ "fcitx5 -d" ])
