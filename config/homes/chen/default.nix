@@ -38,6 +38,7 @@
       bsdiff.enable = true;
       clash.enable = true;
       fastfetch.enable = true;
+      follow.enable = true;
       joshuto.enable = false;
       jq.enable = true;
       lazygit.enable = true;

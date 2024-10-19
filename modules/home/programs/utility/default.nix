@@ -7,6 +7,7 @@
     ./bsdiff.nix
     ./clash.nix
     ./fastfetch.nix
+    ./follow.nix
     ./joshuto
     ./jq.nix
     ./lazygit.nix
