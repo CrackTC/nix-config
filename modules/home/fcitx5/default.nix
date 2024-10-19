@@ -4,14 +4,19 @@ let cfg = config.fcitx5; in {
     enable = lib.mkEnableOption "fcitx5";
   };
 
-  config.hmConfig = {
+  config.osConfig = {
     i18n.inputMethod = lib.mkIf cfg.enable {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-chinese-addons
-        fcitx5-anthy
-        fcitx5-nord
-      ];
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = config.wayland.enable;
+        plasma6Support = true;
+        addons = with pkgs; [
+          fcitx5-chinese-addons
+          fcitx5-anthy
+          fcitx5-nord
+        ];
+      };
     };
   };
 }
