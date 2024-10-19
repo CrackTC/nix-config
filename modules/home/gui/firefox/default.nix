@@ -25,8 +25,8 @@ in
       enable = true;
       profiles.${profileName}.extensions = with extraRepos.nur.repos.rycee.firefox-addons; [
         bitwarden
-        gloc
-        kristofferhagen-nord-theme
+        # gloc
+        # kristofferhagen-nord-theme
         tabliss
         tampermonkey
         vimium
