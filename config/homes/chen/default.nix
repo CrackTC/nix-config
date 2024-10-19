@@ -38,6 +38,7 @@
       bsdiff.enable = true;
       btop.enable = true;
       clash.enable = true;
+      duf.enable = true;
       fastfetch.enable = true;
       follow.enable = true;
       joshuto.enable = false;

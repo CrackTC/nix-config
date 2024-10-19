@@ -7,6 +7,7 @@
     ./bsdiff.nix
     ./btop.nix
     ./clash.nix
+    ./duf.nix
     ./fastfetch.nix
     ./follow.nix
     ./joshuto
