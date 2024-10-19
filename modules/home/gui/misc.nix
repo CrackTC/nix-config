@@ -7,7 +7,7 @@ let cfg = config.gui.misc; in {
   config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
     home.packages = with pkgs; [
       burpsuite
-      calibre
+      # calibre
       extraRepos.nur.repos.linyinfeng.wemeet
       krita
       libsForQt5.ark
