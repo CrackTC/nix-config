@@ -36,6 +36,7 @@
       bat.enable = true;
       bc.enable = true;
       bsdiff.enable = true;
+      btop.enable = true;
       clash.enable = true;
       fastfetch.enable = true;
       follow.enable = true;

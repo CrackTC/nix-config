@@ -5,6 +5,7 @@
     ./bat.nix
     ./bc.nix
     ./bsdiff.nix
+    ./btop.nix
     ./clash.nix
     ./fastfetch.nix
     ./follow.nix
