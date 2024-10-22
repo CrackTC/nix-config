@@ -12,8 +12,7 @@ let cfg = config.gui.misc; in {
       krita
       libsForQt5.ark
 
-      # (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.staging)
-      wineWowPackages.unstableFull
+      (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.unstableFull)
       winetricks
     ];
     services.blueman-applet.enable = true;
