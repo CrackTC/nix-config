@@ -51,7 +51,6 @@ let cfg = config.sorac.host.nvidia; in {
     hardware = {
       graphics = {
         enable = true;
-        enable32Bit = true;
         extraPackages = [ pkgs.libvdpau-va-gl pkgs.vaapiVdpau ];
       };
 

@@ -40,7 +40,6 @@ let cfg = config.sorac.host.newIntel; in {
     hardware = {
       graphics = {
         enable = true;
-        enable32Bit = true;
         extraPackages = [
           pkgs.intel-media-driver
           pkgs.vpl-gpu-rt # for qsv support in obs-studio
