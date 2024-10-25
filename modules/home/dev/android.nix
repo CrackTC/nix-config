@@ -1,4 +1,4 @@
-{ config, pkgs, lib, name, extraRepos, ... }:
+{ config, pkgs, lib, name, ... }:
 let cfg = config.android; in {
   options.android = {
     enable = lib.mkEnableOption "android devkits";
@@ -7,7 +7,7 @@ let cfg = config.android; in {
   config = lib.mkIf cfg.enable {
     jetbrains.enable = true;
     hmConfig.home.packages = [
-      (extraRepos.pkgs-master.android-studio.override { forceWayland = true; })
+      (pkgs.android-studio.override { forceWayland = true; })
     ];
 
     osConfig = {
