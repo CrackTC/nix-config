@@ -213,6 +213,7 @@ let cfg = config.hypr; in {
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
             (lib.mkIf config.firefox.enable [ "opacity 0.8 override 0.8 override, class:^(firefox)$" ])
+            (lib.mkIf config.programs.utility.follow.enable [ "opacity 0.8 override 0.8 override, class:^(Follow)$" ])
             (lib.mkIf config.jetbrains.enable [
               "opacity 0.8 override 0.8 override, class:^(jetbrains-[a-z]*)$"
               "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\\d+$"
