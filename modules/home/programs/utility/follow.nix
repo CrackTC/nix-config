@@ -20,7 +20,7 @@ let cfg = config.programs.utility.follow; in {
 
         pnpmDeps = pkgs.pnpm.fetchDeps {
           inherit pname version src;
-          hash = "sha256-/xd57JNeKssxRytKen6uIZYhJcTi+bxbbUDtquNLALc=";
+          hash = "sha256-f9N0lll6PzoytYVZtxr5jd2F5K6KIuLJF4X3+Xd85yQ=";
         };
 
         desktopItem = pkgs.makeDesktopItem {
