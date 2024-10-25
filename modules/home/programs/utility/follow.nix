@@ -9,18 +9,18 @@ let cfg = config.programs.utility.follow; in {
       (pkgs.follow.overrideAttrs (oldAttrs: rec {
         pname = "follow";
 
-        version = "0.0.1-alpha.21";
+        version = "0.1.0-beta.0";
 
         src = pkgs.fetchFromGitHub {
           owner = "RSSNext";
           repo = "Follow";
           rev = "v${version}";
-          hash = "sha256-h9A0v1FPfWOwd8F1b578Di7fa04t4jsTvDw1XjEsAW0=";
+          hash = "sha256-HMsty0ZDMqzTTPLKcfTCo1N4/LmiqoWETy7o1nB0FJw=";
         };
 
         pnpmDeps = pkgs.pnpm.fetchDeps {
           inherit pname version src;
-          hash = "sha256-EILnnDBiBT94/gjlPFle1e0fxACMWFIQXIZdT2hG9FQ=";
+          hash = "sha256-/xd57JNeKssxRytKen6uIZYhJcTi+bxbbUDtquNLALc=";
         };
 
         desktopItem = pkgs.makeDesktopItem {
