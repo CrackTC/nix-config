@@ -13,6 +13,8 @@ let cfg = config.c; in {
       bear
       valgrind # for memory profiling
 
+      ltrace
+
       # https://discourse.nixos.org/t/statically-linked-mingw-binaries/38395/4
       (
         let
