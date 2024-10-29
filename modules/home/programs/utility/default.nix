@@ -10,6 +10,7 @@
     ./duf.nix
     ./fastfetch.nix
     ./follow.nix
+    ./imhex.nix
     ./joshuto
     ./jq.nix
     ./lazygit.nix
