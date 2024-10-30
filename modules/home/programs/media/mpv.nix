@@ -6,6 +6,11 @@ in
 {
   options.programs.media.mpv = {
     enable = lib.mkEnableOption "mpv";
+    useAnime4K = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Use Anime4K shaders";
+    };
   };
 
   config.hmConfig = lib.mkIf cfg.enable (lib.mkMerge [
@@ -49,7 +54,7 @@ in
         };
       };
     }
-    (lib.mkIf hostConfig.nvidia.enable {
+    (lib.mkIf (hostConfig.nvidia.enable && cfg.useAnime4K) {
       xdg.configFile."mpv/shaders" = {
         source = pkgs.fetchzip
           {
