@@ -7,14 +7,7 @@ let cfg = config.programs.editor.zed; in {
   config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = [
-        (pkgs.zed-editor.overrideAttrs (oldAttrs: {
-          nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [
-            pkgs.makeWrapper
-          ];
-          postInstall = ''
-            wrapProgram "$out/bin/zeditor" --set DRI_PRIME 1
-          '';
-        }))
+        pkgs.zed-editor
       ];
     };
   };
