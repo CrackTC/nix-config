@@ -9,7 +9,7 @@ in
     enable = lib.mkEnableOption "dotnet";
     sdks = lib.mkOption {
       type = lib.types.listOf lib.types.int;
-      default = [ 8 7 6 ];
+      default = [ 9 8 ];
       description = "List of .NET SDK versions to install.";
     };
     root = lib.mkOption {
