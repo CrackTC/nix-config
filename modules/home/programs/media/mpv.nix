@@ -39,10 +39,9 @@ in
           blend-subtitles = "video";
           fullscreen = true;
 
-          vo = "gpu-next";
-          gpu-api = "vulkan";
+          vo = "gpu";
 
-          hwdec = "auto";
+          hwdec = "vaapi";
           hwdec-codecs = "all";
 
           # font of on screen display
