@@ -10,7 +10,7 @@ let cfg = config.programs.im.discord; in {
         (pkgs.discord.overrideAttrs (oldAttrs: {
           postInstall = oldAttrs.postInstall + ''
             wrapProgram $out/opt/Discord/Discord \
-              --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --use-gl=desktop"
+              --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations --use-gl=desktop --enable-wayland-ime"
           '';
         }))
       ];
