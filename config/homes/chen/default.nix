@@ -31,6 +31,7 @@
       discord.enable = true;
     };
     utility = {
+      anki.enable = true;
       asciinema.enable = true;
       baidunetdisk.enable = true;
       bat.enable = true;
