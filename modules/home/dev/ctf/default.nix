@@ -17,7 +17,7 @@ let cfg = config.ctf; in {
         nmap
         frida-tools
         netcat-gnu
-        jd-gui
+        bytecode-viewer
         php
       ];
     };
