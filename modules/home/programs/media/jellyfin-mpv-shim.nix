@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, extraRepos, ... }:
 let
   cfg = config.programs.media.jellyfin-mpv-shim;
 in
@@ -16,7 +16,7 @@ in
         WantedBy = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "${lib.getExe pkgs.jellyfin-mpv-shim}";
+        ExecStart = "${lib.getExe extraRepos.pkgs-master.jellyfin-mpv-shim}";
       };
     };
   };
