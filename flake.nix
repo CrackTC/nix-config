@@ -22,6 +22,7 @@
     nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
     nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.05"; flake = false; };
     nixpkgs-mine = { url = "github:CrackTC/nixpkgs"; flake = false; };
+    hyprland.url = "github:hyprwm/hyprland/v0.45.0";
     nur = { url = "github:nix-community/NUR"; flake = false; };
     myRepo = {
       url = "github:CrackTC/nur-packages";
@@ -43,6 +44,7 @@
     , nixpkgs-master
     , nixpkgs-stable
     , nixpkgs-mine
+    , hyprland
     , nur
     , myRepo
     , home-manager
@@ -70,6 +72,7 @@
                   pkgs-stable = import nixpkgs-stable option;
                   pkgs-mine = import nixpkgs-mine option;
 
+                  hyprland = hyprland.packages.${host-info.system};
                   nur = import nur { inherit pkgs; nurpkgs = pkgs; };
                   myRepo = myRepo.legacyPackages.${host-info.system};
                 };

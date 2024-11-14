@@ -18,7 +18,7 @@ let cfg = config.hypr; in {
     hmConfig = {
       wayland.windowManager.hyprland = {
         enable = true;
-        package = extraRepos.pkgs-master.hyprland;
+        package = extraRepos.hyprland.hyprland;
         settings = {
 
           env = lib.mkMerge [
@@ -97,6 +97,8 @@ let cfg = config.hypr; in {
             "col.inactive_border" = "rgba(4c566aff)";
 
             layout = "dwindle";
+
+            snap.enabled = true;
           };
 
           decoration = {
@@ -151,7 +153,7 @@ let cfg = config.hypr; in {
           render = {
             explicit_sync = 0;
             explicit_sync_kms = 0;
-            direct_scanout = true;
+            direct_scanout = false;
           };
 
           gestures = {
