@@ -22,7 +22,7 @@
     nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
     nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.05"; flake = false; };
     nixpkgs-mine = { url = "github:CrackTC/nixpkgs"; flake = false; };
-    hyprland.url = "github:hyprwm/hyprland/v0.45.0";
+    hyprland.url = "github:hyprwm/hyprland/v0.45.1";
     nur = { url = "github:nix-community/NUR"; flake = false; };
     myRepo = {
       url = "github:CrackTC/nur-packages";
