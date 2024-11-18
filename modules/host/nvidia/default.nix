@@ -55,7 +55,7 @@ let cfg = config.sorac.host.nvidia; in {
       };
 
       nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = config.boot.kernelPackages.nvidiaPackages.beta;
         modesetting.enable = true;
         open = true;
         prime.nvidiaBusId = "PCI:${cfg.pciBusId.bus}:${cfg.pciBusId.slot}:${cfg.pciBusId.function}";

@@ -151,8 +151,7 @@ let cfg = config.hypr; in {
           };
 
           render = {
-            explicit_sync = 0;
-            explicit_sync_kms = 0;
+            explicit_sync = 1;
             direct_scanout = false;
           };
 
