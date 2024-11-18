@@ -111,7 +111,7 @@ let cfg = config.hypr; in {
               new_optimizations = true;
               ignore_opacity = true;
               popups = true;
-              popups_ignorealpha = 0.8;
+              popups_ignorealpha = 0.2;
             };
 
             # drop_shadow = false;
