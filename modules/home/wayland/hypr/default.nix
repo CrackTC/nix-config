@@ -152,7 +152,7 @@ let cfg = config.hypr; in {
 
           render = {
             explicit_sync = 1;
-            direct_scanout = false;
+            direct_scanout = true;
           };
 
           gestures = {
