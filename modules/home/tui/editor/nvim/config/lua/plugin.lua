@@ -25,7 +25,7 @@ require("lazy").setup(
         require("plugins.csharpls-extended-lsp"),
         require("plugins.flit"),
         require("plugins.gitsigns"),
-        require("plugins.headlines"),
+        require("plugins.render-markdown"),
         require("plugins.illuminate"),
         require("plugins.img-paste"),
         require("plugins.lsp-signature"),
