@@ -55,7 +55,6 @@ let cfg = config.hypr; in {
           exec-once = lib.mkMerge [
             [
               "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
-              # "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
               "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"
             ]
             (lib.mkIf config.fcitx5.enable [ "fcitx5 -d" ])
@@ -80,6 +79,10 @@ let cfg = config.hypr; in {
             };
 
             sensitivity = 0;
+          };
+
+          cursor = {
+            no_hardware_cursors = 0;
           };
 
           device = lib.mkIf config.programs.utility.ydotool.enable {
@@ -184,10 +187,6 @@ let cfg = config.hypr; in {
           ];
 
           windowrulev2 = lib.mkMerge [
-            # "nomaxsize, class:^(winecfg\\.exe)$"
-            # "float, class:^(winecfg\\.exe)$"
-            # "size 677 841, class:^(winecfg\\.exe)$"
-
             (lib.mkIf config.showmethekey.enable [
               "float, class:^(showmethekey-gtk)$, title:^(Floating Window - Show Me The Key)$"
               "opacity 0.5 override 0.5 override, class:^(showmethekey-gtk)$, title:^(Floating Window - Show Me The Key)$"
