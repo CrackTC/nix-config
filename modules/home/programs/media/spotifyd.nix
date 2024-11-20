@@ -1,4 +1,4 @@
-{ config, lib, extraRepos, name, ... }:
+{ config, lib, pkgs, name, ... }:
 let cfg = config.programs.media.spotifyd; in {
   options.programs.media.spotifyd = {
     enable = lib.mkEnableOption "spotifyd";
@@ -7,7 +7,7 @@ let cfg = config.programs.media.spotifyd; in {
   config.hmConfig = lib.mkIf cfg.enable {
     services.spotifyd = {
       enable = true;
-      package = extraRepos.pkgs-master.spotifyd;
+      package = pkgs.spotifyd;
       settings = {
         global = {
           username = config.email;

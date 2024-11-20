@@ -1,4 +1,4 @@
-{ config, lib, extraRepos, ... }:
+{ config, lib, pkgs, ... }:
 let cfg = config.waybar; in {
   imports = [
     ./modules
@@ -14,7 +14,7 @@ let cfg = config.waybar; in {
     hmConfig = {
       programs.waybar = {
         enable = true;
-        package = extraRepos.pkgs-master.waybar;
+        package = pkgs.waybar;
         settings = {
           mainBar = {
             spacing = 2;

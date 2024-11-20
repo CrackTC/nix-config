@@ -1,4 +1,4 @@
-{ config, pkgs, lib, name, ... }:
+{ config, pkgs, extraRepos, lib, name, ... }:
 let cfg = config.net; in {
   options.net = {
     enable = lib.mkEnableOption "network utils";
@@ -7,7 +7,7 @@ let cfg = config.net; in {
   config = lib.mkIf cfg.enable {
     hmConfig = {
       home.packages = with pkgs; [
-        mitmproxy
+        extraRepos.pkgs-master.mitmproxy
         rlwrap
         websocat
       ];

@@ -1,5 +1,10 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.waybar; in {
+{ config, pkgs, lib, extraRepos, ... }:
+let
+  cfg = config.waybar;
+  cava = lib.getExe extraRepos.pkgs-mine.cava;
+  playerctl = lib.getExe pkgs.playerctl;
+in
+{
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.settings.mainBar."custom/cava" = {
       exec = pkgs.writeShellScript "cava.sh" ''
@@ -41,24 +46,19 @@ let cfg = config.waybar; in {
         " > $config_file
 
         # run cava in the background
-        cava -p $config_file &
+        ${cava} -p $config_file &
 
         # reading data from fifo
         while read -r cmd; do
             echo $cmd | sed "$dict"
         done < $pipe
       '';
-      on-scroll-up = "playerctl -p spotify,edge,yesplaymusic previous";
-      on-scroll-down = "playerctl -p spotify,edge,yesplaymusic next";
-      on-click = "playerctl -p spotify,edge,yesplaymusic play-pause";
+      on-scroll-up = "${playerctl} -p spotify,edge,yesplaymusic previous";
+      on-scroll-down = "${playerctl} -p spotify,edge,yesplaymusic next";
+      on-click = "${playerctl} -p spotify,edge,yesplaymusic play-pause";
       # on-click = "dbus-send --print-reply --dest=\"org.mpris.MediaPlayer2.spotifyd.instance$(pgrep spotifyd)\" /org/mpris/MediaPlayer2 \"org.mpris.MediaPlayer2.Player.PlayPause\"";
       # on-scroll-up = "dbus-send --print-reply --dest=\"org.mpris.MediaPlayer2.spotifyd.instance$(pgrep spotifyd)\" /org/mpris/MediaPlayer2 \"org.mpris.MediaPlayer2.Player.Previous\"";
       # on-scroll-down = "dbus-send --print-reply --dest=\"org.mpris.MediaPlayer2.spotifyd.instance$(pgrep spotifyd)\" /org/mpris/MediaPlayer2 \"org.mpris.MediaPlayer2.Player.Next\"";
     };
-
-    home.packages = with pkgs; [
-      cava
-      playerctl
-    ];
   };
 }

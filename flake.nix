@@ -21,23 +21,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
-    nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.05"; flake = false; };
+    nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.11"; flake = false; };
     nixpkgs-mine = { url = "github:CrackTC/nixpkgs"; flake = false; };
-    hyprland.url = "github:hyprwm/hyprland/v0.45.1";
+    hyprland.url = "github:hyprwm/hyprland/v0.45.2";
     nur = { url = "github:nix-community/NUR"; flake = false; };
-    myRepo = {
-      url = "github:CrackTC/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-    };
+    myRepo = { url = "github:CrackTC/nur-packages"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
@@ -54,6 +44,7 @@
     }:
     let
       hosts = [ "cno" ];
+      utilities = import ./utils;
     in
     {
       nixosConfigurations = builtins.listToAttrs (map
@@ -62,7 +53,6 @@
           value = nixpkgs.lib.nixosSystem
             (
               let
-                utilities = import ./utils;
                 host-info = import ./config/hosts/${host-name}/flake-info.nix;
                 option = utilities.nixpkgsOptions host-info.system host-info.cpu false;
 
