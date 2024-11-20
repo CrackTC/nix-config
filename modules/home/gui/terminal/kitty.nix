@@ -22,8 +22,12 @@ let cfg = config.terminals.kitty; in {
         italic_font = "Maple Mono Italic";
         bold_italic_font = "Maple Mono BoldItalic";
         font_size = 14;
+
         cursor_text_color = "background";
         cursor_blink_interval = 0;
+        cursor_trail = 1;
+        cursor_trail_start_threshold = 0;
+
         window_padding_width = "5 10";
         close_on_child_death = true;
       };
