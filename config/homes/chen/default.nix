@@ -41,7 +41,6 @@
       clash.enable = true;
       duf.enable = true;
       fastfetch.enable = true;
-      follow.enable = true;
       imhex.enable = true;
       joshuto.enable = false;
       jq.enable = true;
