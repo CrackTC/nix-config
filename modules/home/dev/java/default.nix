@@ -9,7 +9,9 @@ let cfg = config.java; in {
   config = lib.mkIf cfg.enable {
     idea.enable = true;
     hmConfig = {
-      home.packages = with pkgs; [ jdk8 ];
+      home.packages = with pkgs; [
+        (jdk21.override { enableJavaFX = true; })
+      ];
     };
   };
 }
