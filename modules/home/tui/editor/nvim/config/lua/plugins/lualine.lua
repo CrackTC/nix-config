@@ -44,7 +44,7 @@ end
 local function get_diagnostics_component()
     return {
         "diagnostics",
-        always_visible = true,
+        always_visible = false,
         update_in_insert = false,
         diagnostics_color = {
             error = { fg = '#bf616a' },
