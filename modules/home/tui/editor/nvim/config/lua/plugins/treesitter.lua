@@ -9,6 +9,7 @@ local extensions = {
     "go",
     "haskell",
     "html",
+    "hurl",
     "latex",
     "lua",
     "make",

@@ -20,6 +20,7 @@ let cfg = config.ctf; in {
         bytecode-viewer
         php
         sqlmap
+        hurl
       ];
     };
   };
