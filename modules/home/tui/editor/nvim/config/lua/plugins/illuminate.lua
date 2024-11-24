@@ -13,7 +13,7 @@ end
 
 return {
     "RRethy/vim-illuminate",
-    config = function ()
+    config = function()
         setup_plugin()
         setup_highlights()
     end

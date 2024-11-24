@@ -7,4 +7,3 @@ require("lsp")
 if vim.fn.exists("g:neovide") then
     require("neovide")
 end
-
