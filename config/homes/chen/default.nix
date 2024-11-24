@@ -22,6 +22,7 @@
     media = {
       mpv.enable = true;
       jellyfin-mpv-shim.enable = true;
+      songrec.enable = true;
       spotify.enable = true;
       yesplaymusic.enable = true;
     };
