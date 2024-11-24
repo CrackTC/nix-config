@@ -21,7 +21,7 @@ let cfg = config.terminals.kitty; in {
         bold_font = "Maple Mono Bold";
         italic_font = "Maple Mono Italic";
         bold_italic_font = "Maple Mono BoldItalic";
-        font_size = 14;
+        font_size = 12;
 
         cursor_text_color = "background";
         cursor_blink_interval = 0;
