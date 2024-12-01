@@ -37,7 +37,7 @@
     gvfs.enable = true;
     joycond.enable = true;
     man.enable = true;
-    monitors = let scale = 1.25; in [
+    monitors = [
       {
         name = "eDP-1";
         weight = 2560;
@@ -45,16 +45,16 @@
         refresh = 240;
         left = 0;
         top = 0;
-        inherit scale;
+        scale = 1.25;
       }
-      rec {
+      {
         name = "DP-1";
         weight = 2560;
         height = 1440;
         refresh = 170;
-        left = builtins.ceil (weight / scale);
+        left = builtins.ceil (2560 / 1.25);
         top = 0;
-        inherit scale;
+        scale = 1.0;
       }
     ];
     pipewire = {
