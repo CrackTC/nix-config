@@ -18,17 +18,7 @@ let cfg = config.virt; in {
         [ pkgs.virtiofsd ]
         (lib.mkIf (hostConfig.gui.enable && config.gui.enable) [
           pkgs.spice-gtk
-
-          # https://github.com/NixOS/nixpkgs/issues/328643
-          (pkgs.looking-glass-client.overrideAttrs {
-            patches = [
-              (pkgs.fetchpatch {
-                url = "https://github.com/gnif/LookingGlass/commit/20972cfd9b940fddf9e7f3d2887a271d16398979.patch";
-                hash = "sha256-CqB8AmOZ4YxnEsQkyu/ZEaun6ywpSh4B7PM+MFJF0qU=";
-                stripLen = 1;
-              })
-            ];
-          })
+          pkgs.looking-glass-client
         ])
       ];
 
@@ -57,16 +47,7 @@ let cfg = config.virt; in {
               "nvidia-modeset"
             ];
             extraModulePackages = with osConfig.boot.kernelPackages; [
-              # https://github.com/NixOS/nixpkgs/issues/328643
-              (kvmfr.overrideAttrs {
-                patches = [
-                  (pkgs.fetchpatch {
-                    url = "https://github.com/gnif/LookingGlass/commit/7305ce36af211220419eeab302ff28793d515df2.patch";
-                    hash = "sha256-97nZsIH+jKCvSIPf1XPf3i8Wbr24almFZzMOhjhLOYk=";
-                    stripLen = 1;
-                  })
-                ];
-              })
+              kvmfr
             ];
             extraModprobeConfig = ''
               options vfio-pci ids=${builtins.concatStringsSep "," hostConfig.virt.pciPassIds}
@@ -84,10 +65,17 @@ let cfg = config.virt; in {
               [app]
               shmFile=/dev/kvmfr0
 
+              [win]
+              autoResize=yes
+              fullScreen=yes
+
               [input]
               grabKeyboardOnFocus=yes
               escapeKey=KEY_RIGHTCTRL
               rawMouse=yes
+
+              [audio]
+              micDefault=allow
             '';
 
             "SSDT1.dat".source = ./SSDT1.dat;
