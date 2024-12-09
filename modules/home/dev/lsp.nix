@@ -9,7 +9,7 @@ let cfg = config.lsp; in {
       [ yaml-language-server ]
       (lib.mkIf config.nix.enable [ nil statix ])
       (lib.mkIf config.c.enable [ clang-tools cmake-language-server ])
-      (lib.mkIf config.dotnet.enable [ csharp-ls ])
+      (lib.mkIf config.dotnet.enable [ csharp-ls omnisharp-roslyn ])
       (lib.mkIf config.go.enable [ gopls ])
       (lib.mkIf config.haskell.enable [ haskell-language-server ])
       (lib.mkIf config.java.enable [ jdt-language-server ])
