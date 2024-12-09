@@ -25,7 +25,6 @@ in
     hmConfig = {
       home.packages = with pkgs; [
         combined
-
         csharprepl
       ];
     };

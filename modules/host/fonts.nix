@@ -17,7 +17,7 @@ let cfg = config.sorac.host.font; in {
       maple-mono-SC-NF
       ubuntu_font_family
       twitter-color-emoji
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      nerd-fonts.symbols-only
     ];
 
     fontconfig = {

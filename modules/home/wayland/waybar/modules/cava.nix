@@ -1,7 +1,7 @@
-{ config, pkgs, lib, extraRepos, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.waybar;
-  cava = lib.getExe extraRepos.pkgs-mine.cava;
+  cava = lib.getExe pkgs.cava;
   playerctl = lib.getExe pkgs.playerctl;
 in
 {
