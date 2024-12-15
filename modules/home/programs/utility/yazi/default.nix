@@ -27,7 +27,7 @@ let cfg = config.programs.utility.yazi; in {
             { on = [ "<A-k>" ]; run = "seek 5"; }
             { on = [ "<A-;>" ]; run = "seek -5"; }
             { on = [ "h" ]; run = "leave"; }
-            { on = [ "i" ]; run = "plugin --sync smart-enter"; }
+            { on = [ "i" ]; run = "plugin smart-enter"; }
             { on = [ "H" ]; run = "back"; }
             { on = [ "I" ]; run = "forward"; }
 
@@ -56,10 +56,10 @@ let cfg = config.programs.utility.yazi; in {
             { on = [ "?" ]; run = "find --previous --smart"; }
 
             # selection
-            { on = "<Space>"; run = [ "select --state=none" "arrow 1" ]; }
+            { on = "<Space>"; run = [ "toggle --state=none" "arrow 1" ]; }
             { on = "v"; run = "visual_mode"; }
             { on = "V"; run = "visual_mode --unset"; }
-            { on = "<C-a>"; run = "select_all --state=none"; }
+            { on = "<C-a>"; run = "toggle_all --state=none"; }
           ];
 
           tasks.keymap = [
