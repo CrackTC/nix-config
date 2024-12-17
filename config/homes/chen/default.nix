@@ -57,6 +57,7 @@
       rofi.enable = true;
       tex.enable = true;
       video2gif.enable = true;
+      waydroid.enable = true;
       yazi.enable = true;
       zip.enable = true;
     };

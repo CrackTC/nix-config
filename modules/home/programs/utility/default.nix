@@ -23,6 +23,7 @@
     ./rofi
     ./tex.nix
     ./video2gif.nix
+    ./waydroid.nix
     ./yazi
     ./zip.nix
   ];
