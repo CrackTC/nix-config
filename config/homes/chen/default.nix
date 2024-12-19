@@ -24,7 +24,6 @@
       jellyfin-mpv-shim.enable = true;
       songrec.enable = true;
       spotify.enable = true;
-      yesplaymusic.enable = true;
     };
     im = {
       qq.enable = true;
