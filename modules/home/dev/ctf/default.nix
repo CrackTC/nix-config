@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let cfg = config.ctf; in {
   imports = [
+    ./detect-it-easy.nix
     ./ghidra.nix
     ./metasploit.nix
   ];
@@ -10,6 +11,7 @@ let cfg = config.ctf; in {
   };
 
   config = lib.mkIf cfg.enable {
+    detect-it-easy.enable = true;
     ghidra.enable = true;
     metasploit.enable = true;
     hmConfig = {
