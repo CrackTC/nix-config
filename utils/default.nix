@@ -105,7 +105,6 @@
     "console"
     "containers"
     "documentation"
-    "dysnomia"
     "ec2"
     "environment"
     "fileSystems"

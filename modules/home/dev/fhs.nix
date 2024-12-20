@@ -16,7 +16,7 @@ in
 
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      (pkgs.buildFHSUserEnv {
+      (pkgs.buildFHSEnv {
         name = "fhs";
         runScript = config.programs.preferredShell;
         targetPkgs = pkgs: with pkgs;
