@@ -12,9 +12,14 @@ let cfg = config.fcitx5; in {
         waylandFrontend = config.wayland.enable;
         plasma6Support = true;
         addons = with pkgs; [
-          fcitx5-chinese-addons
           fcitx5-anthy
           fcitx5-nord
+
+          (fcitx5-rime.override {
+            rimeDataPkgs = [
+              (callPackage ./rime-frost.nix { })
+            ];
+          })
         ];
       };
     };
