@@ -8,7 +8,12 @@ let
     url = "https://github.com/amzxyz/RIME-LMDG/releases/download/v3n2/amz-v3n2m1-zh-hans.gram";
     hash = "sha256-9QUGaYJl6l+rQVdS26tdPw+HgV+deGCo8ESpJjSKhF8=";
   };
+  moegirl-dict = fetchurl {
+    url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict.yaml";
+    hash = "sha256-mAa2seIqBzEgIwMokfU3lyA/GwwDVBvjXax3i2l+qm8=";
+  };
   custom = ./rime_frost.custom.yaml;
+  dict = ./rime_frost.combined.dict.yaml;
 in
 stdenv.mkDerivation rec {
   pname = "rime-frost";
@@ -26,6 +31,8 @@ stdenv.mkDerivation rec {
     mv * $out/share/rime-data
     cp ${rime-lmdg} $out/share/rime-data/amz-v3n2m1-zh-hans.gram
     cp ${custom} $out/share/rime-data/rime_frost.custom.yaml
+    cp ${dict} $out/share/rime-data/rime_frost.combined.dict.yaml
+    cp ${moegirl-dict} $out/share/rime-data/moegirl.dict.yaml
   '';
 
   meta = with lib; {
