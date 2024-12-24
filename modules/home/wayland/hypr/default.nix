@@ -41,6 +41,9 @@ let cfg = config.hypr; in {
               "QT_AUTO_SCREEN_SCALE_FACTOR,1"
               "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
+              # GTK Variables
+              "GTK_USE_PORTAL,1"
+
               "XDG_CONFIG_HOME,/home/${name}/.config"
               "XDG_CONFIG_DIR,/home/${name}/.config"
             ]
@@ -54,7 +57,6 @@ let cfg = config.hypr; in {
 
           exec-once = lib.mkMerge [
             [
-              "hyprctl setcursor 'Capitaine Cursors (Nord)' 24"
               "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"
             ]
             (lib.mkIf config.fcitx5.enable [ "fcitx5 -d" ])

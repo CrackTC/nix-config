@@ -4,57 +4,77 @@ let cfg = config.theme; in {
     enable = lib.mkEnableOption "theme settings";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
-    home.pointerCursor = {
-      gtk.enable = true;
-      package = pkgs.capitaine-cursors-themed;
-      name = "Capitaine Cursors (Nord)";
-      size = 24;
-      x11.enable = true;
-      x11.defaultCursor = "Capitaine Cursors (Nord)";
-    };
-
-    gtk = {
-      enable = true;
-      theme = {
-        package = pkgs.nordic;
-        name = "Nordic";
-      };
-      iconTheme = {
-        package = pkgs.papirus-nord;
-        name = "Papirus-Dark";
-      };
-      font = {
-        name = "sans-serif";
-        size = 11;
+  config = lib.mkIf cfg.enable {
+    osConfig = {
+      gtk.iconCache.enable = true;
+      qt = {
+        enable = true;
+        platformTheme = "qt5ct";
+        style = "kvantum";
       };
     };
+    hmConfig =
+      let
+        cursorThemePackage = pkgs.capitaine-cursors-themed;
+        cursorTheme = "Capitaine Cursors (Nord)";
+        cursorSize = 24;
 
-    qt = {
-      enable = true;
-      platformTheme.name = "gtk";
-      style.name = "gtk2";
-    };
+        themePackage = pkgs.nordic;
+        themeName = "Nordic";
 
-    dconf = {
-      settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
+        iconThemePackage = pkgs.papirus-nord.override { accent = "frostblue3"; };
+        iconThemeName = "Papirus-Dark";
+      in
+      {
+        home.pointerCursor = {
+          package = cursorThemePackage;
+          name = cursorTheme;
+          size = cursorSize;
+
+          gtk.enable = true;
+          hyprcursor.enable = lib.mkIf config.hypr.enable true;
+          x11 = { enable = true; defaultCursor = cursorTheme; };
         };
-      };
-    };
 
-    programs.dircolors = {
-      enable = true;
-      settings = {
-        OTHER_WRITABLE = "01;36";
-      };
-    };
+        gtk = {
+          enable = true;
+          theme = { package = themePackage; name = themeName; };
+          iconTheme = {
+            package = iconThemePackage;
+            name = iconThemeName;
+          };
+          font = {
+            name = "sans-serif";
+            size = 11;
+          };
+        };
 
-    home.packages = with pkgs; [
-      libsForQt5.qtstyleplugins
-      qt6Packages.qt6gtk2
-      dconf
-    ];
+        xdg.configFile = {
+          "Kvantum/kvantum.kvconfig".text = ''
+            [General]
+            theme=Nordic-Solid
+          '';
+
+          "Kvantum/Nordic-Solid".source = pkgs.fetchzip {
+            url = "https://github.com/EliverLara/Nordic/raw/32e3176db314086cf79074bf06b936f8d62d7b15/kde/kvantum/Nordic-Solid.tar.xz";
+            hash = "sha256-R21N5YqHsf6bwA6MvwV0GY7HAOK4me0U0x9Yceu11Yw=";
+          };
+        };
+
+        dconf.settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-dark";
+          };
+        };
+
+        programs.dircolors = {
+          enable = true;
+          settings = {
+            OTHER_WRITABLE = "01;36";
+          };
+        };
+
+        home.packages = with pkgs; [ dconf ];
+      };
   };
 }
