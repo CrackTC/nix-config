@@ -1,7 +1,7 @@
 {
   imports = [
     ./discord.nix
-    ./qq.nix
+    ./qq
     ./telegram.nix
   ];
 }
