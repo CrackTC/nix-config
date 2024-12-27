@@ -1,5 +1,6 @@
 { config, pkgs, lib, extraRepos, name, ... }:
-let cfg = config.hypr; in {
+let cfg = config.hypr; in
+{
   imports = [
     ./nvidia.nix
     ./intel.nix

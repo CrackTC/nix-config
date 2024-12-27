@@ -1,5 +1,18 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.hypr; in {
+{ config, pkgs, lib, extraRepos, ... }:
+let
+  cfg = config.hypr;
+
+  hyprctl = extraRepos.hyprland.hyprland + "/bin/hyprctl";
+  jq = lib.getExe pkgs.jq;
+  grep = lib.getExe pkgs.gnugrep;
+
+  fake-fullscreen-qq = pkgs.writeShellScript "fake-fullscreen-qq" ''
+    ${hyprctl} -j activewindow | ${jq} -r .initialClass | ${grep} -q '^QQ$' &&
+        ${hyprctl} dispatch -- fullscreenstate 2 1 ||
+        ${hyprctl} dispatch fullscreen
+  '';
+in
+{
   config.hmConfig.wayland.windowManager.hyprland.settings = lib.mkIf cfg.enable {
     "$mainMod" = "SUPER";
     bind =
@@ -27,7 +40,8 @@ let cfg = config.hypr; in {
           "$mainMod SHIFT, ${if colemak then "R" else "S"}, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copy area"
           "$mainMod SHIFT, Q, killactive, "
           "$mainMod SHIFT, Space, togglefloating, "
-          "$mainMod, ${if colemak then "T" else "F"}, fullscreen, 0"
+          "$mainMod, ${if colemak then "T" else "F"}, exec, ${fake-fullscreen-qq}"
+          "$mainMod, Up, fullscreen, 1"
 
           "$mainMod, H, movefocus, l"
           "$mainMod, ${if colemak then "I" else "L"}, movefocus, r"
