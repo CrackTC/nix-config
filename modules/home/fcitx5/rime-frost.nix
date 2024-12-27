@@ -5,8 +5,8 @@
 }:
 let
   rime-lmdg = fetchurl {
-    url = "https://github.com/amzxyz/RIME-LMDG/releases/download/v3n2/amz-v3n2m1-zh-hans.gram";
-    hash = "sha256-9QUGaYJl6l+rQVdS26tdPw+HgV+deGCo8ESpJjSKhF8=";
+    url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
+    hash = "sha256-uKdV1/3FaKJ10kVwGcxWCG1pE46fQVNSl2ZkqLyDW1U=";
   };
   moegirl-dict = fetchurl {
     url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict.yaml";
@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/share/rime-data
     mv * $out/share/rime-data
-    cp ${rime-lmdg} $out/share/rime-data/amz-v3n2m1-zh-hans.gram
+    cp ${rime-lmdg} $out/share/rime-data/wanxiang-lts-zh-hans.gram
     cp ${custom} $out/share/rime-data/rime_frost.custom.yaml
     cp ${dict} $out/share/rime-data/rime_frost.combined.dict.yaml
     cp ${moegirl-dict} $out/share/rime-data/moegirl.dict.yaml
