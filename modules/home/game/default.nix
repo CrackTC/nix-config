@@ -16,12 +16,12 @@
     };
   };
 
-  config = lib.mkIf config.game.enable {
+  config.game = lib.mkIf config.game.enable (lib.mkDefault {
     beatoraja.enable = true;
     bottles.enable = true;
     gamescope.enable = true;
     osu.enable = true;
     steam.enable = true;
     sunshine.enable = true;
-  };
+  });
 }

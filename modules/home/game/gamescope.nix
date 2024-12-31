@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.gamescope; in {
-  options.gamescope = {
+let cfg = config.game.gamescope; in {
+  options.game.gamescope = {
     enable = lib.mkEnableOption "gamescope";
   };
 

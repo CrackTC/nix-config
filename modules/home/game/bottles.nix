@@ -1,6 +1,6 @@
-{config, pkgs, lib, ...}:
-let cfg = config.bottles; in {
-  options.bottles = {
+{ config, pkgs, lib, ... }:
+let cfg = config.game.bottles; in {
+  options.game.bottles = {
     enable = lib.mkEnableOption "bottles";
   };
 

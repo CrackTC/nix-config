@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-let cfg = config.osu; in {
-  options.osu = {
+let cfg = config.game.osu; in {
+  options.game.osu = {
     enable = lib.mkEnableOption "osu";
   };
 

@@ -10,7 +10,10 @@
     enable = true;
     profileName = "sorac";
   };
-  game.enable = true;
+  game = {
+    enable = true;
+    bottles.enable = false;
+  };
   git.key = "32EC77DBD23E9EB1";
   gui.enable = true;
   pinentry = "pinentry-rofi";
