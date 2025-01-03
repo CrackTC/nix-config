@@ -1,6 +1,10 @@
 { config, lib, ... }:
 let cfg = config.terminal; in {
-  imports = [ ./kitty.nix ];
+  imports = [
+    ./kitty.nix
+    ./ghostty.nix
+  ];
+
   options.terminal = {
     enable = lib.mkEnableOption "terminal emulator";
     preferred = lib.mkOption {

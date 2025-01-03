@@ -21,7 +21,7 @@ in
         rofi-kb = "-kb-row-up Alt+${if colemak then "e" else "k"} -kb-row-down Alt+${if colemak then "n" else "j"}";
       in
       lib.mkMerge [
-        (lib.mkIf config.terminals.kitty.enable [ "$mainMod, Return, exec, kitty" ])
+        (lib.mkIf config.terminal.enable [ "$mainMod, Return, exec, ${config.terminal.preferred}" ])
         (lib.mkIf config.obsidian.enable [ "$mainMod, ${if colemak then "Y" else "O"}, exec, obsidian" ])
         (lib.mkIf (config.vivaldi.enable || config.firefox.enable) [
           "$mainMod, ${if colemak then "U" else "I"}, exec, ${if config.firefox.enable then "firefox" else "vivaldi"}"
