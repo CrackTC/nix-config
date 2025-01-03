@@ -230,6 +230,7 @@ let cfg = config.hypr; in
               "noanim,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
               "noborder,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
               "rounding 0,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
+              "move onscreen cursor,class:^ghidra-.+$,title:^win.+$,floating:1,fullscreen:0"
             ])
             (lib.mkIf config.programs.utility.waydroid.enable [ "float, class:^([Ww]aydroid.*)$" ])
             [ "float, class:^(org.kde.polkit-kde-authentication-agent-1)$" ]
