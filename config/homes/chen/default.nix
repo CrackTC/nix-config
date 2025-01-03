@@ -64,7 +64,7 @@
       zip.enable = true;
     };
   };
-  terminal.preferred = "kitty";
+  terminal.preferred = "ghostty";
   theme.enable = true;
   tui.enable = true;
   wayland.enable = true;
