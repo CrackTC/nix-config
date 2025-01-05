@@ -18,6 +18,7 @@ in
     programs.rofi = {
       enable = true;
       package = if config.wayland.enable then pkgs.rofi-wayland else pkgs.rofi;
+      terminal = lib.getExe config.terminal.preferredPackage;
       extraConfig = {
         width = 400;
         lines = 20;
