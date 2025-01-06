@@ -23,7 +23,7 @@
     nixpkgs-master = { url = "github:NixOS/nixpkgs/master"; flake = false; };
     nixpkgs-stable = { url = "github:NixOS/nixpkgs/nixos-24.11"; flake = false; };
     nixpkgs-mine = { url = "github:CrackTC/nixpkgs"; flake = false; };
-    hyprland.url = "github:hyprwm/hyprland/e75e2cdac79417ffdbbbe903f72668953483a4e7";
+    hyprland = { url = "github:hyprwm/hyprland/b9f110ef8726fcba2b4ee69856027731e73003a5"; inputs.nixpkgs.follows = "nixpkgs"; };
     ghostty.url = "github:ghostty-org/ghostty/main";
     nur = { url = "github:nix-community/NUR"; flake = false; };
     myRepo = { url = "github:CrackTC/nur-packages"; inputs.nixpkgs.follows = "nixpkgs"; };
