@@ -2,7 +2,6 @@
   imports = [
     ./dunst
     ./firefox
-    ./imv.nix
     ./imwheel
     ./libreoffice.nix
     ./logisim.nix
