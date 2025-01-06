@@ -7,8 +7,7 @@ let cfg = config.programs.utility.zip; in {
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       zip
-      p7zip
-      unrar-wrapper
+      (p7zip.override { enableUnfree = true; })
       unzipNLS
     ];
   };
