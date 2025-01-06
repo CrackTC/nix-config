@@ -221,7 +221,7 @@ let cfg = config.hypr; in
             (lib.mkIf config.programs.utility.follow.enable [ "opacity 0.8 override 0.8 override, class:^(Follow)$" ])
             (lib.mkIf config.jetbrains.enable [
               "opacity 0.8 override 0.8 override, class:^(jetbrains-[a-z]*)$"
-              "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\\d+$"
+              "nofocus,class:^(jetbrains-.*)$,floating:1,title:^(win\\d+)$"
             ])
             (lib.mkIf config.programs.media.mpv.enable [ "fullscreen, class:^(mpv)$" ])
             (lib.mkIf config.programs.media.svp.enable [ "float, class:^(SVPManager)$" ])
