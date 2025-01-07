@@ -7,7 +7,7 @@ let cfg = config.lsp; in {
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = with pkgs; with nodePackages; with extraRepos; lib.mkMerge [
       [ yaml-language-server ]
-      (lib.mkIf config.nix.enable [ nil statix ])
+      (lib.mkIf config.nix.enable [ extraRepos.nil.nil statix ])
       (lib.mkIf config.c.enable [ clang-tools cmake-language-server ])
       (lib.mkIf config.dotnet.enable [ csharp-ls omnisharp-roslyn ])
       (lib.mkIf config.go.enable [ gopls ])

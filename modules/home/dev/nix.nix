@@ -9,6 +9,6 @@ let cfg = config.nix; in {
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ nixpkgs-fmt ];
+    home.packages = with pkgs; [ nixfmt-rfc-style ];
   };
 }
