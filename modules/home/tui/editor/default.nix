@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.editor; in {
+let
+  cfg = config.editor;
+in
+{
   imports = [
     ./nvim
     ./helix

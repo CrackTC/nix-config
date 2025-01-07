@@ -1,5 +1,13 @@
-{config, pkgs, lib, ...}:
-let cfg = config.thunderbird; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.thunderbird;
+in
+{
   options.thunderbird = {
     enable = lib.mkEnableOption "thunderbird";
   };

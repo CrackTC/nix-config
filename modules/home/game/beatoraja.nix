@@ -1,5 +1,13 @@
-{ config, lib, extraRepos, ... }:
-let cfg = config.game.beatoraja; in {
+{
+  config,
+  lib,
+  extraRepos,
+  ...
+}:
+let
+  cfg = config.game.beatoraja;
+in
+{
   options.game.beatoraja = {
     enable = lib.mkEnableOption "beatoraja";
   };

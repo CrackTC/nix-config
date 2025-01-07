@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.go; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.go;
+in
+{
   options.go = {
     enable = lib.mkEnableOption "go";
   };

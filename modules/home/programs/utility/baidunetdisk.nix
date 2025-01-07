@@ -1,5 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.programs.utility.baidunetdisk; in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.programs.utility.baidunetdisk;
+in
+{
   options.programs.utility.baidunetdisk = {
     enable = lib.mkEnableOption "baidunetdisk";
   };

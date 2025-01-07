@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.bluetooth; in {
+let
+  cfg = config.sorac.host.bluetooth;
+in
+{
   options.sorac.host.bluetooth = {
     enable = lib.mkEnableOption "bluetooth";
   };

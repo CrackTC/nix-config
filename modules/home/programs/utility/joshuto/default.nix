@@ -1,5 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.programs.utility.joshuto; in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.programs.utility.joshuto;
+in
+{
   options.programs.utility.joshuto = {
     enable = lib.mkEnableOption "joshuto";
   };
@@ -11,7 +19,10 @@ let cfg = config.programs.utility.joshuto; in {
         recursive = true;
       };
 
-      home.packages = [ pkgs.joshuto pkgs.file ];
+      home.packages = [
+        pkgs.joshuto
+        pkgs.file
+      ];
     };
 
     programs.utility = {

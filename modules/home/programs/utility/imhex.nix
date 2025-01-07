@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.imhex; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.imhex;
+in
+{
   options.programs.utility.imhex = {
     enable = lib.mkEnableOption "imhex";
   };

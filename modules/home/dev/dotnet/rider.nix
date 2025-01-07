@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.rider; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.rider;
+in
+{
   options.rider = {
     enable = lib.mkEnableOption "rider";
   };

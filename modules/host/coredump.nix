@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.coredump; in {
+let
+  cfg = config.sorac.host.coredump;
+in
+{
   options.sorac.host.coredump = {
     enable = lib.mkOption {
       type = lib.types.bool;

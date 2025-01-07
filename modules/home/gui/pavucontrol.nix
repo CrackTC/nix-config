@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.pavucontrol; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.pavucontrol;
+in
+{
   options.pavucontrol = {
     enable = lib.mkEnableOption "pavucontrol";
   };

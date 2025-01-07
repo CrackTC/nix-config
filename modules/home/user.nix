@@ -1,4 +1,10 @@
-{ config, lib, name, ... }: {
+{
+  config,
+  lib,
+  name,
+  ...
+}:
+{
   options = {
     uid = lib.mkOption {
       type = lib.types.int;
@@ -29,7 +35,12 @@
       security.sudo.extraRules = lib.mkIf config.powerful [
         {
           users = [ name ];
-          commands = [{ command = "ALL"; options = [ "NOPASSWD" ]; }];
+          commands = [
+            {
+              command = "ALL";
+              options = [ "NOPASSWD" ];
+            }
+          ];
         }
       ];
     };

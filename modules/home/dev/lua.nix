@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.lua; in {
+let
+  cfg = config.lua;
+in
+{
   options.lua = {
     enable = lib.mkEnableOption "lua";
   };

@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.fzf; in {
+let
+  cfg = config.fzf;
+in
+{
   options.fzf = {
     enable = lib.mkEnableOption "fzf";
   };

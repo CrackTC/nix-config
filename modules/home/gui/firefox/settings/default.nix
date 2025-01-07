@@ -1,4 +1,9 @@
-{ config, lib, name, ... }:
+{
+  config,
+  lib,
+  name,
+  ...
+}:
 let
   cfg = config.firefox;
   inherit (cfg) profileName;

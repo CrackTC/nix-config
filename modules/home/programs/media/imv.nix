@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.imv; in {
+let
+  cfg = config.imv;
+in
+{
   options.imv = {
     enable = lib.mkEnableOption "imv";
   };
@@ -47,7 +50,6 @@ let cfg = config.imv; in {
       "image/x-tga"
       "image/x-xbitmap"
       "image/x-heif"
-    ]
-      (mime: "imv-dir.desktop");
+    ] (mime: "imv-dir.desktop");
   };
 }

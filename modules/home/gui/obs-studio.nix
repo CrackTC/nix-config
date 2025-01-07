@@ -1,5 +1,13 @@
-{ pkgs, config, lib, ... }:
-let cfg = config.obs-studio; in {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.obs-studio;
+in
+{
   options.obs-studio = {
     enable = lib.mkEnableOption "obs-studio";
   };

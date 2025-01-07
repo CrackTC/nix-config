@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.protobuf; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.protobuf;
+in
+{
   options.protobuf = {
     enable = lib.mkEnableOption "protobuf";
   };

@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.python; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.python;
+in
+{
   imports = [ ./micromamba.nix ];
   options.python = {
     enable = lib.mkEnableOption "python devkits";

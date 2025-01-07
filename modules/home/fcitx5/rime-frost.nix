@@ -1,7 +1,8 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, fetchurl
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchurl,
 }:
 let
   rime-lmdg = fetchurl {

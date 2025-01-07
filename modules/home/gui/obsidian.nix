@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.obsidian; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.obsidian;
+in
+{
   options.obsidian = {
     enable = lib.mkEnableOption "obsidian";
   };
@@ -8,9 +16,10 @@ let cfg = config.obsidian; in {
     home.packages = with pkgs; [
       (obsidian.override {
         commandLineArgs =
-          if config.wayland.enable
-          then "--ozone-platform-hint=auto --enable-wayland-ime --gtk-version=4"
-          else "";
+          if config.wayland.enable then
+            "--ozone-platform-hint=auto --enable-wayland-ime --gtk-version=4"
+          else
+            "";
       })
     ];
   };

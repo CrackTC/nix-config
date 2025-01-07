@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.programs.utility.bat; in {
+let
+  cfg = config.programs.utility.bat;
+in
+{
   options.programs.utility.bat = {
     enable = lib.mkEnableOption "bat";
   };

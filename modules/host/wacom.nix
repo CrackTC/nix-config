@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.wacom; in {
+let
+  cfg = config.sorac.host.wacom;
+in
+{
   options.sorac.host.wacom = {
     enable = lib.mkOption {
       type = lib.types.bool;

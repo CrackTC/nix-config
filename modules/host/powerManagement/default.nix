@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host; in {
+let
+  cfg = config.sorac.host;
+in
+{
   options.sorac.host.powerManagement = {
     enable = lib.mkEnableOption "power management";
   };
@@ -13,7 +16,6 @@ let cfg = config.sorac.host; in {
         enableOffloadCmd = true;
       };
     };
-
 
     powerManagement.enable = true;
     services = {

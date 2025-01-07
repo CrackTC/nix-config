@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.im.qq;
 
@@ -14,14 +19,21 @@ let
     };
   };
   src =
-    srcs.${pkgs.stdenv.hostPlatform.system} or (throw "Unsupported system: ${pkgs.stdenv.hostPlatform.system}");
+    srcs.${pkgs.stdenv.hostPlatform.system}
+      or (throw "Unsupported system: ${pkgs.stdenv.hostPlatform.system}");
 
-  qq-orig = (pkgs.qq.overrideAttrs { inherit src; inherit (sources) version; }).override {
-    commandLineArgs =
-      if config.wayland.enable
-      then "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true"
-      else "";
-  };
+  qq-orig =
+    (pkgs.qq.overrideAttrs {
+      inherit src;
+      inherit (sources) version;
+    }).override
+      {
+        commandLineArgs =
+          if config.wayland.enable then
+            "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true"
+          else
+            "";
+      };
   liteloaderqqnt = pkgs.fetchFromGitHub {
     owner = "LiteLoaderQQNT";
     repo = "LiteLoaderQQNT";

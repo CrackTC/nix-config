@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.programs.utility.waydroid; in {
+let
+  cfg = config.programs.utility.waydroid;
+in
+{
   options.programs.utility.waydroid = {
     enable = lib.mkEnableOption "waydroid";
   };

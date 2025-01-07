@@ -1,5 +1,14 @@
-{ config, pkgs, lib, extraRepos, ... }:
-let cfg = config.portal; in {
+{
+  config,
+  pkgs,
+  lib,
+  extraRepos,
+  ...
+}:
+let
+  cfg = config.portal;
+in
+{
   options.portal = {
     enable = lib.mkEnableOption "portal";
   };

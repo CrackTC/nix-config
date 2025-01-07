@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.im.telegram; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.im.telegram;
+in
+{
   options.programs.im.telegram = {
     enable = lib.mkEnableOption "telegram";
   };

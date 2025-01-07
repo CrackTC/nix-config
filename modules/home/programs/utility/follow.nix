@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.follow; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.follow;
+in
+{
   options.programs.utility.follow = {
     enable = lib.mkEnableOption "follow";
   };

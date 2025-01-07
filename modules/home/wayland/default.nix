@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.wayland; in {
+let
+  cfg = config.wayland;
+in
+{
   imports = [
     ./hypr
     ./portal.nix

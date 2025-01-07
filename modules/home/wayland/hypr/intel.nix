@@ -1,8 +1,13 @@
-{ config, lib, hostConfig, name, ... }:
+{
+  config,
+  lib,
+  hostConfig,
+  name,
+  ...
+}:
 let
   cfg = config.hypr;
-  path = with hostConfig.newIntel.pciBusId;
-    "pci-${domain}:${bus}:${slot}.${function}-card";
+  path = with hostConfig.newIntel.pciBusId; "pci-${domain}:${bus}:${slot}.${function}-card";
 in
 {
   config = lib.mkIf (!cfg.useNvidia && cfg.enable) {

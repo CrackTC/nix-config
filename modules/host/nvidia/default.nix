@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.sorac.host.nvidia; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.sorac.host.nvidia;
+in
+{
   options.sorac.host.nvidia = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -51,7 +59,10 @@ let cfg = config.sorac.host.nvidia; in {
     hardware = {
       graphics = {
         enable = true;
-        extraPackages = [ pkgs.libvdpau-va-gl pkgs.vaapiVdpau ];
+        extraPackages = [
+          pkgs.libvdpau-va-gl
+          pkgs.vaapiVdpau
+        ];
       };
 
       nvidia = {

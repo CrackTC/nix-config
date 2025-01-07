@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   options.sorac.host.virt = {
     pciPassIds = lib.mkOption {
       type = lib.types.listOf lib.types.str;

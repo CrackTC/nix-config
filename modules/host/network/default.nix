@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.sorac.host.network; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.sorac.host.network;
+in
+{
   options.sorac.host.network.inJLU = lib.mkOption {
     type = lib.types.bool;
     default = false;

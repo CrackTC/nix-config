@@ -1,5 +1,14 @@
-{ config, pkgs, lib, name, ... }:
-let cfg = config.android; in {
+{
+  config,
+  pkgs,
+  lib,
+  name,
+  ...
+}:
+let
+  cfg = config.android;
+in
+{
   options.android = {
     enable = lib.mkEnableOption "android devkits";
   };

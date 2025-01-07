@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.wpsoffice; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.wpsoffice;
+in
+{
   options.wpsoffice = {
     enable = lib.mkEnableOption "wpsoffice";
   };

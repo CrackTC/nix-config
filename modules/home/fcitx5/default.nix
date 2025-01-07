@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.fcitx5; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.fcitx5;
+in
+{
   options.fcitx5 = {
     enable = lib.mkEnableOption "fcitx5";
   };

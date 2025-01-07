@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.xdg; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.xdg;
+in
+{
   options.xdg = {
     enable = lib.mkEnableOption "xdg settings";
   };
@@ -10,15 +18,13 @@ let cfg = config.xdg; in {
       configFile."mimeapps.list".force = true;
       mimeApps = {
         enable = true;
-        defaultApplications =
-          lib.genAttrs [
-            "text/html"
-            "x-scheme-handler/http"
-            "x-scheme-handler/https"
-            "x-scheme-handler/about"
-            "x-scheme-handler/unknown"
-          ]
-            (mime: if config.firefox.enable then "firefox.desktop" else "vivaldi-stable.desktop");
+        defaultApplications = lib.genAttrs [
+          "text/html"
+          "x-scheme-handler/http"
+          "x-scheme-handler/https"
+          "x-scheme-handler/about"
+          "x-scheme-handler/unknown"
+        ] (mime: if config.firefox.enable then "firefox.desktop" else "vivaldi-stable.desktop");
       };
 
       userDirs = {
@@ -34,6 +40,9 @@ let cfg = config.xdg; in {
       };
     };
 
-    home.packages = with pkgs; [ xdg-utils xdg-terminal-exec ];
+    home.packages = with pkgs; [
+      xdg-utils
+      xdg-terminal-exec
+    ];
   };
 }

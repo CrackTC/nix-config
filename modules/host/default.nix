@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.sorac.host; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.sorac.host;
+in
+{
   imports = [
     ./bluetooth
     ./coredump.nix
@@ -51,8 +59,15 @@ let cfg = config.sorac.host; in {
     nix = {
       settings = {
         trusted-users = [ "@wheel" ];
-        experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
-        system-features = [ "gccarch-${cfg.cpu}" "big-parallel" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+          "pipe-operators"
+        ];
+        system-features = [
+          "gccarch-${cfg.cpu}"
+          "big-parallel"
+        ];
         auto-optimise-store = true;
         substituters = [
           "https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -93,10 +108,16 @@ let cfg = config.sorac.host; in {
 
     i18n = {
       defaultLocale = "en_US.UTF-8";
-      supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
+      supportedLocales = [
+        "en_US.UTF-8/UTF-8"
+        "zh_CN.UTF-8/UTF-8"
+      ];
     };
 
-    environment.systemPackages = [ pkgs.vim pkgs.git ];
+    environment.systemPackages = [
+      pkgs.vim
+      pkgs.git
+    ];
     system.stateVersion = "23.05";
   };
 }

@@ -1,4 +1,11 @@
-{ config, pkgs, lib, osConfig, name, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  osConfig,
+  name,
+  ...
+}:
 let
   cfg = config.podman;
 in

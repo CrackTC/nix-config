@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.waybar; in {
+let
+  cfg = config.waybar;
+in
+{
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.settings.mainBar."battery" = {
       states = {
@@ -11,7 +14,13 @@ let cfg = config.waybar; in {
       format-plugged = "<span font-weight='normal'>󰚥 </span>{capacity}%";
       format-alt = "{time} <span font-weight='normal'>{icon}</span>";
       format-full = "<span font-weight='normal'></span>";
-      format-icons = [ "󰁺" "󰁼" "󰁾" "󰂀" "󰁹" ];
+      format-icons = [
+        "󰁺"
+        "󰁼"
+        "󰁾"
+        "󰂀"
+        "󰁹"
+      ];
     };
   };
 }

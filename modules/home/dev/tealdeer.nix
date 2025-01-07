@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.tealdeer; in {
+let
+  cfg = config.tealdeer;
+in
+{
   options.tealdeer = {
     enable = lib.mkEnableOption "tealdeer";
   };

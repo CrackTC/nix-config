@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.theme; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.theme;
+in
+{
   options.theme = {
     enable = lib.mkEnableOption "theme settings";
   };
@@ -33,12 +41,18 @@ let cfg = config.theme; in {
 
           gtk.enable = true;
           hyprcursor.enable = lib.mkIf config.hypr.enable true;
-          x11 = { enable = true; defaultCursor = cursorTheme; };
+          x11 = {
+            enable = true;
+            defaultCursor = cursorTheme;
+          };
         };
 
         gtk = {
           enable = true;
-          theme = { package = themePackage; name = themeName; };
+          theme = {
+            package = themePackage;
+            name = themeName;
+          };
           iconTheme = {
             package = iconThemePackage;
             name = iconThemeName;

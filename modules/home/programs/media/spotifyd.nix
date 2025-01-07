@@ -1,5 +1,14 @@
-{ config, lib, pkgs, name, ... }:
-let cfg = config.programs.media.spotifyd; in {
+{
+  config,
+  lib,
+  pkgs,
+  name,
+  ...
+}:
+let
+  cfg = config.programs.media.spotifyd;
+in
+{
   options.programs.media.spotifyd = {
     enable = lib.mkEnableOption "spotifyd";
   };

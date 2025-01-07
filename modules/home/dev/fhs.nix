@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.fhs;
   fontDir = pkgs.stdenv.mkDerivation {
@@ -19,10 +24,24 @@ in
       (pkgs.buildFHSEnv {
         name = "fhs";
         runScript = config.programs.preferredShell;
-        targetPkgs = pkgs: with pkgs;
+        targetPkgs =
+          pkgs:
+          with pkgs;
           # dotnet static linking
           [ fontDir ]
-          ++ (if config.dotnet.enable then [ glib glibc.static zlib.static icu.dev musl openssl ] else [ ])
+          ++ (
+            if config.dotnet.enable then
+              [
+                glib
+                glibc.static
+                zlib.static
+                icu.dev
+                musl
+                openssl
+              ]
+            else
+              [ ]
+          )
           ++ (if config.c.enable then [ gcc ] else [ ])
           ++ (if config.haskell.enable then [ ghc ] else [ ]);
       })

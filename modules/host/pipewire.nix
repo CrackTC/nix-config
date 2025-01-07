@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.pipewire; in {
+let
+  cfg = config.sorac.host.pipewire;
+in
+{
   options.sorac.host.pipewire = {
     enable = lib.mkEnableOption "pipewire";
     lowLatency = lib.mkEnableOption "pipewire audio low latency configuration";
@@ -17,7 +20,10 @@ let cfg = config.sorac.host.pipewire; in {
           "10-low-latency" = {
             "context.properties" = {
               "default.clock.rate" = 44100;
-              "default.clock.allowed-rates" = [ 44100 48000 ];
+              "default.clock.allowed-rates" = [
+                44100
+                48000
+              ];
             };
           };
         };

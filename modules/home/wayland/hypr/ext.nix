@@ -1,7 +1,13 @@
-{ config, lib, hostConfig, ... }:
+{
+  config,
+  lib,
+  hostConfig,
+  ...
+}:
 let
   cfg = config.hypr;
-  mkMonitorStr = monitor:
+  mkMonitorStr =
+    monitor:
     "${monitor.name},${toString monitor.weight}x${toString monitor.height}@${toString monitor.refresh},${toString monitor.left}x${toString monitor.top},${toString monitor.scale}";
   inherit (hostConfig) monitors;
 in

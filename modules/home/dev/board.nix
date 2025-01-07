@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.board; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.board;
+in
+{
   options.board = {
     enable = lib.mkEnableOption "board devkits";
   };

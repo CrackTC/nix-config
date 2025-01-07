@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.micromamba; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.micromamba;
+in
+{
   options.micromamba = {
     enable = lib.mkEnableOption "micromamba";
   };

@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.ssh; in {
+let
+  cfg = config.sorac.host.ssh;
+in
+{
   options.sorac.host.ssh = {
     enable = lib.mkEnableOption "ssh server";
   };

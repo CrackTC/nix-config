@@ -1,5 +1,13 @@
-{ pkgs, config, lib, ... }:
-let cfg = config.programs.utility.rbw; in {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.rbw;
+in
+{
   imports = [ ./ydotool.nix ];
 
   options.programs.utility.rbw = {

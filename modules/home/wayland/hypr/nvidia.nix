@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.hypr; in {
+let
+  cfg = config.hypr;
+in
+{
   config.hmConfig = lib.mkIf (cfg.useNvidia && cfg.enable) {
     wayland.windowManager.hyprland = {
       enableNvidiaPatches = true;

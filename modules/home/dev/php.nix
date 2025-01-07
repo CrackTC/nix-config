@@ -1,5 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.php; in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.php;
+in
+{
   options.php = {
     enable = lib.mkEnableOption "php";
   };

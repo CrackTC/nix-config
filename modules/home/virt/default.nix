@@ -1,5 +1,16 @@
-{ config, pkgs, lib, name, hostConfig, osConfig, ... }:
-let cfg = config.virt; in {
+{
+  config,
+  pkgs,
+  lib,
+  name,
+  hostConfig,
+  osConfig,
+  ...
+}:
+let
+  cfg = config.virt;
+in
+{
   options.virt = {
     enable = lib.mkEnableOption "virt";
   };
@@ -13,7 +24,10 @@ let cfg = config.virt; in {
         onBoot = "ignore";
         onShutdown = "shutdown";
       };
-      users.users.${name}.extraGroups = [ "libvirtd" "kvm" ];
+      users.users.${name}.extraGroups = [
+        "libvirtd"
+        "kvm"
+      ];
       environment.systemPackages = lib.mkMerge [
         [ pkgs.virtiofsd ]
         (lib.mkIf (hostConfig.gui.enable && config.gui.enable) [
@@ -30,7 +44,10 @@ let cfg = config.virt; in {
               "vm.nr_hugepages" = 16384;
               "vm.hugetlb_shm_group" = osConfig.users.groups.libvirtd.gid;
             };
-            kernelParams = [ "intel_iommu=on" "iommu=pt" ];
+            kernelParams = [
+              "intel_iommu=on"
+              "iommu=pt"
+            ];
             kernelModules = [
               "vfio"
               "vfio-iommu-type1"

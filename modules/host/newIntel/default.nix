@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.sorac.host.newIntel; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.sorac.host.newIntel;
+in
+{
   options.sorac.host.newIntel = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -35,7 +43,10 @@ let cfg = config.sorac.host.newIntel; in {
       options i915 enable_guc=2 enable_fbc=1
       options snd-hda-intel enable_msi=1
     '';
-    environment.systemPackages = [ pkgs.libva-utils pkgs.vulkan-tools ];
+    environment.systemPackages = [
+      pkgs.libva-utils
+      pkgs.vulkan-tools
+    ];
 
     hardware = {
       graphics = {
@@ -49,4 +60,3 @@ let cfg = config.sorac.host.newIntel; in {
     };
   };
 }
-

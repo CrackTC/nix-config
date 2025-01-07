@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.showmethekey; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.showmethekey;
+in
+{
   options.showmethekey = {
     enable = lib.mkEnableOption "showmethekey";
   };

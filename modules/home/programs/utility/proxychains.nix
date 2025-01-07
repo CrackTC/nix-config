@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.proxychains; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.proxychains;
+in
+{
   options.programs.utility.proxychains = {
     enable = lib.mkEnableOption "proxychains";
   };

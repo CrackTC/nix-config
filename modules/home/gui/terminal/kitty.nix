@@ -1,5 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.terminals.kitty; in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.terminals.kitty;
+in
+{
   options.terminals.kitty = {
     enable = lib.mkEnableOption "kitty";
     package = lib.mkPackageOption pkgs "kitty" { };

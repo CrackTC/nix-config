@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.dosbox; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.dosbox;
+in
+{
   options.dosbox = {
     enable = lib.mkEnableOption "dosbox";
   };

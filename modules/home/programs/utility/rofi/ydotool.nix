@@ -1,5 +1,14 @@
-{ config, pkgs, lib, name, ... }:
-let cfg = config.programs.utility.ydotool; in {
+{
+  config,
+  pkgs,
+  lib,
+  name,
+  ...
+}:
+let
+  cfg = config.programs.utility.ydotool;
+in
+{
   options.programs.utility.ydotool = {
     enable = lib.mkEnableOption "ydotool";
   };

@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.joycond; in {
+let
+  cfg = config.sorac.host.joycond;
+in
+{
   options.sorac.host.joycond = {
     enable = lib.mkEnableOption "joycond";
   };

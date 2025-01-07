@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.waybar; in {
+let
+  cfg = config.waybar;
+in
+{
   imports = [
     ./cava.nix
     ./workspaces.nix

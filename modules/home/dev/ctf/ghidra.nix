@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.ghidra; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.ghidra;
+in
+{
   options.ghidra = {
     enable = lib.mkEnableOption "ghidra";
   };

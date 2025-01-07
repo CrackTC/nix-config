@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.c; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.c;
+in
+{
   options.c = {
     enable = lib.mkEnableOption "c devkits";
   };
@@ -20,12 +28,14 @@ let cfg = config.c; in {
         let
           inherit (pkgs.pkgsCross.mingwW64) buildPackages;
         in
-        buildPackages.wrapCC (buildPackages.gcc-unwrapped.override {
-          threadsCross = {
-            model = "win32";
-            package = null;
-          };
-        })
+        buildPackages.wrapCC (
+          buildPackages.gcc-unwrapped.override {
+            threadsCross = {
+              model = "win32";
+              package = null;
+            };
+          }
+        )
       )
     ];
   };

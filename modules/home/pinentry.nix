@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.pinentry; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.pinentry;
+in
+{
   options.pinentry = lib.mkOption {
     description = "default pinentry";
     type = lib.types.str;

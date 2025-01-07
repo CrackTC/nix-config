@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.jq; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.jq;
+in
+{
   options.programs.utility.jq = {
     enable = lib.mkEnableOption "jq";
   };

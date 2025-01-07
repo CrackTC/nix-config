@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.ctf; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.ctf;
+in
+{
   imports = [
     ./detect-it-easy.nix
     ./ghidra.nix

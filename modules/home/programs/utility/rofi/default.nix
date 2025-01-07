@@ -1,4 +1,10 @@
-{ config, pkgs, lib, extraRepos, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  extraRepos,
+  ...
+}:
 let
   cfg = config.programs.utility.rofi;
   display = ">";
@@ -31,10 +37,18 @@ in
         display-combi = display;
       };
       inherit font;
-      plugins = map (p: p.override { rofi-unwrapped = if config.wayland.enable then pkgs.rofi-wayland-unwrapped else pkgs.rofi-unwrapped; }) [
-        pkgs.rofi-calc
-        extraRepos.myRepo.rofi-ts
-      ];
+      plugins =
+        map
+          (
+            p:
+            p.override {
+              rofi-unwrapped = if config.wayland.enable then pkgs.rofi-wayland-unwrapped else pkgs.rofi-unwrapped;
+            }
+          )
+          [
+            pkgs.rofi-calc
+            extraRepos.myRepo.rofi-ts
+          ];
     };
   };
 }

@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.nautilus; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.nautilus;
+in
+{
   options.nautilus = {
     enable = lib.mkEnableOption "nautilus";
   };

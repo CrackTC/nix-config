@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.js; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.js;
+in
+{
   imports = [ ./node.nix ];
 
   options.js = {

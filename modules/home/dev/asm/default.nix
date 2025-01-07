@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.asm; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.asm;
+in
+{
   imports = [ ./dosbox ];
   options.asm = {
     enable = lib.mkEnableOption "asm devkits";

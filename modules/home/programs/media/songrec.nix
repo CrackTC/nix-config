@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.media.songrec; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.media.songrec;
+in
+{
   options.programs.media.songrec = {
     enable = lib.mkEnableOption "songrec";
   };

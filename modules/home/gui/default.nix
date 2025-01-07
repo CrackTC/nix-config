@@ -1,4 +1,10 @@
-{ config, lib, hostConfig, ... }: {
+{
+  config,
+  lib,
+  hostConfig,
+  ...
+}:
+{
   imports = [
     ./dunst
     ./firefox

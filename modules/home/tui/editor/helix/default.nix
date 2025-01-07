@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.editors.helix; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.editors.helix;
+in
+{
   options.editors.helix = {
     enable = lib.mkEnableOption "helix";
   };

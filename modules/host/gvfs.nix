@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   options.sorac.host.gvfs = {
     enable = lib.mkEnableOption "gvfs";
   };

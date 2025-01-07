@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.game.steam; in {
+let
+  cfg = config.game.steam;
+in
+{
   options.game.steam = {
     enable = lib.mkEnableOption "steam";
   };

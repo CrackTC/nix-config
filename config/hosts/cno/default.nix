@@ -1,4 +1,5 @@
-{ pkgs, extraRepos, ... }: {
+{ pkgs, extraRepos, ... }:
+{
 
   imports = [
     extraRepos.myRepo.modules.hpfan
@@ -63,7 +64,10 @@
     };
     ssh.enable = false;
     virt = {
-      pciPassIds = [ "10de:24a0" "10de:228b" ];
+      pciPassIds = [
+        "10de:24a0"
+        "10de:228b"
+      ];
       kvmfrSizeMb = 32;
     };
     wacom.enable = true;

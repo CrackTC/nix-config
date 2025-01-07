@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.asciinema; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.asciinema;
+in
+{
   options.programs.utility.asciinema = {
     enable = lib.mkEnableOption "asciinema";
   };

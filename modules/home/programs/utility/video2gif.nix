@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.utility.video2gif;
   video2gif = pkgs.writeScriptBin "video2gif" ''

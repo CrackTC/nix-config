@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.programs.shells.bash; in {
+let
+  cfg = config.programs.shells.bash;
+in
+{
   options.programs.shells.bash = {
     enable = lib.mkEnableOption "bash";
   };

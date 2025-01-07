@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.programs.shells.zsh; in {
+let
+  cfg = config.programs.shells.zsh;
+in
+{
   options.programs.shells.zsh = {
     enable = lib.mkEnableOption "zsh";
   };

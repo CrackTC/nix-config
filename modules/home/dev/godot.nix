@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.godot; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.godot;
+in
+{
   options.godot = {
     enable = lib.mkEnableOption "godot";
   };

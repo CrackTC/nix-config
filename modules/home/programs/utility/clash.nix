@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.clash; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.clash;
+in
+{
   options.programs.utility.clash = {
     enable = lib.mkEnableOption "clash";
   };

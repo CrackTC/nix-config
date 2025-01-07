@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.media.spotify;
   spotify =
@@ -9,7 +14,8 @@ let
             --add-flags "--enable-features=WaylandWindowDecorations --ozone-platform=wayland --gtk-version=4 --enable-wayland-ime"
         '';
       })
-    else pkgs.spotify;
+    else
+      pkgs.spotify;
 in
 {
   options.programs.media.spotify = {

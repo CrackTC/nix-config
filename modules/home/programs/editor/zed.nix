@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.editor.zed; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.editor.zed;
+in
+{
   options.programs.editor.zed = {
     enable = lib.mkEnableOption "zed";
   };

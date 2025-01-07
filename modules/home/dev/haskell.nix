@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.haskell; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.haskell;
+in
+{
   options.haskell = {
     enable = lib.mkEnableOption "haskell";
   };

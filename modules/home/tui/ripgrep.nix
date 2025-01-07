@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.ripgrep; in {
+let
+  cfg = config.ripgrep;
+in
+{
   options.ripgrep = {
     enable = lib.mkEnableOption "ripgrep";
   };

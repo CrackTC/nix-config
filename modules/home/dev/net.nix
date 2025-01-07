@@ -1,5 +1,15 @@
-{ config, pkgs, extraRepos, lib, name, ... }:
-let cfg = config.net; in {
+{
+  config,
+  pkgs,
+  extraRepos,
+  lib,
+  name,
+  ...
+}:
+let
+  cfg = config.net;
+in
+{
   options.net = {
     enable = lib.mkEnableOption "network utils";
   };

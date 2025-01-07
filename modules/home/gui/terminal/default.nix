@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.terminal; in {
+let
+  cfg = config.terminal;
+in
+{
   imports = [
     ./kitty.nix
     ./ghostty.nix

@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.ripdrag; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.ripdrag;
+in
+{
   options.programs.utility.ripdrag = {
     enable = lib.mkEnableOption "ripdrag";
   };

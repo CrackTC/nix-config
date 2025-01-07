@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.btop; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.btop;
+in
+{
   options.programs.utility.btop = {
     enable = lib.mkEnableOption "btop";
   };

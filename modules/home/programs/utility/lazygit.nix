@@ -13,7 +13,10 @@ in
     programs.lazygit.settings = {
       gui = {
         theme = {
-          activeBorderColor = [ "blue" "bold" ];
+          activeBorderColor = [
+            "blue"
+            "bold"
+          ];
           inactiveBorderColor = [ "#4c566a" ];
           selectedLineBgColor = [ "black" ];
           selectedRangeBgColor = [ "black" ];
@@ -64,7 +67,13 @@ in
           nextBlock = "<right>";
           prevBlock-alt = "E";
           nextBlock-alt = "N";
-          jumpToBlock = [ 1 2 3 4 5 ];
+          jumpToBlock = [
+            1
+            2
+            3
+            4
+            5
+          ];
           nextMatch = "k";
           prevMatch = "K";
           optionMenu-alt1 = "?";

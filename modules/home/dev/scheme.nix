@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.scheme; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.scheme;
+in
+{
   options.scheme = {
     enable = lib.mkEnableOption "scheme";
   };

@@ -1,5 +1,13 @@
-{ config, lib, extraRepos, ... }:
-let cfg = config.terminals.ghostty; in {
+{
+  config,
+  lib,
+  extraRepos,
+  ...
+}:
+let
+  cfg = config.terminals.ghostty;
+in
+{
   options.terminals.ghostty = {
     enable = lib.mkEnableOption "ghostty";
     package = lib.mkPackageOption extraRepos.ghostty "ghostty" { };

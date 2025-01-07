@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.wl-clipboard; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.wl-clipboard;
+in
+{
   options.wl-clipboard = {
     enable = lib.mkEnableOption "wl-clipboard";
   };

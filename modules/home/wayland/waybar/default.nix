@@ -1,5 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.waybar; in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.waybar;
+in
+{
   imports = [
     ./modules
     ./style.nix

@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.sorac.host.man; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.sorac.host.man;
+in
+{
   options.sorac.host.man = {
     enable = lib.mkEnableOption "man";
   };

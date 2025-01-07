@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.ideavimrc; in {
+let
+  cfg = config.ideavimrc;
+in
+{
   options.ideavimrc = {
     enable = lib.mkEnableOption "ideavimrc";
   };

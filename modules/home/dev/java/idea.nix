@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.idea; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.idea;
+in
+{
   options.idea = {
     enable = lib.mkEnableOption "idea";
   };

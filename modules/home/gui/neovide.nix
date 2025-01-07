@@ -1,5 +1,13 @@
-{config, pkgs, lib, ...}:
-let cfg = config.neovide; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.neovide;
+in
+{
   options.neovide = {
     enable = lib.mkEnableOption "neovide";
   };

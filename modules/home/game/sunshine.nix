@@ -1,5 +1,14 @@
-{ config, pkgs, lib, hostConfig, ... }:
-let cfg = config.game.sunshine; in {
+{
+  config,
+  pkgs,
+  lib,
+  hostConfig,
+  ...
+}:
+let
+  cfg = config.game.sunshine;
+in
+{
   options.game.sunshine = {
     enable = lib.mkEnableOption "sunshine";
   };

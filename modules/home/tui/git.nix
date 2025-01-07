@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.git; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.git;
+in
+{
   options.git = {
     enable = lib.mkEnableOption "git";
     key = lib.mkOption {

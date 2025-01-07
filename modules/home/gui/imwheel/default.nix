@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.imwheel; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.imwheel;
+in
+{
   options.imwheel = {
     enable = lib.mkEnableOption "imwheel";
   };

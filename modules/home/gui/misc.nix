@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.gui.misc; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.gui.misc;
+in
+{
   options.gui.misc = {
     enable = lib.mkEnableOption "misc gui softwares";
   };

@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.java; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.java;
+in
+{
   imports = [ ./idea.nix ];
 
   options.java = {

@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.sorac.host.laptop; in {
+let
+  cfg = config.sorac.host.laptop;
+in
+{
   options.sorac.host.laptop = {
     enable = lib.mkOption {
       type = lib.types.bool;

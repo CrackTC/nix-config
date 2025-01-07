@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.sorac.host.font; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.sorac.host.font;
+in
+{
   options.sorac.host.font = {
     enable = lib.mkEnableOption "preferred fonts";
   };

@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.bsdiff; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.bsdiff;
+in
+{
   options.programs.utility.bsdiff = {
     enable = lib.mkEnableOption "bsdiff";
   };

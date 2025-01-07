@@ -1,7 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.dotnet;
-  combined = with pkgs; dotnetCorePackages.combinePackages (map (sdk: dotnetCorePackages."sdk_${toString sdk}_0") cfg.sdks);
+  combined =
+    with pkgs;
+    dotnetCorePackages.combinePackages (map (sdk: dotnetCorePackages."sdk_${toString sdk}_0") cfg.sdks);
 in
 {
   imports = [ ./rider.nix ];
@@ -9,7 +16,10 @@ in
     enable = lib.mkEnableOption "dotnet";
     sdks = lib.mkOption {
       type = lib.types.listOf lib.types.int;
-      default = [ 9 8 ];
+      default = [
+        9
+        8
+      ];
       description = "List of .NET SDK versions to install.";
     };
     root = lib.mkOption {

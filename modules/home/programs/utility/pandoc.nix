@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.programs.utility.pandoc; in {
+let
+  cfg = config.programs.utility.pandoc;
+in
+{
   options.programs.utility.pandoc = {
     enable = lib.mkEnableOption "pandoc";
   };

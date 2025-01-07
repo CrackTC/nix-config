@@ -1,5 +1,14 @@
-{ config, pkgs, lib, hostConfig, ... }:
-let cfg = config.programs.utility.llama; in {
+{
+  config,
+  pkgs,
+  lib,
+  hostConfig,
+  ...
+}:
+let
+  cfg = config.programs.utility.llama;
+in
+{
   options.programs.utility.llama = {
     enable = lib.mkEnableOption "llama-cpp";
   };

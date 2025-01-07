@@ -35,7 +35,6 @@ in
       highlight = mkLiteral "underline bold #eceff4";
     };
 
-
     window = {
       anchor = mkLiteral "center";
       transparency = "screenshot";
@@ -54,7 +53,11 @@ in
 
     mainbox = {
       spacing = 0;
-      children = map mkLiteral [ "inputbar" "message" "listview" ];
+      children = map mkLiteral [
+        "inputbar"
+        "message"
+        "listview"
+      ];
     };
 
     inputbar = {

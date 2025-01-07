@@ -1,5 +1,8 @@
 { config, lib, ... }:
-let cfg = config.ssh; in {
+let
+  cfg = config.ssh;
+in
+{
   options.ssh = {
     enable = lib.mkEnableOption "ssh client";
   };

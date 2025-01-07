@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.waybar; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.waybar;
+in
+{
   config = lib.mkIf cfg.enable {
     pavucontrol.enable = true;
     hmConfig = {
@@ -16,7 +24,11 @@ let cfg = config.waybar; in {
           phone = "";
           portable = "";
           car = "";
-          default = [ "" "" "" ];
+          default = [
+            ""
+            ""
+            ""
+          ];
         };
         on-click = "pavucontrol";
       };

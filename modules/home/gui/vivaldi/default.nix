@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.vivaldi; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.vivaldi;
+in
+{
   options.vivaldi = {
     enable = lib.mkEnableOption "vivaldi";
   };
@@ -12,15 +20,22 @@ let cfg = config.vivaldi; in {
 
     home.packages = with pkgs; [
       (vivaldi.override {
-        commandLineArgs = builtins.concatStringsSep " " ([ "--force-dark-mode" ] ++
-          (if config.wayland.enable then [
-            "--enable-features=UseOzonePlatform"
-            "--ozone-platform-hint=wayland"
-            "--enable-wayland-ime"
-            "--enable-features=VaapiVideoDecodeLinuxGL"
-            "--use-gl=angle"
-            "--use-angle=gl"
-          ] else [ ]));
+        commandLineArgs = builtins.concatStringsSep " " (
+          [ "--force-dark-mode" ]
+          ++ (
+            if config.wayland.enable then
+              [
+                "--enable-features=UseOzonePlatform"
+                "--ozone-platform-hint=wayland"
+                "--enable-wayland-ime"
+                "--enable-features=VaapiVideoDecodeLinuxGL"
+                "--use-gl=angle"
+                "--use-angle=gl"
+              ]
+            else
+              [ ]
+          )
+        );
       })
     ];
   };

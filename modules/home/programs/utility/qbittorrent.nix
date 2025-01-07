@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.programs.utility.qbittorrent; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.programs.utility.qbittorrent;
+in
+{
   options.programs.utility.qbittorrent = {
     enable = lib.mkEnableOption "qbittorrent";
   };

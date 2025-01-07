@@ -1,5 +1,13 @@
-{ config, pkgs, lib, ... }:
-let cfg = config.onlyoffice; in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  cfg = config.onlyoffice;
+in
+{
   options.onlyoffice = {
     enable = lib.mkEnableOption "onlyoffice";
   };

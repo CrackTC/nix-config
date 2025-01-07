@@ -1,4 +1,10 @@
-{ config, pkgs, lib, extraRepos, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  extraRepos,
+  ...
+}:
 let
   cfg = config.hypr;
 
@@ -24,7 +30,9 @@ in
         (lib.mkIf config.terminal.enable [ "$mainMod, Return, exec, ${config.terminal.preferred}" ])
         (lib.mkIf config.obsidian.enable [ "$mainMod, ${if colemak then "Y" else "O"}, exec, obsidian" ])
         (lib.mkIf (config.vivaldi.enable || config.firefox.enable) [
-          "$mainMod, ${if colemak then "U" else "I"}, exec, ${if config.firefox.enable then "firefox" else "vivaldi"}"
+          "$mainMod, ${if colemak then "U" else "I"}, exec, ${
+            if config.firefox.enable then "firefox" else "vivaldi"
+          }"
         ])
         (lib.mkIf config.programs.utility.rofi.enable [
           "$mainMod, Q, exec, rofi ${rofi-kb} -show drun"
@@ -34,7 +42,9 @@ in
           "$mainMod, Space, exec, rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}"
         ])
         (lib.mkIf config.programs.utility.rbw.enable [
-          "$mainMod, ${if colemak then "Semicolon" else "P"}, exec, ${lib.getExe pkgs.rofi-rbw-wayland} --target password --selector-args '${rofi-kb}'"
+          "$mainMod, ${
+            if colemak then "Semicolon" else "P"
+          }, exec, ${lib.getExe pkgs.rofi-rbw-wayland} --target password --selector-args '${rofi-kb}'"
         ])
         [
           "$mainMod SHIFT, ${if colemak then "R" else "S"}, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copy area"
@@ -95,4 +105,3 @@ in
     ];
   };
 }
-
