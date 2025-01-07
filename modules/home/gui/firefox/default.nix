@@ -1,4 +1,4 @@
-{ config, lib, extraRepos, ... }:
+{ config, lib, pkgs, ... }:
 let
   cfg = config.firefox;
   inherit (cfg) profileName;
@@ -23,7 +23,7 @@ in
 
     programs.firefox = {
       enable = true;
-      profiles.${profileName}.extensions = with extraRepos.nur.repos.rycee.firefox-addons; [
+      profiles.${profileName}.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         # gloc
         # kristofferhagen-nord-theme

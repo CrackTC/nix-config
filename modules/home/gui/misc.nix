@@ -1,4 +1,4 @@
-{ config, pkgs, lib, extraRepos, ... }:
+{ config, pkgs, lib, ... }:
 let cfg = config.gui.misc; in {
   options.gui.misc = {
     enable = lib.mkEnableOption "misc gui softwares";
@@ -8,7 +8,7 @@ let cfg = config.gui.misc; in {
     home.packages = with pkgs; [
       burpsuite
       # calibre
-      extraRepos.nur.repos.linyinfeng.wemeet
+      pkgs.nur.repos.linyinfeng.wemeet
       krita
       libsForQt5.ark
 

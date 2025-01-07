@@ -1,6 +1,13 @@
-{ pkgs, config, lib, extraRepos, utilities, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  extraRepos,
+  utilities,
+  ...
+}:
 let
-  anythingMerged = utilities.mkAnythingMerged lib;
+  inherit (utilities) anythingMerged;
   homeConfiguration = lib.types.submodule {
     imports = [
       ./dev
@@ -67,27 +74,27 @@ in
   config =
     let
       homeConfigs = builtins.attrValues config.sorac.homes;
-      mergeOSAttr = attr: lib.mkMerge (builtins.map (home: home.osConfig.${attr} or { }) homeConfigs);
+      mergeOSAttr = attr: homeConfigs |> map (home: home.osConfig.${attr} or { }) |> lib.mkMerge;
     in
     lib.mkMerge [
       # osConfig <- infinite recursion
       # this works but ugly
-      (builtins.listToAttrs
-        (builtins.map
-          (attr: {
-            name = attr;
-            value = mergeOSAttr attr;
-          })
-          utilities.osConfigAttrs
-        )
+      (
+        utilities.osConfigAttrs
+        |> map (attr: {
+          name = attr;
+          value = mergeOSAttr attr;
+        })
+        |> builtins.listToAttrs
       )
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
 
-          users = utilities.foreachAttr config.sorac.homes
-            (username: home: lib.mkMerge [
+          users = utilities.foreachAttr config.sorac.homes (
+            username: home:
+            lib.mkMerge [
               {
                 home = {
                   inherit username;
@@ -97,7 +104,8 @@ in
                 programs.home-manager.enable = true;
               }
               config.sorac.homes.${username}.hmConfig
-            ]);
+            ]
+          );
         };
       }
     ];
