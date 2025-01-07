@@ -35,7 +35,6 @@
 
     myRepo = {
       url = "github:CrackTC/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
       flake = false;
     };
     nur = {
