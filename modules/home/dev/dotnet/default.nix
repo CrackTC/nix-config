@@ -30,7 +30,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    dotnet.root = "${combined}";
+    dotnet.root = "${combined}/share/dotnet";
     rider.enable = true;
     hmConfig = {
       home.packages = with pkgs; [
