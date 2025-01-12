@@ -227,6 +227,7 @@ in
               "opacity 0.8 override 0.8 override, class:^(QQ)$"
               "float, class:^(QQ)$, title:^(图片查看器)$"
               "minsize 1080 0, class:^(QQ)$, title:^(QQ频道)$"
+              "float, class:^(QQ)$, title:^(设置)$"
             ])
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
