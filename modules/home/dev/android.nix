@@ -16,7 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     jetbrains.enable = true;
     hmConfig.home.packages = [
-      (pkgs.android-studio.override { forceWayland = true; })
+      (pkgs.androidStudioPackages.beta.override { forceWayland = true; })
     ];
 
     osConfig = {
