@@ -59,7 +59,12 @@ in
             sub-bold = true;
           };
         };
+
+        xdg.mimeApps.defaultApplications = lib.genAttrs [
+          "audio/mpeg"
+        ] (mime: "mpv.desktop");
       }
+
       (lib.mkIf (hostConfig.nvidia.enable && cfg.useAnime4K) {
         xdg.configFile."mpv/shaders" = {
           source =
