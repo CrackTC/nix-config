@@ -39,6 +39,9 @@ in
           nnoremap dS :action GotoTypeDeclaration<CR>
           nnoremap sc K
           noremap dc :action CommentByLineComment<CR>
+
+          inoremap <C-k> <C-n>
+          inoremap <C-;> <C-p>
         '')
         (lib.mkIf (!config.colemak.enable) ''
           noremap S :w<CR>
