@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.game.steam;
 in
@@ -10,6 +15,11 @@ in
   config = lib.mkIf cfg.enable {
     osConfig.programs.steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraEnv = {
+          STEAM_FORCE_DESKTOPUI_SCALING = 1.25;
+        };
+      };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
