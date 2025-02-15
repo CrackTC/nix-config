@@ -7,7 +7,7 @@
 let
   rime-lmdg = fetchurl {
     url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
-    hash = "sha256-PZLmGnyogMXSFAmjEtslDtCxYkqiGmPE+VLGgYwXAO0=";
+    hash = "sha256-b5cX+mj80lzkN1sJG0TZpONLyhudufApUzihscgCNos=";
   };
   moegirl-dict = fetchurl {
     url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict.yaml";
@@ -18,13 +18,13 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "rime-frost";
-  version = "0.0.4.1";
+  version = "0.0.5";
 
   src = fetchFromGitHub {
     owner = "gaboolic";
     repo = "rime-frost";
     rev = version;
-    hash = "sha256-WZcBxh195izM7d2GUrRSGuoXDR09WtdDQL7TcNXJ7Oc=";
+    hash = "sha256-m85GZYOvO9Byhj5oq5Ts+ktd+GAIxAV5c0NtKKAXeLs=";
   };
 
   installPhase = ''
