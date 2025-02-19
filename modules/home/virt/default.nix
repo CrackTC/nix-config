@@ -32,7 +32,18 @@ in
         [ pkgs.virtiofsd ]
         (lib.mkIf (hostConfig.gui.enable && config.gui.enable) [
           pkgs.spice-gtk
-          pkgs.looking-glass-client
+          # https://github.com/NixOS/nixpkgs/issues/379503
+          (pkgs.looking-glass-client.overrideAttrs (old: {
+            version = "master";
+            src = pkgs.fetchFromGitHub {
+              owner = "gnif";
+              repo = "LookingGlass";
+              sha256 = "sha256-DBmCJRlB7KzbWXZqKA0X4VTpe+DhhYG5uoxsblPXVzg=";
+              rev = "e25492a3a36f7e1fde6e3c3014620525a712a64a";
+              fetchSubmodules = true;
+            };
+            patches = [ ./nanosvg-unvendor.diff ];
+          }))
         ])
       ];
 
