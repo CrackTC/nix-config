@@ -29,7 +29,7 @@ in
 
     programs.firefox = {
       enable = true;
-      profiles.${profileName}.extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      profiles.${profileName}.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         # gloc
         # kristofferhagen-nord-theme

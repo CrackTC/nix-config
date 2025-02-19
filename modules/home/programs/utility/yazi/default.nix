@@ -46,11 +46,11 @@ in
                 "d"
                 "d"
               ];
-              run = "arrow -99999999";
+              run = "arrow top";
             }
             {
               on = [ "D" ];
-              run = "arrow 99999999";
+              run = "arrow bot";
             }
             {
               on = [ "<A-k>" ];

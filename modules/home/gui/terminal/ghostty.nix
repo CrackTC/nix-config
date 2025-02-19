@@ -31,7 +31,7 @@ in
         font-codepoint-map = U+4E00-U+9FA5 = Maple Mono SC NF
         freetype-load-flags = no-hinting
 
-        theme = dark: nord, light: nord-light
+        theme = nord
 
         mouse-hide-while-typing = true
 
