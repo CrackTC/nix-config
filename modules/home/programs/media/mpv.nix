@@ -24,6 +24,7 @@ in
       {
         programs.mpv = {
           enable = true;
+          scripts = [ pkgs.mpvScripts.mpris ];
           bindings = {
             MBTN_LEFT = "cycle pause";
 
