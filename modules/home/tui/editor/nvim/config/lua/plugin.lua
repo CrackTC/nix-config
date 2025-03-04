@@ -21,7 +21,7 @@ require("lazy").setup(
         require("plugins.bullets"),
         require("plugins.cmp"),
         require("plugins.comment"),
-        require("plugins.copilot"),
+        -- require("plugins.copilot"),
         require("plugins.csharpls-extended-lsp"),
         require("plugins.flit"),
         require("plugins.gitsigns"),
