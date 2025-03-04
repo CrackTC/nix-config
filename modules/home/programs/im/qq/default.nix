@@ -49,13 +49,14 @@ in
   config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = [
-        (qq-orig.overrideAttrs (oldAttrs: {
-          postInstall = ''
-            echo 'require(String.raw`${liteloaderqqnt}`)' > $out/opt/QQ/resources/app/app_launcher/patch.js
-            sed -i $out/opt/QQ/resources/app/package.json -e 's/"main":.*/"main": "\.\/app_launcher\/patch.js",/'
-            wrapProgramShell $out/bin/qq --run 'export LITELOADERQQNT_PROFILE=$HOME/.local/share/liteloaderqqnt'
-          '';
-        }))
+        qq-orig
+        # (qq-orig.overrideAttrs (oldAttrs: {
+        #   postInstall = ''
+        #     echo 'require(String.raw`${liteloaderqqnt}`)' > $out/opt/QQ/resources/app/app_launcher/patch.js
+        #     sed -i $out/opt/QQ/resources/app/package.json -e 's/"main":.*/"main": "\.\/app_launcher\/patch.js",/'
+        #     wrapProgramShell $out/bin/qq --run 'export LITELOADERQQNT_PROFILE=$HOME/.local/share/liteloaderqqnt'
+        #   '';
+        # }))
       ];
     };
   };
