@@ -62,6 +62,7 @@ in
 
         xdg.mimeApps.defaultApplications = lib.genAttrs [
           "audio/mpeg"
+          "audio/x-wav"
         ] (mime: "mpv.desktop");
       }
 
