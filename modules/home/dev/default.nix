@@ -19,6 +19,7 @@
     ./lsp.nix
     ./lua.nix
     ./man.nix
+    ./mysql.nix
     ./net.nix
     ./nix.nix
     ./php.nix
@@ -56,6 +57,7 @@
     lsp.enable = true;
     lua.enable = true;
     man.enable = true;
+    mysql.enable = true;
     net.enable = true;
     nix.enable = true;
     php.enable = true;
