@@ -23,6 +23,7 @@
       zed.enable = true;
     };
     media = {
+      bluray.enable = true;
       mpv.enable = true;
       jellyfin-mpv-shim.enable = true;
       songrec.enable = true;

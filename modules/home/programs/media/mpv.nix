@@ -24,7 +24,15 @@ in
       {
         programs.mpv = {
           enable = true;
-          scripts = [ pkgs.mpvScripts.mpris ];
+          package = pkgs.mpv.override {
+            mpv = pkgs.mpv-unwrapped.override {
+              libbluray = pkgs.libbluray.override {
+                withJava = true;
+                withAACS = true;
+              };
+            };
+            scripts = [ pkgs.mpvScripts.mpris ];
+          };
           bindings = {
             MBTN_LEFT = "cycle pause";
 
