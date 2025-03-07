@@ -24,10 +24,12 @@
     };
     media = {
       bluray.enable = true;
-      mpv.enable = true;
+      imv.enable = true;
       jellyfin-mpv-shim.enable = true;
+      mpv.enable = true;
       songrec.enable = true;
       spotify.enable = true;
+      vlc.enable = true;
     };
     im = {
       qq.enable = true;

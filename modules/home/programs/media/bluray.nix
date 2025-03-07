@@ -19,6 +19,7 @@ in
           withJava = true;
           withAACS = true;
         })
+        pkgs.makemkv
       ];
     };
   };

@@ -8,5 +8,6 @@
     ./spotify.nix
     ./spotifyd.nix
     ./svp.nix
+    ./vlc.nix
   ];
 }

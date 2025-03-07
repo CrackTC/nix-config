@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-  cfg = config.imv;
+  cfg = config.programs.media.imv;
 in
 {
-  options.imv = {
+  options.programs.media.imv = {
     enable = lib.mkEnableOption "imv";
   };
 

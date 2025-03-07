@@ -41,7 +41,6 @@
     dunst.enable = true;
     firefox.enable = true;
     gui.misc.enable = true;
-    imv.enable = true;
     # imwheel.enable = true;
     libreoffice.enable = true;
     logisim.enable = true;
