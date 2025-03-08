@@ -29,6 +29,7 @@ in
       wayland.windowManager.hyprland = {
         enable = true;
         package = extraRepos.hyprland.hyprland;
+        portalPackage = null;
         settings = {
 
           env = lib.mkMerge [
