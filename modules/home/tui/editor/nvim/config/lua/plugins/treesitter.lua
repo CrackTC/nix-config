@@ -11,6 +11,7 @@ local extensions = {
     "html",
     "hurl",
     "latex",
+    "llvm",
     "lua",
     "make",
     "markdown",
