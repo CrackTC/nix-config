@@ -26,7 +26,7 @@ in
       home.packages = with pkgs; [
         nmap
         frida-tools
-        netcat-gnu
+        netcat-openbsd
         bytecode-viewer
         php
         sqlmap
