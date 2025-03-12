@@ -1,6 +1,6 @@
 {
   imports = [
-    ./bluray.nix
+    ./rip.nix
     ./imv.nix
     ./jellyfin-mpv-shim.nix
     ./mpv.nix

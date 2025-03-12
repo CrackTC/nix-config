@@ -23,10 +23,10 @@
       zed.enable = true;
     };
     media = {
-      bluray.enable = true;
       imv.enable = true;
       jellyfin-mpv-shim.enable = true;
       mpv.enable = true;
+      rip.enable = true;
       songrec.enable = true;
       spotify.enable = true;
       vlc.enable = true;

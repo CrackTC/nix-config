@@ -5,16 +5,17 @@
   ...
 }:
 let
-  cfg = config.programs.media.bluray;
+  cfg = config.programs.media.rip;
 in
 {
-  options.programs.media.bluray = {
-    enable = lib.mkEnableOption "bluray";
+  options.programs.media.rip = {
+    enable = lib.mkEnableOption "rip";
   };
 
   config = lib.mkIf cfg.enable {
     hmConfig = {
       home.packages = [
+        pkgs.whipper
         (pkgs.libbluray.override {
           withJava = true;
           withAACS = true;
