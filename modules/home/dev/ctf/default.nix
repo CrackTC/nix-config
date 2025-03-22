@@ -24,6 +24,7 @@ in
     metasploit.enable = true;
     hmConfig = {
       home.packages = with pkgs; [
+        exploitdb
         nmap
         frida-tools
         netcat-openbsd
