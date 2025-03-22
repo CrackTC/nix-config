@@ -33,6 +33,7 @@ in
     ./timeZone
     ./virt.nix
     ./wacom.nix
+    ./wireguard.nix
   ];
 
   options.sorac.host = {
