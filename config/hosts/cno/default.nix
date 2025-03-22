@@ -83,10 +83,6 @@
   environment.systemPackages = [ pkgs.cifs-utils ];
 
   fileSystems = {
-    "/mnt/lib" = {
-      device = "/dev/disk/by-uuid/f542c9db-e4ae-406b-a7e0-bd0bc9cc7a61";
-    };
-
     "/mnt/smb/nas" = {
       device = "//nas.sora.zip/nas";
       fsType = "cifs";
