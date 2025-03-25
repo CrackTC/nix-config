@@ -82,44 +82,37 @@
 
   environment.systemPackages = [ pkgs.cifs-utils ];
 
-  fileSystems = {
-    "/mnt/smb/nas" = {
-      device = "//192.168.96.1/nas";
-      fsType = "cifs";
-      options =
-        let
-          automount_opts = [
-            "x-systemd.automount"
-            "noauto"
-            "x-systemd.idle-timeout=60"
-            "x-systemd.device-timeout=5s"
-            "x-systemd.mount-timeout=5s"
-          ];
-        in
-        automount_opts
-        ++ [
-          "credentials=/run/secrets/nas_credentials"
+  sops.secrets.smb_credentials = { };
+  fileSystems =
+    let
+      automount_opts = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=60"
+        "x-systemd.device-timeout=5s"
+        "x-systemd.mount-timeout=5s"
+      ];
+    in
+    {
+      "/mnt/smb/nas" = {
+        device = "//192.168.96.1/nas";
+        fsType = "cifs";
+        options = automount_opts ++ [
+          "credentials=/run/secrets/smb_credentials"
+          "uid=1000"
+          "gid=100"
           "rw"
         ];
-    };
-    "/mnt/smb/pi" = {
-      device = "//192.168.96.2/pi";
-      fsType = "cifs";
-      options =
-        let
-          automount_opts = [
-            "x-systemd.automount"
-            "noauto"
-            "x-systemd.idle-timeout=60"
-            "x-systemd.device-timeout=5s"
-            "x-systemd.mount-timeout=5s"
-          ];
-        in
-        automount_opts
-        ++ [
-          "credentials=/run/secrets/nas_credentials"
+      };
+      "/mnt/smb/pi" = {
+        device = "//192.168.96.2/pi";
+        fsType = "cifs";
+        options = automount_opts ++ [
+          "credentials=/run/secrets/smb_credentials"
+          "uid=1000"
+          "gid=100"
           "rw"
         ];
+      };
     };
-  };
 }

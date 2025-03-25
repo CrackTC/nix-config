@@ -11,7 +11,6 @@
         mode = "0400";
       in
       {
-        nas_credentials = { };
         spotify = {
           inherit mode;
           owner = "chen";
