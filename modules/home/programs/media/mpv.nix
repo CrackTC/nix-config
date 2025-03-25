@@ -7,7 +7,7 @@
 }:
 let
   cfg = config.programs.media.mpv;
-  font = "Maple Mono SC NF";
+  font = "Maple Mono NF CN";
 in
 {
   options.programs.media.mpv = {
