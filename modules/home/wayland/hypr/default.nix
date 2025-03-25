@@ -53,7 +53,7 @@ in
               "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
               # GTK Variables
-              "GTK_USE_PORTAL,1"
+              # "GTK_USE_PORTAL,1"
 
               "XDG_CONFIG_HOME,/home/${name}/.config"
               "XDG_CONFIG_DIR,/home/${name}/.config"
@@ -75,6 +75,9 @@ in
             (lib.mkIf config.imwheel.enable [ "imwheel" ])
             (lib.mkIf config.waybar.enable [ "waybar" ])
             (lib.mkIf config.programs.utility.ydotool.enable [ "ydotoold" ])
+            (lib.mkIf (config.terminal.preferred == "ghostty") [
+              "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
+            ])
           ];
 
           input = {
