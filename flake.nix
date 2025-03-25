@@ -140,6 +140,32 @@
                       };
                       patches = [ ./modules/home/virt/nanosvg-unvendor.diff ];
                     });
+
+                    # https://github.com/NixOS/nixpkgs/issues/392278
+                    auto-cpufreq = prev.auto-cpufreq.overrideAttrs (oldAttrs: {
+                      postPatch =
+                        oldAttrs.postPatch
+                        + ''
+
+                          substituteInPlace pyproject.toml \
+                          --replace-fail 'psutil = "^6.0.0"' 'psutil = ">=6.0.0,<8.0.0"'
+                        '';
+                    });
+
+                    # pr 392319
+                    zed-editor = prev.zed-editor.overrideAttrs (oldAttrs: {
+                      postPatch =
+                        # Dynamically link WebRTC instead of static
+                        ''
+                          substituteInPlace $cargoDepsCopy/webrtc-sys-*/build.rs \
+                            --replace-fail "cargo:rustc-link-lib=static=webrtc" "cargo:rustc-link-lib=dylib=webrtc"
+                        ''
+                        # nixpkgs ships cargo-about 0.7, which is a seamless upgrade from 0.6
+                        + ''
+                          substituteInPlace script/generate-licenses \
+                            --replace-fail 'CARGO_ABOUT_VERSION="0.6"' 'CARGO_ABOUT_VERSION="0.7"'
+                        '';
+                    });
                   })
                 ];
               }

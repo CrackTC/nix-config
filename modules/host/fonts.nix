@@ -21,8 +21,8 @@ in
       source-han-sans
       source-han-serif
       sarasa-gothic
-      maple-mono
-      maple-mono-SC-NF
+      maple-mono.variable
+      maple-mono.NF-CN
       ubuntu_font_family
       twitter-color-emoji
       nerd-fonts.symbols-only

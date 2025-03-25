@@ -28,7 +28,7 @@ in
         font-feature = cv02
         font-size = 12
         font-codepoint-map = U+2714,U+2717 = Noto Sans Symbols 2
-        font-codepoint-map = U+4E00-U+9FA5 = Maple Mono SC NF
+        font-codepoint-map = U+4E00-U+9FA5 = Maple Mono NF CN
         freetype-load-flags = no-hinting
 
         theme = nord
