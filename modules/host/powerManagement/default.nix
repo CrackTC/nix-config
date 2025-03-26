@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -31,10 +30,14 @@ in
         settings = {
           battery = {
             governor = "powersave";
+            energy_performance_preference = "power";
+            platform_profile = "quiet";
             turbo = "auto";
           };
           charger = {
             governor = "performance";
+            energy_performance_preference = "performance";
+            platform_profile = "performance";
             turbo = "auto";
           };
         };
