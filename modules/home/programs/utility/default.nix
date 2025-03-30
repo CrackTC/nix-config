@@ -21,6 +21,7 @@
     ./qbittorrent.nix
     ./ripdrag.nix
     ./rofi
+    ./sing-box.nix
     ./tex.nix
     ./video2gif.nix
     ./waydroid.nix

@@ -44,7 +44,8 @@
       bc.enable = true;
       bsdiff.enable = true;
       btop.enable = true;
-      clash.enable = true;
+      clash.enable = false;
+      sing-box.enable = true;
       duf.enable = true;
       fastfetch.enable = true;
       imhex.enable = true;
