@@ -170,8 +170,9 @@ in
           };
 
           render = {
-            explicit_sync = 1;
-            direct_scanout = false;
+            explicit_sync = 2;
+            explicit_sync_kms = 2;
+            direct_scanout = true;
           };
 
           gestures = {
