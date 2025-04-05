@@ -8,8 +8,8 @@ let
   cfg = config.firefox;
   inherit (cfg) profileName;
   material-fox = pkgs.fetchzip {
-    url = "https://github.com/edelvarden/material-fox-updated/releases/download/v1.3.0/chrome.zip";
-    hash = "sha256-axAKxcCnAw8ARmNHviuP/S8yAqj2KMCAfiz7r28Ymkw=";
+    url = "https://github.com/edelvarden/material-fox-updated/releases/download/v2.0.0/chrome.zip";
+    hash = "sha256-wadjyouLfPblVoYSK/E8tK+0HE4f447jGrBHZoESYCk=";
   };
 in
 {
