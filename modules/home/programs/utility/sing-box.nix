@@ -25,6 +25,7 @@ in
 
   config = lib.mkIf cfg.enable {
     osConfig = {
+      networking.firewall.checkReversePath = "loose";
       systemd.services.sing-box = {
         description = "fetch config & run sing-box on startup";
         after = [ "network-online.target" ];
