@@ -83,12 +83,7 @@ lspconfig.lua_ls.setup {
     end
 }
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover, {
-        border = "rounded",
-        title = "RTFM"
-    }
-)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.buf.hover({ title = "RTFM" })
 
 vim.diagnostic.config {
     underline = true,

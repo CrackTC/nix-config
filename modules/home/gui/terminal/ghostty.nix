@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  extraRepos,
+  pkgs,
   ...
 }:
 let
@@ -10,37 +10,43 @@ in
 {
   options.terminals.ghostty = {
     enable = lib.mkEnableOption "ghostty";
-    package = lib.mkPackageOption extraRepos.ghostty "ghostty" { };
+    package = lib.mkPackageOption pkgs "ghostty" { };
   };
 
   config = lib.mkIf cfg.enable {
     hmConfig = {
-      home.packages = [ cfg.package ];
-      xdg.configFile."ghostty/config".text = ''
-        font-family = Maple Mono
-        font-synthetic-style = false
-        font-feature = ss01
-        font-feature = ss02
-        font-feature = ss03
-        font-feature = ss04
-        font-feature = ss05
-        font-feature = cv01
-        font-feature = cv02
-        font-size = 12
-        font-codepoint-map = U+2714,U+2717 = Noto Sans Symbols 2
-        font-codepoint-map = U+4E00-U+9FA5 = Maple Mono NF CN
-        freetype-load-flags = no-hinting
-
-        theme = nord
-
-        mouse-hide-while-typing = true
-
-        scrollback-limit = 4294967295
-        window-padding-x = 1
-        window-padding-balance = true
-        window-padding-color = extend
-        window-decoration = true
-      '';
+      programs.ghostty = {
+        enable = true;
+        enableBashIntegration = config.programs.shells.bash.enable;
+        enableFishIntegration = config.programs.shells.fish.enable;
+        enableZshIntegration = config.programs.shells.zsh.enable;
+        settings = {
+          font-family = "Maple Mono";
+          font-synthetic-style = false;
+          font-feature = [
+            "ss01"
+            "ss02"
+            "ss03"
+            "ss04"
+            "ss05"
+            "cv01"
+            "cv02"
+          ];
+          font-size = 12;
+          font-codepoint-map = [
+            "U+2714,U+2717 = Noto Sans Symbols 2"
+            "U+4E00-U+9FA5 = Maple Mono NF CN"
+          ];
+          freetype-load-flags = "no-hinting";
+          theme = "nord";
+          mouse-hide-while-typing = true;
+          scrollback-limit = 4294967295;
+          window-padding-x = 1;
+          window-padding-balance = true;
+          window-padding-color = "extend";
+          window-decoration = true;
+        };
+      };
     };
   };
 }
