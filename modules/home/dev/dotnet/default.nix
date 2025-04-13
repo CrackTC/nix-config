@@ -6,9 +6,9 @@
 }:
 let
   cfg = config.dotnet;
-  combined =
-    with pkgs;
-    dotnetCorePackages.combinePackages (map (sdk: dotnetCorePackages."sdk_${toString sdk}_0") cfg.sdks);
+  combined = pkgs.dotnetCorePackages.combinePackages (
+    map (sdk: pkgs.dotnetCorePackages."dotnet_${toString sdk}".sdk) cfg.sdks
+  );
 in
 {
   imports = [ ./rider.nix ];
@@ -17,26 +17,27 @@ in
     sdks = lib.mkOption {
       type = lib.types.listOf lib.types.int;
       default = [
+        10
         9
         8
       ];
       description = "List of .NET SDK versions to install.";
     };
-    root = lib.mkOption {
-      type = lib.types.str;
-      default = "";
-      description = "Root directory for .NET SDKs and runtimes.";
-    };
   };
 
   config = lib.mkIf cfg.enable {
-    dotnet.root = "${combined}/share/dotnet";
     rider.enable = true;
     hmConfig = {
-      home.packages = with pkgs; [
-        combined
-        csharprepl
-      ];
+      home = {
+        sessionVariables = {
+          DOTNET_ROOT = "${combined}/share/dotnet";
+          DOTNET_PATH = "${combined}/bin/dotnet";
+        };
+        packages = with pkgs; [
+          combined
+          csharprepl
+        ];
+      };
     };
   };
 }

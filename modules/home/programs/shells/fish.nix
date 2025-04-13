@@ -71,7 +71,6 @@ in
         };
         shellInit = lib.mkMerge [
           (lib.mkIf config.dotnet.enable ''
-            export DOTNET_ROOT=${config.dotnet.root}
             fish_add_path $HOME/.dotnet/tools
           '')
 
