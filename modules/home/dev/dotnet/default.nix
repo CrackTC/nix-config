@@ -17,7 +17,6 @@ in
     sdks = lib.mkOption {
       type = lib.types.listOf lib.types.int;
       default = [
-        10
         9
         8
       ];
