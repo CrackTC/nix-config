@@ -111,9 +111,9 @@ in
           general = {
             gaps_in = 5;
             gaps_out = 10;
-            border_size = 2;
-            "col.active_border" = "rgba(88c0d0ff)";
-            "col.inactive_border" = "rgba(4c566aff)";
+            # border_size = 2;
+            # "col.active_border" = "rgba(88c0d0ff)";
+            # "col.inactive_border" = "rgba(4c566aff)";
 
             layout = "dwindle";
 
@@ -172,7 +172,7 @@ in
           render = {
             explicit_sync = 2;
             explicit_sync_kms = 2;
-            direct_scanout = true;
+            direct_scanout = false;
           };
 
           gestures = {
