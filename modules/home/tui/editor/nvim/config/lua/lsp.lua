@@ -3,6 +3,7 @@ local lspconfig = require("lspconfig")
 
 local servers = {
     "cmake",
+    "csharp_ls",
     "cssls",
     "denols",
     "eslint",
@@ -57,6 +58,8 @@ lspconfig.nil_ls.setup {
         }
     }
 }
+
+require("csharpls_extended").buf_read_cmd_bind()
 
 vim.g.markdown_fenced_languages = {
     "ts=typescript",
