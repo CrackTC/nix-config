@@ -13,6 +13,6 @@ in
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ godot_4 ];
+    home.packages = with pkgs; [ godot_4_3 ];
   };
 }

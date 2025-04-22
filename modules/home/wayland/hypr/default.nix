@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  extraRepos,
+  # extraRepos,
   name,
   ...
 }:
@@ -28,7 +28,8 @@ in
     hmConfig = {
       wayland.windowManager.hyprland = {
         enable = true;
-        package = extraRepos.hyprland.hyprland;
+        # package = extraRepos.hyprland.hyprland;
+        package = pkgs.hyprland;
         portalPackage = null;
         settings = {
 

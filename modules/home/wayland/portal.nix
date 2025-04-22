@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  extraRepos,
+  # extraRepos,
   ...
 }:
 let
@@ -18,7 +18,10 @@ in
       config.common.default = "*";
       xdgOpenUsePortal = false;
       extraPortals = lib.mkMerge [
-        (lib.mkIf config.hypr.enable [ extraRepos.hyprland.xdg-desktop-portal-hyprland ])
+        (lib.mkIf config.hypr.enable [
+          # extraRepos.hyprland.xdg-desktop-portal-hyprland
+          pkgs.xdg-desktop-portal-hyprland
+        ])
         [ pkgs.xdg-desktop-portal-gtk ]
       ];
     };

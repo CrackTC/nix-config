@@ -2,13 +2,14 @@
   config,
   pkgs,
   lib,
-  extraRepos,
+  # extraRepos,
   ...
 }:
 let
   cfg = config.hypr;
 
-  hyprctl = extraRepos.hyprland.hyprland + "/bin/hyprctl";
+  # hyprctl = extraRepos.hyprland.hyprland + "/bin/hyprctl";
+  hyprctl = pkgs.hyprland + "/bin/hyprctl";
   jq = lib.getExe pkgs.jq;
   grep = lib.getExe pkgs.gnugrep;
 

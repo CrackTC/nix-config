@@ -51,10 +51,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland = {
+    #   url = "github:hyprwm/hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nil = {
       url = "github:oxalica/nil";
@@ -68,7 +68,7 @@
       nixpkgs-master,
       nixpkgs-stable,
       nixpkgs-mine,
-      hyprland,
+      # hyprland,
       nil,
       nur,
       myRepo,
@@ -149,7 +149,7 @@
               pkgs-mine = import nixpkgs-mine options;
               myRepo = import myRepo { inherit pkgs; };
 
-              hyprland = hyprland.packages.${host-info.system};
+              # hyprland = hyprland.packages.${host-info.system};
               nil = nil.packages.${host-info.system};
             };
 

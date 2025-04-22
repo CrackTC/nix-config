@@ -49,7 +49,7 @@
     fhs.enable = true;
     fzf.enable = true;
     go.enable = true;
-    godot.enable = true;
+    godot.enable = false;
     haskell.enable = true;
     ideavimrc.enable = true;
     java.enable = true;
