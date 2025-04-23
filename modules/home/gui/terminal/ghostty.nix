@@ -41,7 +41,7 @@ in
           theme = "nord";
           mouse-hide-while-typing = true;
           scrollback-limit = 4294967295;
-          window-padding-x = 1;
+          window-padding-x = 3;
           window-padding-balance = true;
           window-padding-color = "extend";
           window-decoration = true;
