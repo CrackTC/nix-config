@@ -20,9 +20,9 @@ in
         "8" = "<span> 󰍡 </span>";
         "9" = "<span> 󰓇 </span>";
         "10" = "<span> 󰈔 </span>";
-        urgent = "";
-        focused = "";
-        default = "";
+        urgent = "<span>  </span>";
+        focused = "<span>  </span>";
+        default = "<span>  </span>";
       };
       sort-by-number = true;
     };

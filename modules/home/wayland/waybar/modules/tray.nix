@@ -5,8 +5,9 @@ in
 {
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.settings.mainBar."tray" = {
-      icon-size = 20;
-      spacing = 10;
+      icon-size = 16;
+      spacing = 5;
+      show-passive-items = true;
     };
   };
 }

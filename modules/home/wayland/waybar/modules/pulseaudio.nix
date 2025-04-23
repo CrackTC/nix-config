@@ -12,7 +12,7 @@ in
     hmConfig = {
       programs.waybar.settings.mainBar."pulseaudio" = {
         scroll-step = 1;
-        format = "<span font-weight='normal'>{icon} </span>{volume}";
+        format = "<span font_weight='normal'>{icon} </span>{volume}";
         format-bluetooth = "{icon} {volume}";
         format-bluetooth-muted = " muted";
         format-muted = " muted";

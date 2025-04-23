@@ -4,17 +4,17 @@ let
 in
 {
   imports = [
-    ./cava.nix
-    ./workspaces.nix
-    ./tray.nix
+    ./backlight.nix
+    ./battery.nix
     ./clock.nix
     ./cpu.nix
     ./memory.nix
-    ./temperature.nix
-    ./backlight.nix
-    ./battery.nix
+    ./mpris.nix
     ./network.nix
     ./pulseaudio.nix
+    ./temperature.nix
+    ./tray.nix
+    ./workspaces.nix
   ];
 
   config.hmConfig = lib.mkIf cfg.enable {
@@ -28,7 +28,7 @@ in
         "battery"
       ];
 
-      modules-center = [ "custom/cava" ];
+      modules-center = [ "mpris" ];
 
       modules-right = [
         "backlight"

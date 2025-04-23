@@ -6,7 +6,7 @@ in
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.style = ''
       * {
-          font-family: 'Symbols Nerd Font', 'Sarasa Mono SC', 'Maple Mono', sans-serif;
+          font-family: 'Noto Sans Mono CJK SC', 'Symbols Nerd Font';
           font-size: 16px;
           font-weight: bold;
       }
@@ -18,17 +18,18 @@ in
 
       #workspaces button {
           margin: 5px;
-          font-weight: normal;
-          padding: 0 3px;
-          background-color: #d8dee9;
+          padding: 0 5px;
+          background-color: #2e3440;
           border-radius: 8px;
-          transition-property: background-color, color;
+          border-width: 2px;
+          transition-property: background-color, color, border-color;
           transition-duration: .5s;
-          color: #2e3440;
+          color: #88c0d0;
       }
 
       #workspaces label {
-          padding-top: 1px;
+          font-weight: normal;
+          margin-top: 2px;
       }
 
       #workspaces button:hover {
@@ -37,8 +38,9 @@ in
       }
 
       #workspaces button.active {
-          color: #d8dee9;
-          background-color: #5e81ac;
+          color: #2e3440;
+          background-color: #88c0d0;
+          border-color: #4c566a;
       }
 
       #workspaces button.urgent {
@@ -53,7 +55,7 @@ in
 
       #clock,
       #battery,
-      #custom-cava,
+      #mpris,
       #cpu,
       #memory,
       #disk,
@@ -69,7 +71,9 @@ in
       #keyboard-state,
       #mpd {
           margin: 5px 2px;
-          padding: 0 12px;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-bottom: 2px;
           color: #d8dee9;
           border-radius: 10px;
       }
@@ -99,12 +103,21 @@ in
       #clock {
           color: #434c5e;
           background-color: #81a1c1;
-          margin-right: 5px;
       }
 
       #battery {
-          background-color: #d8dee9;
-          color: #2e3440;
+          margin: 5px 2px;
+          padding-left: 12px;
+          padding-right: 12px;
+          color: #d8dee9;
+          border-radius: 10px;
+          background-color: #2e3440;
+          color: #88c0d0;
+      }
+
+      #battery.full {
+          padding-top: 2px;
+          padding-bottom: 0;
       }
 
       #battery.charging,
@@ -172,12 +185,14 @@ in
           color: #2a5c45;
       }
 
-      #custom-cava {
+      #mpris {
+          font-family: 'Symbols Nerd Font', 'Noto Sans CJK SC';
           border-radius: 0 0 10px 10px;
           margin-top: 0;
           padding: 0 15px;
-          letter-spacing: 2px;
-          background-color: #4c566a;
+          min-width: 200px;
+          color: #88c0d0;
+          background-color: #2e3440;
       }
 
       #temperature {
@@ -191,8 +206,21 @@ in
 
       #tray {
           margin-right: 8px;
+          background-color: transparent;
+      }
+
+      #tray menu * {
+          font-family: 'Noto Sans CJK SC';
+      }
+
+      #tray>widget {
           border-radius: 10px;
-          background-color: rgba(0, 0, 0, 0.2);
+          border: 2px solid #88c0d0;
+          background-color: #2e3440;
+      }
+
+      #tray>widget>image {
+          padding: 0 7px;
       }
 
       #tray>.passive {
@@ -202,11 +230,6 @@ in
       #tray>.needs-attention {
           -gtk-icon-effect: highlight;
           background-color: #bf616a;
-      }
-
-      #mpris {
-          margin-left: 5px;
-          font-weight: bold;
       }
     '';
   };
