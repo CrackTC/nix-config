@@ -5,7 +5,7 @@ in
 {
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.settings.mainBar."memory" = {
-      format = "<span font_weight='normal'>󰏖 </span>{}";
+      format = "<span font_weight='normal' rise='1pt'>󰏖 </span>{}";
     };
   };
 }

@@ -25,11 +25,11 @@ in
         package = pkgs.waybar;
         settings = {
           mainBar = {
-            spacing = 2;
+            spacing = 0;
             layer = "top";
             margin-top = 0;
-            margin-left = 10;
-            margin-right = 10;
+            margin-left = 0;
+            margin-right = 0;
           };
         };
       };

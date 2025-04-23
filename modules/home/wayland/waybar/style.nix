@@ -5,99 +5,72 @@ in
 {
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.style = ''
-      * {
-          font-family: 'Noto Sans Mono CJK SC', 'Symbols Nerd Font';
-          font-size: 16px;
-          font-weight: bold;
-      }
-
       window#waybar {
           background-color: transparent;
-          color: #d8dee9;
       }
 
-      #workspaces button {
-          margin: 5px;
-          padding: 0 5px;
-          background-color: #2e3440;
-          border-radius: 8px;
-          border-width: 2px;
-          transition-property: background-color, color, border-color;
-          transition-duration: .5s;
-          color: #88c0d0;
+      #workspaces,
+      #tray {
+          margin-top: 5px;
       }
 
       #workspaces label {
+          font-family: 'Symbols Nerd Font';
           font-weight: normal;
-          margin-top: 2px;
+          font-size: 16px;
+          padding-top: 2px;
+      }
+
+      #workspaces button {
+          margin-right: 5px;
+          padding: 0 5px;
+          color: #88c0d0;
+          background-color: #2e3440;
+          border-radius: 8px;
+          transition-property: background-color, color;
+          transition-duration: .5s;
       }
 
       #workspaces button:hover {
-          color: #d8dee9;
-          background: #2e3440;
+          background-color: #3b4252;
       }
 
       #workspaces button.active {
           color: #2e3440;
           background-color: #88c0d0;
-          border-color: #4c566a;
       }
 
       #workspaces button.urgent {
-          color: #d8dee9;
-          background-color: #bf616a;
-      }
-
-      #mode {
-          background-color: #4c566a;
-          border-bottom: 3px solid #eceff4;
+          color: #bf616a;
+          background-color: #2e3440;
       }
 
       #clock,
       #battery,
-      #mpris,
       #cpu,
       #memory,
-      #disk,
       #temperature,
       #backlight,
       #network,
-      #pulseaudio,
-      #wireplumber,
-      #tray,
-      #mode,
-      #idle_inhibitor,
-      #scratchpad,
-      #keyboard-state,
-      #mpd {
-          margin: 5px 2px;
-          padding-left: 12px;
-          padding-right: 12px;
-          padding-bottom: 2px;
+      #pulseaudio {
+          margin-right: 5px;
+          margin-top: 5px;
+
+          padding: 0 12px;
           color: #d8dee9;
-          border-radius: 10px;
+          border-radius: 8px;
+          font-family: 'Symbols Nerd Font', 'Maple Mono';
+          font-size: 16px;
+          font-weight: 600;
+          min-height: 28px;
       }
 
       #network {
           font-size: 10px;
       }
 
-      #window,
       #workspaces {
-          margin: 0 4px;
-      }
-
-      #window {
-          font-weight: bold;
-          font-size: small;
-      }
-
-      .modules-left>widget:first-child>#workspaces {
-          margin-left: 5px;
-      }
-
-      .modules-right>widget:last-child>#workspaces {
-          margin-right: 0;
+          margin-left: 10px;
       }
 
       #clock {
@@ -106,45 +79,28 @@ in
       }
 
       #battery {
-          margin: 5px 2px;
-          padding-left: 12px;
-          padding-right: 12px;
-          color: #d8dee9;
-          border-radius: 10px;
           background-color: #2e3440;
           color: #88c0d0;
       }
 
-      #battery.full {
-          padding-top: 2px;
-          padding-bottom: 0;
-      }
-
       #battery.charging,
       #battery.plugged {
-          color: #3b4252;
-          background-color: #a3be8c;
+          color: #a3be8c;
       }
 
       @keyframes blink {
           to {
-              background-color: black;
-              color: #d8dde9;
+              color: #bf616a
           }
       }
 
       #battery.critical:not(.charging) {
-          background-color: #bf616a;
-          color: #d8dde9;
+          color: #88c0d0;
           animation-name: blink;
           animation-duration: 0.5s;
           animation-timing-function: ease;
           animation-iteration-count: infinite;
           animation-direction: alternate;
-      }
-
-      label:focus {
-          background-color: #2E3440;
       }
 
       #cpu {
@@ -167,12 +123,12 @@ in
       }
 
       #network {
-          background-color: #4c566a;
-          color: #d8dee9;
+          background-color: #2e3440;
+          color: #88c0d0;
       }
 
       #network.disconnected {
-          background-color: #bf616a;
+          color: #bf616a;
       }
 
       #pulseaudio {
@@ -186,8 +142,10 @@ in
       }
 
       #mpris {
-          font-family: 'Symbols Nerd Font', 'Noto Sans CJK SC';
-          border-radius: 0 0 10px 10px;
+          font-family: 'Symbols Nerd Font', 'MiSans';
+          font-size: 16px;
+          font-weight: normal;
+          border-radius: 0 0 8px 8px;
           margin-top: 0;
           padding: 0 15px;
           min-width: 200px;
@@ -205,7 +163,7 @@ in
       }
 
       #tray {
-          margin-right: 8px;
+          margin-right: 10px;
           background-color: transparent;
       }
 
@@ -214,8 +172,7 @@ in
       }
 
       #tray>widget {
-          border-radius: 10px;
-          border: 2px solid #88c0d0;
+          border-radius: 8px;
           background-color: #2e3440;
       }
 

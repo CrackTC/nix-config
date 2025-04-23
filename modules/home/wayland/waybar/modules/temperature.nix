@@ -8,7 +8,7 @@ in
       interval = 1;
       thermal-zone = 1;
       critical-threshold = 80;
-      format = "<span font_weight='normal'>{icon}</span>{temperatureC}";
+      format = "<span font_weight='normal' rise='1pt'>{icon}</span>{temperatureC}";
       format-icons = [
         " "
         " "

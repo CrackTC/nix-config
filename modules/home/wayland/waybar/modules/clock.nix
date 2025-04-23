@@ -5,10 +5,9 @@ in
 {
   config.hmConfig = lib.mkIf cfg.enable {
     programs.waybar.settings.mainBar."clock" = {
-      timezone = "Asia/Shanghai";
       format = "<span font_weight='normal'>󰥔 </span>{:%H:%M:%S}";
       interval = 1;
-      format-alt = "<span font_weight='normal'>󰥔 </span>{:%A, %B %d, %Y (%H:%M:%S)}";
+      format-alt = "<span font_weight='normal'>󰥔 </span>{:%a, %b %d (%H:%M:%S)}";
       tooltip-format = "<span size='9pt' font_family='Noto Sans Mono CJK SC'>{calendar}</span>";
       calendar = {
         mode = "year";
