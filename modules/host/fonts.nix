@@ -15,36 +15,29 @@ in
     fontDir.enable = true;
     packages = with pkgs; [
       noto-fonts
-      vistafonts
-      vistafonts-chs
-      corefonts
-      source-han-sans
-      source-han-serif
-      sarasa-gothic
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
       maple-mono.variable
       maple-mono.NF-CN
-      ubuntu_font_family
       twitter-color-emoji
       nerd-fonts.symbols-only
     ];
 
     fontconfig = {
+      hinting.style = "medium";
       defaultFonts = {
         emoji = [ "Twitter Color Emoji" ];
         monospace = [
-          "Maple Mono"
+          "Maple Mono NF CN"
           "Noto Sans Mono CJK SC"
-          "DejaVu Sans Mono"
         ];
         sansSerif = [
+          "Noto Sans"
           "Noto Sans CJK SC"
-          "Source Han Sans SC"
-          "DejaVu Sans"
         ];
         serif = [
+          "Noto Serif"
           "Noto Serif CJK SC"
-          "Source Han Serif SC"
-          "DejaVu Serif"
         ];
       };
     };
