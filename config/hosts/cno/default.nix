@@ -55,7 +55,7 @@
         refresh = 170;
         left = builtins.ceil (2560 / 1.25);
         top = 0;
-        scale = 1.0;
+        scale = 1.25;
       }
     ];
     pipewire = {
