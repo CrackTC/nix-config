@@ -10,8 +10,8 @@ let
     hash = "sha256-IPLstNXtKUcbqf8ao0g4ptVgSgub3fH4xk7xwpmNfuw=";
   };
   moegirl-dict = fetchurl {
-    url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict.yaml";
-    hash = "sha256-mAa2seIqBzEgIwMokfU3lyA/GwwDVBvjXax3i2l+qm8=";
+    url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250409/moegirl.dict.yaml";
+    hash = "sha256-/MBYX1Zb66RK6Nowky4LdMB6Vt/4n4UAxRTN0KODdwk=";
   };
   custom = ./rime_frost.custom.yaml;
   dict = ./rime_frost.combined.dict.yaml;
