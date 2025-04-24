@@ -13,7 +13,7 @@ in
     ./coredump.nix
     ./dbus.nix
     ./firewall.nix
-    ./fonts.nix
+    ./fonts
     ./gvfs.nix
     ./hostName
     ./joycond.nix

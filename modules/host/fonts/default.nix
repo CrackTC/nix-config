@@ -21,6 +21,7 @@ in
       maple-mono.NF-CN
       twitter-color-emoji
       nerd-fonts.symbols-only
+      (pkgs.callPackage ./misans.nix { })
     ];
 
     fontconfig = {
@@ -32,6 +33,7 @@ in
           "Noto Sans Mono CJK SC"
         ];
         sansSerif = [
+          "MiSans Medium"
           "Noto Sans"
           "Noto Sans CJK SC"
         ];
