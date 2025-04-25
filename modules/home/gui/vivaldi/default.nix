@@ -28,9 +28,7 @@ in
                 "--enable-features=UseOzonePlatform"
                 "--ozone-platform-hint=wayland"
                 "--enable-wayland-ime"
-                "--enable-features=VaapiVideoDecodeLinuxGL"
-                "--use-gl=angle"
-                "--use-angle=gl"
+                "--enable-features=AcceleratedVideoDecodeLinuxGL"
               ]
             else
               [ ]
