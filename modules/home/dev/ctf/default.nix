@@ -32,6 +32,7 @@ in
         php
         sqlmap
         hurl
+        fscan
       ];
     };
   };
