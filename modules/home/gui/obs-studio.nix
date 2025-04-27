@@ -14,6 +14,8 @@ in
 
   config.hmConfig.programs.obs-studio = lib.mkIf (config.gui.available && cfg.enable) {
     enable = true;
-    plugins = with pkgs.obs-studio-plugins; [ ];
+    package = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
   };
 }
