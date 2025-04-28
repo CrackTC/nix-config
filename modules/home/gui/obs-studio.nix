@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  hostConfig,
   ...
 }:
 let
@@ -15,7 +16,7 @@ in
   config.hmConfig.programs.obs-studio = lib.mkIf (config.gui.available && cfg.enable) {
     enable = true;
     package = pkgs.obs-studio.override {
-      cudaSupport = true;
+      cudaSupport = hostConfig.nvidia.enable;
     };
   };
 }
