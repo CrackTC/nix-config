@@ -16,6 +16,7 @@ in
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = [
       (pkgs.llama-cpp.override { cudaSupport = hostConfig.nvidia.enable; })
+      pkgs.ollama-cuda
     ];
   };
 }
