@@ -34,8 +34,7 @@ in
           ExecStartPre = pkgs.writeShellScript "wait-dns.sh" ''
             until ${pkgs.host}/bin/host example.com; do sleep 1; done
           '';
-          ExecStart = pkgs.writeScript "sing-box.fish" ''
-            #!${lib.getExe pkgs.fish}
+          ExecStart = pkgs.writeShellScript "sing-box.sh" ''
             ${lib.getExe sing-box} run -D /home/${name}/.config/sing-box
           '';
         };
