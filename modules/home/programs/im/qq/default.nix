@@ -30,16 +30,16 @@ let
       {
         commandLineArgs =
           if config.wayland.enable then
-            "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true"
+            "--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime"
           else
             "";
       };
-  liteloaderqqnt = pkgs.fetchFromGitHub {
-    owner = "LiteLoaderQQNT";
-    repo = "LiteLoaderQQNT";
-    rev = "1.2.3";
-    hash = "sha256-R/CXxweWScfe3ktygnoXKh0XFkURG+lsFGFY7KRaHJg=";
-  };
+  # liteloaderqqnt = pkgs.fetchFromGitHub {
+  #   owner = "LiteLoaderQQNT";
+  #   repo = "LiteLoaderQQNT";
+  #   rev = "1.2.3";
+  #   hash = "sha256-R/CXxweWScfe3ktygnoXKh0XFkURG+lsFGFY7KRaHJg=";
+  # };
 in
 {
   options.programs.im.qq = {
