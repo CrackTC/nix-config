@@ -8,14 +8,24 @@
 let
   cfg = config.programs.utility.sing-box;
   sing-box = pkgs.sing-box.overrideAttrs rec {
-    version = "1.12.0-alpha.21";
+    version = "1.12.0-beta.18";
     src = pkgs.fetchFromGitHub {
       owner = "SagerNet";
       repo = "sing-box";
       rev = "v${version}";
-      hash = "sha256-dsgNe6X446KoAWh1vKPGgqdDwg8N76tT/3Hf752vMsY=";
+      hash = "sha256-R42+v/1TpnRJrGtftJjee4N+1W5BIK9JEC6UPZerXUw=";
     };
-    vendorHash = "sha256-mS2b52uKbYkv8g5bfrNSyPre/OaKwovhZBC0Abc+Nes=";
+    vendorHash = "sha256-5AWJB5uckIKrYD+r9C7TfYQNBcz1gGkBNIOQelpahXQ=";
+    tags = [
+      "with_gvisor"
+      "with_quic"
+      "with_dhcp"
+      "with_wireguard"
+      "with_utls"
+      "with_acme"
+      "with_clash_api"
+      "with_tailscale"
+    ];
   };
 in
 {
