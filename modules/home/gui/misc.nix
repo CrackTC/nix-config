@@ -18,6 +18,7 @@ in
       # calibre
       pkgs.nur.repos.linyinfeng.wemeet
       krita
+      inkscape
       libsForQt5.ark
 
       (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.unstableFull)
