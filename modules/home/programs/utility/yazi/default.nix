@@ -16,7 +16,7 @@ in
         enableZshIntegration = config.programs.shells.zsh.enable;
         enableFishIntegration = config.programs.shells.fish.enable;
         keymap = {
-          manager.keymap = [
+          mgr.keymap = [
             {
               on = [ "w" ];
               run = ''shell "$SHELL" --block --confirm'';
