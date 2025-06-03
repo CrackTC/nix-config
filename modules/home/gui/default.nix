@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./chrome
     ./dunst
     ./firefox
     ./imwheel
@@ -38,6 +39,7 @@
 
   config = lib.mkIf (hostConfig.gui.enable && config.gui.enable) {
     gui.available = true;
+    chrome.enable = true;
     dunst.enable = true;
     firefox.enable = true;
     gui.misc.enable = true;
@@ -51,7 +53,7 @@
     showmethekey.enable = true;
     terminal.enable = true;
     thunderbird.enable = true;
-    vivaldi.enable = true;
+    # vivaldi.enable = true;
     vscode.enable = true;
   };
 }
