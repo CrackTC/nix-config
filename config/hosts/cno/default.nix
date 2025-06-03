@@ -50,12 +50,12 @@
       }
       {
         name = "DP-1";
-        weight = 2560;
-        height = 1440;
-        refresh = 170;
+        weight = 3840;
+        height = 2160;
+        refresh = 60;
         left = builtins.ceil (2560 / 1.25);
         top = 0;
-        scale = 1.25;
+        scale = 2.0;
       }
     ];
     pipewire = {
