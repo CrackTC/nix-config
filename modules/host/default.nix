@@ -118,6 +118,7 @@ in
     environment.systemPackages = [
       pkgs.vim
       pkgs.git
+      pkgs.nh
     ];
     system.stateVersion = "23.05";
   };
