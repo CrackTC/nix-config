@@ -33,7 +33,7 @@ in
           "Noto Sans Mono CJK SC"
         ];
         sansSerif = [
-          "MiSans Medium"
+          # "MiSans Medium"
           "Noto Sans"
           "Noto Sans CJK SC"
         ];

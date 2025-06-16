@@ -17,7 +17,7 @@ in
       enable = true;
       package = pkgs.steam.override {
         extraEnv = {
-          STEAM_FORCE_DESKTOPUI_SCALING = 1.25;
+          GDK_SCALE = 2;
         };
       };
       remotePlay.openFirewall = true;
