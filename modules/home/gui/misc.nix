@@ -16,7 +16,7 @@ in
     home.packages = with pkgs; [
       burpsuite
       # calibre
-      pkgs.nur.repos.linyinfeng.wemeet
+      pkgs.wemeet
       krita
       inkscape
       libsForQt5.ark
