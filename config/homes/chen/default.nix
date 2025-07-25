@@ -51,6 +51,7 @@
       imhex.enable = true;
       joshuto.enable = false;
       jq.enable = true;
+      kdenlive.enable = true;
       lazygit.enable = true;
       llama.enable = true;
       localsend.enable = true;

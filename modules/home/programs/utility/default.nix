@@ -14,6 +14,7 @@
     ./imhex.nix
     ./joshuto
     ./jq.nix
+    ./kdenlive.nix
     ./lazygit.nix
     ./llama.nix
     ./localsend.nix
