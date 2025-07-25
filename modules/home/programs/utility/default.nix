@@ -16,6 +16,7 @@
     ./jq.nix
     ./lazygit.nix
     ./llama.nix
+    ./localsend.nix
     ./pandoc.nix
     ./proxychains.nix
     ./qbittorrent.nix

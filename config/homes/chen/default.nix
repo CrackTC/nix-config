@@ -53,6 +53,7 @@
       jq.enable = true;
       lazygit.enable = true;
       llama.enable = true;
+      localsend.enable = true;
       pandoc.enable = true;
       proxychains.enable = true;
       qbittorrent.enable = true;
