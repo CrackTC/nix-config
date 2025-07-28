@@ -24,7 +24,7 @@ in
           "x-scheme-handler/https"
           "x-scheme-handler/about"
           "x-scheme-handler/unknown"
-        ] (mime: if config.firefox.enable then "firefox.desktop" else "vivaldi-stable.desktop");
+        ] (mime: if config.chrome.enable then "google-chrome.desktop" else "firefox.desktop");
       };
 
       userDirs = {

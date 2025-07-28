@@ -34,9 +34,9 @@ in
           }"
         ])
         (lib.mkIf config.obsidian.enable [ "$mainMod, ${if colemak then "Y" else "O"}, exec, obsidian" ])
-        (lib.mkIf (config.vivaldi.enable || config.firefox.enable) [
+        (lib.mkIf (config.chrome.enable || config.firefox.enable) [
           "$mainMod, ${if colemak then "U" else "I"}, exec, ${
-            if config.firefox.enable then "firefox" else "vivaldi"
+            if config.chrome.enable then "google-chrome-stable" else "firefox"
           }"
         ])
         (lib.mkIf config.programs.utility.rofi.enable [
@@ -91,8 +91,8 @@ in
           "$mainMod SHIFT, W, movetoworkspace, 8"
           "$mainMod SHIFT, ${if colemak then "F" else "E"}, movetoworkspace, 9"
           "$mainMod SHIFT, Comma, movetoworkspace, 10"
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
+          "$mainMod, mouse_down, workspace, e-1"
+          "$mainMod, mouse_up, workspace, e+1"
         ]
       ];
 
