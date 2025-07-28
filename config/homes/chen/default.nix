@@ -38,6 +38,7 @@
     };
     utility = {
       anki.enable = true;
+      aegisub.enable = true;
       asciinema.enable = true;
       baidunetdisk.enable = true;
       bat.enable = true;
@@ -45,7 +46,6 @@
       bsdiff.enable = true;
       btop.enable = true;
       clash.enable = false;
-      sing-box.enable = true;
       duf.enable = true;
       fastfetch.enable = true;
       imhex.enable = true;
@@ -58,6 +58,7 @@
       pandoc.enable = true;
       proxychains.enable = true;
       qbittorrent.enable = true;
+      sing-box.enable = true;
       rbw = {
         enable = true;
         base_url = "https://bw.sora.zip";

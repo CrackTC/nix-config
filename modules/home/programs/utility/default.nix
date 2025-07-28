@@ -1,5 +1,6 @@
 {
   imports = [
+    ./aegisub.nix
     ./anki.nix
     ./asciinema.nix
     ./baidunetdisk.nix
