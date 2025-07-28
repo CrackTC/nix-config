@@ -72,6 +72,8 @@ in
         prime.nvidiaBusId = "PCI:${cfg.pciBusId.bus}:${cfg.pciBusId.slot}:${cfg.pciBusId.function}";
         nvidiaSettings = false;
       };
+
+      nvidia-container-toolkit.enable = true;
     };
   };
 }
