@@ -7,7 +7,7 @@
 let
   rime-lmdg = fetchurl {
     url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
-    hash = "sha256-23N1pNxmDe28MNMDgzAyqkw511eAsBdC0tSSweRK2lo=";
+    hash = "sha256-KGDxN0hFrfyxhbkXtyNPNcnbkksPL1jFGYxDnQlp0bw=";
   };
   moegirl-dict = fetchurl {
     url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250711/moegirl.dict.yaml";
