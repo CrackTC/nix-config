@@ -56,8 +56,9 @@ in
             fullscreen = true;
 
             vo = "gpu";
+            gpu-api = "vulkan";
+            vulkan-device = "Intel(R) Iris(R) Xe Graphics (ADL GT2)";
 
-            hwdec = "vaapi";
             hwdec-codecs = "all";
 
             # font of on screen display
