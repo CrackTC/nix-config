@@ -28,7 +28,7 @@
       mpv.enable = true;
       rip.enable = true;
       songrec.enable = true;
-      spotify.enable = true;
+      spotify.enable = false;
       vlc.enable = true;
     };
     im = {
