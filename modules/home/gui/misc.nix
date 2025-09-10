@@ -20,7 +20,7 @@ in
       wechat
       krita
       inkscape
-      libsForQt5.ark
+      kdePackages.ark
 
       (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.unstableFull)
       winetricks

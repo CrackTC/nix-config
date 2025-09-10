@@ -7,11 +7,11 @@
 let
   rime-lmdg = fetchurl {
     url = "https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram";
-    hash = "sha256-KGDxN0hFrfyxhbkXtyNPNcnbkksPL1jFGYxDnQlp0bw=";
+    hash = "sha256-DSVjB9WVpRu61XrE4nus54gcxVqH3+CGNh66dFaey14=";
   };
   moegirl-dict = fetchurl {
-    url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250711/moegirl.dict.yaml";
-    hash = "sha256-gs/JhdSeLFkBKvBdVRxk3RhqlkOhly18w4Pz63GG814=";
+    url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250909/moegirl.dict.yaml";
+    hash = "sha256-wsxtiTOg9/yzdkhTuLwdfLev0MAzXWID96bq1AyJN6k=";
   };
   custom = ./rime_frost.custom.yaml;
   dict = ./rime_frost.combined.dict.yaml;

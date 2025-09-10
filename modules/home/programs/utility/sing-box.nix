@@ -41,11 +41,8 @@ in
         after = [ "network-online.target" ];
         requires = [ "network-online.target" ];
         serviceConfig = {
-          ExecStartPre = pkgs.writeShellScript "wait-dns.sh" ''
-            until ${pkgs.host}/bin/host example.com; do sleep 1; done
-          '';
           ExecStart = pkgs.writeShellScript "sing-box.sh" ''
-            ${lib.getExe sing-box} run -D /home/${name}/.config/sing-box
+            while true; do ${lib.getExe sing-box} run -D /home/${name}/.config/sing-box; done
           '';
         };
         wantedBy = [ "multi-user.target" ];

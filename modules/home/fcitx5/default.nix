@@ -18,7 +18,6 @@ in
       type = "fcitx5";
       fcitx5 = {
         waylandFrontend = config.wayland.enable;
-        plasma6Support = true;
         addons = with pkgs; [
           fcitx5-anthy
           fcitx5-nord

@@ -11,6 +11,7 @@
         allowUnfree = true;
         permittedInsecurePackages = [
           "electron-11.5.0"
+          "qtwebengine-5.15.19"
         ];
         android_sdk.accept_license = true;
       };

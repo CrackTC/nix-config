@@ -21,9 +21,9 @@ in
         WantedBy = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStartPre = pkgs.writeShellScript "wait-wg.sh" ''
-          until ${pkgs.iputils}/bin/ping -c 1 192.168.96.1; do sleep 1; done
-        '';
+        # ExecStartPre = pkgs.writeShellScript "wait-wg.sh" ''
+        #   until ${pkgs.iputils}/bin/ping -c 1 192.168.96.1; do sleep 1; done
+        # '';
         ExecStart = "${lib.getExe pkgs.jellyfin-mpv-shim}";
       };
     };

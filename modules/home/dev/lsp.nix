@@ -38,7 +38,7 @@ in
         (lib.mkIf config.lua.enable [ lua-language-server ])
         (lib.mkIf config.php.enable [ phpactor ])
         (lib.mkIf config.python.enable [
-          myRepo.pyink
+          # myRepo.pyink
           pyright
         ])
         (lib.mkIf config.editors.nvim.enable [ vim-language-server ])
