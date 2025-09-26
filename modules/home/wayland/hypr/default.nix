@@ -175,13 +175,15 @@ in
           };
 
           gestures = {
-            workspace_swipe = true;
-            workspace_swipe_fingers = 4;
             workspace_swipe_distance = 300;
             workspace_swipe_invert = true;
             workspace_swipe_min_speed_to_force = 0;
             workspace_swipe_cancel_ratio = 0.1;
           };
+
+          gesture = [
+            "4, horizontal, workspace"
+          ];
 
           layerrule = lib.mkMerge [
             (lib.mkIf config.programs.utility.rofi.enable [

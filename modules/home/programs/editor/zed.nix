@@ -16,6 +16,7 @@ in
     hmConfig = {
       home.packages = [
         pkgs.zed-editor
+        pkgs.prettier
       ];
     };
   };

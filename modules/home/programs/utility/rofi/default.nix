@@ -23,7 +23,7 @@ in
   config.hmConfig = lib.mkIf cfg.enable {
     programs.rofi = {
       enable = true;
-      package = if config.wayland.enable then pkgs.rofi-wayland else pkgs.rofi;
+      package = pkgs.rofi;
       terminal = lib.getExe config.terminal.preferredPackage;
       extraConfig = {
         width = 400;
@@ -42,7 +42,7 @@ in
           (
             p:
             p.override {
-              rofi-unwrapped = if config.wayland.enable then pkgs.rofi-wayland-unwrapped else pkgs.rofi-unwrapped;
+              inherit (pkgs) rofi-unwrapped;
             }
           )
           [

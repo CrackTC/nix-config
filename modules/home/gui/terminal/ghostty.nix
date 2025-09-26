@@ -38,9 +38,8 @@ in
             "U+4E00-U+9FA5 = Maple Mono NF CN"
           ];
           freetype-load-flags = "no-hinting";
-          theme = "nord";
+          theme = "Nord";
           mouse-hide-while-typing = true;
-          scrollback-limit = 4294967295;
           window-padding-x = 3;
           window-padding-balance = true;
           window-padding-color = "extend";

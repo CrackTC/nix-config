@@ -101,6 +101,10 @@ in
           redo = "<c-r>";
         };
 
+        branches = {
+          moveCommitsToNewBranch = "K";
+        };
+
         files = {
           stashAllChanges = "r";
           viewStashOptions = "R";

@@ -63,7 +63,7 @@ in
             eval "$(micromamba shell hook --shell=fish)"
           '';
           rebuild = lib.mkMerge [
-            "sudo nixos-rebuild switch $argv &&"
+            "nh os switch ~/nixos --ask $argv &&"
             (lib.mkIf config.dunst.enable "dunstify -a 'Rebuild' 'Rebuild finished 🎉' || dunstify -a 'Rebuild' 'Rebuild failed 😢'")
             (lib.mkIf (!config.dunst.enable) "echo 'Rebuild finished 🎉' || echo 'Rebuild failed 😢'")
           ];
