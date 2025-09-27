@@ -57,7 +57,7 @@
     lsp.enable = true;
     lua.enable = true;
     man.enable = true;
-    mysql.enable = true;
+    mysql.enable = false;
     net.enable = true;
     nix.enable = true;
     php.enable = true;
