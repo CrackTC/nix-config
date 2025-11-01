@@ -14,6 +14,7 @@ in
   config.fonts = lib.mkIf cfg.enable {
     fontDir.enable = true;
     packages = with pkgs; [
+      dejavu_fonts
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -34,8 +35,8 @@ in
         ];
         sansSerif = [
           # "MiSans Medium"
+          "Noto Sans CJK SC" # Make CJK font higher priority, resolves "tofu" issue in Inkscape which hardcodes "sans-serif"
           "Noto Sans"
-          "Noto Sans CJK SC"
         ];
         serif = [
           "Noto Serif"
