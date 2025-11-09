@@ -14,6 +14,7 @@
           "qtwebengine-5.15.19"
         ];
         android_sdk.accept_license = true;
+        cudaSupport = true;
       };
     }
     // (

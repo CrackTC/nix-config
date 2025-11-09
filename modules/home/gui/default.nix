@@ -41,7 +41,7 @@
     gui.available = true;
     chrome.enable = true;
     dunst.enable = true;
-    firefox.enable = true;
+    # firefox.enable = true;
     gui.misc.enable = true;
     # imwheel.enable = true;
     libreoffice.enable = true;

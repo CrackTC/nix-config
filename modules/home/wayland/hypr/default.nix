@@ -58,6 +58,9 @@ in
 
               "XDG_CONFIG_HOME,/home/${name}/.config"
               "XDG_CONFIG_DIR,/home/${name}/.config"
+
+              "GDK_SCALE,2"
+              "XCURSOR_SIZE,32"
             ]
             (lib.mkIf config.firefox.enable [
               "MOZ_ENABLE_WAYLAND,1"

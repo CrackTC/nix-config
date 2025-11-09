@@ -61,7 +61,7 @@ in
         enable = true;
         extraPackages = [
           pkgs.libvdpau-va-gl
-          pkgs.vaapiVdpau
+          pkgs.libva-vdpau-driver
         ];
       };
 

@@ -20,13 +20,17 @@ in
   config.hmConfig = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = config.nickname;
-      userEmail = config.email;
+      settings = {
+        user = {
+          inherit (config) email;
+          name = config.nickname;
+        };
+        init.defaultBranch = "main";
+      };
       signing = {
         inherit (cfg) key;
         signByDefault = true;
       };
-      extraConfig.init.defaultBranch = "main";
       lfs.enable = true;
     };
 

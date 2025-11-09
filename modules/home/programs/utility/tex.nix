@@ -17,7 +17,7 @@ in
       with pkgs;
       lib.mkMerge [
         [ texlive.combined.scheme-full ]
-        (lib.mkIf config.haskell.enable [ lhs2tex ])
+        # (lib.mkIf config.haskell.enable [ lhs2tex ])
       ];
   };
 }

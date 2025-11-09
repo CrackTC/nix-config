@@ -14,7 +14,7 @@ in
 
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      verilog
+      iverilog
       gtkwave
     ];
   };

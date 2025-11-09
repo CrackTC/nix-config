@@ -7,7 +7,7 @@
   dev.enable = true;
   fcitx5.enable = true;
   firefox = {
-    enable = true;
+    enable = false;
     profileName = "sorac";
   };
   game = {
@@ -40,7 +40,7 @@
       anki.enable = true;
       aegisub.enable = true;
       asciinema.enable = true;
-      baidunetdisk.enable = true;
+      baidunetdisk.enable = false;
       bat.enable = true;
       bc.enable = true;
       bsdiff.enable = true;
