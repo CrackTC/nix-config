@@ -237,6 +237,8 @@ in
               "float, class:^(QQ)$, title:^(图片查看器)$"
               "minsize 1080 0, class:^(QQ)$, title:^(QQ频道)$"
               "float, class:^(QQ)$, title:^(设置)$"
+              "move onscreen cursor, class:^(QQ)$, title:^(资料卡)$"
+              "move onscreen cursor, class:^(QQ)$, title:^(天气)$"
             ])
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
