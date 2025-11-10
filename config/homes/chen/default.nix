@@ -7,7 +7,7 @@
   dev.enable = true;
   fcitx5.enable = true;
   firefox = {
-    enable = false;
+    enable = true;
     profileName = "sorac";
   };
   game = {
