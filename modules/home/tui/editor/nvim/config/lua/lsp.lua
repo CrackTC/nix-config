@@ -66,7 +66,7 @@ lspconfig.nil_ls.setup {
             nix = {
                 maxMemoryMB = 32768,
                 flake = {
-                    autoArchive = true,
+                    autoArchive = false,
                     autoEvalInputs = true,
                     nixpkgsInputName = "nixpkgs"
                 }

@@ -36,7 +36,7 @@ in
         (lib.mkIf config.obsidian.enable [ "$mainMod, ${if colemak then "Y" else "O"}, exec, obsidian" ])
         (lib.mkIf (config.chrome.enable || config.firefox.enable) [
           "$mainMod, ${if colemak then "U" else "I"}, exec, ${
-            if config.chrome.enable then "google-chrome-stable" else "firefox"
+            if config.firefox.enable then "firefox" else "google-chrome-stable"
           }"
         ])
         (lib.mkIf config.programs.utility.rofi.enable [
