@@ -7,26 +7,26 @@
 }:
 let
   cfg = config.programs.utility.sing-box;
-  sing-box = pkgs.sing-box.overrideAttrs rec {
-    version = "1.12.0-beta.18";
-    src = pkgs.fetchFromGitHub {
-      owner = "SagerNet";
-      repo = "sing-box";
-      rev = "v${version}";
-      hash = "sha256-R42+v/1TpnRJrGtftJjee4N+1W5BIK9JEC6UPZerXUw=";
-    };
-    vendorHash = "sha256-5AWJB5uckIKrYD+r9C7TfYQNBcz1gGkBNIOQelpahXQ=";
-    tags = [
-      "with_gvisor"
-      "with_quic"
-      "with_dhcp"
-      "with_wireguard"
-      "with_utls"
-      "with_acme"
-      "with_clash_api"
-      "with_tailscale"
-    ];
-  };
+  # sing-box = pkgs.sing-box.overrideAttrs rec {
+  #   version = "1.12.0-beta.18";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "SagerNet";
+  #     repo = "sing-box";
+  #     rev = "v${version}";
+  #     hash = "sha256-R42+v/1TpnRJrGtftJjee4N+1W5BIK9JEC6UPZerXUw=";
+  #   };
+  #   vendorHash = "sha256-5AWJB5uckIKrYD+r9C7TfYQNBcz1gGkBNIOQelpahXQ=";
+  #   tags = [
+  #     "with_gvisor"
+  #     "with_quic"
+  #     "with_dhcp"
+  #     "with_wireguard"
+  #     "with_utls"
+  #     "with_acme"
+  #     "with_clash_api"
+  #     "with_tailscale"
+  #   ];
+  # };
 in
 {
   options.programs.utility.sing-box = {
@@ -42,7 +42,7 @@ in
         requires = [ "network-online.target" ];
         serviceConfig = {
           ExecStart = pkgs.writeShellScript "sing-box.sh" ''
-            while true; do ${lib.getExe sing-box} run -D /home/${name}/.config/sing-box; done
+            while true; do ${lib.getExe pkgs.sing-box} run -D /home/${name}/.config/sing-box; done
           '';
         };
         wantedBy = [ "multi-user.target" ];
