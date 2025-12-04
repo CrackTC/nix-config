@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  extraRepos,
   ...
 }:
 let
@@ -16,6 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     hmConfig = {
       programs.ghostty = {
+        package = extraRepos.ghostty.default;
         enable = true;
         enableBashIntegration = config.programs.shells.bash.enable;
         enableFishIntegration = config.programs.shells.fish.enable;
