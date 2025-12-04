@@ -242,7 +242,10 @@ in
             ])
 
             (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:^(kitty)$" ])
-            # (lib.mkIf config.firefox.enable [ "opacity 0.8 override 0.8 override, class:^(firefox)$" ])
+            (lib.mkIf config.firefox.enable [
+              # "opacity 0.8 override 0.8 override, class:^(firefox)$"
+              "float, class:^(firefox)$, title:^(Picture-in-Picture)$"
+            ])
             (lib.mkIf config.programs.utility.follow.enable [
               "opacity 0.8 override 0.8 override, class:^(Follow)$"
             ])
