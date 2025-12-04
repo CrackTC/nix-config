@@ -1,6 +1,8 @@
 {
   config,
+  osConfig,
   pkgs,
+  name,
   lib,
   ...
 }:
@@ -16,7 +18,9 @@ in
     programs.go = {
       enable = true;
       package = pkgs.go_1_24;
-      goPath = "proj/go";
+      env = {
+        GOPATH = "${osConfig.home-manager.users.${name}.home.homeDirectory}/proj/go";
+      };
     };
   };
 }
