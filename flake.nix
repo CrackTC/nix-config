@@ -25,7 +25,7 @@
       flake = false;
     };
     nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
+      url = "github:NixOS/nixpkgs/nixos-25.11";
       flake = false;
     };
     nixpkgs-mine = {
@@ -43,7 +43,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -60,19 +60,24 @@
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs =
     {
+      # hyprland,
+      ghostty,
+      home-manager,
+      myRepo,
+      nil,
       nixpkgs,
       nixpkgs-master,
-      nixpkgs-stable,
       nixpkgs-mine,
-      # hyprland,
-      nil,
+      nixpkgs-stable,
       nur,
-      myRepo,
-      home-manager,
       sops-nix,
       ...
     }:
@@ -118,6 +123,7 @@
               pkgs-stable = import nixpkgs-stable options;
               pkgs-mine = import nixpkgs-mine options;
               myRepo = import myRepo { inherit pkgs; };
+              ghostty = ghostty.packages.${host-info.system};
 
               # hyprland = hyprland.packages.${host-info.system};
               nil = nil.packages.${host-info.system};

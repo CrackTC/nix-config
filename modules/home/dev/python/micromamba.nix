@@ -1,6 +1,6 @@
 {
   config,
-  extraRepos,
+  pkgs,
   lib,
   ...
 }:
@@ -13,6 +13,6 @@ in
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = with extraRepos.pkgs-stable; [ micromamba ];
+    home.packages = with pkgs; [ mamba-cpp ];
   };
 }
