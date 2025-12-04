@@ -57,7 +57,11 @@ in
   };
 
   config = {
+    systemd.services.nix-daemon.serviceConfig.Slice = "-.slice";
+    environment.variables.NIX_REMOTE = "daemon";
     nix = {
+      daemonIOSchedClass = "idle";
+      daemonCPUSchedPolicy = "idle";
       settings = {
         trusted-users = [ "@wheel" ];
         experimental-features = [
