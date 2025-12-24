@@ -29,6 +29,7 @@
       rip.enable = true;
       songrec.enable = true;
       spotify.enable = false;
+      cider.enable = true;
       vlc.enable = true;
     };
     im = {

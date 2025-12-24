@@ -1,9 +1,10 @@
 {
   imports = [
-    ./rip.nix
+    ./cider.nix
     ./imv.nix
     ./jellyfin-mpv-shim.nix
     ./mpv.nix
+    ./rip.nix
     ./songrec.nix
     ./spotify.nix
     ./spotifyd.nix
