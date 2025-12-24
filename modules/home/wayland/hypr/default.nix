@@ -265,6 +265,7 @@ in
                 "nofocus, noanim, noborder, rounding 0, move onscreen cursor, class:ghidra-.+, title:win.+, floating:1, fullscreen:0"
               ])
               (lib.mkIf config.programs.utility.waydroid.enable [ "float, class:[Ww]aydroid.*" ])
+              (lib.mkIf config.programs.utility.aegisub.enable [ "rounding 0, class:aegisub" ])
               [ "float, class:org.kde.polkit-kde-authentication-agent-1" ]
               [ "float, class:xdg-desktop-portal-gtk" ]
             ];
