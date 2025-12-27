@@ -47,14 +47,14 @@
         # left = builtins.ceil (3840 / 2);
         left = 0;
         top = 0;
-        scale = 1.25;
+        scale = 2.0;
       }
       {
         name = "DP-1";
         weight = 3840;
         height = 2160;
         refresh = 60;
-        left = builtins.ceil (2560 / 1.25);
+        left = builtins.ceil (2560 / 2);
         top = 0;
         scale = 2.0;
       }
