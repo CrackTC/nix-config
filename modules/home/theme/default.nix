@@ -63,17 +63,7 @@ in
           };
         };
 
-        xdg.configFile = {
-          "Kvantum/kvantum.kvconfig".text = ''
-            [General]
-            theme=Nordic-Solid
-          '';
-
-          "Kvantum/Nordic-Solid".source = pkgs.fetchzip {
-            url = "https://github.com/EliverLara/Nordic/raw/32e3176db314086cf79074bf06b936f8d62d7b15/kde/kvantum/Nordic-Solid.tar.xz";
-            hash = "sha256-R21N5YqHsf6bwA6MvwV0GY7HAOK4me0U0x9Yceu11Yw=";
-          };
-        };
+        xdg.configFile.Kvantum.source = ./Kvantum;
 
         dconf.settings = {
           "org/gnome/desktop/interface" = {
