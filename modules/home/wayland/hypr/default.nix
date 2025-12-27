@@ -246,7 +246,7 @@ in
               ])
               (lib.mkIf config.programs.im.qq.enable [
                 "opacity 0.8 override 0.8 override, class:QQ"
-                "float, class:QQ, title:图片查看器|设置"
+                "float, class:QQ, title:图片查看器|设置|群聊的聊天记录"
                 "minsize 1080 0, class:QQ, title:QQ频道"
                 "move onscreen cursor, class:QQ, title:资料卡|天气"
               ])
@@ -266,6 +266,11 @@ in
               ])
               (lib.mkIf config.programs.utility.waydroid.enable [ "float, class:[Ww]aydroid.*" ])
               (lib.mkIf config.programs.utility.aegisub.enable [ "rounding 0, class:aegisub" ])
+              (lib.mkIf config.programs.media.vlc.enable [
+                "rounding 0, class:vlc"
+                "noanim, move 100%-w-0 100%-w-0, class:vlc, floating:1, title:vlc, xwayland:0"
+                "noanim, noblur, class:vlc, floating:1, title:vlc, xwayland:1"
+              ])
               [ "float, class:org.kde.polkit-kde-authentication-agent-1" ]
               [ "float, class:xdg-desktop-portal-gtk" ]
             ];
