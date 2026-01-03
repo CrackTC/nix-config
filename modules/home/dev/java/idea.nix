@@ -7,7 +7,7 @@
 let
   cfg = config.idea;
   idea = pkgs.writeShellScriptBin "idea" ''
-    exec ${pkgs.jetbrains.idea-ultimate}/bin/idea-ultimate -Dawt.toolkit.name=WLToolkit "$@"
+    exec ${pkgs.jetbrains.idea}/bin/idea -Dawt.toolkit.name=WLToolkit "$@"
   '';
 in
 {
