@@ -246,7 +246,7 @@ in
               ])
               (lib.mkIf config.programs.im.qq.enable [
                 "opacity 0.8 override 0.8 override, class:QQ"
-                "float, class:QQ, title:图片查看器|设置|群聊的聊天记录"
+                "float, class:QQ, title:图片查看器|设置|.*的聊天记录"
                 "minsize 1080 0, class:QQ, title:QQ频道"
                 "move onscreen cursor, class:QQ, title:资料卡|天气"
               ])
