@@ -13,13 +13,6 @@ in
   };
 
   config.hmConfig = lib.mkIf (config.gui.available && cfg.enable) {
-    home.packages = [
-      (pkgs.vlc.override {
-        libbluray = pkgs.libbluray.override {
-          withJava = true;
-          withAACS = true;
-        };
-      })
-    ];
+    home.packages = [ pkgs.vlc ];
   };
 }

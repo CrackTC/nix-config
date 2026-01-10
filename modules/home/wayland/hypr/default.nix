@@ -192,87 +192,226 @@ in
               "4, horizontal, workspace"
             ];
 
-            layerrule =
-              let
-                mkLayerRule = layer: rules: (map (rule: "${rule}, ${layer}") rules);
-              in
-              lib.mkMerge [
-                (lib.mkIf config.programs.utility.rofi.enable (
-                  mkLayerRule "rofi" [
-                    "blur"
-                    "ignorezero"
-                    "dimaround"
-                  ]
-                ))
+            layerrule = [
+              (lib.mkIf config.programs.utility.rofi.enable rec {
+                name = "rofi";
+                "match:namespace" = name;
+                blur = true;
+                ignore_alpha = 0;
+                dim_around = true;
+              })
+              (lib.mkIf config.waybar.enable rec {
+                name = "waybar";
+                "match:namespace" = name;
+                ignore_alpha = 0.1;
+                blur = true;
+              })
+              (lib.mkIf config.dunst.enable rec {
+                name = "notifications";
+                "match:namespace" = name;
+                blur = true;
+                ignore_alpha = 0;
+              })
+            ];
 
-                (lib.mkIf config.waybar.enable (
-                  mkLayerRule "waybar" [
-                    "noanim"
-                    "ignorealpha 0.1"
-                    "blur"
-                  ]
-                ))
+            windowrule = [
+              (lib.mkIf config.showmethekey.enable {
+                name = "showmethekey";
+                "match:class" = "showmethekey-gtk";
+                "match:title" = "Floating Window - Show Me The Key";
+                float = true;
+                opacity = "0.5 override 0.5 override";
+                pin = true;
+              })
 
-                (lib.mkIf config.dunst.enable (
-                  mkLayerRule "notifications" [
-                    "blur"
-                    "ignorezero"
-                  ]
-                ))
-              ];
+              (lib.mkIf config.pavucontrol.enable {
+                name = "pavucontrol";
+                "match:class" = "pavucontrol-qt";
+                float = true;
+              })
 
-            windowrulev2 = lib.mkMerge [
-              (lib.mkIf config.showmethekey.enable [
-                "float, opacity 0.5 override 0.5 override, pin, class:showmethekey-gtk, title:Floating Window - Show Me The Key"
-              ])
+              (lib.mkIf config.neovide.enable {
+                name = "neovide";
+                "match:class" = "neovide";
+                tile = true;
+              })
 
-              (lib.mkIf config.pavucontrol.enable [ "float, class:pavucontrol-qt" ])
-              (lib.mkIf config.neovide.enable [ "tile, class:neovide" ])
-              (lib.mkIf config.wpsoffice.enable [ "tile, class:wpsoffice" ])
-              (lib.mkIf config.vivaldi.enable [ "tile, class:Vivaldi-stable" ])
-              (lib.mkIf config.logisim.enable [ "tile, title:.*Logisim-evolution v3.8.0" ])
-              (lib.mkIf config.onlyoffice.enable [ "tile, class:DesktopEditors" ])
-              (lib.mkIf config.obsidian.enable [ "opacity 0.8 override 0.8 override, class:obsidian" ])
-              (lib.mkIf config.programs.im.discord.enable [
-                "opacity 0.8 override 0.8 override, class:discord"
-              ])
-              (lib.mkIf config.vscode.enable [
-                "opacity 0.8 override 0.8 override, class:Code"
-                "opacity 0.8 override 0.8 override, class:code-url-handler"
-              ])
-              (lib.mkIf config.thunderbird.enable [ "opacity 0.8 override 0.8 override, class:thunderbird" ])
-              (lib.mkIf config.programs.im.telegram.enable [
-                "opacity 0.8 override 0.8 override, class:org.telegram.desktop"
-              ])
-              (lib.mkIf config.programs.im.qq.enable [
-                "opacity 0.8 override 0.8 override, class:QQ"
-                "float, class:QQ, title:图片查看器|设置|.*的聊天记录"
-                "minsize 1080 0, class:QQ, title:QQ频道"
-                "move onscreen cursor, class:QQ, title:资料卡|天气"
-              ])
+              (lib.mkIf config.wpsoffice.enable {
+                name = "wpsoffice";
+                "match:class" = "wpsoffice";
+                tile = true;
+              })
 
-              (lib.mkIf config.terminals.kitty.enable [ "opacity 0.8 override 0.8 override, class:kitty" ])
-              (lib.mkIf config.firefox.enable [
-                # "opacity 0.8 override 0.8 override, class:firefox"
-                "noinitialfocus, float, move ${toString gaps_out} 100%-w-${toString gaps_out}, class:firefox, title:Picture-in-Picture"
-              ])
-              (lib.mkIf config.programs.utility.follow.enable [
-                "opacity 0.8 override 0.8 override, class:Follow"
-              ])
-              (lib.mkIf config.programs.media.mpv.enable [ "fullscreen, class:mpv" ])
-              (lib.mkIf config.programs.media.svp.enable [ "float, class:SVPManager" ])
-              (lib.mkIf config.ghidra.enable [
-                "nofocus, noanim, noborder, rounding 0, move onscreen cursor, class:ghidra-.+, title:win.+, floating:1, fullscreen:0"
-              ])
-              (lib.mkIf config.programs.utility.waydroid.enable [ "float, class:[Ww]aydroid.*" ])
-              (lib.mkIf config.programs.utility.aegisub.enable [ "rounding 0, class:aegisub" ])
-              (lib.mkIf config.programs.media.vlc.enable [
-                "rounding 0, class:vlc"
-                "noanim, move 100%-w-0 100%-w-0, class:vlc, floating:1, title:vlc, xwayland:0"
-                "noanim, noblur, class:vlc, floating:1, title:vlc, xwayland:1"
-              ])
-              [ "float, class:org.kde.polkit-kde-authentication-agent-1" ]
-              [ "float, class:xdg-desktop-portal-gtk" ]
+              (lib.mkIf config.vivaldi.enable {
+                name = "vivaldi";
+                "match:class" = "Vivaldi-stable";
+                tile = true;
+              })
+
+              (lib.mkIf config.logisim.enable {
+                name = "logisim";
+                "match:title" = ".*Logisim-evolution v3.8.0";
+                tile = true;
+              })
+
+              (lib.mkIf config.onlyoffice.enable {
+                name = "onlyoffice";
+                "match:class" = "DesktopEditors";
+                tile = true;
+              })
+
+              (lib.mkIf config.obsidian.enable {
+                name = "obsidian";
+                "match:class" = "obsidian";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.programs.im.discord.enable {
+                name = "discord";
+                "match:class" = "discord";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.vscode.enable {
+                name = "vscode";
+                "match:class" = "Code|code-url-handler";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.thunderbird.enable {
+                name = "thunderbird";
+                "match:class" = "thunderbird";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.programs.im.telegram.enable {
+                name = "telegram";
+                "match:class" = "org.telegram.desktop";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.programs.im.qq.enable {
+                name = "qq-opacity";
+                "match:class" = "QQ";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.programs.im.qq.enable {
+                name = "qq-float";
+                "match:class" = "QQ";
+                "match:title" = "图片查看器|设置|.*的聊天记录";
+                float = true;
+              })
+
+              (lib.mkIf config.programs.im.qq.enable {
+                name = "qq-minsize";
+                "match:class" = "QQ";
+                "match:title" = "QQ频道";
+                min_size = "1080 0";
+              })
+
+              (lib.mkIf config.programs.im.qq.enable {
+                name = "qq-move-cursor";
+                "match:class" = "QQ";
+                "match:title" = "资料卡|天气";
+                move = "cursor_x cursor_y";
+              })
+
+              (lib.mkIf config.terminals.kitty.enable {
+                name = "kitty";
+                "match:class" = "kitty";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.firefox.enable {
+                name = "firefox-pip";
+                "match:class" = "firefox";
+                "match:title" = "Picture-in-Picture";
+                float = true;
+                move = "${toString gaps_out} monitor_y-window_y-${toString gaps_out}";
+                no_initial_focus = true;
+              })
+
+              (lib.mkIf config.programs.utility.follow.enable {
+                name = "follow";
+                "match:class" = "Follow";
+                opacity = "0.8 override 0.8 override";
+              })
+
+              (lib.mkIf config.programs.media.mpv.enable {
+                name = "mpv";
+                "match:class" = "mpv";
+                fullscreen = true;
+              })
+
+              (lib.mkIf config.programs.media.svp.enable {
+                name = "svpmanager";
+                "match:class" = "SVPManager";
+                float = true;
+              })
+
+              (lib.mkIf config.ghidra.enable {
+                name = "ghidra";
+                "match:class" = "ghidra-.+";
+                "match:title" = "win.+";
+                "match:float" = true;
+                "match:fullscreen" = false;
+                no_focus = true;
+                no_anim = true;
+                border_size = 0;
+                rounding = 0;
+                move = "cursor_x cursor_y";
+              })
+
+              (lib.mkIf config.programs.utility.waydroid.enable {
+                name = "waydroid";
+                "match:class" = "[Ww]aydroid.*";
+                float = true;
+              })
+
+              (lib.mkIf config.programs.utility.aegisub.enable {
+                name = "aegisub";
+                "match:class" = "aegisub";
+                rounding = 0;
+              })
+
+              (lib.mkIf config.programs.media.vlc.enable {
+                name = "vlc-no-rounding";
+                "match:class" = "vlc";
+                rounding = 0;
+              })
+
+              (lib.mkIf config.programs.media.vlc.enable {
+                name = "vlc-xwayland-fix";
+                "match:class" = "vlc";
+                "match:title" = "vlc";
+                "match:xwayland" = true;
+                "match:float" = true;
+                no_anim = true;
+                no_blur = true;
+              })
+
+              (lib.mkIf config.programs.media.vlc.enable {
+                name = "vlc-wayland-fix";
+                "match:class" = "vlc";
+                "match:title" = "vlc";
+                "match:xwayland" = false;
+                "match:float" = true;
+                no_anim = true;
+                move = "monitor_x-window_x monitor_y-window_y";
+              })
+
+              {
+                name = "polkit";
+                "match:class" = "org.kde.polkit-kde-authentication-agent-1";
+                float = true;
+              }
+
+              {
+                name = "xdg-desktop-portal-gtk";
+                "match:class" = "xdg-desktop-portal-gtk";
+                float = true;
+              }
             ];
 
             xwayland = {

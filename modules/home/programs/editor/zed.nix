@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  extraRepos,
   lib,
   ...
 }:
@@ -15,7 +16,7 @@ in
   config = lib.mkIf (config.gui.available && cfg.enable) {
     hmConfig = {
       home.packages = [
-        pkgs.zed-editor
+        extraRepos.pkgs-stable.zed-editor
         pkgs.prettier
       ];
     };

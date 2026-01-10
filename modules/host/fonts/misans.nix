@@ -5,7 +5,7 @@
 let
   src = fetchzip {
     url = "https://hyperos.mi.com/font-download/MiSans.zip";
-    hash = "sha256-MH4t7oXDUiH1TAm0xKa0AENmB1zoedd8X5BcQFNw8GM=";
+    hash = "sha256-497H20SYzzUFaUHkqUkYlROLrqXRBLkBkylsRqZ6KfM=";
     stripRoot = false;
   };
 in

@@ -17,6 +17,6 @@ in
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ nixfmt-rfc-style ];
+    home.packages = [ pkgs.nixfmt ];
   };
 }

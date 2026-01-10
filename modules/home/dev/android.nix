@@ -17,10 +17,10 @@ in
     jetbrains.enable = true;
     hmConfig.home.packages = [
       (pkgs.androidStudioPackages.beta.override { forceWayland = true; })
+      pkgs.android-tools
     ];
 
     osConfig = {
-      programs.adb.enable = true;
       users.users.${name}.extraGroups = [ "adbusers" ];
     };
   };

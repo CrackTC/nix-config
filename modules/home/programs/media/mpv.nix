@@ -25,7 +25,7 @@ in
         programs.mpv = {
           enable = true;
           package = pkgs.mpv.override {
-            mpv = pkgs.mpv-unwrapped.override {
+            mpv-unwrapped = pkgs.mpv-unwrapped.override {
               libbluray = pkgs.libbluray.override {
                 withJava = true;
                 withAACS = true;
