@@ -17,8 +17,7 @@ in
     sdks = lib.mkOption {
       type = lib.types.listOf lib.types.int;
       default = [
-        9
-        8
+        10
       ];
       description = "List of .NET SDK versions to install.";
     };
