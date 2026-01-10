@@ -85,5 +85,5 @@
   wl-clipboard.enable = true;
   xdg.enable = true;
   colemak.enable = true;
-  virt.enable = true;
+  virt.enable = false;
 }
