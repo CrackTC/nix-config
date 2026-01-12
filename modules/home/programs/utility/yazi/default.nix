@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.programs.utility.yazi;
 in
@@ -377,7 +382,7 @@ in
           ];
         };
         plugins = {
-          smart-enter = ./plugins/smart-enter;
+          inherit (pkgs.yaziPlugins) smart-enter;
         };
       };
     };
