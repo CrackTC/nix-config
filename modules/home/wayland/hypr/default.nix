@@ -328,7 +328,7 @@ in
                 "match:class" = "firefox";
                 "match:title" = "Picture-in-Picture";
                 float = true;
-                move = "${toString gaps_out} monitor_y-window_y-${toString gaps_out}";
+                move = "${toString gaps_out} monitor_h-window_h-${toString gaps_out}";
                 no_initial_focus = true;
               })
 
@@ -398,7 +398,7 @@ in
                 "match:xwayland" = false;
                 "match:float" = true;
                 no_anim = true;
-                move = "monitor_x-window_x monitor_y-window_y";
+                move = "monitor_w-window_w monitor_h-window_h";
               })
 
               {
