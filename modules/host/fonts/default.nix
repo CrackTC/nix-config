@@ -39,8 +39,8 @@ in
           "Noto Sans"
         ];
         serif = [
-          "Noto Serif"
           "Noto Serif CJK SC"
+          "Noto Serif"
         ];
       };
     };
