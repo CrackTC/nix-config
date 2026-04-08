@@ -32,7 +32,7 @@
         lg = lib.mkIf config.programs.utility.lazygit.enable "lazygit";
         ra = lib.mkMerge [
           (lib.mkIf config.programs.utility.joshuto.enable "joshuto")
-          (lib.mkIf config.programs.utility.yazi.enable "yy")
+          (lib.mkIf config.programs.utility.yazi.enable "y")
         ];
       };
 

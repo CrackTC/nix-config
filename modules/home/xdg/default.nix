@@ -29,6 +29,7 @@ in
 
       userDirs = {
         enable = true;
+        setSessionVariables = false;
         desktop = "Desktop";
         documents = "Documents";
         download = "Downloads";

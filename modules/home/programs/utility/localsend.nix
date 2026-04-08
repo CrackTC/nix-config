@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -12,7 +11,7 @@ in
     enable = lib.mkEnableOption "localsend";
   };
 
-  config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.localsend ];
+  config.osConfig = lib.mkIf cfg.enable {
+    programs.localsend.enable = true;
   };
 }

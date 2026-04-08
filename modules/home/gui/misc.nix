@@ -22,7 +22,7 @@ in
       inkscape
       kdePackages.ark
 
-      (if config.wayland.enable then wineWowPackages.waylandFull else wineWowPackages.unstableFull)
+      (if config.wayland.enable then wineWow64Packages.waylandFull else wineWow64Packages.unstableFull)
       winetricks
     ];
     services.blueman-applet.enable = true;

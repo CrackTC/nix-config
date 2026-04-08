@@ -30,6 +30,7 @@ in
       signing = {
         inherit (cfg) key;
         signByDefault = true;
+        format = "openpgp";
       };
       lfs.enable = true;
     };

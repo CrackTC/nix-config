@@ -60,7 +60,7 @@ in
           enbase = "echo -n $argv | base64";
           debase = "echo -n $argv | base64 -d";
           conda = lib.mkIf config.micromamba.enable ''
-            eval "$(micromamba shell hook --shell=fish)"
+            eval "$(mamba shell hook --shell=fish)"
           '';
           rebuild = lib.mkMerge [
             "nh os switch ~/nixos --ask $argv &&"

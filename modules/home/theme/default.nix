@@ -47,12 +47,13 @@ in
           };
         };
 
-        gtk = {
+        gtk = rec {
           enable = true;
           theme = {
             package = themePackage;
             name = themeName;
           };
+          gtk4.theme = theme;
           iconTheme = {
             package = iconThemePackage;
             name = iconThemeName;

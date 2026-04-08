@@ -20,6 +20,7 @@ in
         enableBashIntegration = config.programs.shells.bash.enable;
         enableZshIntegration = config.programs.shells.zsh.enable;
         enableFishIntegration = config.programs.shells.fish.enable;
+        shellWrapperName = "y";
         keymap = {
           mgr.keymap = [
             {
