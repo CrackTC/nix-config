@@ -67,7 +67,7 @@
       rofi.enable = true;
       tex.enable = true;
       video2gif.enable = true;
-      waydroid.enable = false;
+      waydroid.enable = true;
       yazi.enable = true;
       zip.enable = true;
     };
@@ -85,5 +85,5 @@
   wl-clipboard.enable = true;
   xdg.enable = true;
   colemak.enable = true;
-  virt.enable = false;
+  virt.enable = true;
 }

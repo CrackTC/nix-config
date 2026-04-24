@@ -16,7 +16,6 @@ in
   config.hmConfig = lib.mkIf cfg.enable {
     home.packages =
       with pkgs;
-      with nodePackages;
       with extraRepos;
       lib.mkMerge [
         [ yaml-language-server ]

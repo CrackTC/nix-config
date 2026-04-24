@@ -391,6 +391,14 @@ in
                 no_blur = true;
               })
 
+              {
+                name = "xwayland-fix";
+                "match:xwayland" = true;
+                rounding = 0;
+                no_anim = true;
+                no_blur = true;
+              }
+
               (lib.mkIf config.programs.media.vlc.enable {
                 name = "vlc-wayland-fix";
                 "match:class" = "vlc";

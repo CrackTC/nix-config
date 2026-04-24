@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.utility.waydroid;
 in
@@ -8,6 +13,9 @@ in
   };
 
   config.osConfig = lib.mkIf cfg.enable {
-    virtualisation.waydroid.enable = true;
+    virtualisation.waydroid = {
+      enable = true;
+      package = pkgs.waydroid-nftables;
+    };
   };
 }
