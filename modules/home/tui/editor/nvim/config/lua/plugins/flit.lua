@@ -1,6 +1,6 @@
 return {
     "ggandor/flit.nvim",
-    dependencies = { "ggandor/leap.nvim" },
+    dependencies = { "https://codeberg.org/andyg/leap.nvim" },
     config = function()
         require("flit").setup({
             keys = { f = "t", F = "T", t = "g", T = "G" },

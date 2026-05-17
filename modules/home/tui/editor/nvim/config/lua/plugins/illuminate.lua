@@ -1,6 +1,6 @@
 local function setup_plugin()
     require('illuminate').configure({
-        providers = { 'lsp', 'treesitter' },
+        providers = { 'lsp', 'regex' },
         delay = 100,
     })
 end

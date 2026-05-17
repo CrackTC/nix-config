@@ -45,6 +45,7 @@ require("lazy").setup(
         require("plugins.visual-multi"),
         require("plugins.wildfire"),
         require("plugins.yazi"),
+        require("plugins.lspconfig"),
     },
     { ui = { border = "rounded" } }
 )

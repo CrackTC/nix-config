@@ -10,7 +10,6 @@ local extensions = {
     "haskell",
     "html",
     "hurl",
-    "latex",
     "llvm",
     "lua",
     "make",
@@ -64,6 +63,7 @@ end
 
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     config = function()
         setup_variables()

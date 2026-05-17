@@ -1,63 +1,42 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
 
-local servers = {
-    "cmake",
-    "csharp_ls",
-    "cssls",
-    "denols",
-    "eslint",
-    "gopls",
-    "hls",
-    "html",
-    "jdtls",
-    "jsonls",
-    "phpactor",
-    "pyright",
-    "vimls",
-    "yamlls",
-}
+vim.lsp.config("*", {
+    capabilities = capabilities
+})
 
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        capabilities = capabilities,
-    }
-end
-
-lspconfig.clangd.setup {
-    capabilities = capabilities,
+vim.lsp.config("clangd", {
     cmd = {
         "clangd",
         "--offset-encoding=utf-16",
     }
-}
+})
 
-lspconfig.csharp_ls.setup {
-    capabilities = capabilities,
+vim.lsp.config("csharp_ls", {
     handlers = {
         ["textDocument/definition"] = require("csharpls_extended").handler,
         ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
     }
-}
+})
 
 local original_show_message = vim.lsp.handlers["window/showMessage"]
 
-vim.lsp.handlers["window/showMessage"] = function (err, result, context, config)
-  local client = vim.lsp.get_client_by_id(context.client_id)
+vim.lsp.handlers["window/showMessage"] = function(err, result, context, config)
+    local client = vim.lsp.get_client_by_id(context.client_id)
 
-  local message_type = context and context.message_type
-  if client and client.name == "csharp_ls" then
-    if message_type ~= 1 then
-      -- Suppress non-error messages
-      return
+    local message_type = context and context.message_type
+    if client and client.name == "csharp_ls" then
+        if message_type ~= 1 then
+            -- Suppress non-error messages
+            return
+        end
     end
-  end
 
-  return original_show_message(err, result, context, config)
+    return original_show_message(err, result, context, config)
 end
 
-lspconfig.nil_ls.setup {
-    capabilities = capabilities,
+require("csharpls_extended").buf_read_cmd_bind()
+
+vim.lsp.config("nil_ls", {
     settings = {
         ['nil'] = {
             formatting = {
@@ -73,16 +52,13 @@ lspconfig.nil_ls.setup {
             }
         }
     }
-}
-
-require("csharpls_extended").buf_read_cmd_bind()
+})
 
 vim.g.markdown_fenced_languages = {
     "ts=typescript",
 }
 
-lspconfig.lua_ls.setup {
-    capabilities = capabilities,
+vim.lsp.config("lua_ls", {
     on_init = function(client)
         local path = client.workspace_folders[1].name
         if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
@@ -100,7 +76,7 @@ lspconfig.lua_ls.setup {
             }
         })
     end
-}
+})
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.buf.hover({ title = "RTFM" })
 
@@ -169,11 +145,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if client == nil then return end
         if client.server_capabilities.codeLensProvider then
             vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-                callback = vim.lsp.codelens.refresh,
+                callback = function(arg) vim.lsp.codelens.enable(true, { bufnr = arg.buf }) end,
                 buffer = bufnr
             })
         end
     end
 })
 
-vim.lsp.set_log_level(vim.log.levels.OFF)
+vim.lsp.enable({
+    "cmake",
+    "csharp_ls",
+    "cssls",
+    "denols",
+    "eslint",
+    "gopls",
+    "hls",
+    "html",
+    "jdtls",
+    "jsonls",
+    "phpactor",
+    "pyright",
+    "vimls",
+    "yamlls",
+    "clangd",
+    "csharp_ls",
+    "nil_ls",
+    "lua_ls"
+})
+
+vim.lsp.log.set_level(vim.log.levels.OFF)
