@@ -34,6 +34,7 @@ in
             "cv01"
             "cv02"
           ];
+          scrollback-limit = 4294967295;
           font-size = 12;
           font-codepoint-map = [
             "U+2714,U+2717 = Noto Sans Symbols 2"
