@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.programs.im.qq;
+  clipboard_sync = pkgs.callPackage ./clipboard_sync.nix { };
   # sources = import ./sources.nix;
   # srcs = {
   #   x86_64-linux = pkgs.fetchurl {
@@ -64,6 +65,11 @@ in
         #   '';
         # }))
       ];
+      wayland.windowManager.hyprland.settings = {
+        exec-once = [
+          "${clipboard_sync}/bin/clipboard_sync &"
+        ];
+      };
     };
   };
 }
