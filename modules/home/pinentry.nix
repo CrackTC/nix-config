@@ -17,7 +17,7 @@ in
   config.osConfig.programs.gnupg.agent = {
     enable = true;
 
-    # https://github.com/nix-community/home-manager/issues/3095
+    # WORKAROUND: https://github.com/nix-community/home-manager/issues/3095
     settings.pinentry-program =
       let
         wrapped = pkgs.writeShellScript "${cfg}-wrapped" ''

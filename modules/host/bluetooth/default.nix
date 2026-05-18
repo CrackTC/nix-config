@@ -12,6 +12,10 @@ in
       enable = true;
       powerOnBoot = true;
     };
-    services.blueman.enable = true;
+    # WORKAROUND: https://github.com/nixos/nixpkgs/issues/514705
+    services.blueman = {
+      enable = true;
+      withApplet = false;
+    };
   };
 }

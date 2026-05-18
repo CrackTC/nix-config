@@ -22,6 +22,7 @@ in
         "signon.rememberSignons" = false;
         "browser.tabs.tabmanager.enabled" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.wayland.fractional-scale.enabled" = false;
       };
       policies = {
         DefaultDownloadDirectory = "/home/${name}/Downloads";
