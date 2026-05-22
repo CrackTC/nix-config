@@ -68,7 +68,7 @@ in
           "$mainMod SHIFT, ${if colemak then "N" else "J"}, swapwindow, d"
           "$mainMod SHIFT, ${if colemak then "E" else "K"}, swapwindow, u"
 
-          "$mainMod, V, togglesplit, "
+          "$mainMod, V, layoutmsg, togglesplit"
 
           "$mainMod, Escape, workspace, 1"
           "$mainMod, A, workspace, 2"

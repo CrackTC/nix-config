@@ -163,12 +163,10 @@ in
             };
 
             dwindle = {
-              pseudotile = true;
               preserve_split = true;
             };
 
             misc = {
-              vfr = true;
               vrr = false;
               animate_manual_resizes = false;
               animate_mouse_windowdragging = false;
