@@ -107,7 +107,7 @@ end
 -- [filetype] --
 
 function M.on_filetype(filetype, fn)
-    vim.api.nvim_create_autocmd({ "Filetype" }, {
+    vim.api.nvim_create_autocmd({ "FileType" }, {
         pattern = filetype,
         callback = fn
     })
@@ -228,7 +228,7 @@ local function new_term(wind_id)
     vim.o.number = false
     vim.bo.buflisted = false
     vim.wo.foldcolumn = '0'
-    bufid = vim.api.nvim_buf_get_number(0)
+    bufid = vim.api.nvim_get_current_buf()
     vim.cmd("startinsert")
 end
 

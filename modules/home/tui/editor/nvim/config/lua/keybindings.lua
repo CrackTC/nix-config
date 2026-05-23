@@ -185,8 +185,8 @@ utils.nnoremap("ds", vim.lsp.buf.definition)
 utils.nnoremap("dp", vim.lsp.buf.references)
 utils.nnoremap("du", vim.lsp.buf.implementation)
 utils.nnoremap("pk", vim.lsp.buf.rename)
-utils.nnoremap("sh", vim.diagnostic.goto_prev)
-utils.nnoremap("si", vim.diagnostic.goto_next)
+utils.nnoremap("sh", function() vim.diagnostic.jump({ count = -1 }) end)
+utils.nnoremap("si", function() vim.diagnostic.jump({ count = 1 }) end)
 utils.nnoremap("<leader>cl", vim.lsp.codelens.run)
 
 

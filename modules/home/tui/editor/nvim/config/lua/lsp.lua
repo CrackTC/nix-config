@@ -1,38 +1,20 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-vim.lsp.config("*", {
-    capabilities = capabilities
-})
-
-vim.lsp.config("clangd", {
-    cmd = {
-        "clangd",
-        "--offset-encoding=utf-16",
-    }
-})
-
+vim.lsp.config("*", { capabilities = capabilities })
+vim.lsp.config("clangd", { cmd = { "clangd", "--offset-encoding=utf-16", } })
 vim.lsp.config("csharp_ls", {
     handlers = {
         ["textDocument/definition"] = require("csharpls_extended").handler,
         ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
-    }
-})
-
-local original_show_message = vim.lsp.handlers["window/showMessage"]
-
-vim.lsp.handlers["window/showMessage"] = function(err, result, context, config)
-    local client = vim.lsp.get_client_by_id(context.client_id)
-
-    local message_type = context and context.message_type
-    if client and client.name == "csharp_ls" then
-        if message_type ~= 1 then
-            -- Suppress non-error messages
-            return
-        end
+    },
+    cmd = function(dispatchers, config)
+        return vim.lsp.rpc.start({ "csharp-ls", "--features", "metadata-uris" }, dispatchers, {
+            cwd = config.cmd_cwd or config.root_dir,
+            env = config.cmd_env,
+            detached = config.detached,
+        })
     end
-
-    return original_show_message(err, result, context, config)
-end
+})
 
 require("csharpls_extended").buf_read_cmd_bind()
 
@@ -84,10 +66,27 @@ vim.diagnostic.config {
     underline = true,
     virtual_text = false,
     update_in_insert = true,
-    float = {
-        border = "rounded",
-        title = "Oops"
-    },
+    jump = {
+        on_jump = function(diagnostic, bufnr)
+            local title
+            if diagnostic.severity == vim.diagnostic.severity.ERROR then
+                title = "Error"
+            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+                title = "Warning"
+            elseif diagnostic.severity == vim.diagnostic.severity.INFO then
+                title = "Info"
+            elseif diagnostic.severity == vim.diagnostic.severity.HINT then
+                title = "Hint"
+            end
+            vim.diagnostic.open_float({
+                bufnr = bufnr,
+                scope = "cursor",
+                focus = false,
+                title = title,
+                border = "rounded"
+            })
+        end
+    }
 }
 
 local ns = vim.api.nvim_create_namespace("CurlineDiag")
@@ -116,11 +115,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
-vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "󱐋", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "󰋽", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-
+vim.diagnostic.config {
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "󱐋",
+            [vim.diagnostic.severity.INFO] = "󰋽",
+            [vim.diagnostic.severity.HINT] = ""
+        }
+    }
+}
 
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
     pattern = "*",
@@ -153,6 +157,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.enable({
+    "clangd",
     "cmake",
     "csharp_ls",
     "cssls",
@@ -163,14 +168,12 @@ vim.lsp.enable({
     "html",
     "jdtls",
     "jsonls",
+    "lua_ls",
+    "nil_ls",
     "phpactor",
     "pyright",
     "vimls",
     "yamlls",
-    "clangd",
-    "csharp_ls",
-    "nil_ls",
-    "lua_ls"
 })
 
 vim.lsp.log.set_level(vim.log.levels.OFF)
