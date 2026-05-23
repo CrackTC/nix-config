@@ -12,10 +12,12 @@ in
 {
   config = lib.mkIf (!cfg.useNvidia && cfg.enable) {
     hmConfig = {
-      wayland.windowManager.hyprland.settings.env = [
-        # "__EGL_VENDOR_LIBRARY_FILENAMES,/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json"
-        "AQ_DRM_DEVICES,/home/${name}/.config/hypr/card"
-      ];
+      wayland.windowManager.hyprland.extraConfig =
+        # lua
+        ''
+          -- hl.env("__EGL_VENDOR_LIBRARY_FILENAMES", "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json")
+          hl.env("AQ_DRM_DEVICES", "/home/${name}/.config/hypr/card")
+        '';
     };
     osConfig = {
       system.userActivationScripts = {

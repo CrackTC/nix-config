@@ -8,105 +8,123 @@
 let
   cfg = config.hypr;
 
-  # hyprctl = extraRepos.hyprland.hyprland + "/bin/hyprctl";
-  hyprctl = pkgs.hyprland + "/bin/hyprctl";
-  jq = lib.getExe pkgs.jq;
-  grep = lib.getExe pkgs.gnugrep;
+  mkBind =
+    keys: dispatcher:
+    # lua
+    ''
+      hl.bind("${keys}", ${dispatcher})
+    '';
 
-  fake-fullscreen-qq = pkgs.writeShellScript "fake-fullscreen-qq" ''
-    ${hyprctl} -j activewindow | ${jq} -r .initialClass | ${grep} -q '^QQ$' &&
-        ${hyprctl} dispatch -- fullscreenstate 2 1 ||
-        ${hyprctl} dispatch fullscreen
-  '';
+  mkBindExec =
+    keys: command:
+    mkBind keys
+      # lua
+      ''hl.dsp.exec_cmd("${lib.replaceStrings [ ''"'' ] [ ''\"'' ] command}")'';
+
+  mkBindExecRepeating =
+    keys: command:
+    mkBind keys
+      # lua
+      ''hl.dsp.exec_cmd("${lib.replaceStrings [ ''"'' ] [ ''\"'' ] command}"), { repeating = true }'';
 in
 {
-  config.hmConfig.wayland.windowManager.hyprland.settings = lib.mkIf cfg.enable {
-    "$mainMod" = "SUPER";
-    bind =
+  config.hmConfig.wayland.windowManager.hyprland = {
+    extraConfig = lib.mkIf cfg.enable (
       let
         colemak = config.colemak.enable;
         rofi-kb = "-kb-row-up Alt+${if colemak then "e" else "k"} -kb-row-down Alt+${if colemak then "n" else "j"}";
       in
       lib.mkMerge [
-        (lib.mkIf config.terminal.enable [
-          "$mainMod, Return, exec, ${config.terminal.preferred}${
+        (lib.mkIf config.terminal.enable (
+          mkBindExec "SUPER + Return" "${config.terminal.preferred}${
             if config.terminal.preferred == "ghostty" then " --gtk-single-instance=true" else ""
           }"
-        ])
-        (lib.mkIf config.obsidian.enable [ "$mainMod, ${if colemak then "Y" else "O"}, exec, obsidian" ])
-        (lib.mkIf (config.chrome.enable || config.firefox.enable) [
-          "$mainMod, ${if colemak then "U" else "I"}, exec, ${
+        ))
+        (lib.mkIf config.obsidian.enable (mkBindExec "SUPER + ${if colemak then "Y" else "O"}" "obsidian"))
+        (lib.mkIf (config.chrome.enable || config.firefox.enable) (
+          mkBindExec "SUPER + ${if colemak then "U" else "I"}" (
             if config.firefox.enable then "firefox" else "google-chrome-stable"
-          }"
-        ])
-        (lib.mkIf config.programs.utility.rofi.enable [
-          "$mainMod, Q, exec, rofi ${rofi-kb} -show drun"
-          "$mainMod, ${if colemak then "O" else "Semicolon"}, exec, rofi ${rofi-kb} -show run"
-          "$mainMod, Backslash, exec, rofi ${rofi-kb} -show ssh"
-          "$mainMod, ${if colemak then "K" else "N"}, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}"
-          "$mainMod, Space, exec, rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}"
-        ])
-        (lib.mkIf config.programs.utility.rbw.enable [
-          "$mainMod, ${
-            if colemak then "Semicolon" else "P"
-          }, exec, ${lib.getExe pkgs.rofi-rbw-wayland} --target password --selector-args '${rofi-kb}'"
-        ])
-        [
-          "$mainMod SHIFT, ${if colemak then "R" else "S"}, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copy area"
-          "$mainMod SHIFT, Q, killactive, "
-          "$mainMod SHIFT, Space, togglefloating, "
-          "$mainMod, ${if colemak then "T" else "F"}, exec, ${fake-fullscreen-qq}"
-          "$mainMod, Up, fullscreen, 1"
+          )
+        ))
+        (lib.mkIf config.programs.utility.rofi.enable (
+          lib.mkMerge [
+            (mkBindExec "SUPER + Q" "rofi ${rofi-kb} -show drun")
+            (mkBindExec "SUPER + ${if colemak then "O" else "Semicolon"}" "rofi ${rofi-kb} -show run")
+            (mkBindExec "SUPER + Backslash" "rofi ${rofi-kb} -show ssh")
+            (mkBindExec "SUPER + ${if colemak then "K" else "N"}" "rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}")
+            (mkBindExec "SUPER + Space" "rofi -show ts -modi ts -no-sort -ts-command \"echo -n '{result}' | wl-copy\" ${rofi-kb}")
+          ]
+        ))
+        (lib.mkIf config.programs.utility.rbw.enable (
+          mkBindExec "SUPER + ${if colemak then "Semicolon" else "P"}" "${lib.getExe pkgs.rofi-rbw-wayland} --target password --selector-args '${rofi-kb}'"
+        ))
 
-          "$mainMod, H, movefocus, l"
-          "$mainMod, ${if colemak then "I" else "L"}, movefocus, r"
-          "$mainMod, ${if colemak then "N" else "J"}, movefocus, d"
-          "$mainMod, ${if colemak then "E" else "K"}, movefocus, u"
-
-          "$mainMod SHIFT, H, swapwindow, l"
-          "$mainMod SHIFT, ${if colemak then "I" else "L"}, swapwindow, r"
-          "$mainMod SHIFT, ${if colemak then "N" else "J"}, swapwindow, d"
-          "$mainMod SHIFT, ${if colemak then "E" else "K"}, swapwindow, u"
-
-          "$mainMod, V, layoutmsg, togglesplit"
-
-          "$mainMod, Escape, workspace, 1"
-          "$mainMod, A, workspace, 2"
-          "$mainMod, Z, workspace, 3"
-          "$mainMod, B, workspace, 4"
-          "$mainMod, M, workspace, 5"
-          "$mainMod, ${if colemak then "S" else "D"}, workspace, 6"
-          "$mainMod, ${if colemak then "L" else "U"}, workspace, 7"
-          "$mainMod, W, workspace, 8"
-          "$mainMod, ${if colemak then "F" else "E"}, workspace, 9"
-          "$mainMod, Comma, workspace, 10"
-
-          "$mainMod SHIFT, Escape, movetoworkspace, 1"
-          "$mainMod SHIFT, A, movetoworkspace, 2"
-          "$mainMod SHIFT, Z, movetoworkspace, 3"
-          "$mainMod SHIFT, B, movetoworkspace, 4"
-          "$mainMod SHIFT, M, movetoworkspace, 5"
-          "$mainMod SHIFT, ${if colemak then "S" else "D"}, movetoworkspace, 6"
-          "$mainMod SHIFT, ${if colemak then "L" else "U"}, movetoworkspace, 7"
-          "$mainMod SHIFT, W, movetoworkspace, 8"
-          "$mainMod SHIFT, ${if colemak then "F" else "E"}, movetoworkspace, 9"
-          "$mainMod SHIFT, Comma, movetoworkspace, 10"
-          "$mainMod, mouse_down, workspace, e-1"
-          "$mainMod, mouse_up, workspace, e+1"
-        ]
-      ];
-
-    bindm = [
-      "$mainMod, mouse:272, movewindow"
-      "$mainMod, mouse:273, resizewindow"
-    ];
-
-    binde = [
-      ", XF86AudioRaiseVolume, exec, ${lib.getExe pkgs.pamixer} -i 5"
-      ", XF86AudioLowerVolume, exec, ${lib.getExe pkgs.pamixer} -d 5"
-      ", XF86AudioMute, exec, ${lib.getExe pkgs.pamixer} -t"
-      ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
-      ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
-    ];
+        # lua
+        ''
+          ${lib.concatStringsSep "\n" [
+            (mkBindExec "SUPER + SHIFT + ${if colemak then "R" else "S"}" "${lib.getExe pkgs.grimblast} --notify --freeze copy area")
+            (mkBind "SUPER + SHIFT + Q" "hl.dsp.window.close()")
+            (mkBind "SUPER + SHIFT + Space" "hl.dsp.window.float()")
+            (mkBind "SUPER + ${if colemak then "T" else "F"}"
+              # lua
+              ''
+                function ()
+                  local active_window = hl.get_active_window()
+                  if not active_window then return end
+                  if active_window.initial_class == "QQ" then
+                    hl.dispatch(hl.dsp.window.fullscreen_state({
+                      internal = 2,
+                      client = 1,
+                      action = "toggle",
+                    }))
+                  else
+                    hl.dispatch(hl.dsp.window.fullscreen())
+                  end
+                end
+              ''
+            )
+            (mkBind "SUPER + Up" "hl.dsp.window.fullscreen({ mode = 'maximized' })")
+            (mkBind "SUPER + H" "hl.dsp.focus({ direction = 'l' })")
+            (mkBind "SUPER + ${if colemak then "I" else "L"}" "hl.dsp.focus({ direction = 'r' })")
+            (mkBind "SUPER + ${if colemak then "N" else "J"}" "hl.dsp.focus({ direction = 'd' })")
+            (mkBind "SUPER + ${if colemak then "E" else "K"}" "hl.dsp.focus({ direction = 'u' })")
+            (mkBind "SUPER + SHIFT + H" "hl.dsp.window.swap({ direction = 'l' })")
+            (mkBind "SUPER + SHIFT + ${if colemak then "I" else "L"}" "hl.dsp.window.swap({ direction = 'r' })")
+            (mkBind "SUPER + SHIFT + ${if colemak then "N" else "J"}" "hl.dsp.window.swap({ direction = 'd' })")
+            (mkBind "SUPER + SHIFT + ${if colemak then "E" else "K"}" "hl.dsp.window.swap({ direction = 'u' })")
+            (mkBind "SUPER + V" "hl.dsp.layout('togglesplit')")
+            (mkBind "SUPER + Comma" "hl.dsp.focus({ workspace = '1' })")
+            (mkBind "SUPER + Escape" "hl.dsp.focus({ workspace = '2' })")
+            (mkBind "SUPER + A" "hl.dsp.focus({ workspace = '3' })")
+            (mkBind "SUPER + Z" "hl.dsp.focus({ workspace = '4' })")
+            (mkBind "SUPER + B" "hl.dsp.focus({ workspace = '5' })")
+            (mkBind "SUPER + M" "hl.dsp.focus({ workspace = '6' })")
+            (mkBind "SUPER + ${if colemak then "S" else "D"}" "hl.dsp.focus({ workspace = '7' })")
+            (mkBind "SUPER + ${if colemak then "L" else "U"}" "hl.dsp.focus({ workspace = '8' })")
+            (mkBind "SUPER + W" "hl.dsp.focus({ workspace = '9' })")
+            (mkBind "SUPER + ${if colemak then "F" else "E"}" "hl.dsp.focus({ workspace = '10' })")
+            (mkBind "SUPER + SHIFT + Comma" "hl.dsp.window.move({ workspace = '1' })")
+            (mkBind "SUPER + SHIFT + Escape" "hl.dsp.window.move({ workspace = '2' })")
+            (mkBind "SUPER + SHIFT + A" "hl.dsp.window.move({ workspace = '3' })")
+            (mkBind "SUPER + SHIFT + Z" "hl.dsp.window.move({ workspace = '4' })")
+            (mkBind "SUPER + SHIFT + B" "hl.dsp.window.move({ workspace = '5' })")
+            (mkBind "SUPER + SHIFT + M" "hl.dsp.window.move({ workspace = '6' })")
+            (mkBind "SUPER + SHIFT + ${if colemak then "S" else "D"}" "hl.dsp.window.move({ workspace = '7' })")
+            (mkBind "SUPER + SHIFT + ${if colemak then "L" else "U"}" "hl.dsp.window.move({ workspace = '8' })")
+            (mkBind "SUPER + SHIFT + W" "hl.dsp.window.move({ workspace = '9' })")
+            (mkBind "SUPER + SHIFT + ${if colemak then "F" else "E"}" "hl.dsp.window.move({ workspace = '10' })")
+            (mkBind "SUPER + mouse_down" "hl.dsp.focus({ workspace = 'e-1' })")
+            (mkBind "SUPER + mouse_up" "hl.dsp.focus({ workspace = 'e+1' })")
+            (mkBind "SUPER + mouse:272" "hl.dsp.window.drag(), { mouse = true }")
+            (mkBind "SUPER + mouse:273" "hl.dsp.window.resize(), { mouse = true }")
+            (mkBindExecRepeating "XF86AudioRaiseVolume" "${lib.getExe pkgs.pamixer} -i 5")
+            (mkBindExecRepeating "XF86AudioLowerVolume" "${lib.getExe pkgs.pamixer} -d 5")
+            (mkBindExecRepeating "XF86AudioMute" "${lib.getExe pkgs.pamixer} -t")
+            (mkBindExecRepeating "XF86MonBrightnessUp" "${lib.getExe pkgs.brightnessctl} set 5%+")
+            (mkBindExecRepeating "XF86MonBrightnessDown" "${lib.getExe pkgs.brightnessctl} set 5%-")
+          ]}
+        ''
+      ]
+    );
   };
 }

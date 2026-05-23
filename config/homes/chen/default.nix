@@ -79,7 +79,6 @@
   hypr = {
     enable = true;
     useNvidia = false;
-    extMonitor = true;
   };
   waybar.enable = true;
   wl-clipboard.enable = true;

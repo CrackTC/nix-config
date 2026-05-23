@@ -8,6 +8,18 @@
 }:
 let
   cfg = config.hypr;
+  mkEnv =
+    name: value:
+    # lua
+    ''
+      hl.env("${name}", "${value}")
+    '';
+  mkExec =
+    cmd:
+    # lua
+    ''
+      hl.exec_cmd("${lib.replaceStrings [ ''"'' ] [ ''\"'' ] cmd}")
+    '';
 in
 {
   imports = [
@@ -31,400 +43,538 @@ in
         # package = extraRepos.hyprland.hyprland;
         package = pkgs.hyprland;
         portalPackage = null;
-        settings =
+        configType = "lua";
+        extraConfig =
           let
-            gaps_out = 10;
+            gapsOut = 10;
           in
-          {
+          lib.mkMerge [
+            (mkEnv "LANG" "zh_CN.UTF-8")
+            (mkEnv "LANGUAGE" "zh_CN:en_US")
 
-            env = lib.mkMerge [
-              [
-                "LANG,zh_CN.UTF-8"
-                "LANGUAGE,zh_CN:en_US"
+            # Toolkit Backend Variables
+            (mkEnv "GDK_BACKEND" "wayland,x11,*")
+            (mkEnv "QT_QPA_PLATFORM" "wayland;xcb")
+            (mkEnv "SDL_VIDEODRIVER" "wayland")
+            (mkEnv "CLUTTER_BACKEND" "wayland")
 
-                # Toolkit Backend Variables
-                "GDK_BACKEND,wayland,x11,*"
-                "QT_QPA_PLATFORM,wayland;xcb"
-                "SDL_VIDEODRIVER,wayland"
-                "CLUTTER_BACKEND,wayland"
+            # XDG Specifications
+            (mkEnv "XDG_CURRENT_DESKTOP" "Hyprland")
+            (mkEnv "XDG_SESSION_TYPE" "wayland")
+            (mkEnv "XDG_SESSION_DESKTOP" "Hyprland")
 
-                # XDG Specifications
-                "XDG_CURRENT_DESKTOP,Hyprland"
-                "XDG_SESSION_TYPE,wayland"
-                "XDG_SESSION_DESKTOP,Hyprland"
+            # QT Variables
+            (mkEnv "QT_AUTO_SCREEN_SCALE_FACTOR" "1")
+            (mkEnv "QT_WAYLAND_DISABLE_WINDOWDECORATION" "1")
 
-                # QT Variables
-                "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-                "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+            # GTK Variables
+            # (mkEnv "GTK_USE_PORTAL" "1")
 
-                # GTK Variables
-                # "GTK_USE_PORTAL,1"
+            (mkEnv "XDG_CONFIG_HOME" "/home/${name}/.config")
+            (mkEnv "XDG_CONFIG_DIR" "/home/${name}/.config")
 
-                "XDG_CONFIG_HOME,/home/${name}/.config"
-                "XDG_CONFIG_DIR,/home/${name}/.config"
+            (mkEnv "GDK_SCALE" "2")
+            (mkEnv "XCURSOR_SIZE" "32")
 
-                "GDK_SCALE,2"
-                "XCURSOR_SIZE,32"
-              ]
-              (lib.mkIf config.firefox.enable [
-                "MOZ_ENABLE_WAYLAND,1"
-                "MOZ_WEBRENDER,1"
-              ])
-              (lib.mkIf config.node.enable [ "NODE_PATH,/home/${name}/.local/lib/nodejs/node_modules" ])
-              (lib.mkIf config.java.enable [ "_JAVA_OPTIONS,'-Dawt.useSystemAAFontSettings=lcd'" ])
-            ];
+            (lib.mkIf config.firefox.enable ''
+              ${mkEnv "MOZ_ENABLE_WAYLAND" "1"}
+              ${mkEnv "MOZ_WEBRENDER" "1"}
+            '')
+            (lib.mkIf config.node.enable "${mkEnv "NODE_PATH" "/home/${name}/.local/lib/nodejs/node_modules"}")
+            (lib.mkIf config.java.enable "${mkEnv "_JAVA_OPTIONS" "-Dawt.useSystemAAFontSettings=lcd"}")
 
-            exec-once = lib.mkMerge [
-              [
-                "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"
-              ]
-              (lib.mkIf config.fcitx5.enable [ "fcitx5 -d" ])
-              (lib.mkIf config.go.enable [ "go env -w GOPROXY=https://goproxy.cn,direct" ])
-              (lib.mkIf config.imwheel.enable [ "imwheel" ])
-              (lib.mkIf config.waybar.enable [ "waybar" ])
-              (lib.mkIf config.programs.utility.ydotool.enable [ "ydotoold" ])
-              (lib.mkIf (config.terminal.preferred == "ghostty") [
-                "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
-              ])
-            ];
+            # lua
+            ''
+              hl.on("hyprland.start", function ()
+                ${mkExec "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"}
+                ${if config.fcitx5.enable then mkExec "fcitx5 -d" else ""}
+                ${if config.go.enable then mkExec "go env -w GOPROXY=https://goproxy.cn,direct" else ""}
+                ${if config.imwheel.enable then mkExec "imwheel" else ""}
+                ${if config.waybar.enable then mkExec "waybar" else ""}
+                ${if config.programs.utility.ydotool.enable then mkExec "ydotoold" else ""}
+                ${
+                  if config.terminal.preferred == "ghostty" then
+                    mkExec "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
+                  else
+                    ""
+                }
+              end)
+            ''
 
-            input = {
-              kb_layout = "us";
-              kb_variant = lib.mkIf config.colemak.enable "colemak";
-              kb_options = "caps:swapescape";
+            # lua
+            ''
+              hl.config({
+                input = {
+                  kb_layout = "us",
+                  ${
+                    if config.colemak.enable then
+                      # lua
+                      ''kb_variant = "colemak"''
+                    else
+                      ""
+                  },
+                  kb_options = "caps:swapescape",
 
-              accel_profile = "adaptive";
-              repeat_delay = 200;
+                  accel_profile = "adaptive",
+                  repeat_delay = 200,
 
-              follow_mouse = 1;
+                  follow_mouse = 1,
 
-              touchpad = {
-                natural_scroll = true;
-              };
+                  touchpad = {
+                    natural_scroll = true,
+                  };
 
-              sensitivity = 0;
-            };
+                  sensitivity = 0,
+                },
 
-            cursor = {
-              no_hardware_cursors = 0;
-            };
+                cursor = {
+                  no_hardware_cursors = 0,
+                },
 
-            device = lib.mkIf config.programs.utility.ydotool.enable {
-              name = "ydotoold-virtual-device";
-              kb_layout = "us";
-              kb_variant = "";
-              kb_options = "";
-            };
+                general = {
+                  gaps_in = 5,
+                  gaps_out = ${toString gapsOut},
+                  layout = "dwindle",
+                  snap = {
+                    enabled = true,
+                  },
+                },
 
-            general = {
-              gaps_in = 5;
-              inherit gaps_out;
-              # border_size = 2;
-              # "col.active_border" = "rgba(88c0d0ff)";
-              # "col.inactive_border" = "rgba(4c566aff)";
+                decoration = {
+                  rounding = 13,
 
-              layout = "dwindle";
+                  blur = {
+                    enabled = true,
+                    size = 5,
+                    passes = 4,
+                    new_optimizations = true,
+                    ignore_opacity = true,
+                    popups = true,
+                    popups_ignorealpha = 0.8,
+                  },
+                },
 
-              snap.enabled = true;
-            };
+                animations = {
+                  enabled = true,
+                },
 
-            decoration = {
-              rounding = 13;
+                dwindle = {
+                  preserve_split = true,
+                },
 
-              blur = {
-                enabled = true;
-                size = 5;
-                passes = 4;
-                new_optimizations = true;
-                ignore_opacity = true;
-                popups = true;
-                popups_ignorealpha = 0.8;
-              };
+                misc = {
+                  vrr = false,
+                  animate_manual_resizes = false,
+                  animate_mouse_windowdragging = false,
+                  disable_autoreload = true,
+                  focus_on_activate = false,
+                  disable_hyprland_logo = true,
+                },
 
-              # drop_shadow = false;
-              # shadow_range = 20;
-              # "col.shadow_inactive" = "rgba(00000000)";
-            };
+                render = {
+                  direct_scanout = false,
+                },
 
-            animations = {
-              enabled = true;
+                gestures = {
+                  workspace_swipe_distance = 300,
+                  workspace_swipe_invert = true,
+                  workspace_swipe_min_speed_to_force = 0,
+                  workspace_swipe_cancel_ratio = 0.1,
+                },
 
-              bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-              animation = [
-                "windows, 1, 6, myBezier"
-                "windowsOut, 1, 6, default, popin 30%"
-                "border, 1, 10, default"
-                "borderangle, 1, 8, default"
-                "fade, 1, 7, default"
-                "fadeIn, 1, 7, default"
-                "fadeOut, 1, 3, default"
-                "workspaces, 1, 6, default"
-              ];
-            };
-
-            dwindle = {
-              preserve_split = true;
-            };
-
-            misc = {
-              vrr = false;
-              animate_manual_resizes = false;
-              animate_mouse_windowdragging = false;
-              disable_autoreload = true;
-              focus_on_activate = false;
-              disable_hyprland_logo = true;
-            };
-
-            render = {
-              direct_scanout = false;
-            };
-
-            gestures = {
-              workspace_swipe_distance = 300;
-              workspace_swipe_invert = true;
-              workspace_swipe_min_speed_to_force = 0;
-              workspace_swipe_cancel_ratio = 0.1;
-            };
-
-            gesture = [
-              "4, horizontal, workspace"
-            ];
-
-            layerrule = [
-              (lib.mkIf config.programs.utility.rofi.enable rec {
-                name = "rofi";
-                "match:namespace" = name;
-                blur = true;
-                ignore_alpha = 0;
-                dim_around = true;
-              })
-              (lib.mkIf config.waybar.enable rec {
-                name = "waybar";
-                "match:namespace" = name;
-                ignore_alpha = 0.1;
-                blur = true;
-              })
-              (lib.mkIf config.dunst.enable rec {
-                name = "notifications";
-                "match:namespace" = name;
-                blur = true;
-                ignore_alpha = 0;
-              })
-            ];
-
-            windowrule = [
-              (lib.mkIf config.showmethekey.enable {
-                name = "showmethekey";
-                "match:class" = "showmethekey-gtk";
-                "match:title" = "Floating Window - Show Me The Key";
-                float = true;
-                opacity = "0.5 override 0.5 override";
-                pin = true;
+                xwayland = {
+                  use_nearest_neighbor = false,
+                  force_zero_scaling = true,
+                },
               })
 
-              (lib.mkIf config.pavucontrol.enable {
-                name = "pavucontrol";
-                "match:class" = "pavucontrol-qt";
-                float = true;
+              hl.gesture({
+                fingers = 4,
+                direction = "horizontal",
+                action = "workspace",
               })
 
-              (lib.mkIf config.neovide.enable {
-                name = "neovide";
-                "match:class" = "neovide";
-                tile = true;
+              hl.curve("myBezier", {
+                type = "bezier",
+                points = {
+                  { 0.05, 0.9 },
+                  { 0.1, 1.05 }
+                }
               })
 
-              (lib.mkIf config.wpsoffice.enable {
-                name = "wpsoffice";
-                "match:class" = "wpsoffice";
-                tile = true;
+              hl.animation({
+                leaf = "windows",
+                enabled = true,
+                speed = 6,
+                bezier = "myBezier",
               })
 
-              (lib.mkIf config.vivaldi.enable {
-                name = "vivaldi";
-                "match:class" = "Vivaldi-stable";
-                tile = true;
+              hl.animation({
+                leaf = "windowsOut",
+                enabled = true,
+                speed = 6,
+                bezier = "default",
+                style = "popin 30%",
               })
 
-              (lib.mkIf config.logisim.enable {
-                name = "logisim";
-                "match:title" = ".*Logisim-evolution v3.8.0";
-                tile = true;
+              hl.animation({
+                leaf = "border",
+                enabled = true,
+                speed = 10,
+                bezier = "default",
               })
 
-              (lib.mkIf config.onlyoffice.enable {
-                name = "onlyoffice";
-                "match:class" = "DesktopEditors";
-                tile = true;
+              hl.animation({
+                leaf = "fade",
+                enabled = true,
+                speed = 7,
+                bezier = "default",
               })
 
-              (lib.mkIf config.obsidian.enable {
-                name = "obsidian";
-                "match:class" = "obsidian";
-                opacity = "0.8 override 0.8 override";
+              hl.animation({
+                leaf = "fadeIn",
+                enabled = true,
+                speed = 7,
+                bezier = "default",
               })
 
-              (lib.mkIf config.programs.im.discord.enable {
-                name = "discord";
-                "match:class" = "discord";
-                opacity = "0.8 override 0.8 override";
+              hl.animation({
+                leaf = "fadeOut",
+                enabled = true,
+                speed = 3,
+                bezier = "default",
               })
 
-              (lib.mkIf config.vscode.enable {
-                name = "vscode";
-                "match:class" = "Code|code-url-handler";
-                opacity = "0.8 override 0.8 override";
+              hl.animation({
+                leaf = "workspaces",
+                enabled = true,
+                speed = 6,
+                bezier = "default",
+              })
+            ''
+
+            (lib.mkIf config.programs.utility.ydotool.enable
+              # lua
+              ''
+                hl.device({
+                  name = "ydotoold-virtual-device",
+                  kb_layout = "us",
+                  kb_variant = "",
+                  kb_options = "",
+                  keybinds = false,
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.utility.rofi.enable
+              # lua
+              ''
+                hl.layer_rule({
+                  match = { namespace = "rofi" },
+                  blur = true,
+                  ignore_alpha = 0,
+                  dim_around = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.waybar.enable
+              # lua
+              ''
+                hl.layer_rule({
+                  match = { namespace = "waybar" },
+                  ignore_alpha = 0.1,
+                  blur = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.dunst.enable
+              # lua
+              ''
+                hl.layer_rule({
+                  match = { namespace = "notifications" },
+                  blur = true,
+                  ignore_alpha = 0,
+                })
+              ''
+            )
+
+            (lib.mkIf config.showmethekey.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "showmethekey-gtk", title = "Floating Window - Show Me The Key" },
+                  float = true,
+                  opacity = "0.5 override 0.5 override",
+                  pin = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.pavucontrol.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "pavucontrol-qt" },
+                  float = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.neovide.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "neovide" },
+                  tile = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.wpsoffice.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "wpsoffice" },
+                  tile = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.vivaldi.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "Vivaldi-stable" },
+                  tile = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.logisim.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { title = ".*Logisim-evolution v3.8.0" },
+                  tile = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.onlyoffice.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "DesktopEditors" },
+                  tile = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.obsidian.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "obsidian" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.im.discord.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "discord" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.vscode.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "Code|code-url-handler" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.thunderbird.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "thunderbird" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.im.telegram.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "org.telegram.desktop" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.im.qq.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "QQ" },
+                  opacity = "0.8 override 0.8 override",
+                })
+
+                hl.window_rule({
+                  match = { class = "QQ", title = "图片查看器|设置|.*的聊天记录" },
+                  float = true,
+                })
+
+                hl.window_rule({
+                  match = { class = "QQ", title = "QQ频道" },
+                  min_size = { 1080, 0 },
+                })
+
+                hl.window_rule({
+                  match = { class = "QQ", title = "资料卡|天气" },
+                  move = { "cursor_x", "cursor_y" },
+                })
+              ''
+            )
+
+            (lib.mkIf config.terminals.kitty.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "kitty" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.firefox.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "firefox", title = "Picture-in-Picture" },
+                  float = true,
+                  move = { "${toString gapsOut}", "monitor_h-window_h-${toString gapsOut}" },
+                  no_initial_focus = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.utility.follow.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "Follow" },
+                  opacity = "0.8 override 0.8 override",
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.media.mpv.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "mpv" },
+                  fullscreen = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.media.svp.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "SVPManager" },
+                  float = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.ghidra.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "ghidra-.+", title = "win.+", float = true, fullscreen = false },
+                  no_focus = true,
+                  no_anim = true,
+                  border_size = 0,
+                  rounding = 0,
+                  move = { "cursor_x", "cursor_y" },
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.utility.waydroid.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "[Ww]aydroid.*" },
+                  float = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.utility.aegisub.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "aegisub" },
+                  rounding = 0,
+                })
+              ''
+            )
+
+            (lib.mkIf config.programs.media.vlc.enable
+              # lua
+              ''
+                hl.window_rule({
+                  match = { class = "vlc" },
+                  rounding = 0,
+                })
+
+                hl.window_rule({
+                  match = { class = "vlc", title = "vlc", xwayland = true, float = true },
+                  no_anim = true,
+                  no_blur = true,
+                })
+
+                hl.window_rule({
+                  match = { class = "vlc", title = "vlc", xwayland = false, float = true },
+                  move = "monitor_w-window_w monitor_h-window_h",
+                  no_anim = true,
+                })
+              ''
+            )
+
+            # lua
+            ''
+              hl.window_rule({
+                match = { xwayland = true },
+                rounding = 0,
+                no_anim = true,
+                no_blur = true,
               })
 
-              (lib.mkIf config.thunderbird.enable {
-                name = "thunderbird";
-                "match:class" = "thunderbird";
-                opacity = "0.8 override 0.8 override";
+              hl.window_rule({
+                match = { class = "org.kde.polkit-kde-authentication-agent-1" },
+                float = true,
               })
 
-              (lib.mkIf config.programs.im.telegram.enable {
-                name = "telegram";
-                "match:class" = "org.telegram.desktop";
-                opacity = "0.8 override 0.8 override";
+              hl.window_rule({
+                match = { class = "xdg-desktop-portal-gtk" },
+                float = true,
               })
-
-              (lib.mkIf config.programs.im.qq.enable {
-                name = "qq-opacity";
-                "match:class" = "QQ";
-                opacity = "0.8 override 0.8 override";
-              })
-
-              (lib.mkIf config.programs.im.qq.enable {
-                name = "qq-float";
-                "match:class" = "QQ";
-                "match:title" = "图片查看器|设置|.*的聊天记录";
-                float = true;
-              })
-
-              (lib.mkIf config.programs.im.qq.enable {
-                name = "qq-minsize";
-                "match:class" = "QQ";
-                "match:title" = "QQ频道";
-                min_size = "1080 0";
-              })
-
-              (lib.mkIf config.programs.im.qq.enable {
-                name = "qq-move-cursor";
-                "match:class" = "QQ";
-                "match:title" = "资料卡|天气";
-                move = "cursor_x cursor_y";
-              })
-
-              (lib.mkIf config.terminals.kitty.enable {
-                name = "kitty";
-                "match:class" = "kitty";
-                opacity = "0.8 override 0.8 override";
-              })
-
-              (lib.mkIf config.firefox.enable {
-                name = "firefox-pip";
-                "match:class" = "firefox";
-                "match:title" = "Picture-in-Picture";
-                float = true;
-                move = "${toString gaps_out} monitor_h-window_h-${toString gaps_out}";
-                no_initial_focus = true;
-              })
-
-              (lib.mkIf config.programs.utility.follow.enable {
-                name = "follow";
-                "match:class" = "Follow";
-                opacity = "0.8 override 0.8 override";
-              })
-
-              (lib.mkIf config.programs.media.mpv.enable {
-                name = "mpv";
-                "match:class" = "mpv";
-                fullscreen = true;
-              })
-
-              (lib.mkIf config.programs.media.svp.enable {
-                name = "svpmanager";
-                "match:class" = "SVPManager";
-                float = true;
-              })
-
-              (lib.mkIf config.ghidra.enable {
-                name = "ghidra";
-                "match:class" = "ghidra-.+";
-                "match:title" = "win.+";
-                "match:float" = true;
-                "match:fullscreen" = false;
-                no_focus = true;
-                no_anim = true;
-                border_size = 0;
-                rounding = 0;
-                move = "cursor_x cursor_y";
-              })
-
-              (lib.mkIf config.programs.utility.waydroid.enable {
-                name = "waydroid";
-                "match:class" = "[Ww]aydroid.*";
-                float = true;
-              })
-
-              (lib.mkIf config.programs.utility.aegisub.enable {
-                name = "aegisub";
-                "match:class" = "aegisub";
-                rounding = 0;
-              })
-
-              (lib.mkIf config.programs.media.vlc.enable {
-                name = "vlc-no-rounding";
-                "match:class" = "vlc";
-                rounding = 0;
-              })
-
-              (lib.mkIf config.programs.media.vlc.enable {
-                name = "vlc-xwayland-fix";
-                "match:class" = "vlc";
-                "match:title" = "vlc";
-                "match:xwayland" = true;
-                "match:float" = true;
-                no_anim = true;
-                no_blur = true;
-              })
-
-              {
-                name = "xwayland-fix";
-                "match:xwayland" = true;
-                rounding = 0;
-                no_anim = true;
-                no_blur = true;
-              }
-
-              (lib.mkIf config.programs.media.vlc.enable {
-                name = "vlc-wayland-fix";
-                "match:class" = "vlc";
-                "match:title" = "vlc";
-                "match:xwayland" = false;
-                "match:float" = true;
-                no_anim = true;
-                move = "monitor_w-window_w monitor_h-window_h";
-              })
-
-              {
-                name = "polkit";
-                "match:class" = "org.kde.polkit-kde-authentication-agent-1";
-                float = true;
-              }
-
-              {
-                name = "xdg-desktop-portal-gtk";
-                "match:class" = "xdg-desktop-portal-gtk";
-                float = true;
-              }
-            ];
-
-            xwayland = {
-              use_nearest_neighbor = false;
-              force_zero_scaling = true;
-            };
-          };
+            ''
+          ];
       };
     };
   };

@@ -65,11 +65,13 @@ in
         #   '';
         # }))
       ];
-      wayland.windowManager.hyprland.settings = {
-        exec-once = [
-          "${clipboard_sync}/bin/clipboard_sync &"
-        ];
-      };
+      wayland.windowManager.hyprland.extraConfig =
+        # lua
+        ''
+          hl.on("hyprland.start", function ()
+            hl.exec_cmd("${clipboard_sync}/bin/clipboard_sync")
+          end)
+        '';
     };
   };
 }

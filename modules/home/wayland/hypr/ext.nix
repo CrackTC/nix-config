@@ -6,44 +6,89 @@
 }:
 let
   cfg = config.hypr;
-  mkMonitorStr =
+  mkMonitor =
     monitor:
-    "${monitor.name},${toString monitor.weight}x${toString monitor.height}@${toString monitor.refresh},${toString monitor.left}x${toString monitor.top},${toString monitor.scale}";
+    with monitor;
+    # lua
+    ''
+      hl.monitor({
+        output = "${name}",
+        mode = "${toString weight}x${toString height}@${toString refresh}",
+        position = "${toString left}x${toString top}",
+        scale = "${toString scale}",
+      })
+    '';
+  mkWorkspace =
+    workspace:
+    with workspace;
+    # lua
+    ''
+      hl.workspace_rule({
+        workspace = "${id}",
+        default = ${if default then "true" else "false"},
+        default_name = "${name}",
+        monitor = "${monitor}",
+      })
+    '';
   inherit (hostConfig) monitors;
 in
 {
-  options.hypr = {
-    extMonitor = lib.mkEnableOption "external monitor";
-  };
   config.hmConfig = lib.mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings = lib.mkMerge [
-      (lib.mkIf (!cfg.extMonitor && builtins.length monitors > 0) {
-        # monitor = lib.mkForce [ "eDP-1,2560x1440@240,0x0,1" ];
-        monitor = mkMonitorStr (builtins.head monitors);
-        workspace = lib.mkForce [ ];
-      })
-      (lib.mkIf (cfg.extMonitor && builtins.length monitors > 1) {
-        # monitor = lib.mkDefault [ "DP-1,2560x1440@170,auto,1.25" "eDP-1,2560x1440@240,0x0,1.25" ];
-        monitor = map mkMonitorStr monitors;
+    wayland.windowManager.hyprland = {
+      extraConfig =
+        let
+          defaultMonitor = (builtins.elemAt monitors 1).name;
+          secondaryMonitor = (builtins.head monitors).name;
+          workspaces =
+            [
+              {
+                default = false;
+                name = "background";
+                monitor = secondaryMonitor;
+              }
+              {
+                default = true;
+                name = "terminal";
+                monitor = defaultMonitor;
+              }
+            ]
+            ++ (
+              [
+                "web"
+                "notes"
+                "burp"
+                "mail"
+                "book"
+                "movie"
+                "chat"
+                "music"
+              ]
+              |> map (name: {
+                inherit name;
+                default = false;
+                monitor = defaultMonitor;
+              })
+            )
+            |> lib.imap (
+              i: workspace: {
+                id = toString i;
+                name = "${toString (i - 1)}-${workspace.name}";
+                inherit (workspace) default monitor;
+              }
+            );
+        in
+        # lua
+        ''
+          ${monitors |> map mkMonitor |> lib.concatStringsSep "\n"}
+          hl.monitor({
+            output = "",
+            mode = "preferred",
+            position = "auto",
+            scale = "auto",
+          })
 
-        workspace =
-          let
-            defaultMonitor = (builtins.elemAt monitors 1).name;
-            secondaryMonitor = (builtins.head monitors).name;
-          in
-          [
-            "1, monitor:${defaultMonitor}"
-            "2, monitor:${defaultMonitor}"
-            "3, monitor:${defaultMonitor}"
-            "4, monitor:${defaultMonitor}"
-            "5, monitor:${defaultMonitor}"
-            "6, monitor:${defaultMonitor}"
-            "7, monitor:${defaultMonitor}"
-            "8, monitor:${defaultMonitor}"
-            "9, monitor:${secondaryMonitor}"
-            "10, monitor:${secondaryMonitor}, default:true"
-          ];
-      })
-    ];
+          ${workspaces |> map mkWorkspace |> lib.concatStringsSep "\n"}
+        '';
+    };
   };
 }
