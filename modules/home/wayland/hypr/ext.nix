@@ -43,25 +43,25 @@ in
             [
               {
                 default = false;
-                name = "background";
+                name = ",";
                 monitor = secondaryMonitor;
               }
               {
                 default = true;
-                name = "terminal";
+                name = "`";
                 monitor = defaultMonitor;
               }
             ]
             ++ (
               [
-                "web"
-                "notes"
-                "burp"
-                "mail"
-                "book"
-                "movie"
-                "chat"
-                "music"
+                "A"
+                "Z"
+                "B"
+                "M"
+                "D"
+                "U"
+                "W"
+                "E"
               ]
               |> map (name: {
                 inherit name;
@@ -72,8 +72,7 @@ in
             |> lib.imap (
               i: workspace: {
                 id = toString i;
-                name = "${toString (i - 1)}-${workspace.name}";
-                inherit (workspace) default monitor;
+                inherit (workspace) default monitor name;
               }
             );
         in

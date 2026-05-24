@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  name,
   ...
 }:
 let
@@ -29,6 +30,7 @@ in
 
     programs.firefox = {
       enable = true;
+      configPath = "/home/${name}/.config/mozilla/firefox";
       profiles.${profileName}.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         # gloc

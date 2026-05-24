@@ -64,8 +64,7 @@ in
           '';
           rebuild = lib.mkMerge [
             "nh os switch ~/nixos --ask $argv &&"
-            (lib.mkIf config.dunst.enable "dunstify -a 'Rebuild' 'Rebuild finished 🎉' || dunstify -a 'Rebuild' 'Rebuild failed 😢'")
-            (lib.mkIf (!config.dunst.enable) "echo 'Rebuild finished 🎉' || echo 'Rebuild failed 😢'")
+            "${pkgs.libnotify}/bin/notify-send 'Rebuild' 'Rebuild finished 🎉' || ${pkgs.libnotify}/bin/notify-send 'Rebuild' 'Rebuild failed 😢'"
           ];
           o = "xdg-open $argv >/dev/null 2>&1 & disown";
         };

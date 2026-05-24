@@ -105,6 +105,7 @@ in
                 programs.home-manager.enable = true;
               }
               config.sorac.homes.${username}.hmConfig
+              inputs.noctalia.homeModules.default
             ]
           );
         };

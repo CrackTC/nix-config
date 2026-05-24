@@ -34,7 +34,7 @@ in
           "Noto Sans Mono CJK SC"
         ];
         sansSerif = [
-          # "MiSans Medium"
+          "MiSans DemiBold"
           "Noto Sans CJK SC" # Make CJK font higher priority, resolves "tofu" issue in Inkscape which hardcodes "sans-serif"
           "Noto Sans"
         ];

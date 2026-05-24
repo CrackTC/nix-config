@@ -7,6 +7,7 @@ in
     ./hypr
     ./portal.nix
     ./waybar
+    ./noctalia
     ./wl-clipboard.nix
   ];
 

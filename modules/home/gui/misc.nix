@@ -25,7 +25,10 @@ in
       wineWow64Packages.unstableFull
       winetricks
     ];
-    services.blueman-applet.enable = true;
-    services.network-manager-applet.enable = true;
+
+    services = lib.mkIf (!config.noctalia.enable) {
+      blueman-applet.enable = true;
+      network-manager-applet.enable = true;
+    };
   };
 }

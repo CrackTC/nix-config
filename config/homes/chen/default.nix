@@ -80,7 +80,8 @@
     enable = true;
     useNvidia = false;
   };
-  waybar.enable = true;
+  # waybar.enable = true;
+  noctalia.enable = true;
   wl-clipboard.enable = true;
   xdg.enable = true;
   colemak.enable = true;

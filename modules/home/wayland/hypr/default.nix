@@ -84,11 +84,17 @@ in
             # lua
             ''
               hl.on("hyprland.start", function ()
-                ${mkExec "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"}
+                ${
+                  if !config.noctalia.enable then
+                    mkExec "${lib.getExe pkgs.swaybg} -i /home/${name}/Desktop/wallpaper"
+                  else
+                    ""
+                }
                 ${if config.fcitx5.enable then mkExec "fcitx5 -d" else ""}
                 ${if config.go.enable then mkExec "go env -w GOPROXY=https://goproxy.cn,direct" else ""}
                 ${if config.imwheel.enable then mkExec "imwheel" else ""}
                 ${if config.waybar.enable then mkExec "waybar" else ""}
+                ${if config.noctalia.enable then mkExec "noctalia-shell" else ""}
                 ${if config.programs.utility.ydotool.enable then mkExec "ydotoold" else ""}
                 ${
                   if config.terminal.preferred == "ghostty" then
@@ -139,12 +145,11 @@ in
                 },
 
                 decoration = {
-                  rounding = 13,
-
+                  rounding = 20,
                   blur = {
                     enabled = true,
-                    size = 5,
-                    passes = 4,
+                    size = 3,
+                    passes = 2,
                     new_optimizations = true,
                     ignore_opacity = true,
                     popups = true,
@@ -283,6 +288,18 @@ in
                   match = { namespace = "waybar" },
                   ignore_alpha = 0.1,
                   blur = true,
+                })
+              ''
+            )
+
+            (lib.mkIf config.noctalia.enable
+              # lua
+              ''
+                hl.layer_rule({
+                  match = { namespace = "noctalia-background-.*$"},
+                  ignore_alpha = 0.5,
+                  blur = true,
+                  blur_popups = true,
                 })
               ''
             )

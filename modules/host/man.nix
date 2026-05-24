@@ -18,6 +18,6 @@ in
     ];
 
     documentation.dev.enable = true;
-    documentation.man.generateCaches = false;
+    documentation.man.cache.enable = false;
   };
 }
