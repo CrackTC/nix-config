@@ -1,7 +1,8 @@
 {
   config,
+  system,
   lib,
-  extraRepos,
+  inputs,
   ...
 }:
 let
@@ -13,6 +14,6 @@ in
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages = with extraRepos; [ myRepo.beatoraja ];
+    home.packages = [ inputs.myRepo.packages.${system}.beatoraja ];
   };
 }

@@ -1,8 +1,8 @@
-{ pkgs, extraRepos, ... }:
+{ pkgs, inputs, system, ... }:
 {
 
   imports = [
-    extraRepos.myRepo.modules.hpfan
+    inputs.myRepo.legacyPackages.${system}.modules.hpfan
     ./hardware-configuration.nix
   ];
 

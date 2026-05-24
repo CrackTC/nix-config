@@ -2,7 +2,8 @@
   config,
   pkgs,
   lib,
-  extraRepos,
+  inputs,
+  system,
   ...
 }:
 let
@@ -14,34 +15,30 @@ in
   };
 
   config.hmConfig = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
-      with extraRepos;
-      lib.mkMerge [
-        [ yaml-language-server ]
-        (lib.mkIf config.nix.enable [
-          extraRepos.nil.nil
-          statix
-        ])
-        (lib.mkIf config.c.enable [
-          clang-tools
-          cmake-language-server
-        ])
-        (lib.mkIf config.dotnet.enable [
-          csharp-ls
-          omnisharp-roslyn
-        ])
-        (lib.mkIf config.go.enable [ gopls ])
-        (lib.mkIf config.haskell.enable [ haskell-language-server ])
-        (lib.mkIf config.java.enable [ jdt-language-server ])
-        (lib.mkIf config.lua.enable [ lua-language-server ])
-        (lib.mkIf config.php.enable [ phpactor ])
-        (lib.mkIf config.python.enable [
-          # myRepo.pyink
-          pyright
-        ])
-        (lib.mkIf config.editors.nvim.enable [ vim-language-server ])
-        (lib.mkIf config.js.enable [ vscode-langservers-extracted ])
-      ];
+    home.packages = lib.mkMerge [
+      [ pkgs.yaml-language-server ]
+      (lib.mkIf config.nix.enable [
+        inputs.nil.packages.${system}.nil
+        pkgs.statix
+      ])
+      (lib.mkIf config.c.enable [
+        pkgs.clang-tools
+        pkgs.cmake-language-server
+      ])
+      (lib.mkIf config.dotnet.enable [
+        pkgs.csharp-ls
+        pkgs.omnisharp-roslyn
+      ])
+      (lib.mkIf config.go.enable [ pkgs.gopls ])
+      (lib.mkIf config.haskell.enable [ pkgs.haskell-language-server ])
+      (lib.mkIf config.java.enable [ pkgs.jdt-language-server ])
+      (lib.mkIf config.lua.enable [ pkgs.lua-language-server ])
+      (lib.mkIf config.php.enable [ pkgs.phpactor ])
+      (lib.mkIf config.python.enable [
+        pkgs.pyright
+      ])
+      (lib.mkIf config.editors.nvim.enable [ pkgs.vim-language-server ])
+      (lib.mkIf config.js.enable [ pkgs.vscode-langservers-extracted ])
+    ];
   };
 }

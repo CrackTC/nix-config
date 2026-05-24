@@ -7,43 +7,28 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://cracktc.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://cache.nixos.org/"
+      "https://cache.nixos.org"
       "https://cache.nixos-cuda.org"
+      "https://ghostty.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cracktc.cachix.org-1:2hSlXvkhNchqB0wo+nz13bWdJo9/nxrAi/masgZCm2I="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
     ];
   };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-master = {
-      url = "github:NixOS/nixpkgs/master";
-      flake = false;
-    };
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-25.11";
-      flake = false;
-    };
-    nixpkgs-mine = {
-      url = "github:CrackTC/nixpkgs";
-      flake = false;
-    };
-
-    myRepo = {
-      url = "github:CrackTC/nur-packages";
-      flake = false;
-    };
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    myRepo.url = "github:CrackTC/nur-packages";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,33 +37,21 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hyprland = {
-    #   url = "github:hyprwm/hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     nil = {
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    {
-      # hyprland,
-      ghostty,
+    inputs@{
       home-manager,
-      myRepo,
-      nil,
       nixpkgs,
-      nixpkgs-master,
-      nixpkgs-mine,
-      nixpkgs-stable,
       nur,
       sops-nix,
       ...
@@ -89,51 +62,21 @@
 
       getSubDirs =
         path:
-        builtins.readDir path |> lib.attrsets.filterAttrs (_: v: v == "directory") |> builtins.attrNames;
-
-      hosts = getSubDirs ./config/hosts;
-      homes =
-        getSubDirs ./config/homes
-        |> map (name: {
-          inherit name;
-          value = import (./config/homes/. + "/${name}");
-        })
-        |> builtins.listToAttrs;
+        path |> builtins.readDir |> lib.attrsets.filterAttrs (_: v: v == "directory") |> builtins.attrNames;
     in
     {
       nixosConfigurations =
-        hosts
+        ./config/hosts
+        |> getSubDirs
         |> map (
           host-name:
           let
             host-info = import ./config/hosts/${host-name}/flake-info.nix;
-
             options = utilities.nixpkgsOptions { inherit (host-info) system cpu; };
-
-            pkgs = import nixpkgs (
-              options
-              // {
-                overlays = [
-                  nur.overlays.default
-                ];
-              }
-            );
-
-            extraRepos = {
-              # pkgs-native = import nixpkgs (lib.utils.nixpkgsOptions host-info.system host-info.cpu true);
-              pkgs-master = import nixpkgs-master options;
-              pkgs-stable = import nixpkgs-stable options;
-              pkgs-mine = import nixpkgs-mine options;
-              myRepo = import myRepo { inherit pkgs; };
-              ghostty = ghostty.packages.${host-info.system};
-
-              # hyprland = hyprland.packages.${host-info.system};
-              nil = nil.packages.${host-info.system};
-            };
-
+            pkgs = (options // { overlays = [ nur.overlays.default ]; }) |> import nixpkgs;
             specialArgs = {
-              inherit extraRepos;
-              inherit utilities;
+              inherit inputs utilities;
+              inherit (host-info) system;
             };
           in
           {
@@ -150,10 +93,17 @@
                 {
                   nixpkgs.pkgs = pkgs;
                   sorac = {
-                    host = host-info // {
+                    host = {
                       name = host-name;
+                      inherit (host-info) cpu;
                     };
-                    inherit homes;
+                    homes =
+                      getSubDirs ./config/homes
+                      |> map (name: {
+                        inherit name;
+                        value = import (./config/homes/. + "/${name}");
+                      })
+                      |> builtins.listToAttrs;
                   };
                 }
 

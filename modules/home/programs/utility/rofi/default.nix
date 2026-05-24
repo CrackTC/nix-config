@@ -2,7 +2,8 @@
   config,
   pkgs,
   lib,
-  extraRepos,
+  inputs,
+  system,
   ...
 }:
 let
@@ -47,7 +48,7 @@ in
           )
           [
             pkgs.rofi-calc
-            extraRepos.myRepo.rofi-ts
+            inputs.myRepo.packages.${system}.rofi-ts
           ];
     };
   };

@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  # extraRepos,
   name,
   ...
 }:
@@ -40,7 +39,6 @@ in
     hmConfig = {
       wayland.windowManager.hyprland = {
         enable = true;
-        # package = extraRepos.hyprland.hyprland;
         package = pkgs.hyprland;
         portalPackage = null;
         configType = "lua";

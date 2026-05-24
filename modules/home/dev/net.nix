@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
-  extraRepos,
   lib,
   name,
+  inputs,
+  system,
   ...
 }:
 let
@@ -16,10 +17,10 @@ in
 
   config = lib.mkIf cfg.enable {
     hmConfig = {
-      home.packages = with pkgs; [
-        extraRepos.pkgs-master.mitmproxy
-        rlwrap
-        websocat
+      home.packages = [
+        inputs.nixpkgs-master.legacyPackages.${system}.mitmproxy
+        pkgs.rlwrap
+        pkgs.websocat
       ];
 
       home.file.".mitmproxy" = {

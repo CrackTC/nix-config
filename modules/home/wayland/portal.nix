@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  # extraRepos,
   ...
 }:
 let
@@ -19,7 +18,6 @@ in
       xdgOpenUsePortal = false;
       extraPortals = lib.mkMerge [
         (lib.mkIf config.hypr.enable [
-          # extraRepos.hyprland.xdg-desktop-portal-hyprland
           pkgs.xdg-desktop-portal-hyprland
         ])
         [ pkgs.xdg-desktop-portal-gtk ]

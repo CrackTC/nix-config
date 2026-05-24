@@ -20,29 +20,12 @@ in
         enableOffloadCmd = true;
       };
     };
-
+    # https://wiki.nixos.org/wiki/Laptop
     powerManagement.enable = true;
     services = {
       thermald.enable = true;
-
-      auto-cpufreq = {
-        enable = true;
-        settings = {
-          battery = {
-            governor = "powersave";
-            energy_performance_preference = "power";
-            platform_profile = "quiet";
-            turbo = "auto";
-          };
-          charger = {
-            governor = "performance";
-            energy_performance_preference = "performance";
-            platform_profile = "performance";
-            turbo = "auto";
-          };
-        };
-      };
-
+      # needed by noctalia shell
+      power-profiles-daemon.enable = true;
       upower.enable = true;
     };
   };

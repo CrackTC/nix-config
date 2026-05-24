@@ -15,7 +15,6 @@ in
     # WORKAROUND: https://github.com/nixos/nixpkgs/issues/514705
     services.blueman = {
       enable = true;
-      withApplet = false;
     };
   };
 }

@@ -2,7 +2,8 @@
   pkgs,
   config,
   lib,
-  extraRepos,
+  inputs,
+  system,
   utilities,
   ...
 }:
@@ -56,7 +57,7 @@ let
 
     config = {
       _module.args = {
-        inherit pkgs extraRepos;
+        inherit pkgs inputs system;
         osConfig = config;
         hostConfig = config.sorac.host;
       };
