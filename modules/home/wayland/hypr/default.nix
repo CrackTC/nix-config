@@ -321,7 +321,7 @@ in
                 hl.window_rule({
                   match = { class = "showmethekey-gtk", title = "Floating Window - Show Me The Key" },
                   float = true,
-                  opacity = "0.5 override 0.5 override",
+                  opacity = "0.7 override 0.7 override",
                   pin = true,
                 })
               ''
@@ -392,7 +392,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "obsidian" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )
@@ -402,7 +402,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "discord" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )
@@ -412,7 +412,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "Code|code-url-handler" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )
@@ -422,7 +422,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "thunderbird" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )
@@ -432,7 +432,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "org.telegram.desktop" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )
@@ -442,7 +442,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "QQ" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
 
                 hl.window_rule({
@@ -467,7 +467,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "kitty" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )
@@ -489,7 +489,7 @@ in
               ''
                 hl.window_rule({
                   match = { class = "Follow" },
-                  opacity = "0.8 override 0.8 override",
+                  opacity = "0.9 override 0.9 override",
                 })
               ''
             )

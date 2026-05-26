@@ -122,10 +122,10 @@ in
                   colorizeSystemText = "none";
                   customIconPath = "";
                   enableColorization = false;
-                  icon = "rocket";
-                  iconColor = "none";
-                  id = "Launcher";
-                  useDistroLogo = false;
+                  icon = "noctalia";
+                  colorizeDistroLogo = false;
+                  id = "ControlCenter";
+                  useDistroLogo = true;
                 }
                 {
                   clockColor = "none";
@@ -152,7 +152,7 @@ in
                   showLoadAverage = false;
                   showMemoryAsPercent = false;
                   showMemoryUsage = true;
-                  showNetworkStats = false;
+                  showNetworkStats = true;
                   showSwapUsage = false;
                   textColor = "none";
                   useMonospaceFont = true;
@@ -162,7 +162,7 @@ in
                   colorizeIcons = false;
                   hideMode = "hidden";
                   id = "ActiveWindow";
-                  maxWidth = 400;
+                  maxWidth = 300;
                   scrollingMode = "hover";
                   showIcon = true;
                   showText = true;
@@ -197,14 +197,6 @@ in
                   pinned = [ "中州韵" ];
                 }
                 {
-                  hideWhenZero = false;
-                  hideWhenZeroUnread = false;
-                  iconColor = "none";
-                  id = "NotificationHistory";
-                  showUnreadBadge = true;
-                  unreadBadgeColor = "primary";
-                }
-                {
                   deviceNativePath = "__default__";
                   displayMode = "graphic";
                   hideIfIdle = false;
@@ -228,14 +220,12 @@ in
                   textColor = "none";
                 }
                 {
-                  colorizeDistroLogo = false;
-                  colorizeSystemIcon = "none";
-                  colorizeSystemText = "none";
-                  customIconPath = "";
-                  enableColorization = false;
-                  icon = "noctalia";
-                  id = "ControlCenter";
-                  useDistroLogo = false;
+                  hideWhenZero = false;
+                  hideWhenZeroUnread = false;
+                  iconColor = "none";
+                  id = "NotificationHistory";
+                  showUnreadBadge = true;
+                  unreadBadgeColor = "primary";
                 }
               ];
             };
@@ -480,7 +470,7 @@ in
             enableBatteryToast = true;
             enableKeyboardLayoutToast = true;
             enableMarkdown = false;
-            enableMediaToast = true;
+            enableMediaToast = false;
             enabled = true;
             location = "top_right";
             lowUrgencyDuration = 3;
